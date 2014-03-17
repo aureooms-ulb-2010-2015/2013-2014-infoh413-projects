@@ -1,9 +1,17 @@
 #include <iostream>
+#include <fstream>
 #include <cstdlib>
 #include <cstdio>
 #include <cstdlib>
 #include <ctime>
 #include "pfspinstance.h"
+
+#include "io/parse/body.h"
+#include "io/parse/header.h"
+
+#include "mem/allocate.h"
+
+using namespace infoh413;
 
 int generateRndPosition(int min, int max){
 	return (rand() % max + min);
@@ -57,7 +65,16 @@ int main(int argc, char *argv[]){
 	PfspInstance instance;
 
 	/* Read data from file */
-	if(!instance.readDataFromFile(argv[1])) return 1;
+	std::ifstream fileIn;
+	fileIn.open(argv[1]);
+
+	if(!fileIn.is_open()) return 1;
+
+	io::parse::header(fileIn, instance.nbJob, instance.nbMac);
+	mem::allocate(instance.processingTimesMatrix, instance.dueDates, instance.priority, instance.nbJob, instance.nbMac);
+	io::parse::body(fileIn, instance.nbJob, instance.nbMac, instance.processingTimesMatrix, instance.dueDates, instance.priority);
+
+	fileIn.close();
 
 	/* Create a vector of int to represent the solution
 		WARNING: By convention, we store the jobs starting from index 1,

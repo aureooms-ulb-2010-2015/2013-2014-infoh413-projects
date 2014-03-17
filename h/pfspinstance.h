@@ -5,7 +5,7 @@
 #include <vector>
 
 class PfspInstance{
-private:
+public:
 	int nbJob;
 	int nbMac;
 	std::vector<long int> dueDates;
@@ -13,7 +13,6 @@ private:
 
 	std::vector<std::vector<long int>> processingTimesMatrix;
 
-public:
 	PfspInstance();
 	~PfspInstance();
 
@@ -22,7 +21,7 @@ public:
 	int getNbMac();
 
 	/* Allow the memory for the processing times matrix : */
-	void allowMatrixMemory(int nbJ, int nbM);
+	void allowMatrixMemory(const int nbJ, const int nbM);
 
 	/* Read\Write values in the matrix : */
 	long int getTime(int job, int machine);

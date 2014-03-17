@@ -17,7 +17,7 @@ void PfspInstance::allowMatrixMemory(const int nbJ, const int nbM){
 
 	for (int cpt = 0; cpt < nbJ+1; ++cpt) processingTimesMatrix[cpt].resize(nbM+1);
 
-		dueDates.resize(nbJ+1);
+	dueDates.resize(nbJ+1);
 	priority.resize(nbJ+1);
 }
 
