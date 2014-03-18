@@ -22,9 +22,6 @@ public:
 	int getNbJob();
 	int getNbMac();
 
-	/* Allow the memory for the processing times matrix : */
-	void allowMatrixMemory(const int nbJ, const int nbM);
-
 	/* Read\Write values in the matrix : */
 	long int getTime(int job, int machine);
 	void setTime(int job, int machine, long int processTime);
@@ -34,9 +31,6 @@ public:
 
 	long int getPriority(int job);
 	void setPriority(int job, int value);
-
-	/* Read Data from a file : */
-	bool readDataFromFile(char* fileName);
 
 	long int computeWT(std::vector<int>& sol);
 };
