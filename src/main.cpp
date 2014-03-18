@@ -31,7 +31,7 @@ int main(int argc, char *argv[]){
 	}
 
 	/* Create instance object */
-	pfsp::Instance instance;
+	pfsp::Instance<addr_t, val_t, priority_t> instance;
 
 	/* Read data from file */
 	std::ifstream fileIn;
@@ -55,7 +55,7 @@ int main(int argc, char *argv[]){
 	std::cout << "Random solution: " << s << std::endl;
 
 	/* Compute the TWT of this solution */
-	long int totalWeightedTardiness = instance.computeWT(s);
+	val_t totalWeightedTardiness = instance.computeWT(s);
 	std::cout << "Total weighted tardiness: " << totalWeightedTardiness << std::endl;
 	std::cout << "seed : " << seed_v << std::endl;
 
