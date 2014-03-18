@@ -1,8 +1,8 @@
-#ifndef _INFOH413_IO_PARSE_HEADER_H
-#define _INFOH413_IO_PARSE_HEADER_H
+#ifndef _PFSP_IO_PARSE_HEADER_HPP
+#define _PFSP_IO_PARSE_HEADER_HPP
 
 
-namespace infoh413{
+namespace pfsp{
 namespace io{
 namespace parse{
 
@@ -22,4 +22,4 @@ void header(S& stream, INT& nbJob, INT& nbMac){
 }
 
 
-#endif // _INFOH413_IO_PARSE_HEADER_H
+#endif // _PFSP_IO_PARSE_HEADER_HPP

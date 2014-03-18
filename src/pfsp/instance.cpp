@@ -2,17 +2,20 @@
 #include <fstream>
 #include <cmath>
 #include <cstring>
-#include "pfspinstance.h"
 
-PfspInstance::PfspInstance(){}
-PfspInstance::~PfspInstance(){}
+#include "pfsp/instance.hpp"
+
+namespace pfsp{
+
+Instance::Instance(){}
+Instance::~Instance(){}
 
 
-int PfspInstance::getNbJob(){return nbJob;}
-int PfspInstance::getNbMac(){return nbMac;}
+int Instance::getNbJob(){return nbJob;}
+int Instance::getNbMac(){return nbMac;}
 
 /* Allocates the memory for the processing times matrix : */
-void PfspInstance::allowMatrixMemory(const int nbJ, const int nbM){
+void Instance::allowMatrixMemory(const int nbJ, const int nbM){
 	processingTimesMatrix.resize(nbJ+1);
 
 	for (int cpt = 0; cpt < nbJ+1; ++cpt) processingTimesMatrix[cpt].resize(nbM+1);
@@ -22,11 +25,11 @@ void PfspInstance::allowMatrixMemory(const int nbJ, const int nbM){
 }
 
 
-long int PfspInstance::getTime(const int job, const int machine){
+long int Instance::getTime(const int job, const int machine){
 	if(job == 0) return 0;
 	else{
 		if((job < 1) || (job > nbJob) || (machine < 1) || (machine > nbMac))
-			std::cout << "ERROR. file:pfspInstance.cpp, method:getTime. Out of bound. job=" << job
+			std::cout << "ERROR. file:Instance.cpp, method:getTime. Out of bound. job=" << job
 			<< ", machine=" << machine << std::endl;
 
 		return processingTimesMatrix[job][machine];
@@ -35,7 +38,7 @@ long int PfspInstance::getTime(const int job, const int machine){
 
 
 /* Read the instance from file : */
-bool PfspInstance::readDataFromFile(char * fileName){
+bool Instance::readDataFromFile(char * fileName){
 
 	bool everythingOK = true;
 	int j, m; // iterators
@@ -93,7 +96,7 @@ bool PfspInstance::readDataFromFile(char * fileName){
 		fileIn.close();
 	}
 	else{
-		std::cout << "ERROR. file:pfspInstance.cpp, method:readDataFromFile, "
+		std::cout << "ERROR. file:Instance.cpp, method:readDataFromFile, "
 		<< "error while opening file " << fileName << std::endl;
 
 		everythingOK = false;
@@ -104,7 +107,7 @@ bool PfspInstance::readDataFromFile(char * fileName){
 
 
 /* Compute the weighted tardiness of a given solution */
-long int PfspInstance::computeWT(std::vector<int>& sol){
+long int Instance::computeWT(std::vector<int>& sol){
 	int j, m;
 	int jobNumber;
 	long int wt;
@@ -146,4 +149,7 @@ long int PfspInstance::computeWT(std::vector<int>& sol){
 		wt += (std::max(previousMachineEndTime[j] - dueDates[sol[j]], 0L) * priority[sol[j]]);
 
 	return wt;
+}
+
+
 }

@@ -1,10 +1,12 @@
-#ifndef _PFSPINSTANCEWT_H_
-#define _PFSPINSTANCEWT_H_
+#ifndef _PFSP_INSTANCE_HPP
+#define _PFSP_INSTANCE_HPP
 
 #include <string>
 #include <vector>
 
-class PfspInstance{
+namespace pfsp{
+
+class Instance{
 public:
 	int nbJob;
 	int nbMac;
@@ -13,8 +15,8 @@ public:
 
 	std::vector<std::vector<long int>> processingTimesMatrix;
 
-	PfspInstance();
-	~PfspInstance();
+	Instance();
+	~Instance();
 
 	/* Read write privates attributs : */
 	int getNbJob();
@@ -38,5 +40,7 @@ public:
 
 	long int computeWT(std::vector<int>& sol);
 };
+
+}
 
 #endif

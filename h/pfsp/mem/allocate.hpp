@@ -1,8 +1,8 @@
-#ifndef _INFOH413_MEM_ALLOCATE_H
-#define _INFOH413_MEM_ALLOCATE_H
+#ifndef _PFSP_MEM_ALLOCATE_HPP
+#define _PFSP_MEM_ALLOCATE_HPP
 
 
-namespace infoh413{
+namespace pfsp{
 namespace mem{
 
 template<typename A1, typename A2, typename A3, typename T>
@@ -19,4 +19,4 @@ void allocate(A1& processingTimesMatrix, A2& dueDates, A3& priority, const T nbJ
 }
 
 
-#endif // _INFOH413_MEM_ALLOCATE_H
+#endif // _PFSP_MEM_ALLOCATE_HPP
