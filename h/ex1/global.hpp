@@ -1,0 +1,71 @@
+#ifndef _EX1_GLOBAL_HPP
+#define _EX1_GLOBAL_HPP
+
+
+#include <vector>
+#include <map>
+#include <set>
+#include <chrono>
+#include <random>
+
+#include "lib/random/sample.hpp"
+
+
+typedef int addr_t;
+typedef long int val_t;
+typedef long int priority_t;
+
+typedef std::vector<addr_t> solution;
+
+typedef std::default_random_engine random_engine;
+typedef std::uniform_int_distribution<addr_t> uniform_distribution;
+
+auto sample = lib::random::sample<random_engine, uniform_distribution, solution, addr_t>;
+
+typedef std::chrono::system_clock sysclock;
+typedef std::chrono::high_resolution_clock hrclock;
+
+namespace ex1{
+	namespace global{
+
+
+		// DATA
+		
+		const char* list_p[] = {"", "", " "};
+
+		// CHRONO
+
+		double start, stop, start_c, stop_c;
+		hrclock::time_point checkpoint, tmp;
+		hrclock::duration duration(0);
+
+
+		// SEED
+
+		std::vector<long long> seed_v;
+		random_engine g;
+
+
+		// FLAGS
+
+		bool help;
+
+
+		// INPUT
+
+		std::vector<std::string> params;
+		std::map<std::string, std::vector<std::string>> options;
+		std::set<std::string> flags;
+		std::set<std::string> option_set = {
+			"--seed"
+		};
+		std::set<std::string> flag_set = {
+			"-h", "--help"
+		};
+
+	}
+}
+
+
+
+#endif // _EX1_GLOBAL_HPP
