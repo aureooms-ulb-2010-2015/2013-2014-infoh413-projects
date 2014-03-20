@@ -11,8 +11,10 @@
 namespace pfsp{
 
 template<typename addr_t, typename val_t, typename priority_t>
-class Instance{
+class eval{
 public:
+	typedef val_t val;
+
 	addr_t nbJob;
 	addr_t nbMac;
 	std::vector<val_t> dueDates;
@@ -21,37 +23,12 @@ public:
 	std::vector<std::vector<val_t>> processingTimesMatrix;
 
 
-
-	/* Read\Write values in the matrix : */
-	void setTime(addr_t job, addr_t machine, val_t processTime);
-
-	val_t getDueDate(addr_t job);
-	void setDueDate(addr_t job, val_t value);
-
-	val_t getPriority(addr_t job);
-	void setPriority(addr_t job, priority_t value);
-
-
-	Instance(){}
-	~Instance(){}
-
-
-	addr_t getNbJob(){return nbJob;}
-	addr_t getNbMac(){return nbMac;}
-
-	val_t getTime(const addr_t job, const addr_t machine){
-		if(job == 0) return 0;
-		else{
-			if((job < 1) || (job > nbJob) || (machine < 1) || (machine > nbMac))
-				std::cout << "ERROR. file:Instance.cpp, method:getTime. Out of bound. job=" << job
-				<< ", machine=" << machine << std::endl;
-
-			return processingTimesMatrix[job][machine];
-		}
-	}
+	eval(){}
+	~eval(){}
 
 	/* Compute the weighted tardiness of a given solution */
-	val_t computeWT(std::vector<addr_t>& sol){
+	template<typename S>
+	val_t operator()(S& sol){
 		addr_t j, m;
 		addr_t jobNumber;
 		val_t wt;

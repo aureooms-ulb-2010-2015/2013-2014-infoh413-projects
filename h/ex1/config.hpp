@@ -29,6 +29,10 @@ namespace ex1{
 
 		inline void check(){
 			if(ex1::global::params.size() < 1) throw lib::error::exception("<filename> missing");
+			if(ex1::global::options.count("--neighborhood") == 0 || ex1::global::options["--neighborhood"].size() == 0)
+				throw lib::error::exception("--neighborhood missing");
+			if(ex1::global::neighborhood.count(ex1::global::options["--neighborhood"][0]) == 0)
+				throw lib::error::exception("wrong --neighborhood");
 		}
 
 

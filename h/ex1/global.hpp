@@ -4,11 +4,19 @@
 
 #include <vector>
 #include <map>
+#include <unordered_map>
 #include <set>
 #include <chrono>
 #include <random>
 
 #include "lib/random/sample.hpp"
+
+#include "pfsp/neighborhood/exchange.hpp"
+#include "pfsp/neighborhood/insert.hpp"
+#include "pfsp/neighborhood/transpose.hpp"
+
+#include "pfsp/pivoting/best.hpp"
+#include "pfsp/pivoting/functor.hpp"
 
 
 typedef int addr_t;
@@ -24,6 +32,11 @@ auto sample = lib::random::sample<random_engine, uniform_distribution, solution,
 
 typedef std::chrono::system_clock sysclock;
 typedef std::chrono::high_resolution_clock hrclock;
+
+typedef pfsp::pivoting::functor<solution>* handler;
+typedef void (*walk)(const solution&, handler);
+
+typedef pfsp::eval<addr_t, val_t, priority_t> eval;
 
 namespace ex1{
 	namespace global{
@@ -50,6 +63,14 @@ namespace ex1{
 
 		bool help;
 
+		// OPTIONS
+
+		std::unordered_map<std::string, walk> neighborhood{
+			{"exchange" , &pfsp::neighborhood::exchange<solution, handler>},
+			{"insert" , &pfsp::neighborhood::insert<solution, handler>},
+			{"transpose" , &pfsp::neighborhood::transpose<solution, handler>},
+		};
+
 
 		// INPUT
 
@@ -57,7 +78,10 @@ namespace ex1{
 		std::map<std::string, std::vector<std::string>> options;
 		std::set<std::string> flags;
 		std::set<std::string> option_set = {
-			"--seed"
+			"--seed",
+			"--init",
+			"--pivoting",
+			"--neighborhood",
 		};
 		std::set<std::string> flag_set = {
 			"-h", "--help"
