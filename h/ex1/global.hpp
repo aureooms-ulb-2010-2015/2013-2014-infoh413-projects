@@ -9,8 +9,6 @@
 #include <chrono>
 #include <random>
 
-#include "lib/random/sample.hpp"
-
 #include "pfsp/neighborhood/exchange.hpp"
 #include "pfsp/neighborhood/insert.hpp"
 #include "pfsp/neighborhood/transpose.hpp"
@@ -26,9 +24,7 @@ typedef long int priority_t;
 typedef std::vector<addr_t> solution;
 
 typedef std::default_random_engine random_engine;
-typedef std::uniform_int_distribution<addr_t> uniform_distribution;
-
-auto sample = lib::random::sample<random_engine, uniform_distribution, solution, addr_t>;
+typedef std::uniform_int_distribution<size_t> uniform_distribution;
 
 typedef std::chrono::system_clock sysclock;
 typedef std::chrono::high_resolution_clock hrclock;

@@ -45,9 +45,6 @@ void run(){
 	/* Compute the TWT of this solution */
 	val_t totalWeightedTardiness = e(s);
 	std::cout << "Total weighted tardiness: " << totalWeightedTardiness << std::endl;
-	/* Compute the TWT of this solution */
-	totalWeightedTardiness = e(s);
-	std::cout << "Total weighted tardiness: " << totalWeightedTardiness << std::endl;
 
 	auto neighborhood = global::neighborhood[ex1::global::options["--neighborhood"][0]];
 	auto pivoting = pfsp::pivoting::best<solution, walk, eval>;
