@@ -7,7 +7,7 @@ namespace init{
 
 template<typename S>
 struct functor{
-	virtual bool operator()(S& sol) = 0;
+	virtual void operator()(S& sol) = 0;
 };
 
 }

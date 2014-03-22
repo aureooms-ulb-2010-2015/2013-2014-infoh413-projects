@@ -13,8 +13,13 @@
 #include "pfsp/neighborhood/insert.hpp"
 #include "pfsp/neighborhood/transpose.hpp"
 
-#include "pfsp/pivoting/best.hpp"
 #include "pfsp/pivoting/functor.hpp"
+#include "pfsp/pivoting/best.hpp"
+#include "pfsp/pivoting/first.hpp"
+
+#include "pfsp/init/functor.hpp"
+#include "pfsp/init/random.hpp"
+#include "pfsp/init/slack.hpp"
 
 
 typedef int addr_t;
@@ -31,44 +36,57 @@ typedef std::chrono::high_resolution_clock hrclock;
 
 typedef pfsp::pivoting::functor<solution>* handler;
 typedef void (*walk)(const solution&, handler);
-
 typedef pfsp::eval<addr_t, val_t, priority_t> eval;
+
+typedef solution (*P)(const solution&, walk, eval);
 
 namespace ex1{
 	namespace global{
 
 
-		// DATA
+	// DATA
 		
 		const char* list_p[] = {"", "", " "};
 
-		// CHRONO
+	// CHRONO
 
 		double start, stop, start_c, stop_c;
 		hrclock::time_point checkpoint, tmp;
 		hrclock::duration duration(0);
 
 
-		// SEED
+	// SEED
 
 		std::vector<long long> seed_v;
 		random_engine g;
 
 
-		// FLAGS
+	// FLAGS
 
 		bool help;
 
-		// OPTIONS
+	// OPTIONS
+
+		auto init_r = pfsp::init::random<random_engine, uniform_distribution, solution, size_t>(g);
+
+		std::unordered_map<std::string, pfsp::init::functor<solution>*> init{
+			{"random", &init_r.f},
+			{"slack", nullptr} // TODO
+		};
 
 		std::unordered_map<std::string, walk> neighborhood{
 			{"exchange" , &pfsp::neighborhood::exchange<solution, handler>},
 			{"insert" , &pfsp::neighborhood::insert<solution, handler>},
-			{"transpose" , &pfsp::neighborhood::transpose<solution, handler>},
+			{"transpose" , &pfsp::neighborhood::transpose<solution, handler>}
+		};
+
+		std::unordered_map<std::string, P> pivoting{
+			{"best", &pfsp::pivoting::best<solution, walk, eval>},
+			{"first", &pfsp::pivoting::first<solution, walk, eval>}
 		};
 
 
-		// INPUT
+	// INPUT
 
 		std::vector<std::string> params;
 		std::map<std::string, std::vector<std::string>> options;

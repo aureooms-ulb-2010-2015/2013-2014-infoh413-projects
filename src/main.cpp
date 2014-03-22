@@ -21,7 +21,7 @@ void run(){
 
 	/* Read data from file */
 	std::ifstream fileIn;
-	fileIn.open(ex1::global::params[0]);
+	fileIn.open(global::params[0]);
 
 	if(!fileIn.is_open()) throw lib::error::exception("Could not open input file");
 
@@ -33,10 +33,11 @@ void run(){
 
 	/* 1 based index FTW !¸··}#{}¼CHANGE THIS FUCKSHIT */
 	solution s(e.nbJob + 1);
-	std::iota(s.begin(), s.end(), 0);
 
-	/* shuffle the vector */
-	sample(global::g, e.nbJob, s, 1, e.nbJob + 1);
+	// GEN INITIAL SOLUTION
+
+	auto init = global::init[global::options["--init"][0]];
+	(*init)(s);
 
 	std::cout << "Random solution: ";
 	lib::io::format(std::cout, s, global::list_p);
@@ -46,8 +47,8 @@ void run(){
 	val_t totalWeightedTardiness = e(s);
 	std::cout << "Total weighted tardiness: " << totalWeightedTardiness << std::endl;
 
-	auto neighborhood = global::neighborhood[ex1::global::options["--neighborhood"][0]];
-	auto pivoting = pfsp::pivoting::best<solution, walk, eval>;
+	auto neighborhood = global::neighborhood[global::options["--neighborhood"][0]];
+	auto pivoting = global::pivoting[global::options["--pivoting"][0]];
 	solution n = pivoting(s, neighborhood, e);
 
 	std::cout << "Total weighted tardiness n: " << e(n) << std::endl;
@@ -60,10 +61,10 @@ void run(){
 
 int main(int argc, char *argv[]){
 	
-	ex1::config::fill(argc, argv);
+	config::fill(argc, argv);
 
 	try{
-		ex1::config::check();
+		config::check();
 		run();
 	}
 	catch(const std::exception& e){

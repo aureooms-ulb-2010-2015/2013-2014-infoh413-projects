@@ -15,13 +15,14 @@ S best(const S& src, N n, E e){
 
 	typedef typename E::val val_t;
 
-	S sol;
+	S sol(src);
 
 	struct fn : functor<S>{
 		E e;
-		val_t opt = std::numeric_limits<val_t>::max();
+		val_t opt;
 		S& argopt;
-		fn(E e, S& sol):e(e), argopt(sol){};
+		
+		fn(E e, S& sol):e(e), opt(e(sol)), argopt(sol){}
 
 		virtual bool operator()(const S& sol){
 			val_t tmp = e(sol);

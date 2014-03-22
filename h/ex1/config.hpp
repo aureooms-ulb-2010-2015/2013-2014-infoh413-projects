@@ -29,10 +29,21 @@ namespace ex1{
 
 		inline void check(){
 			if(ex1::global::params.size() < 1) throw lib::error::exception("<filename> missing");
+			
 			if(ex1::global::options.count("--neighborhood") == 0 || ex1::global::options["--neighborhood"].size() == 0)
 				throw lib::error::exception("--neighborhood missing");
 			if(ex1::global::neighborhood.count(ex1::global::options["--neighborhood"][0]) == 0)
 				throw lib::error::exception("wrong --neighborhood");
+
+			if(ex1::global::options.count("--init") == 0 || ex1::global::options["--init"].size() == 0)
+				throw lib::error::exception("--init missing");
+			if(ex1::global::init.count(ex1::global::options["--init"][0]) == 0)
+				throw lib::error::exception("wrong --init");
+
+			if(ex1::global::options.count("--pivoting") == 0 || ex1::global::options["--pivoting"].size() == 0)
+				throw lib::error::exception("--pivoting missing");
+			if(ex1::global::pivoting.count(ex1::global::options["--pivoting"][0]) == 0)
+				throw lib::error::exception("wrong --pivoting");
 		}
 
 
