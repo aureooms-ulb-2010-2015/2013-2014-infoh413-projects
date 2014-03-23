@@ -8,7 +8,7 @@
 namespace pfsp{
 namespace init{
 
-template<typename G, typename D, typename S, typename T>
+template<typename G, typename D, typename S, typename T = size_t>
 struct random{
 
 	struct fn : functor<S>{

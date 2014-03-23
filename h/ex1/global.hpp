@@ -80,11 +80,12 @@ namespace ex1{
 
 	// OPTIONS
 
-		auto init_r = pfsp::init::random<random_engine, uniform_distribution, solution, size_t>(g);
+		auto init_r = pfsp::init::random<random_engine, uniform_distribution, solution>(g);
+		auto init_s = pfsp::init::slack<solution, addr_t, val_t, priority_t, DD, PR, PM>(i.nbJob, i.nbMac, i.dueDates, i.priority, i.processingTimesMatrix);
 
 		std::unordered_map<std::string, pfsp::init::functor<solution>*> init{
 			{"random", &init_r.f},
-			{"slack", nullptr} // TODO
+			{"slack", &init_s.f}
 		};
 
 		std::unordered_map<std::string, walk> neighborhood{

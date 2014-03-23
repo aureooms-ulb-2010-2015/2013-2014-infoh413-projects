@@ -4,7 +4,7 @@
 namespace lib{
 namespace random{
 
-template<typename G, typename D, typename A, typename T>
+template<typename G, typename D, typename A, typename T = size_t>
 void sample(G& generator, const T n, A& a, const T i, const T j){
 
 
