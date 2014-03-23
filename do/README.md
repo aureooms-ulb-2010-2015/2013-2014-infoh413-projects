@@ -25,6 +25,6 @@ usage :
 
 example:
 
-	python3 do/gen.py ./run data/in data/out
+	python3 do/gen.py ./run/ils data/in data/out
 
 

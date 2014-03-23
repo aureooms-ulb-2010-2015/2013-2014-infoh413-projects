@@ -54,32 +54,24 @@ namespace ex1{
 
 
 	// IO
-		
 		const char* list_p[] = {"", "", " "};
 
 	// CHRONO
-
 		double start, stop, start_c, stop_c;
 		hrclock::time_point checkpoint, tmp;
 		hrclock::duration duration(0);
 
-
 	// SEED
-
 		std::vector<long long> seed_v;
 		random_engine g;
 
-
 	// FLAGS
-
 		bool help;
 
 	// DATA
-
 		I i;
 
 	// OPTIONS
-
 		auto init_r = pfsp::init::random<random_engine, uniform_distribution, solution>(g);
 		auto init_s = pfsp::init::slack<solution, addr_t, val_t, priority_t, DD, PR, PM>(i.nbJob, i.nbMac, i.dueDates, i.priority, i.processingTimesMatrix);
 
@@ -101,16 +93,17 @@ namespace ex1{
 
 
 	// INPUT
-
 		std::vector<std::string> params;
 		std::map<std::string, std::vector<std::string>> options;
 		std::set<std::string> flags;
+		
 		std::set<std::string> option_set = {
 			"--seed",
 			"--init",
 			"--pivoting",
 			"--neighborhood",
 		};
+
 		std::set<std::string> flag_set = {
 			"-h", "--help"
 		};

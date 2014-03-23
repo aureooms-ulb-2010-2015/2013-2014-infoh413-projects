@@ -1,5 +1,5 @@
-#ifndef OS_CONFIG_HPP
-#define OS_CONFIG_HPP
+#ifndef _EX1_CONFIG_HPP
+#define _EX1_CONFIG_HPP
 
 #include "lib/pinput.hpp"
 #include "lib/error/exception.hpp"
@@ -65,4 +65,4 @@ namespace ex1{
 
 
 
-#endif // OS_CONFIG_HPP
+#endif // _EX1_CONFIG_HPP
