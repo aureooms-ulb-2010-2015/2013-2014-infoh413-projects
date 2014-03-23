@@ -21,10 +21,17 @@
 #include "pfsp/init/random.hpp"
 #include "pfsp/init/slack.hpp"
 
+#include "pfsp/eval.hpp"
+#include "pfsp/instance.hpp"
+
 
 typedef int addr_t;
 typedef long int val_t;
 typedef long int priority_t;
+
+typedef std::vector<val_t> DD;
+typedef std::vector<priority_t> PR;
+typedef std::vector<std::vector<val_t>> PM;
 
 typedef std::vector<addr_t> solution;
 
@@ -36,7 +43,9 @@ typedef std::chrono::high_resolution_clock hrclock;
 
 typedef pfsp::pivoting::functor<solution>* handler;
 typedef void (*walk)(const solution&, handler);
-typedef pfsp::eval<addr_t, val_t, priority_t> eval;
+
+typedef pfsp::instance<addr_t, val_t, priority_t> I;
+typedef pfsp::eval<addr_t, val_t, priority_t, DD, PR, PM> eval;
 
 typedef solution (*P)(const solution&, walk, eval);
 
@@ -44,7 +53,7 @@ namespace ex1{
 	namespace global{
 
 
-	// DATA
+	// IO
 		
 		const char* list_p[] = {"", "", " "};
 
@@ -64,6 +73,10 @@ namespace ex1{
 	// FLAGS
 
 		bool help;
+
+	// DATA
+
+		I i;
 
 	// OPTIONS
 

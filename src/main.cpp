@@ -16,8 +16,6 @@ using namespace ex1;
 
 
 void run(){
-	/* evaluator functor */
-	eval e;
 
 	/* Read data from file */
 	std::ifstream fileIn;
@@ -25,11 +23,14 @@ void run(){
 
 	if(!fileIn.is_open()) throw lib::error::exception("Could not open input file");
 
-	pfsp::io::parse::header(fileIn, e.nbJob, e.nbMac);
-	pfsp::mem::allocate(e.processingTimesMatrix, e.dueDates, e.priority, e.nbJob, e.nbMac);
-	pfsp::io::parse::body(fileIn, e.nbJob, e.nbMac, e.processingTimesMatrix, e.dueDates, e.priority);
+	pfsp::io::parse::header(fileIn, global::i.nbJob, global::i.nbMac);
+	pfsp::mem::allocate(global::i.processingTimesMatrix, global::i.dueDates, global::i.priority, global::i.nbJob, global::i.nbMac);
+	pfsp::io::parse::body(fileIn, global::i.nbJob, global::i.nbMac, global::i.processingTimesMatrix, global::i.dueDates, global::i.priority);
 
 	fileIn.close();
+
+	/* evaluator functor */
+	eval e(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::i.processingTimesMatrix);
 
 	/* 1 based index FTW !¸··}#{}¼CHANGE THIS FUCKSHIT */
 	solution s(e.nbJob + 1);

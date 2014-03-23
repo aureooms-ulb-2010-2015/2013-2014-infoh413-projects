@@ -1,5 +1,5 @@
-#ifndef _PFSP_INSTANCE_HPP
-#define _PFSP_INSTANCE_HPP
+#ifndef _PFSP_EVAL_HPP
+#define _PFSP_EVAL_HPP
 
 #include <iostream>
 #include <fstream>
@@ -10,21 +10,20 @@
 
 namespace pfsp{
 
-template<typename addr_t, typename val_t, typename priority_t>
+template<typename addr_t, typename val_t, typename priority_t, typename A1, typename A2, typename A3>
 class eval{
 public:
 	typedef val_t val;
 
-	addr_t nbJob;
-	addr_t nbMac;
-	std::vector<val_t> dueDates;
-	std::vector<priority_t> priority;
+	addr_t& nbJob;
+	addr_t& nbMac;
 
-	std::vector<std::vector<val_t>> processingTimesMatrix;
+	A1& dueDates;
+	A2& priority;
+	A3& processingTimesMatrix;
 
-
-	eval(){}
-	~eval(){}
+	eval(addr_t& nbJob, addr_t& nbMac, A1& dueDates, A2& priority, A3& processingTimesMatrix)
+	:nbJob(nbJob), nbMac(nbMac), dueDates(dueDates), priority(priority), processingTimesMatrix(processingTimesMatrix){}
 
 	/* Compute the weighted tardiness of a given solution */
 	template<typename S>
