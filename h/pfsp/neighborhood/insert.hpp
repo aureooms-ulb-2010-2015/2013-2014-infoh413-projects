@@ -19,8 +19,8 @@ void insert(const S& src, FN fn){
 
 	const size_t n = src.size();
 
-	for(size_t i = 0; i < n; ++i){
-		for(size_t j = 0; j < i; ++j){
+	for(size_t i = 1; i < n; ++i){
+		for(size_t j = 1; j < i; ++j){
 			typename S::value_type tmp = sol[i];
 			sol.erase(sol.begin() + i);
 			sol.insert(sol.begin() + j, tmp);

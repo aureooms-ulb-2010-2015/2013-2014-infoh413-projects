@@ -12,7 +12,7 @@ void transpose(const S& src, FN fn){
 
 	const size_t n = src.size() - 1;
 
-	for(size_t i = 0; i < n; ++i){
+	for(size_t i = 1; i < n; ++i){
 		std::swap(sol[i], sol[i+1]);
 		if(!(*fn)(sol)) return;
 		std::swap(sol[i+1], sol[i]);

@@ -17,7 +17,8 @@ using namespace ex1;
 
 void run(){
 
-	/* Read data from file */
+	// INPUT
+	
 	std::ifstream fileIn;
 	fileIn.open(global::params[0]);
 
@@ -40,20 +41,31 @@ void run(){
 	auto init = global::init[global::options["--init"][0]];
 	(*init)(s);
 
-	std::cout << "Random solution: ";
+	std::cout << "init: ";
 	lib::io::format(std::cout, s, global::list_p);
 	std::cout << std::endl;
-
-	/* Compute the TWT of this solution */
-	val_t totalWeightedTardiness = e(s);
-	std::cout << "Total weighted tardiness: " << totalWeightedTardiness << std::endl;
+	std::cout << e(s) << std::endl;
 
 	auto neighborhood = global::neighborhood[global::options["--neighborhood"][0]];
 	auto pivoting = global::pivoting[global::options["--pivoting"][0]];
-	solution n = pivoting(s, neighborhood, e);
 
-	std::cout << "Total weighted tardiness n: " << e(n) << std::endl;
+	// FIND LOCAL OPTIMUM
+
+	solution n = pivoting(s, neighborhood, e);
+	while(e(n) < e(s)){
+		s = n;
+		n = pivoting(s, neighborhood, e);
+	} 
+
+	// OUTPUT
+
+	std::cout << "best: ";
+	lib::io::format(std::cout, s, global::list_p);
+	std::cout << std::endl;
+	std::cout << e(s) << std::endl;
 	
+	// SEED
+
 	std::cout << "seed : ";
 	lib::io::format(std::cout, global::seed_v, global::list_p);
 	std::cout << std::endl;
