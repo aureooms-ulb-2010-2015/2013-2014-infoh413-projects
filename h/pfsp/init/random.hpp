@@ -17,7 +17,7 @@ struct random{
 
 		virtual void operator()(S& sol){
 			std::iota(sol.begin(), sol.end(), 0);
-			lib::random::sample<G, D, S, T>(g, sol.size(), sol, 1, sol.size() + 1);
+			lib::random::sample<G, D, S, T>(g, sol.size() - 1, sol, 1, sol.size());
 		}
 	};
 
