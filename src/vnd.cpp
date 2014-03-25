@@ -9,10 +9,10 @@
 #include "pfsp/io/parse/header.hpp"
 #include "pfsp/mem/allocate.hpp"
 
-#include "ex1/global.hpp"
-#include "ex1/config.hpp"
+#include "ex2/global.hpp"
+#include "ex2/config.hpp"
 
-using namespace ex1;
+using namespace ex2;
 
 
 void run(){
@@ -46,16 +46,22 @@ void run(){
 	std::cout << std::endl;
 	std::cout << e(s) << std::endl;
 
-	auto neighborhood = global::neighborhood[global::options["--neighborhood"][0]];
+	auto ordering = global::ordering[global::options["--ordering"][0]];
 	auto pivoting = global::pivoting[global::options["--pivoting"][0]];
 
 	// FIND LOCAL OPTIMUM
 
-	solution n = pivoting(s, neighborhood, e);
-	while(e(n) < e(s)){
-		s = n;
-		n = pivoting(s, neighborhood, e);
-	} 
+	size_t k = 0;
+
+	while(k < ordering.size()){
+		solution n = pivoting(s, ordering[k], e);
+		while(e(n) < e(s)){
+			k = 0;
+			s = n;
+			n = pivoting(s, ordering[k], e);
+		}
+		++k;
+	}
 
 	// OUTPUT
 
