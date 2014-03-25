@@ -22,8 +22,13 @@ public:
 	A2& priority;
 	A3& processingTimesMatrix;
 
+	/* We need end times on previous machine : */
+	std::vector<val_t> previousMachineEndTime;
+
 	eval(addr_t& nbJob, addr_t& nbMac, A1& dueDates, A2& priority, A3& processingTimesMatrix)
-	:nbJob(nbJob), nbMac(nbMac), dueDates(dueDates), priority(priority), processingTimesMatrix(processingTimesMatrix){}
+	:nbJob(nbJob), nbMac(nbMac), dueDates(dueDates),
+	priority(priority), processingTimesMatrix(processingTimesMatrix),
+	previousMachineEndTime(nbJob + 1){}
 
 	/* Compute the weighted tardiness of a given solution */
 	template<typename S>
@@ -32,8 +37,6 @@ public:
 		addr_t jobNumber;
 		val_t wt;
 
-		/* We need end times on previous machine : */
-		std::vector<val_t> previousMachineEndTime(nbJob + 1);
 		/* And the end time of the previous job, on the same machine : */
 		val_t previousJobEndTime;
 
