@@ -1,15 +1,23 @@
-import sys, os , lib
+import sys, os, lib
 
-run = sys.argv[1]
-inp = sys.argv[2]
-out = sys.argv[3]
+def do(run, options, inp, out):
 
-def callback(f):
-	print(f)
-	r,_ = lib.sys.run([run, f])
-	with open(os.path.join(out, os.path.basename(f)), 'wb') as g : g.write(r)
+	def callback(f):
+		o = os.path.join(out, os.path.basename(f))
+		print(o)
+		r,_ = lib.sys.run([run] + options + ['--', f])
+		with open(o, 'wb') as g : g.write(r)
 
 
-if not os.path.exists(out) : os.mkdir(out)
+	if not os.path.exists(out) : os.mkdir(out)
 
-lib.dir.walk(inp, f = callback)
+	lib.dir.walk(inp, f = callback)
+
+if __name__ == '__main__':
+
+	run = sys.argv[1]
+	options = sys.argv[2:-2]
+	inp = sys.argv[-2]
+	out = sys.argv[-1]
+
+	do(run, options, inp, out)
