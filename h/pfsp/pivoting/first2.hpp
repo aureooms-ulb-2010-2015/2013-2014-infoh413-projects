@@ -1,5 +1,5 @@
-#ifndef _PFSP_PIVOTING_BEST_HPP
-#define _PFSP_PIVOTING_BEST_HPP
+#ifndef _PFSP_PIVOTING_FIRST_HPP
+#define _PFSP_PIVOTING_FIRST_HPP
 
 #include <limits>
 #include <memory>
@@ -20,7 +20,7 @@ namespace pivoting{
 
 
 template<typename S, typename M, typename N, typename A, typename X>
-bool best(S& src, N n, A a, X x){
+bool first(S& src, N n, A a, X x){
 
 	typedef typename A::val val_t;
 
@@ -37,6 +37,7 @@ bool best(S& src, N n, A a, X x){
 			if(delta < opt){
 				argopt = mutation;
 				opt = delta;
+				return false;
 			}
 			return true;
 		}
@@ -50,4 +51,4 @@ bool best(S& src, N n, A a, X x){
 }
 }
 
-#endif // _PFSP_PIVOTING_BEST_HPP
+#endif // _PFSP_PIVOTING_FIRST_HPP

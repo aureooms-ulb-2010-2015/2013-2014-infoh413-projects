@@ -1,5 +1,5 @@
-#ifndef _PFSP_EVAL_HPP
-#define _PFSP_EVAL_HPP
+#ifndef _PFSP_EVAL_INIT_HPP
+#define _PFSP_EVAL_INIT_HPP
 
 #include <iostream>
 #include <fstream>
@@ -9,52 +9,45 @@
 #include <cmath>
 
 namespace pfsp{
+namespace eval{
 
 template<typename addr_t, typename val_t, typename priority_t, typename A1, typename A2, typename A3>
-class eval{
+class init{
 public:
 	typedef val_t val;
 
-	addr_t& nbJob;
-	addr_t& nbMac;
+	const addr_t& nbJob;
+	const addr_t& nbMac;
 
-	A1& dueDates;
-	A2& priority;
-	A3& processingTimesMatrix;
+	const A1& dueDates;
+	const A2& priority;
+	const A3& processingTimesMatrix;
 
-	/* We need end times on previous machine : */
 	std::vector<val_t> previousMachineEndTime;
+	std::vector<val_t> wt;
 
-	eval(addr_t& nbJob, addr_t& nbMac, A1& dueDates, A2& priority, A3& processingTimesMatrix)
+	init(const addr_t& nbJob, const addr_t& nbMac, const A1& dueDates,
+		const A2& priority, const A3& processingTimesMatrix)
 	:nbJob(nbJob), nbMac(nbMac), dueDates(dueDates),
 	priority(priority), processingTimesMatrix(processingTimesMatrix),
-	previousMachineEndTime(nbJob + 1){}
+	previousMachineEndTime(nbJob + 1), wt(nbJob + 1, 0){}
 
-	/* Compute the weighted tardiness of a given solution */
 	template<typename S>
 	val_t operator()(S& sol){
-		addr_t j, m;
-		addr_t jobNumber;
-		val_t wt;
 
-		/* And the end time of the previous job, on the same machine : */
-		val_t previousJobEndTime;
-
-		/* 1st machine : */
 		previousMachineEndTime[0] = 0;
-		for(j = 1; j <= nbJob; ++j){
-			jobNumber = sol[j];
+		for(addr_t j = 1; j <= nbJob; ++j){
+			addr_t jobNumber = sol[j];
 			previousMachineEndTime[j] = previousMachineEndTime[j-1] + processingTimesMatrix[jobNumber][1];
 		}
 
-		/* others machines : */
-		for(m = 2; m <= nbMac; ++m){
+		for(addr_t m = 2; m <= nbMac; ++m){
 			previousMachineEndTime[1] += processingTimesMatrix[sol[1]][m];
-			previousJobEndTime = previousMachineEndTime[1];
+			val_t previousJobEndTime = previousMachineEndTime[1];
 
 
-			for(j = 2; j <= nbJob; ++j){
-				jobNumber = sol[j];
+			for(addr_t j = 2; j <= nbJob; ++j){
+				addr_t jobNumber = sol[j];
 
 				if(previousMachineEndTime[j] > previousJobEndTime){
 					previousMachineEndTime[j] = previousMachineEndTime[j] + processingTimesMatrix[jobNumber][m];
@@ -67,14 +60,19 @@ public:
 			}
 		}
 
-		wt = 0;
-		for(j = 1; j <= nbJob; ++j)
-			wt += (std::max(previousMachineEndTime[j] - dueDates[sol[j]], 0L) * priority[sol[j]]);
+		val_t twt = 0;
+		for(addr_t j = 1; j <= nbJob; ++j){
+			wt[j] = (std::max(previousMachineEndTime[j] - dueDates[sol[j]], 0L) * priority[sol[j]]); 
+			twt += wt[j];
+		}
 
-		return wt;
+		return twt;
 	}
 };
 
 }
+}
 
-#endif
+
+
+#endif // _PFSP_EVAL_INIT_HPP
