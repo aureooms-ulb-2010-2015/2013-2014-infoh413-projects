@@ -19,62 +19,6 @@ void transpose(const S& src, FN fn){
 	}
 }
 
-// template<typename S>
-// class transpose{
-// protected:
-// 	const S* src = nullptr;
-// 	S  sol;
-// 	size_t i = 0;
-
-// public:
-// 	transpose(const transpose& it):src(it.src), sol(it.sol), i(it.i){}
-
-// 	transpose(const S& src):src(&src), sol(src){
-// 		std::swap(sol[0], sol[1]);
-// 	}
-
-// 	transpose(const S& src, const size_t i):src(&src), i(i){
-// 		if(i < n(*this->src)){
-// 			sol = src;
-// 			std::swap(sol[i], sol[i+1]);
-// 		}
-// 	}
-
-// 	transpose& operator ++(){
-// 		std::swap(sol[i], sol[++i]);
-// 		if(i < n(*this->src)) std::swap(sol[i], sol[i+1]);
-// 		return *this;
-// 	}
-	
-// 	S& operator *(){
-// 		return sol;
-// 	}
-
-// 	S* operator->() const{
-// 		return &sol;
-// 	}
-
-// 	bool operator !=(const transpose& it) const{
-// 		return this->i != it.i;
-// 	}
-
-// 	bool operator ==(const transpose& it) const{
-// 		return this->i == it.i;
-// 	}
-
-// 	static transpose begin(const S& src){
-// 		return transpose(src);
-// 	}
-
-// 	static transpose end(const S& src){
-// 		return transpose(src, n(src));
-// 	}
-
-// 	static size_t n(const S& src){
-// 		return src.size() - 1;
-// 	}
-// };
-
 }
 }
 
