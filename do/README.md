@@ -1,5 +1,7 @@
 
 
+
+
 split.py
 ==
 
@@ -12,6 +14,8 @@ usage:
 example:
 	
 	python3 do/split.py data/best/list data/best
+
+
 
 
 gen.py
@@ -28,6 +32,8 @@ example:
 	python3 do/gen.py ./run/ils --neighborhood transpose --init random --pivoting best data/in data/out
 
 
+
+
 tim.py
 ==
 
@@ -40,6 +46,8 @@ usage :
 example:
 
 	ls data/in/50x20_* | python3 do/tim.py ./run/ils --neighborhood exchange --init random --pivoting best --
+
+
 
 
 bench.py
@@ -56,17 +64,19 @@ example:
 	python3 do/bench.py tim ./run/ils data/in data/out
 
 
+
+
 diff.py
 ==
 
 
 usage :
 
-	python3 do/diff.py <out> <best> <instance>
+	python3 do/diff.py <hi> <lo>
 
 
 example:
 
-	python3 do/diff.py data/out data/best 100x20_9
+	python3 do/diff.py data/time/before-opt/ data/time/before-opt2/
 
 

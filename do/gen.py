@@ -11,7 +11,8 @@ def do(run, options, inp, out):
 
 	if not os.path.exists(out) : os.mkdir(out)
 
-	if inp != '--' : lib.dir.walk(inp, f = callback)
+	if os.path.isfile(inp) : callback(inp)
+	elif inp != '--' : lib.dir.walk(inp, f = callback)
 	else : lib.stdin.read(f = callback)
 
 if __name__ == '__main__':
