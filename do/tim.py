@@ -1,13 +1,17 @@
-import sys, os, lib
+import sys, os, lib, time
+
 
 def do(run, options, inp, out):
 
 	def callback(f):
 		o = os.path.join(out, os.path.basename(f))
-		print(o)
-		r,_ = lib.sys.run([run] + options + ['--', f])
-		with open(o, 'wb') as g : g.write(r)
-
+		print(o, end=' ')
+		start = time.time()
+		_ = lib.sys.run([run] + options + ['--', f])
+		end = time.time()
+		s = '%f s' % (end - start)
+		print(s)
+		with open(o, 'w') as g : g.write(s)
 
 	if not os.path.exists(out) : os.mkdir(out)
 
@@ -22,3 +26,5 @@ if __name__ == '__main__':
 	out = sys.argv[-1]
 
 	do(run, options, inp, out)
+
+
