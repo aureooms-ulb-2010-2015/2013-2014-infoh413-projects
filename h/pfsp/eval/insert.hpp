@@ -22,72 +22,80 @@ public:
 
 	const A1& dueDates;
 	const A2& priority;
-	const A3& processingTimesMatrix;
+	const A3& processing;
 
-	A4 previousMachineEndTime;
+	A4 detail;
 	A5 wt;
-	A5& ref;
+	A5& wt_r;
+	A4& detail_r;
 
 	insert(const addr_t& nbJob, const addr_t& nbMac, const A1& dueDates,
-		const A2& priority, const A3& processingTimesMatrix, const A5& ref)
+		const A2& priority, const A3& processing, const A5& wt_r, const A4& detail_r)
 	:nbJob(nbJob), nbMac(nbMac), dueDates(dueDates),
-	priority(priority), processingTimesMatrix(processingTimesMatrix),
-	previousMachineEndTime(nbJob + 1), wt(nbJob + 1, 0), ref(ref){}
+	priority(priority), processing(processing),
+	detail(nbJob + 1), wt(nbJob + 1, 0), wt_r(wt_r), detail_r(detail_r){
+		for(addr_t i = 0; i <= nbJob; ++i) detail[i].resize(nbMac + 1, 0);
+	}
 
 	template<typename S, typename M>
 	val_t operator()(const S& sol, const M& mutation){
-		addr_t beg, end, x;
+		addr_t beg, end, x, l, r, t;
 		std::tie(beg, end) = mutation;
+
+		// FETCH PREVIOUS STATE
+		for(addr_t i = 0; i <= nbMac; ++i) detail[beg-1][i] = detail_r[beg-1][i];
+
 		if(beg < end){
-
-			// SWAP END
-			addr_t _end = sol[beg];
-
-			previousMachineEndTime[beg-1] = 0;
-
-			for(addr_t j = beg; j < end; ++j){
-				previousMachineEndTime[j] = previousMachineEndTime[j-1] + processingTimesMatrix[sol[j]][1];
-			}
-			previousMachineEndTime[end] = previousMachineEndTime[end-1] + processingTimesMatrix[_end][1];
-
-			for(addr_t m = 2; m <= nbMac; ++m){
-
-				previousMachineEndTime[beg] += processingTimesMatrix[_beg][m];
-				val_t previousJobEndTime = previousMachineEndTime[beg];
-
-				for(addr_t j = beg + 1; j < end; ++j){
-					if(previousMachineEndTime[j] > previousJobEndTime){
-						previousMachineEndTime[j] = previousMachineEndTime[j] + processingTimesMatrix[sol[j]][m];
-						previousJobEndTime = previousMachineEndTime[j];
-					}
-					else{
-						previousJobEndTime += processingTimesMatrix[sol[j]][m];
-						previousMachineEndTime[j] = previousJobEndTime;
-					}
-				}
-
-				if(previousMachineEndTime[end] > previousJobEndTime){
-					previousMachineEndTime[end] = previousMachineEndTime[end] + processingTimesMatrix[_end][m];
-				}
-				else{
-					previousMachineEndTime[end] = previousJobEndTime + processingTimesMatrix[_end][m];
-				}
-			}
-
-			val_t wtd = 0;
-			wt[beg] = (std::max(previousMachineEndTime[beg] - dueDates[_beg], 0L) * priority[_beg]);
-			for(addr_t j = beg + 1; j < end; ++j){
-				wt[j] = (std::max(previousMachineEndTime[j] - dueDates[sol[j]], 0L) * priority[sol[j]]); 
-				wtd += wt[j] - ref[j];
-			}
-			wt[end] = (std::max(previousMachineEndTime[end] - dueDates[_end], 0L) * priority[_end]);
-			return wtd + wt[beg] - ref[beg] + wt[end] - ref[end];
-
+			x = 1;
+			l = beg;
+			r = end - 1;
+			t = r + 2;
 		}
 		else{
-
+			detail[end][1] = detail[end-1][1] + processing[sol[beg]][1];
+			for(addr_t m = 2; m <= nbMac; ++m){
+				detail[end][m] = std::max(detail[end][m-1], detail[end-1][m]) + processing[sol[beg]][m];
+			}
+			x = -1;
+			l = end + 1;
+			r = begin;
+			t = r + 1;
 		}
 
+		for(addr_t j = l; j <= r; ++j) detail[j][1] = detail[j-1][1] + processing[sol[j+x]][1];
+		if(x == 1) detail[end][1] = detail[end-1][1] + processing[sol[beg]][1];
+		for(addr_t j = t; j <= nbJob; ++j) detail[j][1] = detail[j-1][1] + processing[sol[j]][1];
+
+		for(addr_t m = 2; m <= nbMac; ++m){
+			for(addr_t j = l; j <= r; ++j){
+				detail[j][m] = std::max(detail[j][m-1], detail[j-1][m]) + processing[sol[j+x]][m];
+			}
+		}
+		if(x == 1){
+			for(addr_t m = 2; m <= nbMac; ++m){
+				detail[end][m] = std::max(detail[end][m-1], detail[end-1][m]) + processing[sol[beg]][m];
+			}
+		}
+		for(addr_t m = 2; m <= nbMac; ++m){
+			for(addr_t j = t; j <= nbJob; ++j){
+				detail[j][m] = std::max(detail[j][m-1], detail[j-1][m]) + processing[sol[j]][m];
+			}
+		}
+
+
+		val_t wtd = 0;
+		for(addr_t j = l; j <= r; ++j){
+			wt[j] = (std::max(detail[j][nbMac] - dueDates[sol[j+x]], 0L) * priority[sol[j+x]]); 
+			wtd += wt[j] - ref[j];
+		}
+		for(addr_t j = t; j <= nbJob; ++j){
+			wt[j] = (std::max(detail[j][nbMac] - dueDates[sol[j]], 0L) * priority[sol[j]]); 
+			wtd += wt[j] - ref[j];
+		}
+
+		wt[end] = (std::max(detail[end] - dueDates[sol[beg]], 0L) * priority[sol[beg]]);
+
+		return wtd + wt[end] - ref[end];
 	}
 };
 

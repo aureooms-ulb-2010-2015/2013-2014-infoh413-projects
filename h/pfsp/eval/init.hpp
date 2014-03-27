@@ -31,13 +31,12 @@ public:
 	:nbJob(nbJob), nbMac(nbMac), dueDates(dueDates),
 	priority(priority), processing(processing),
 	detail(nbJob + 1), wt(nbJob + 1, 0){
-		for(addr_t i = 0; i <= nbJob; ++i) detail[i].resize(nbMac + 1);
+		for(addr_t i = 0; i <= nbJob; ++i) detail[i].resize(nbMac + 1, 0);
 	}
 
 	template<typename S>
 	val_t operator()(S& sol){
 
-		detail[0][1] = 0;
 		for(addr_t j = 1; j <= nbJob; ++j){
 			detail[j][1] = detail[j-1][1] + processing[sol[j]][1];
 		}
