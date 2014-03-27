@@ -4,14 +4,14 @@
 namespace pfsp{
 namespace neighborhood{
 
-template<typename S, typename FN>
+template<typename S, typename FN, typename M>
 void transpose(const S& src, FN fn){
 	if(src.size() < 2) return;
 
 	const size_t n = src.size() - 1;
 
 	for(size_t i = 1; i < n; ++i){
-		if(!(*fn)(i, i+1)) return;
+		if(!(*fn)(M(i, i+1))) return;
 	}
 }
 

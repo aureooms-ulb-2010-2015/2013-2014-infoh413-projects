@@ -45,7 +45,7 @@ typedef pfsp::pivoting::functor<solution>* handler;
 typedef void (*walk)(const solution&, handler);
 
 typedef pfsp::instance<addr_t, val_t, priority_t> I;
-typedef pfsp::eval::init<addr_t, val_t, priority_t, DD, PR, PM> eval;
+typedef pfsp::eval::init<addr_t, val_t, priority_t, DD, PR, PM, PM, DD> eval;
 
 typedef solution (*P)(const solution&, walk, eval);
 

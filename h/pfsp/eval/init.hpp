@@ -11,7 +11,7 @@
 namespace pfsp{
 namespace eval{
 
-template<typename addr_t, typename val_t, typename priority_t, typename A1, typename A2, typename A3>
+template<typename addr_t, typename val_t, typename priority_t, typename A1, typename A2, typename A3, typename A4, typename A5>
 class init{
 public:
 	typedef val_t val;
@@ -21,48 +21,38 @@ public:
 
 	const A1& dueDates;
 	const A2& priority;
-	const A3& processingTimesMatrix;
+	const A3& processing;
 
-	std::vector<val_t> previousMachineEndTime;
-	std::vector<val_t> wt;
+	A4 detail;
+	A5 wt;
 
 	init(const addr_t& nbJob, const addr_t& nbMac, const A1& dueDates,
-		const A2& priority, const A3& processingTimesMatrix)
+		const A2& priority, const A3& processing)
 	:nbJob(nbJob), nbMac(nbMac), dueDates(dueDates),
-	priority(priority), processingTimesMatrix(processingTimesMatrix),
-	previousMachineEndTime(nbJob + 1), wt(nbJob + 1, 0){}
+	priority(priority), processing(processing),
+	detail(nbJob + 1), wt(nbJob + 1, 0){
+		for(addr_t i = 0; i <= nbJob; ++i) detail[i].resize(nbMac + 1);
+	}
 
 	template<typename S>
 	val_t operator()(S& sol){
 
-		previousMachineEndTime[0] = 0;
+		detail[0][1] = 0;
 		for(addr_t j = 1; j <= nbJob; ++j){
-			addr_t jobNumber = sol[j];
-			previousMachineEndTime[j] = previousMachineEndTime[j-1] + processingTimesMatrix[jobNumber][1];
+			detail[j][1] = detail[j-1][1] + processing[sol[j]][1];
 		}
 
 		for(addr_t m = 2; m <= nbMac; ++m){
-			previousMachineEndTime[1] += processingTimesMatrix[sol[1]][m];
-			val_t previousJobEndTime = previousMachineEndTime[1];
-
+			detail[1][m] = detail[1][m-1] + processing[sol[1]][m];
 
 			for(addr_t j = 2; j <= nbJob; ++j){
-				addr_t jobNumber = sol[j];
-
-				if(previousMachineEndTime[j] > previousJobEndTime){
-					previousMachineEndTime[j] = previousMachineEndTime[j] + processingTimesMatrix[jobNumber][m];
-					previousJobEndTime = previousMachineEndTime[j];
-				}
-				else{
-					previousJobEndTime += processingTimesMatrix[jobNumber][m];
-					previousMachineEndTime[j] = previousJobEndTime;
-				}
+				detail[j][m] = std::max(detail[j][m-1], detail[j-1][m]) + processing[sol[j]][m];
 			}
 		}
 
 		val_t twt = 0;
 		for(addr_t j = 1; j <= nbJob; ++j){
-			wt[j] = (std::max(previousMachineEndTime[j] - dueDates[sol[j]], 0L) * priority[sol[j]]); 
+			wt[j] = (std::max(detail[j][nbMac] - dueDates[sol[j]], 0L) * priority[sol[j]]); 
 			twt += wt[j];
 		}
 

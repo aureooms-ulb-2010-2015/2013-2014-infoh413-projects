@@ -4,7 +4,7 @@
 namespace pfsp{
 namespace neighborhood{
 
-template<typename S, typename FN>
+template<typename S, typename FN, typename M>
 void insert(const S& src, FN fn){
 	if(src.size() < 2) return;
 
@@ -13,10 +13,10 @@ void insert(const S& src, FN fn){
 
 	for(size_t i = 1; i < n; ++i){
 		for(size_t j = 1; j < i; ++j){
-			if(!(*fn)(i, j)) return;
+			if(!(*fn)(M(i, j))) return;
 		}
 		for(size_t j = i + 1; j < n; ++j){
-			if(!(*fn)(i, j)) return;
+			if(!(*fn)(M(i, j))) return;
 		}
 	}
 }
