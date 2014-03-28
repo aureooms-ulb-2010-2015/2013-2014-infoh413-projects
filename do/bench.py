@@ -2,19 +2,25 @@ import sys, os, lib, gen, tim
 
 
 
-def do(ben, run, inp, out):
+def do(ben, run, opt, inp, out):
 
-	for init in ['random', 'slack']:
-		for pivoting in ['first', 'best']:
-			for neighborhood in ['transpose', 'exchange', 'insert']:
-				o = os.path.join(out, init, pivoting, neighborhood)
-				if not os.path.isdir(o):
-					if os.path.exists(o) : raise o + ' is an existing thingy'
-					else : os.makedirs(o)
+	runs = [([], [])]
 
-				ben.do(run,
-					['--init', init, '--pivoting', pivoting, '--neighborhood', neighborhood],
-					inp, o)
+	for o in opt:
+		tmp = []
+		for v in o[1]:
+			for r in runs:
+				tmp.append((r[0] + [o[0], v], r[1] + [v]))
+
+		runs = tmp
+
+	for r in runs:
+		o = os.path.join(out, *r[1])
+		if not os.path.isdir(o):
+			if os.path.exists(o) : raise o + ' is an existing thingy'
+			else : os.makedirs(o)
+
+		ben.do(run, r[0], inp, o)
 
 
 if __name__ == '__main__':
@@ -22,11 +28,26 @@ if __name__ == '__main__':
 		'tim' : tim,
 		'gen' : gen
 	}
+
+	opt = {
+		'./run/ils' : [
+			('--init', ['random', 'slack']),
+			('--pivoting', ['first', 'best']),
+			('--neighborhood', ['transpose', 'exchange', 'insert']),
+			('--seed', ['0'])
+		],
+		'./run/vnd' : [
+			('--init', ['random', 'slack']),
+			('--pivoting', ['first', 'best']),
+			('--ordering', ['tie', 'tei']),
+			('--seed', ['0'])
+		]
+	}
 	
 	ben = scr[sys.argv[1]]
 	run = sys.argv[2]
 	inp = sys.argv[3]
 	out = sys.argv[4]
 
-	if inp != '--' : do(ben, run, inp, out)
-	else : lib.stdin.read(f = lambda s : do(ben, run, s, out))
+	if inp != '--' : do(ben, run, opt[run], inp, out)
+	else : lib.stdin.read(f = lambda s : do(ben, run, opt[run], s, out))
