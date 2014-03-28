@@ -67,10 +67,10 @@ public:
 		wt[end] = (std::max(detail[end] - dueDates[_end], 0L) * priority[_end]);
 		for(addr_t j = end + 1; j <= nbJob; ++j){
 			wt[j] = (std::max(detail[j][nbMac] - dueDates[sol[j]], 0L) * priority[sol[j]]); 
-			wtd += wt[j] - ref[j];
+			wtd += wt[j] - wt_r[j];
 		}
 
-		return wtd + wt[beg] - ref[beg] + wt[end] - ref[end];
+		return wtd + wt[beg] - wt_r[beg] + wt[end] - wt_r[end];
 	}
 };
 

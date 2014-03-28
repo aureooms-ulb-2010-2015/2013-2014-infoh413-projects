@@ -13,6 +13,10 @@
 #include "pfsp/neighborhood/insert.hpp"
 #include "pfsp/neighborhood/transpose.hpp"
 
+#include "pfsp/apply/exchange.hpp"
+#include "pfsp/apply/insert.hpp"
+#include "pfsp/apply/transpose.hpp"
+
 #include "pfsp/pivoting/functor.hpp"
 #include "pfsp/pivoting/best.hpp"
 #include "pfsp/pivoting/first.hpp"
@@ -22,6 +26,10 @@
 #include "pfsp/init/slack.hpp"
 
 #include "pfsp/eval/init.hpp"
+#include "pfsp/eval/exchange.hpp"
+#include "pfsp/eval/insert.hpp"
+#include "pfsp/eval/transpose.hpp"
+
 #include "pfsp/instance.hpp"
 
 
