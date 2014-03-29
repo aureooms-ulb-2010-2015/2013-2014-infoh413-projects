@@ -19,8 +19,8 @@ namespace pivoting{
  */
 
 
-template<typename val_t, typename S, typename M, typename W, typename ME, typename X>
-val_t best(S& src, W w, ME e, X x){
+template<typename R, typename val_t, typename S, typename M, typename W, typename ME>
+R best(S& src, W w, ME e){
 
 	struct fn : functor<M>{
 		ME e;
@@ -41,8 +41,7 @@ val_t best(S& src, W w, ME e, X x){
 	} f(e, src);
 
 	w(src, &f);
-	if(f.opt < 0) x(src, f.argopt);
-	return f.opt;
+	return R(f.opt, f.argopt);
 }
 
 }

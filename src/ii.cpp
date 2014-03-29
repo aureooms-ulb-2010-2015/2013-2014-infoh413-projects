@@ -50,22 +50,20 @@ void run(){
 	std::cout << "init: ";
 	lib::io::format(std::cout, s, global::list_p);
 	std::cout << std::endl;
-	std::cout << e(s) << std::endl;
+	val_t opt = e(s);
+	std::cout << opt << std::endl;
 
 	auto neighborhood = global::neighborhood[global::options["--neighborhood"][0]];
 	auto pivoting = global::pivoting[global::options["--pivoting"][0]];
 
 	// FIND LOCAL OPTIMUM
 
-	val_t nlo = pivoting(s, neighborhood->walk, neighborhood->eval, neighborhood->apply);
-	while(nlo){
-		// lib::io::format(std::cout, s, global::list_p);
-		// std::cout << std::endl;
-		// std::cout << nlo << " " << 
-		e(s)
-		// << std::endl
-		; // TODO KICK IT
-		nlo = pivoting(s, neighborhood->walk, neighborhood->eval, neighborhood->apply);
+	R best = pivoting(s, neighborhood->walk, neighborhood->eval);
+	while(best.first){
+		opt += best.first;
+		(*neighborhood->eval)(s, best.second, e.detail, e.wt);
+		(*neighborhood->apply)(s, best.second);
+		best = pivoting(s, neighborhood->walk, neighborhood->eval);
 	} 
 
 	// OUTPUT
@@ -73,7 +71,7 @@ void run(){
 	std::cout << "best: ";
 	lib::io::format(std::cout, s, global::list_p);
 	std::cout << std::endl;
-	std::cout << e(s) << std::endl;
+	std::cout << opt << std::endl;
 	
 	// SEED
 

@@ -26,7 +26,7 @@ template<
 	typename A4,
 	typename A5
 >
-class insert : public functor<val_t, S, M>{
+class insert : public functor<val_t, S, M, A4, A5>{
 public:
 
 	const addr_t& nbJob;
@@ -50,6 +50,10 @@ public:
 	}
 
 	virtual val_t operator()(const S& sol, const M& mutation){
+		return operator()(sol, mutation, detail, wt);
+	}
+
+	virtual val_t operator()(const S& sol, const M& mutation, A4& detail, A5& wt){
 		addr_t beg, end, x, l, r, _beg, _end;
 		std::tie(beg, end) = mutation;
 

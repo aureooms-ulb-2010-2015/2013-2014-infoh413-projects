@@ -52,12 +52,14 @@ typedef pfsp::instance<addr_t, val_t, priority_t> I;
 
 typedef pfsp::eval::init<addr_t, val_t, priority_t, DD, PR, PM, PM, DD> E;
 
-typedef pfsp::eval::functor<val_t, S, M>* ME;
+typedef pfsp::eval::functor<val_t, S, M, PM, DD>* ME;
 typedef pfsp::eval::transpose<addr_t, val_t, priority_t, S, M, DD, PR, PM, PM, DD> TE;
 typedef pfsp::eval::insert<addr_t, val_t, priority_t, S, M, DD, PR, PM, PM, DD> IE;
 typedef pfsp::eval::exchange<addr_t, val_t, priority_t, S, M, DD, PR, PM, PM, DD> EE;
 
-typedef val_t (*P)(S&, W, ME, X);
+typedef std::pair<val_t, M> R;
+typedef R (*P)(S&, W, ME);
+
 
 typedef struct{
 	W walk;

@@ -49,7 +49,8 @@ void run(){
 	std::cout << "init: ";
 	lib::io::format(std::cout, s, global::list_p);
 	std::cout << std::endl;
-	std::cout << e(s) << std::endl;
+	val_t opt = e(s);
+	std::cout << opt << std::endl;
 
 	auto ordering = global::ordering[global::options["--ordering"][0]];
 	auto pivoting = global::pivoting[global::options["--pivoting"][0]];
@@ -59,16 +60,13 @@ void run(){
 	size_t k = 0;
 
 	while(k < ordering.size()){
-		val_t nlo = pivoting(s, ordering[k]->walk, ordering[k]->eval, ordering[k]->apply);
-		while(nlo){
-			// lib::io::format(std::cout, s, global::list_p);
-			// std::cout << std::endl;
-			//std::cout << nlo << " " <<
-			e(s)
-			// << std::endl
-			; // TODO KICK IT
+		R best = pivoting(s, ordering[k]->walk, ordering[k]->eval);
+		while(best.first){
+			opt += best.first;
+			(*ordering[k]->eval)(s, best.second, e.detail, e.wt);
+			(*ordering[k]->apply)(s, best.second);
 			k = 0;
-			nlo = pivoting(s, ordering[k]->walk, ordering[k]->eval, ordering[k]->apply);
+			best = pivoting(s, ordering[k]->walk, ordering[k]->eval);
 		}
 		++k;
 	}
@@ -78,7 +76,7 @@ void run(){
 	std::cout << "best: ";
 	lib::io::format(std::cout, s, global::list_p);
 	std::cout << std::endl;
-	std::cout << e(s) << std::endl;
+	std::cout << opt << std::endl;
 	
 	// SEED
 

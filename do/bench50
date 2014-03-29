@@ -1,0 +1,8 @@
+#!/bin/sh
+
+T=$(date +"%m%d%H%M")
+
+ls data/in/50x20_* | python3 do/bench.py gen ./run/ii -- data/out/gen/$T/ii
+ls data/in/50x20_* | python3 do/bench.py gen ./run/vnd -- data/out/gen/$T/vnd
+ls data/in/50x20_* | python3 do/bench.py tim ./run/ii -- data/out/tim/$T/ii
+ls data/in/50x20_* | python3 do/bench.py tim ./run/vnd -- data/out/tim/$T/vnd

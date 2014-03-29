@@ -81,8 +81,8 @@ namespace ex1{
 		};
 
 		std::unordered_map<std::string, P> pivoting{
-			{"best", &pfsp::pivoting::best<val_t, S, M, W, ME, X>},
-			{"first", &pfsp::pivoting::first<val_t, S, M, W, ME, X>}
+			{"best", &pfsp::pivoting::best<R, val_t, S, M, W, ME>},
+			{"first", &pfsp::pivoting::first<R, val_t, S, M, W, ME>}
 		};
 
 

@@ -21,7 +21,7 @@ ifneq ($(nocolor),true)
 	ACTION_COLOR=\033[95m
 endif
 
-FLAGS = -Wall -W
+FLAGS += -Wall -W
 
 ifeq ($(prof),true)
 	ROOT := $(ROOT)prof/
