@@ -50,69 +50,57 @@ public:
 	}
 
 	virtual val_t operator()(const S& sol, const M& mutation){
-		addr_t beg, end, x, l, r, t;
+		addr_t beg, end, x, l, r, _beg, _end;
 		std::tie(beg, end) = mutation;
-
 
 		if(beg < end){
 			x = 1;
 			l = beg;
-			r = end - 1;
-			t = r + 2;
-
-			// FETCH PREVIOUS STATE
-			for(addr_t i = 0; i <= nbMac; ++i) detail[beg-1][i] = detail_r[beg-1][i];
+			r = end;
+			_beg = sol[l+x];
+			_end = sol[beg];
 		}
 		else{
 			x = -1;
-			l = end + 1;
+			l = end;
 			r = beg;
-			t = r + 1;
-
-			// FETCH PREVIOUS STATE
-			for(addr_t i = 0; i <= nbMac; ++i) detail[end-1][i] = detail_r[end-1][i];
-				
-			detail[end][1] = detail[end-1][1] + processing[sol[beg]][1];
-			for(addr_t m = 2; m <= nbMac; ++m){
-				detail[end][m] = std::max(detail[end][m-1], detail[end-1][m]) + processing[sol[beg]][m];
-			}
+			_beg = sol[beg];
+			_end = sol[r+x];
 		}
 
-		for(addr_t j = l; j <= r; ++j) detail[j][1] = detail[j-1][1] + processing[sol[j+x]][1];
+		detail[l][1] = detail_r[l-1][1] + processing[_beg][1];
+		for(addr_t j = l + 1; j < r; ++j) detail[j][1] = detail[j-1][1] + processing[sol[j+x]][1];
 		for(addr_t m = 2; m <= nbMac; ++m){
-			for(addr_t j = l; j <= r; ++j){
+			detail[l][m] = std::max(detail[l][m-1], detail_r[l-1][m]) + processing[_beg][m];
+			for(addr_t j = l + 1; j < r; ++j){
 				detail[j][m] = std::max(detail[j][m-1], detail[j-1][m]) + processing[sol[j+x]][m];
 			}
 		}
 
-		if(x == 1){
-			detail[end][1] = detail[end-1][1] + processing[sol[beg]][1];
-			for(addr_t m = 2; m <= nbMac; ++m){
-				detail[end][m] = std::max(detail[end][m-1], detail[end-1][m]) + processing[sol[beg]][m];
-			}
-		}
-
-		for(addr_t j = t; j <= nbJob; ++j) detail[j][1] = detail[j-1][1] + processing[sol[j]][1];
+		detail[r][1] = detail[r-1][1] + processing[_end][1];
+		for(addr_t j = r + 1; j <= nbJob; ++j) detail[j][1] = detail[j-1][1] + processing[sol[j]][1];
 		for(addr_t m = 2; m <= nbMac; ++m){
-			for(addr_t j = t; j <= nbJob; ++j){
+			detail[r][m] = std::max(detail[r][m-1], detail[r-1][m]) + processing[_end][m];
+			for(addr_t j = r + 1; j <= nbJob; ++j){
 				detail[j][m] = std::max(detail[j][m-1], detail[j-1][m]) + processing[sol[j]][m];
 			}
 		}
 
 
 		val_t wtd = 0;
-		for(addr_t j = l; j <= r; ++j){
+		wt[l] = (std::max(detail[l][nbMac] - dueDates[_beg], 0L) * priority[_beg]);
+		for(addr_t j = l + 1; j < r; ++j){
 			wt[j] = (std::max(detail[j][nbMac] - dueDates[sol[j+x]], 0L) * priority[sol[j+x]]); 
 			wtd += wt[j] - wt_r[j];
 		}
-		for(addr_t j = t; j <= nbJob; ++j){
+		wt[r] = (std::max(detail[r][nbMac] - dueDates[_end], 0L) * priority[_end]);
+		for(addr_t j = r + 1; j <= nbJob; ++j){
 			wt[j] = (std::max(detail[j][nbMac] - dueDates[sol[j]], 0L) * priority[sol[j]]); 
 			wtd += wt[j] - wt_r[j];
 		}
 
-		wt[end] = (std::max(detail[end][nbMac] - dueDates[sol[beg]], 0L) * priority[sol[beg]]);
 
-		return wtd + wt[end] - wt_r[end];
+		return wtd + wt[l] - wt_r[l] + wt[r] - wt_r[r];
 	}
 };
 

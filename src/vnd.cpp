@@ -61,9 +61,12 @@ void run(){
 	while(k < ordering.size()){
 		val_t nlo = pivoting(s, ordering[k]->walk, ordering[k]->eval, ordering[k]->apply);
 		while(nlo){
-			lib::io::format(std::cout, s, global::list_p);
-			std::cout << std::endl;
-			std::cout << nlo << " " << e(s) << std::endl; // TODO KICK IT
+			// lib::io::format(std::cout, s, global::list_p);
+			// std::cout << std::endl;
+			//std::cout << nlo << " " <<
+			e(s)
+			// << std::endl
+			; // TODO KICK IT
 			k = 0;
 			nlo = pivoting(s, ordering[k]->walk, ordering[k]->eval, ordering[k]->apply);
 		}

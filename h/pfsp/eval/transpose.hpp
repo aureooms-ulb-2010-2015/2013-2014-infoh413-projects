@@ -56,17 +56,14 @@ public:
 		// SWAP BEG, END
 		addr_t _beg = sol[end], _end = sol[beg];
 
-		// FETCH PREVIOUS STATE
-		for(addr_t m = 0; m <= nbMac; ++m) detail[beg-1][m] = detail_r[beg-1][m];
-
-		detail[beg][1] = detail[beg-1][1] + processing[_beg][1];
+		detail[beg][1] = detail_r[beg-1][1] + processing[_beg][1];
 		detail[end][1] = detail[end-1][1] + processing[_end][1];
 		for(addr_t j = end + 1; j <= nbJob; ++j){
 			detail[j][1] = detail[j-1][1] + processing[sol[j]][1];
 		}
 
 		for(addr_t m = 2; m <= nbMac; ++m){
-			detail[beg][m] = std::max(detail[beg][m-1], detail[beg-1][m]) + processing[_beg][m];
+			detail[beg][m] = std::max(detail[beg][m-1], detail_r[beg-1][m]) + processing[_beg][m];
 			detail[end][m] = std::max(detail[end][m-1], detail[end-1][m]) + processing[_end][m];
 			for(addr_t j = end + 1; j <= nbJob; ++j){
 				detail[j][m] = std::max(detail[j][m-1], detail[j-1][m]) + processing[sol[j]][m];

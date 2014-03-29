@@ -59,9 +59,12 @@ void run(){
 
 	val_t nlo = pivoting(s, neighborhood->walk, neighborhood->eval, neighborhood->apply);
 	while(nlo){
-		lib::io::format(std::cout, s, global::list_p);
-		std::cout << std::endl;
-		std::cout << nlo << " " << e(s) << std::endl; // TODO KICK IT
+		// lib::io::format(std::cout, s, global::list_p);
+		// std::cout << std::endl;
+		// std::cout << nlo << " " << 
+		e(s)
+		// << std::endl
+		; // TODO KICK IT
 		nlo = pivoting(s, neighborhood->walk, neighborhood->eval, neighborhood->apply);
 	} 
 
