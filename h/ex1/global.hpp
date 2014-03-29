@@ -6,8 +6,6 @@
 #include <map>
 #include <unordered_map>
 #include <set>
-#include <chrono>
-#include <random>
 
 #include "pfsp/neighborhood/exchange.hpp"
 #include "pfsp/neighborhood/insert.hpp"
@@ -17,45 +15,15 @@
 #include "pfsp/apply/insert.hpp"
 #include "pfsp/apply/transpose.hpp"
 
-#include "pfsp/pivoting/functor.hpp"
 #include "pfsp/pivoting/best.hpp"
 #include "pfsp/pivoting/first.hpp"
 
-#include "pfsp/init/functor.hpp"
 #include "pfsp/init/random.hpp"
 #include "pfsp/init/slack.hpp"
 
-#include "pfsp/eval/init.hpp"
-#include "pfsp/eval/exchange.hpp"
-#include "pfsp/eval/insert.hpp"
-#include "pfsp/eval/transpose.hpp"
-
 #include "pfsp/instance.hpp"
 
-
-typedef int addr_t;
-typedef long int val_t;
-typedef long int priority_t;
-
-typedef std::vector<val_t> DD;
-typedef std::vector<priority_t> PR;
-typedef std::vector<std::vector<val_t>> PM;
-
-typedef std::vector<addr_t> solution;
-
-typedef std::default_random_engine random_engine;
-typedef std::uniform_int_distribution<size_t> uniform_distribution;
-
-typedef std::chrono::system_clock sysclock;
-typedef std::chrono::high_resolution_clock hrclock;
-
-typedef pfsp::pivoting::functor<solution>* handler;
-typedef void (*walk)(const solution&, handler);
-
-typedef pfsp::instance<addr_t, val_t, priority_t> I;
-typedef pfsp::eval::init<addr_t, val_t, priority_t, DD, PR, PM, PM, DD> eval;
-
-typedef solution (*P)(const solution&, walk, eval);
+#include "commons/types.hpp"
 
 namespace ex1{
 	namespace global{
@@ -80,23 +48,41 @@ namespace ex1{
 		I i;
 
 	// OPTIONS
-		auto init_r = pfsp::init::random<random_engine, uniform_distribution, solution>(g);
-		auto init_s = pfsp::init::slack<solution, addr_t, val_t, priority_t, DD, PR, PM>(i.nbJob, i.nbMac, i.dueDates, i.priority, i.processingTimesMatrix);
+		auto init_r = pfsp::init::random<random_engine, uniform_distribution, S>(g);
+		auto init_s = pfsp::init::slack<S, addr_t, val_t, priority_t, DD, PR, PM>(i.nbJob, i.nbMac, i.dueDates, i.priority, i.processingTimesMatrix);
 
-		std::unordered_map<std::string, pfsp::init::functor<solution>*> init{
+		std::unordered_map<std::string, IN> init{
 			{"random", &init_r.f},
 			{"slack", &init_s.f}
 		};
 
-		std::unordered_map<std::string, walk> neighborhood{
-			{"exchange" , &pfsp::neighborhood::exchange<solution, handler>},
-			{"insert" , &pfsp::neighborhood::insert<solution, handler>},
-			{"transpose" , &pfsp::neighborhood::transpose<solution, handler>}
+		N transpose = {
+			&pfsp::neighborhood::transpose<S, H, M>,
+			&pfsp::apply::transpose<S, M>,
+			nullptr
+		};
+
+		N insert = {
+			&pfsp::neighborhood::insert<S, H, M>,
+			&pfsp::apply::insert<S, M>,
+			nullptr
+		};
+
+		N exchange = {
+			&pfsp::neighborhood::exchange<S, H, M>,
+			&pfsp::apply::exchange<S, M>,
+			nullptr
+		};
+
+		std::unordered_map<std::string, N*> neighborhood{
+			{"exchange" , &exchange},
+			{"insert" , &insert},
+			{"transpose" , &transpose}
 		};
 
 		std::unordered_map<std::string, P> pivoting{
-			{"best", &pfsp::pivoting::best<solution, walk, eval>},
-			{"first", &pfsp::pivoting::first<solution, walk, eval>}
+			{"best", &pfsp::pivoting::best<val_t, S, M, W, ME, X>},
+			{"first", &pfsp::pivoting::first<val_t, S, M, W, ME, X>}
 		};
 
 

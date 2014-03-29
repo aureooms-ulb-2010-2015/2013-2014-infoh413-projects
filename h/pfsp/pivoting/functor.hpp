@@ -4,9 +4,9 @@
 namespace pfsp{
 namespace pivoting{
 
-template<typename S>
+template<typename M>
 struct functor{
-	virtual bool operator()(const S& sol) = 0;
+	virtual bool operator()(const M& mutation) = 0;
 };
 
 }

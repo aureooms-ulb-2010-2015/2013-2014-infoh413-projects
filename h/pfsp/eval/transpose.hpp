@@ -9,13 +9,25 @@
 #include <cmath>
 #include <tuple>
 
+#include "pfsp/eval/functor.hpp"
+
 namespace pfsp{
 namespace eval{
 
-template<typename addr_t, typename val_t, typename priority_t, typename A1, typename A2, typename A3, typename A4, typename A5>
-class transpose{
+template<
+	typename addr_t,
+	typename val_t,
+	typename priority_t,
+	typename S,
+	typename M,
+	typename A1,
+	typename A2,
+	typename A3,
+	typename A4,
+	typename A5
+>
+class transpose : public functor<val_t, S, M>{
 public:
-	typedef val_t val;
 
 	const addr_t& nbJob;
 	const addr_t& nbMac;
@@ -26,8 +38,8 @@ public:
 
 	A4 detail;
 	A5 wt;
-	A5& wt_r;
-	A4& detail_r;
+	const A5& wt_r;
+	const A4& detail_r;
 
 	transpose(const addr_t& nbJob, const addr_t& nbMac, const A1& dueDates,
 		const A2& priority, const A3& processing, const A5& wt_r, const A4& detail_r)
@@ -37,8 +49,7 @@ public:
 		for(addr_t i = 0; i <= nbJob; ++i) detail[i].resize(nbMac + 1, 0);
 	}
 
-	template<typename S, typename M>
-	val_t operator()(const S& sol, const M& mutation){
+	virtual val_t operator()(const S& sol, const M& mutation){
 		addr_t beg, end;
 		std::tie(beg, end) = mutation;
 
@@ -46,7 +57,7 @@ public:
 		addr_t _beg = sol[end], _end = sol[beg];
 
 		// FETCH PREVIOUS STATE
-		for(addr_t i = 0; i <= nbMac; ++i) detail[beg-1][i] = detail_r[beg-1][i];
+		for(addr_t m = 0; m <= nbMac; ++m) detail[beg-1][m] = detail_r[beg-1][m];
 
 		detail[beg][1] = detail[beg-1][1] + processing[_beg][1];
 		detail[end][1] = detail[end-1][1] + processing[_end][1];
@@ -63,8 +74,8 @@ public:
 		}
 
 		val_t wtd = 0;
-		wt[beg] = (std::max(detail[beg] - dueDates[_beg], 0L) * priority[_beg]);
-		wt[end] = (std::max(detail[end] - dueDates[_end], 0L) * priority[_end]);
+		wt[beg] = (std::max(detail[beg][nbMac] - dueDates[_beg], 0L) * priority[_beg]);
+		wt[end] = (std::max(detail[end][nbMac] - dueDates[_end], 0L) * priority[_end]);
 		for(addr_t j = end + 1; j <= nbJob; ++j){
 			wt[j] = (std::max(detail[j][nbMac] - dueDates[sol[j]], 0L) * priority[sol[j]]); 
 			wtd += wt[j] - wt_r[j];

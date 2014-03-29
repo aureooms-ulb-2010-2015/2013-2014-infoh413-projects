@@ -2,6 +2,7 @@
 #define _PFSP_PIVOTING_BEST_HPP
 
 #include <limits>
+#include <memory>
 
 #include "pfsp/pivoting/functor.hpp"
 
@@ -9,33 +10,39 @@
 namespace pfsp{
 namespace pivoting{
 
+/*
+ * <S> is the solution type
+ * <M> is the mutation type
+ * <W> is the neighborhood walker type
+ * <ME> is the mutation evaluator type
+ * <X> is the muter type
+ */
 
-template<typename S, typename N, typename E>
-S best(const S& src, N n, E e){
 
-	typedef typename E::val val_t;
+template<typename val_t, typename S, typename M, typename W, typename ME, typename X>
+val_t best(S& src, W w, ME e, X x){
 
-	S sol(src);
-
-	struct fn : functor<S>{
-		E e;
+	struct fn : functor<M>{
+		ME e;
+		const S& sol;
 		val_t opt;
-		S& argopt;
+		M argopt;
 		
-		fn(E e, S& sol):e(e), opt(e(sol)), argopt(sol){}
+		fn(ME e, const S& sol):e(e), sol(sol), opt(0), argopt(){}
 
-		virtual bool operator()(const S& sol){
-			val_t tmp = e(sol);
-			if(tmp < opt){
-				argopt = sol;
-				opt = tmp;
+		virtual bool operator()(const M& mutation){
+			val_t delta = (*e)(sol, mutation);
+			if(delta < opt){
+				argopt = mutation;
+				opt = delta;
 			}
 			return true;
 		}
-	} f(e, sol);
+	} f(e, src);
 
-	n(src, &f);
-	return sol;
+	w(src, &f);
+	if(f.opt < 0) x(src, f.argopt);
+	return f.opt;
 }
 
 }

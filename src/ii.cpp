@@ -29,11 +29,18 @@ void run(){
 
 	fileIn.close();
 
-	/* evaluator functor */
-	eval e(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::i.processingTimesMatrix);
+	// evaluator functors
+	E e(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::i.processingTimesMatrix);
+	TE te(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::i.processingTimesMatrix, e.wt, e.detail);
+	IE ie(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::i.processingTimesMatrix, e.wt, e.detail);
+	EE ee(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::i.processingTimesMatrix, e.wt, e.detail);
+	global::transpose.eval =  &te;
+	global::insert.eval = &ie; 
+	global::exchange.eval = &ee;
 
-	/* 1 based index FTW !¸··}#{}¼CHANGE THIS FUCKSHIT */
-	solution s(e.nbJob + 1);
+
+	// based index FTW !¸··}#{}¼CHANGE THIS FUCKSHIT
+	S s(e.nbJob + 1);
 
 	// GEN INITIAL SOLUTION
 
@@ -50,10 +57,12 @@ void run(){
 
 	// FIND LOCAL OPTIMUM
 
-	solution n = pivoting(s, neighborhood, e);
-	while(e(n) < e(s)){
-		s = n;
-		n = pivoting(s, neighborhood, e);
+	val_t nlo = pivoting(s, neighborhood->walk, neighborhood->eval, neighborhood->apply);
+	while(nlo){
+		lib::io::format(std::cout, s, global::list_p);
+		std::cout << std::endl;
+		std::cout << nlo << " " << e(s) << std::endl; // TODO KICK IT
+		nlo = pivoting(s, neighborhood->walk, neighborhood->eval, neighborhood->apply);
 	} 
 
 	// OUTPUT

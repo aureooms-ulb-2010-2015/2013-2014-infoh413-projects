@@ -14,7 +14,6 @@ namespace eval{
 template<typename addr_t, typename val_t, typename priority_t, typename A1, typename A2, typename A3, typename A4, typename A5>
 class init{
 public:
-	typedef val_t val;
 
 	const addr_t& nbJob;
 	const addr_t& nbMac;

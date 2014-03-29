@@ -30,7 +30,7 @@ if __name__ == '__main__':
 	}
 
 	opt = {
-		'./run/ils' : [
+		'./run/ii' : [
 			('--init', ['random', 'slack']),
 			('--pivoting', ['first', 'best']),
 			('--neighborhood', ['transpose', 'exchange', 'insert']),

@@ -30,10 +30,16 @@ void run(){
 	fileIn.close();
 
 	/* evaluator functor */
-	eval e(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::i.processingTimesMatrix);
+	E e(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::i.processingTimesMatrix);
+	TE te(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::i.processingTimesMatrix, e.wt, e.detail);
+	IE ie(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::i.processingTimesMatrix, e.wt, e.detail);
+	EE ee(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::i.processingTimesMatrix, e.wt, e.detail);
+	global::transpose.eval = &te;
+	global::insert.eval = &ie; 
+	global::exchange.eval = &ee;
 
 	/* 1 based index FTW !¸··}#{}¼CHANGE THIS FUCKSHIT */
-	solution s(e.nbJob + 1);
+	S s(e.nbJob + 1);
 
 	// GEN INITIAL SOLUTION
 
@@ -53,11 +59,13 @@ void run(){
 	size_t k = 0;
 
 	while(k < ordering.size()){
-		solution n = pivoting(s, ordering[k], e);
-		while(e(n) < e(s)){
+		val_t nlo = pivoting(s, ordering[k]->walk, ordering[k]->eval, ordering[k]->apply);
+		while(nlo){
+			lib::io::format(std::cout, s, global::list_p);
+			std::cout << std::endl;
+			std::cout << nlo << " " << e(s) << std::endl; // TODO KICK IT
 			k = 0;
-			s = n;
-			n = pivoting(s, ordering[k], e);
+			nlo = pivoting(s, ordering[k]->walk, ordering[k]->eval, ordering[k]->apply);
 		}
 		++k;
 	}

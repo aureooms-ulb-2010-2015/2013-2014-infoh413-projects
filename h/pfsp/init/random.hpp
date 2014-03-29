@@ -4,6 +4,7 @@
 #include "lib/random/sample.hpp"
 #include "pfsp/init/functor.hpp"
 
+#include <numeric>
 
 namespace pfsp{
 namespace init{
