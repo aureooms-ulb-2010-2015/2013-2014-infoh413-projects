@@ -15,13 +15,25 @@ def do(hi, lo):
 	lib.file.walk(hi, f = lambda x : callback(hi, x))
 	lib.file.walk(lo, f = lambda x : callback(lo, x))
 
-	td = 0
+	hit = 0
+	lot = 0
+
+	def c(hi, d):
+		if -d > 0.05 * hi:
+			return lib.io.ansy.OKGREEN + lib.io.ansy.UNDERLINE + lib.io.ansy.BOLD
+		if d < 0 : return lib.io.ansy.OKGREEN
+		if d < 0.05 * hi : return lib.io.ansy.WARNING
+		return lib.io.ansy.FAIL
+
+	e = lib.io.ansy.ENDC
 
 	for key in a[hi]:
 		if key in a[lo]:
-			d = a[lo][key] - a[hi][key];
-			td += d
-			print('%s : %f <> %f --> %f' % (key, a[hi][key], a[lo][key], d))
+			f, s = a[hi][key], a[lo][key]
+			d = s - f;
+			hit += f
+			lot += s
+			print('%s%s : %f <> %f --> %f%s' % (c(f, d), key, f, s, d, e))
 		else:
 			print('%s : NO lo data' % (key))
 
@@ -30,7 +42,7 @@ def do(hi, lo):
 			print('%s : NO hi data' % (key))
 
 
-	print('td = %f' % td)
+	print('%s%s : %f <> %f --> %f%s' % (c(hit, lot - hit), 'total', hit, lot, lot - hit, e))
 
 
 if __name__ == '__main__':
