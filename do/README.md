@@ -13,7 +13,7 @@ usage:
 
 example:
 	
-	python3 do/split.py data/best/list data/best
+	python3 do/split.py data/old/best data/best
 
 
 
@@ -29,7 +29,7 @@ usage :
 
 example:
 
-	python3 do/gen.py ./run/ils --neighborhood transpose --init random --pivoting best data/in data/out
+	python3 do/gen.py ./run/pfsp-ii --neighborhood transpose --init random --pivoting best data/in data/out
 
 
 
@@ -45,7 +45,7 @@ usage :
 
 example:
 
-	ls data/in/50x20_* | python3 do/tim.py ./run/ils --neighborhood exchange --init random --pivoting best --
+	ls data/in/50x20_* | python3 do/tim.py ./run/pfsp-ii --neighborhood exchange --init random --pivoting best --
 
 
 
@@ -61,7 +61,7 @@ usage :
 
 example:
 
-	python3 do/bench.py tim ./run/ils data/in data/out
+	python3 do/bench.py tim ./run/pfsp-ii data/in data/out
 
 
 
@@ -77,6 +77,52 @@ usage :
 
 example:
 
-	python3 do/diff.py data/time/before-opt/ data/time/before-opt2/
+	python3 do/diff.py data/out/tim/03281520/ data/out/tim/03291518/
 
 
+
+
+report.py
+==
+
+
+usage :
+
+	python3 do/report.py <out> <best>
+
+
+example :
+
+	python3 do/report.py data/out/03302218/ data/best/
+
+
+
+
+dev.py
+==
+
+
+usage :
+
+	python3 do/dev.py <in> <best> <out>
+
+
+example :
+
+	python3 do/dev.py data/out/03302218/ data/best/ data/dev
+
+
+
+
+stat.py
+==
+
+
+usage :
+
+	python3 do/stat.py <in> <out> <script>
+
+
+example :
+
+	python3 do/stat.py data/dev/ -- Rscript do/stat.r

@@ -1,5 +1,5 @@
-#ifndef _COMMONS_TYPES_HPP
-#define _COMMONS_TYPES_HPP
+#ifndef _PFSP_COMMONS_TYPES_HPP
+#define _PFSP_COMMONS_TYPES_HPP
 
 #include <tuple>
 #include <vector>
@@ -70,4 +70,4 @@ typedef struct{
 typedef pfsp::init::functor<S>* IN;
 
 
-#endif // _COMMONS_TYPES_HPP
+#endif // _PFSP_COMMONS_TYPES_HPP

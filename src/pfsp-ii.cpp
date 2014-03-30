@@ -8,15 +8,15 @@
 #include "pfsp/io/parse/header.hpp"
 #include "pfsp/mem/allocate.hpp"
 
-#include "ex1/global.hpp"
-#include "ex1/config.hpp"
+#include "pfsp_ii/global.hpp"
+#include "pfsp_ii/config.hpp"
 
-using namespace ex1;
+using namespace pfsp_ii;
 
 
 void run(){
 
-	// INPUT
+// INPUT
 	
 	std::ifstream fileIn;
 	fileIn.open(global::params[0]);
@@ -28,6 +28,11 @@ void run(){
 	pfsp::io::parse::body(fileIn, global::i.nbJob, global::i.nbMac, global::i.processingTimesMatrix, global::i.dueDates, global::i.priority);
 
 	fileIn.close();
+
+	if(global::verbose){
+		std::cout << "Number of jobs : " << global::i.nbJob << std::endl;
+		std::cout << "Number of machines : " << global::i.nbMac << std::endl;
+	}
 
 	// evaluator functors
 	E e(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::i.processingTimesMatrix);
@@ -42,21 +47,24 @@ void run(){
 	// based index FTW !¸··}#{}¼CHANGE THIS FUCKSHIT
 	S s(e.nbJob + 1);
 
-	// GEN INITIAL SOLUTION
+// GEN INITIAL SOLUTION
 
 	auto init = global::init[global::options["--init"][0]];
 	(*init)(s);
-
-	std::cout << "init: ";
-	lib::io::format(std::cout, s, global::list_p);
-	std::cout << std::endl;
 	val_t opt = e(s);
-	std::cout << opt << std::endl;
+
+	if(global::verbose){
+		std::cout << "init: ";
+		lib::io::format(std::cout, s, global::list_p) << std::endl;
+		std::cout << opt << std::endl;
+	}
 
 	auto neighborhood = global::neighborhood[global::options["--neighborhood"][0]];
 	auto pivoting = global::pivoting[global::options["--pivoting"][0]];
 
-	// FIND LOCAL OPTIMUM
+// FIND LOCAL OPTIMUM
+
+	hrclock::time_point beg = hrclock::now();
 
 	R best = pivoting(s, neighborhood->walk, neighborhood->eval);
 	while(best.first){
@@ -64,26 +72,44 @@ void run(){
 		(*neighborhood->eval)(s, best.second, e.detail, e.wt);
 		(*neighborhood->apply)(s, best.second);
 		best = pivoting(s, neighborhood->walk, neighborhood->eval);
-	} 
+	}
 
-	// OUTPUT
+	hrclock::time_point end  = hrclock::now();
 
-	std::cout << "best: ";
-	lib::io::format(std::cout, s, global::list_p);
-	std::cout << std::endl;
+// OUTPUT
+
+	// LO
+
+	if(global::verbose){
+		std::cout << "best: ";
+		lib::io::format(std::cout, s, global::list_p) << std::endl;
+	}
+
 	std::cout << opt << std::endl;
-	
+
+	// TIME
+
+	if(global::verbose) std::cout << "time : ";
+	std::chrono::milliseconds duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - beg);
+	std::cout << duration.count();
+	if(global::verbose) std::cout << " ms";
+	std::cout << std::endl;
+
 	// SEED
 
-	std::cout << "seed : ";
-	lib::io::format(std::cout, global::seed_v, global::list_p);
-	std::cout << std::endl;
+	if(global::verbose) std::cout << "seed : ";
+	lib::io::format(std::cout, global::seed_v, global::list_p) << std::endl;
 }
 
 
 int main(int argc, char *argv[]){
 	
 	config::fill(argc, argv);
+
+	if(global::help){
+		config::help();
+		return 0;
+	}
 
 	try{
 		config::check();

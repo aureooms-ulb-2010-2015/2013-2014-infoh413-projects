@@ -30,13 +30,13 @@ if __name__ == '__main__':
 	}
 
 	opt = {
-		'./run/ii' : [
+		'./run/pfsp-ii' : [
 			('--init', ['random', 'slack']),
 			('--pivoting', ['first', 'best']),
 			('--neighborhood', ['transpose', 'exchange', 'insert']),
 			('--seed', ['0'])
 		],
-		'./run/vnd' : [
+		'./run/pfsp-vnd' : [
 			('--init', ['random', 'slack']),
 			('--pivoting', ['first', 'best']),
 			('--ordering', ['tie', 'tei']),

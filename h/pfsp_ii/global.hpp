@@ -1,5 +1,5 @@
-#ifndef _EX1_GLOBAL_HPP
-#define _EX1_GLOBAL_HPP
+#ifndef _PFSP_II_GLOBAL_HPP
+#define _PFSP_II_GLOBAL_HPP
 
 
 #include <vector>
@@ -23,9 +23,9 @@
 
 #include "pfsp/instance.hpp"
 
-#include "commons/types.hpp"
+#include "pfsp_commons/types.hpp"
 
-namespace ex1{
+namespace pfsp_ii{
 	namespace global{
 
 
@@ -42,7 +42,7 @@ namespace ex1{
 		random_engine g;
 
 	// FLAGS
-		bool help;
+		bool help, verbose;
 
 	// DATA
 		I i;
@@ -99,7 +99,8 @@ namespace ex1{
 		};
 
 		std::set<std::string> flag_set = {
-			"-h", "--help"
+			"-h", "--help",
+			"-v", "--verbose"
 		};
 
 	}
@@ -107,4 +108,4 @@ namespace ex1{
 
 
 
-#endif // _EX1_GLOBAL_HPP
+#endif // _PFSP_II_GLOBAL_HPP

@@ -8,13 +8,8 @@ namespace parse{
 
 template<typename S, typename INT>
 void header(S& stream, INT& nbJob, INT& nbMac){
-
 	stream >> nbJob;
-	std::cout << "Number of jobs : " << nbJob << std::endl;
-
 	stream >> nbMac;
-	std::cout << "Number of machines : " << nbMac << std::endl;
-
 }
 
 }
