@@ -31,7 +31,7 @@ def do(data, best, out):
 	lib.file.walk(data, callback)
 
 	for alg in sorted(dev.keys()):
-		with open(os.path.join(out, alg.replace('/', '_')), 'w') as f:
+		with open(os.path.join(out, alg[len(data):].replace('/', '_')), 'w') as f:
 			for dim in sorted(dev[alg].keys()):
 				for n in sorted(map(int, dev[alg][dim].keys())):
 					# f.write(dim)

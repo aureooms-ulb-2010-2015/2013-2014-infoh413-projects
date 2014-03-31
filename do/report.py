@@ -30,9 +30,26 @@ def do(data, best):
 
 	lib.file.walk(data, callback)
 
-	for key in out:
+	def abbr(key):
+		a = ''
+		for word in key[len(data):].split('/'):
+			if not word or word.isnumeric(): continue
+			elif len(word) > 3 : a += word[0]
+			else : a += word
+
+		return a.upper()
+		 
+	print('\\begin{longtable}{|l|l|l|}')
+	print('\\hline')
+	print('\\textbf{alg} & \\textbf{std dev} & \\textbf{avg time}\\\\')
+	print('\\hline')
+
+	for key in sorted(out):
 		out[key][0] /= out[key][2]
-		print(key, out[key])
+		print(abbr(key), '&', out[key][0], '&', out[key][1], 'ms\\\\')
+		print('\\hline')
+
+	print('\\end{longtable}')
 
 
 if __name__ == '__main__':

@@ -1,0 +1,87 @@
+\newpage\cleardoublepage\phantomsection
+\section{LL1 grammar after modification}
+\label{app:grammar}
+
+The production rules that have been modified from the original grammar are shown in red.
+
+\vspace{5mm}
+\begingroup
+\fontsize{8pt}{10pt}\selectfont
+\begin{Verbatim}[commandchars=\\\{\}]
+\textcolor{black}{[ 0]       <ASSIGNATION> -> MOVE <EXPRESSION> TO IDENTIFIER END_OF_INSTRUCTION}
+\textcolor{black}{[ 1]                     -> COMPUTE IDENTIFIER EQUALS_SIGN <EXPRESSION> END_OF_INSTRUCTION}
+\textcolor{black}{[ 2]                     -> ADD <EXPRESSION> TO IDENTIFIER END_OF_INSTRUCTION}
+\textcolor{black}{[ 3]                     -> SUBTRACT <EXPRESSION> FROM IDENTIFIER END_OF_INSTRUCTION}
+\textcolor{black}{[ 4]                     -> MULTIPLY <ASSIGN_TAIL> END_OF_INSTRUCTION}
+\textcolor{black}{[ 5]                     -> DIVIDE <ASSIGN_TAIL> END_OF_INSTRUCTION}
+\textcolor{black}{[ 6]       <ASSIGN_TAIL> -> <EXPRESSION> COMMA <EXPRESSION> GIVING IDENTIFIER}
+\textcolor{red}{[ 7]              <CALL> -> PERFORM IDENTIFIER <CALL_TAIL>}
+\textcolor{red}{[ 8]         <CALL_TAIL> -> UNTIL <EXPRESSION> END_OF_INSTRUCTION}
+\textcolor{black}{[ 9]                     -> END_OF_INSTRUCTION}
+\textcolor{black}{[10]              <DATA> -> DATA DIVISION END_OF_INSTRUCTION WORKING_STORAGE SECTION}
+                            \textcolor{black}{END_OF_INSTRUCTION <VAR_LIST>}
+\textcolor{black}{[11]               <ENV> -> ENVIRONMENT DIVISION END_OF_INSTRUCTION CONFIGURATION SECTION}
+                            \textcolor{black}{END_OF_INSTRUCTION SOURCE_COMPUTER DOT <WORDS> END_OF_INSTRUCTION}
+                            \textcolor{black}{OBJECT_COMPUTER DOT <WORDS> END_OF_INSTRUCTION}
+\textcolor{red}{[12]        <EXPRESSION> -> <EXPRESSION_1> <EXPRESSION_TAIL> }
+\textcolor{red}{[13]      <EXPRESSION_1> -> <EXPRESSION_2> <EXPRESSION_1_TAIL>}
+\textcolor{red}{[14] <EXPRESSION_1_TAIL> -> AND <EXPRESSION_2> <EXPRESSION_1_TAIL>}
+\textcolor{red}{[15]                     -> ε}
+\textcolor{red}{[16]      <EXPRESSION_2> -> <EXPRESSION_3> <EXPRESSION_2_TAIL>}
+\textcolor{red}{[17] <EXPRESSION_2_TAIL> -> EQUALS_SIGN <EXPRESSION_3> <EXPRESSION_2_TAIL>}
+\textcolor{red}{[18]                     -> LOWER_THAN <EXPRESSION_3> <EXPRESSION_2_TAIL>}
+\textcolor{red}{[19]                     -> GREATER_THAN <EXPRESSION_3> <EXPRESSION_2_TAIL>}
+\textcolor{red}{[20]                     -> LOWER_OR_EQUALS <EXPRESSION_3> <EXPRESSION_2_TAIL>}
+\textcolor{red}{[21]                     -> GREATER_OR_EQUALS <EXPRESSION_3> <EXPRESSION_2_TAIL>}
+\textcolor{red}{[22]                     -> ε}
+\textcolor{red}{[23]      <EXPRESSION_3> -> <EXPRESSION_4> <EXPRESSION_3_TAIL>}
+\textcolor{red}{[24] <EXPRESSION_3_TAIL> -> PLUS_SIGN <EXPRESSION_4> <EXPRESSION_3_TAIL>}
+\textcolor{red}{[25]                     -> MINUS_SIGN <EXPRESSION_4> <EXPRESSION_3_TAIL>}
+\textcolor{red}{[26]                     -> ε}
+\textcolor{red}{[27]      <EXPRESSION_4> -> <EXPRESSION_BASE> <EXPRESSION_4_TAIL>}
+\textcolor{red}{[28] <EXPRESSION_4_TAIL> -> ASTERISK <EXPRESSION_BASE> <EXPRESSION_4_TAIL>}
+\textcolor{red}{[29]                     -> SLASH <EXPRESSION_BASE> <EXPRESSION_4_TAIL>}
+\textcolor{red}{[30]                     -> ε}
+\textcolor{red}{[31]   <EXPRESSION_BASE> -> LEFT_PARENTHESIS <EXPRESSION> RIGHT_PARENTHESIS}
+\textcolor{red}{[32]                     -> NOT <EXPRESSION_BASE>}
+\textcolor{red}{[33]                     -> MINUS_SIGN <EXPRESSION_BASE>}
+\textcolor{red}{[34]                     -> IDENTIFIER}
+\textcolor{red}{[35]                     -> INTEGER}
+\textcolor{red}{[36]                     -> TRUE}
+\textcolor{red}{[37]                     -> FALSE}
+\textcolor{red}{[38]   <EXPRESSION_TAIL> -> OR <EXPRESSION_1> <EXPRESSION_TAIL>}
+\textcolor{red}{[39]                     -> ε}
+\textcolor{black}{[40]             <IDENT> -> IDENTIFICATION DIVISION END_OF_INSTRUCTION PROGRAM_ID DOT}
+                            \textcolor{black}{IDENTIFIER END_OF_INSTRUCTION AUTHOR DOT <WORDS>}
+                            \textcolor{black}{END_OF_INSTRUCTION DATE_WRITTEN DOT <WORDS> END_OF_INSTRUCTION}
+\textcolor{black}{[41]                <IF> -> IF <EXPRESSION> THEN <INSTRUCTION_LIST> <IF_TAIL>}
+\textcolor{black}{[42]           <IF_TAIL> -> ELSE <INSTRUCTION_LIST> END_IF}
+\textcolor{black}{[43]                     -> END_IF}
+\textcolor{black}{[44]       <INSTRUCTION> -> <ASSIGNATION>}
+\textcolor{black}{[45]                     -> <IF>}
+\textcolor{black}{[46]                     -> <CALL>}
+\textcolor{black}{[47]                     -> <READ>}
+\textcolor{black}{[48]                     -> <WRITE>}
+\textcolor{black}{[49]                     -> STOP RUN END_OF_INSTRUCTION}
+\textcolor{black}{[50]  <INSTRUCTION_LIST> -> <INSTRUCTION> <INSTRUCTION_LIST>}
+\textcolor{black}{[51]                     -> ε}
+\textcolor{red}{[52]            <LABELS> -> IDENTIFIER END_OF_INSTRUCTION <INSTRUCTION_LIST> <LABELS_TAIL>}
+\textcolor{red}{[53]       <LABELS_TAIL> -> IDENTIFIER END_OF_INSTRUCTION <INSTRUCTION_LIST> <LABELS_TAIL>}
+\textcolor{red}{[54]                     -> ε}
+\textcolor{black}{[55]              <PROC> -> PROCEDURE DIVISION END_OF_INSTRUCTION IDENTIFIER SECTION}
+                            \textcolor{black}{END_OF_INSTRUCTION <LABELS> END PROGRAM IDENTIFIER DOT}
+\textcolor{black}{[56]           <PROGRAM> -> <IDENT> <ENV> <DATA> <PROC>}
+\textcolor{black}{[57]              <READ> -> ACCEPT IDENTIFIER END_OF_INSTRUCTION}
+\textcolor{red}{[58]                 <S> -> <PROGRAM> EOF}
+\textcolor{red}{[59]          <VAR_DECL> -> INTEGER IDENTIFIER PIC IMAGE <VAR_DECL_TAIL>}
+\textcolor{red}{[60]     <VAR_DECL_TAIL> -> END_OF_INSTRUCTION}
+\textcolor{red}{[61]                     -> VALUE INTEGER END_OF_INSTRUCTION}
+\textcolor{black}{[62]          <VAR_LIST> -> <VAR_DECL> <VAR_LIST>}
+\textcolor{black}{[63]                     -> ε}
+\textcolor{red}{[64]             <WORDS> -> IDENTIFIER <WORDS>}
+\textcolor{black}{[65]                     -> ε}
+\textcolor{red}{[66]             <WRITE> -> DISPLAY <WRITE_TAIL>}
+\textcolor{red}{[67]        <WRITE_TAIL> -> <EXPRESSION> END_OF_INSTRUCTION}
+\textcolor{red}{[68]                     -> STRING END_OF_INSTRUCTION}
+\end{Verbatim}
+\endgroup
