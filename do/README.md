@@ -114,7 +114,7 @@ example :
 
 
 
-stat.py
+stat.py // TODO CHANGE SEMANTICS
 ==
 
 
@@ -126,3 +126,18 @@ usage :
 example :
 
 	python3 do/stat.py data/dev/ -- Rscript do/stat.r
+
+
+
+test.py
+==
+
+
+usage :
+
+	python3 do/test.py <in> <out> <script>
+
+
+example :
+
+	python3 do/test.py data/dev/ -- Rscript do/test.r

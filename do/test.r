@@ -1,4 +1,4 @@
-# options(echo=TRUE)
+
 args <- commandArgs(trailingOnly = TRUE)
 
 a.cost <- read.table(args[1])$V1

@@ -10,7 +10,7 @@ def do(inp, out, script):
 		a = ''
 		for word in key[len(inp):].split('_'):
 			if not word or word.isnumeric(): continue
-			elif len(word) > 3 or word == 'VND' : a += word[0]
+			elif len(word) > 3 or word == 'vnd' : a += word[0]
 			else : a += word
 
 		return a.upper()

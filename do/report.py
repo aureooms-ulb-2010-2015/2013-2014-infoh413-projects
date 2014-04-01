@@ -34,7 +34,7 @@ def do(data, best, floatp):
 		a = ''
 		for word in key[len(data):].split('/'):
 			if not word or word.isnumeric(): continue
-			elif len(word) > 3  or word == 'VND' : a += word[0]
+			elif len(word) > 3  or word == 'vnd' : a += word[0]
 			else : a += word
 
 		return a.upper()
