@@ -2,7 +2,7 @@ import sys, os, lib
 
 
 
-def do(data, best):
+def do(data, best, floatp):
 
 	c = {}
 
@@ -34,19 +34,52 @@ def do(data, best):
 		a = ''
 		for word in key[len(data):].split('/'):
 			if not word or word.isnumeric(): continue
-			elif len(word) > 3 : a += word[0]
+			elif len(word) > 3  or word == 'VND' : a += word[0]
 			else : a += word
 
 		return a.upper()
+
+	bydev = []
+	bytime = []
+
+	format = '%%s & %%.%df & %%d ms\\\\' % floatp
 		 
-	print('\\begin{longtable}{|l|l|l|}')
+	print('\\begin{longtable}{|l|d{%d}|r|}' % floatp)
+	print('\\caption{std dev and running time for 50x20 instances}\\\\')
 	print('\\hline')
 	print('\\textbf{alg} & \\textbf{std dev} & \\textbf{avg time}\\\\')
 	print('\\hline')
 
 	for key in sorted(out):
 		out[key][0] /= out[key][2]
-		print(abbr(key), '&', out[key][0], '&', out[key][1], 'ms\\\\')
+		bydev.append((out[key][0], out[key][1], key))
+		bytime.append((out[key][1], out[key][0], key))
+		print(format % (abbr(key), out[key][0], out[key][1]))
+		print('\\hline')
+
+	print('\\end{longtable}')
+
+
+	print('\\begin{longtable}{|l|d{%d}|r|}' % floatp)
+	print('\\caption{std dev and running time for 50x20 instances (sorted by dev)}\\\\')
+	print('\\hline')
+	print('\\textbf{alg} & \\textbf{std dev} & \\textbf{avg time}\\\\')
+	print('\\hline')
+
+	for dev, t, key in sorted(bydev):
+		print(format % (abbr(key), dev, t))
+		print('\\hline')
+
+	print('\\end{longtable}')
+
+	print('\\begin{longtable}{|l|d{%d}|r|}' % floatp)
+	print('\\caption{std dev and running time for 50x20 instances (sorted by time)}\\\\')
+	print('\\hline')
+	print('\\textbf{alg} & \\textbf{std dev} & \\textbf{avg time}\\\\')
+	print('\\hline')
+
+	for t, dev, key in sorted(bytime):
+		print(format % (abbr(key), dev, t))
 		print('\\hline')
 
 	print('\\end{longtable}')
@@ -55,6 +88,7 @@ def do(data, best):
 if __name__ == '__main__':
 	data = sys.argv[1]
 	best = sys.argv[2]
+	floatp = -1 if len(sys.argv) < 4 else int(sys.argv[3])
 
-	do(data, best)
+	do(data, best, floatp)
 

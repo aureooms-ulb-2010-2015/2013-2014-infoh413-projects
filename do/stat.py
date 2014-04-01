@@ -10,7 +10,7 @@ def do(inp, out, script):
 		a = ''
 		for word in key[len(inp):].split('_'):
 			if not word or word.isnumeric(): continue
-			elif len(word) > 3 : a += word[0]
+			elif len(word) > 3 or word == 'VND' : a += word[0]
 			else : a += word
 
 		return a.upper()
@@ -21,8 +21,19 @@ def do(inp, out, script):
 
 	alg = sorted(alg)
 
-	print('\\begin{longtable}{|%s}' % ('p|' * (len(alg) - 1)))
+
+	print('\\newpage\\cleardoublepage\\phantomsection')
+	print('\\thispagestyle{empty}')
+	print('\\begin{landscape}')
+
+	print('\\begin{table}')
+	print('\\tiny')
+	print('\\tabcolsep=0.11cm')
+
+
+	print('\\begin{longtable}{|%s}' % ('l|' * len(alg)))
 	print('\\hline')
+	txt('&')
 
 	for j in range(1, len(alg) - 1):
 		txt('\\textbf{%s} &' % abbr(alg[j]))
@@ -38,9 +49,11 @@ def do(inp, out, script):
 		for j in range(i+1, len(alg)):
 			r, _ = lib.sys.run(script + [alg[i], alg[j]])
 			r = r.decode().split('\n')
-			txt(r[0].split(' ')[1])
-			txt('\\newline')
-			txt(r[1].split(' ')[1])
+			txt('\\begin{tabular}{@{}l@{}}')
+			txt('{:.3e}'.format(float(r[0].split(' ')[1])))
+			txt('\\\\')
+			txt('{:.3e}'.format(float(r[1].split(' ')[1])))
+			txt('\\end{tabular}')
 			if j < len(alg) - 1 : txt('&')
 
 		print('\\\\')
@@ -48,6 +61,8 @@ def do(inp, out, script):
 
 
 	print('\\end{longtable}')
+	print('\\end{table}')
+	print('\\end{landscape}')
 
 
 if __name__ == '__main__':

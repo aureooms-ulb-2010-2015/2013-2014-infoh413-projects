@@ -88,12 +88,12 @@ report.py
 
 usage :
 
-	python3 do/report.py <out> <best>
+	python3 do/report.py <out> <best> [<floatp>,]
 
 
 example :
 
-	python3 do/report.py data/out/03302218/ data/best/
+	python3 do/report.py data/out/03302218/ data/best/ 4
 
 
 
