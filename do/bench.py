@@ -38,7 +38,7 @@ if __name__ == '__main__':
 		],
 		'./run/pfsp-vnd' : [
 			('--init', ['random', 'slack']),
-			('--pivoting', ['first']),
+			('--pivoting', ['first', 'best']),
 			('--ordering', ['tie', 'tei']),
 			('--seed', ['0'])
 		]

@@ -81,11 +81,17 @@ public:
 
 		for(addr_t m = 2; m <= nbMac; ++m){
 			detail[beg][m] = std::max(detail[beg][m-1], detail_r[beg-1][m]) + processing[_beg][m];
-			for(addr_t j = beg + 1; j < end; ++j){
+		}
+		for(addr_t j = beg + 1; j < end; ++j){
+			for(addr_t m = 2; m <= nbMac; ++m){
 				detail[j][m] = std::max(detail[j][m-1], detail[j-1][m]) + processing[sol[j]][m];
 			}
+		}
+		for(addr_t m = 2; m <= nbMac; ++m){
 			detail[end][m] = std::max(detail[end][m-1], detail[end-1][m]) + processing[_end][m];
-			for(addr_t j = end + 1; j <= nbJob; ++j){
+		}
+		for(addr_t j = end + 1; j <= nbJob; ++j){
+			for(addr_t m = 2; m <= nbMac; ++m){
 				detail[j][m] = std::max(detail[j][m-1], detail[j-1][m]) + processing[sol[j]][m];
 			}
 		}
