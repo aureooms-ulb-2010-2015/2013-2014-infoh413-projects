@@ -29,9 +29,9 @@
 #include "pfsp/instance.hpp"
 
 
-typedef int addr_t;
-typedef long int val_t;
-typedef long int priority_t;
+typedef size_t addr_t;
+typedef int32_t val_t;
+typedef int32_t priority_t;
 
 typedef std::vector<val_t> DD;
 typedef std::vector<priority_t> PR;

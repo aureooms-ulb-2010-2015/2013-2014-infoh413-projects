@@ -69,7 +69,7 @@ public:
 
 		val_t twt = 0;
 		for(addr_t j = 1; j <= nbJob; ++j){
-			wt[j] = (std::max(detail[j][nbMac] - dueDates[sol[j]], 0L) * priority[sol[j]]); 
+			wt[j] = (std::max(detail[j][nbMac] - dueDates[sol[j]], 0) * priority[sol[j]]); 
 			twt += wt[j];
 		}
 
