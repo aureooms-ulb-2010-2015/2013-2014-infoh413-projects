@@ -10,17 +10,17 @@
 
 namespace pfsp{
 
-template<typename addr_t, typename val_t, typename priority_t>
+template<typename addr_t, typename val_t, typename priority_t, typename DD, typename PR, typename PM>
 class instance{
 public:
 	typedef val_t val;
 
 	addr_t nbJob;
 	addr_t nbMac;
-	std::vector<val_t> dueDates;
-	std::vector<priority_t> priority;
 
-	std::vector<std::vector<val_t>> processingTimesMatrix;
+	DD dueDates;
+	PR priority;
+	PM processing;
 };
 
 }

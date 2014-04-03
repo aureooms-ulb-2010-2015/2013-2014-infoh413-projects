@@ -24,8 +24,9 @@ void run(){
 	if(!fileIn.is_open()) throw lib::error::exception("Could not open input file");
 
 	pfsp::io::parse::header(fileIn, global::i.nbJob, global::i.nbMac);
-	pfsp::mem::allocate(global::i.processingTimesMatrix, global::i.dueDates, global::i.priority, global::i.nbJob, global::i.nbMac);
-	pfsp::io::parse::body(fileIn, global::i.nbJob, global::i.nbMac, global::i.processingTimesMatrix, global::i.dueDates, global::i.priority);
+	pfsp::mem::allocate(global::i.processing, global::i.dueDates, global::i.priority, global::i.nbJob, global::i.nbMac);
+	global::proxy.resize(&global::i.processing[0], global::i.nbJob + 1, global::i.nbMac + 1);
+	pfsp::io::parse::body(fileIn, global::i.nbJob, global::i.nbMac, global::proxy, global::i.dueDates, global::i.priority);
 
 	fileIn.close();
 
@@ -35,10 +36,10 @@ void run(){
 	}
 
 	/* evaluator functor */
-	E e(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::i.processingTimesMatrix);
-	TE te(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::i.processingTimesMatrix, e.wt, e.detail);
-	IE ie(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::i.processingTimesMatrix, e.wt, e.detail);
-	EE ee(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::i.processingTimesMatrix, e.wt, e.detail);
+	E e(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::proxy);
+	TE te(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::proxy, e.wt, e.detail);
+	IE ie(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::proxy, e.wt, e.detail);
+	EE ee(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::proxy, e.wt, e.detail);
 	global::transpose.eval = &te;
 	global::insert.eval = &ie; 
 	global::exchange.eval = &ee;

@@ -46,10 +46,11 @@ namespace pfsp_ii{
 
 	// DATA
 		I i;
+		PMP proxy;
 
 	// OPTIONS
 		auto init_r = pfsp::init::random<random_engine, uniform_distribution, S>(g);
-		auto init_s = pfsp::init::slack<S, addr_t, val_t, priority_t, DD, PR, PM>(i.nbJob, i.nbMac, i.dueDates, i.priority, i.processingTimesMatrix);
+		auto init_s = pfsp::init::slack<S, addr_t, val_t, priority_t, DD, PR, PMP>(i.nbJob, i.nbMac, i.dueDates, i.priority, proxy);
 
 		std::unordered_map<std::string, IN> init{
 			{"random", &init_r.f},

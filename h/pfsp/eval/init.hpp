@@ -11,7 +11,17 @@
 namespace pfsp{
 namespace eval{
 
-template<typename addr_t, typename val_t, typename priority_t, typename A1, typename A2, typename A3, typename A4, typename A5>
+template<
+	typename addr_t, 
+	typename val_t, 
+	typename priority_t, 
+	typename A1, 
+	typename A2, 
+	typename A3, 
+	typename A4, 
+	typename A5,
+	typename A6
+>
 class init{
 public:
 
@@ -22,16 +32,25 @@ public:
 	const A2& priority;
 	const A3& processing;
 
-	A4 detail;
+	A4 detail_src;
+	A6 detail;
 	A5 wt;
 
-	init(const addr_t& nbJob, const addr_t& nbMac, const A1& dueDates,
-		const A2& priority, const A3& processing)
-	:nbJob(nbJob), nbMac(nbMac), dueDates(dueDates),
-	priority(priority), processing(processing),
-	detail(nbJob + 1), wt(nbJob + 1, 0){
-		for(addr_t i = 0; i <= nbJob; ++i) detail[i].resize(nbMac + 1, 0);
-	}
+	init(
+		const addr_t& nbJob,
+		const addr_t& nbMac,
+		const A1& dueDates,
+		const A2& priority,
+		const A3& processing
+	):
+	nbJob(nbJob),
+	nbMac(nbMac),
+	dueDates(dueDates),
+	priority(priority),
+	processing(processing),
+	detail_src((nbJob + 1) * (nbMac + 1), 0),
+	detail(&detail_src[0], nbJob + 1, nbMac + 1),
+	wt(nbJob + 1, 0){}
 
 	template<typename S>
 	val_t operator()(S& sol){

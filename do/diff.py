@@ -1,8 +1,8 @@
-import sys, os, lib
+import sys, lib
 
 
 
-def do(hi, lo):
+def do(hi, lo, x):
 
 	a = {
 		hi : {},
@@ -10,6 +10,7 @@ def do(hi, lo):
 	}
 
 	def callback(w, f):
+		for i in range(x) : f.readline()
 		a[w][f.name[len(w):]] = float(f.readline().split()[0])
 
 	lib.file.walk(hi, f = lambda x : callback(hi, x))
@@ -48,6 +49,7 @@ def do(hi, lo):
 if __name__ == '__main__':
 	hi = sys.argv[1]
 	lo = sys.argv[2]
+	x = int(sys.argv[3])
 
-	do(hi,lo)
+	do(hi, lo, x)
 

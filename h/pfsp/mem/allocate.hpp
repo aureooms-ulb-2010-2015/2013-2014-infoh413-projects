@@ -6,13 +6,12 @@ namespace pfsp{
 namespace mem{
 
 template<typename A1, typename A2, typename A3, typename T>
-void allocate(A1& processingTimesMatrix, A2& dueDates, A3& priority, const T nbJ, const T nbM){
-	processingTimesMatrix.resize(nbJ + 1);
+void allocate(A1& processing, A2& dueDates, A3& priority, const T nbJ, const T nbM){
 
-	for(T i = 0; i < nbJ + 1; ++i) processingTimesMatrix[i].resize(nbM + 1);
-
+	processing.resize((nbJ + 1) * (nbM + 1));
 	dueDates.resize(nbJ + 1);
 	priority.resize(nbJ + 1);
+
 }
 
 }

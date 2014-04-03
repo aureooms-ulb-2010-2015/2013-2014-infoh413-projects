@@ -72,12 +72,12 @@ diff.py
 
 usage :
 
-	python3 do/diff.py <hi> <lo>
+	python3 do/diff.py <hi> <lo> <var>
 
 
 example:
 
-	python3 do/diff.py data/out/tim/03281520/ data/out/tim/03291518/
+	python3 do/diff.py data/out/tim/03281520/ data/out/tim/03291518/ 0
 
 
 

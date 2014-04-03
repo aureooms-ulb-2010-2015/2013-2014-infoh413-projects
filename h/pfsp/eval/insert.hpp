@@ -24,9 +24,10 @@ template<
 	typename A2,
 	typename A3,
 	typename A4,
-	typename A5
+	typename A5,
+	typename A6
 >
-class insert : public functor<val_t, S, M, A4, A5>{
+class insert : public functor<val_t, S, M, A6, A5>{
 public:
 
 	const addr_t& nbJob;
@@ -36,24 +37,38 @@ public:
 	const A2& priority;
 	const A3& processing;
 
-	A4 detail;
+	A4 detail_src;
+	A6 detail;
 	A5 wt;
 	const A5& wt_r;
-	const A4& detail_r;
+	const A6& detail_r;
 
-	insert(const addr_t& nbJob, const addr_t& nbMac, const A1& dueDates,
-		const A2& priority, const A3& processing, const A5& wt_r, const A4& detail_r)
-	:nbJob(nbJob), nbMac(nbMac), dueDates(dueDates),
-	priority(priority), processing(processing),
-	detail(nbJob + 1), wt(nbJob + 1, 0), wt_r(wt_r), detail_r(detail_r){
-		for(addr_t i = 0; i <= nbJob; ++i) detail[i].resize(nbMac + 1, 0);
-	}
+
+	insert(
+		const addr_t& nbJob,
+		const addr_t& nbMac,
+		const A1& dueDates,
+		const A2& priority,
+		const A3& processing,
+		const A5& wt_r,
+		const A6& detail_r
+	):
+	nbJob(nbJob),
+	nbMac(nbMac),
+	dueDates(dueDates),
+	priority(priority),
+	processing(processing),
+	detail_src((nbJob + 1) * (nbMac + 1), 0),
+	detail(&detail_src[0], nbJob + 1, nbMac + 1),
+	wt(nbJob + 1, 0),
+	wt_r(wt_r),
+	detail_r(detail_r){}
 
 	virtual val_t operator()(const S& sol, const M& mutation){
 		return operator()(sol, mutation, detail, wt);
 	}
 
-	virtual val_t operator()(const S& sol, const M& mutation, A4& detail, A5& wt){
+	virtual val_t operator()(const S& sol, const M& mutation, A6& detail, A5& wt){
 		addr_t beg, end, x, l, r, _beg, _end;
 		std::tie(beg, end) = mutation;
 
@@ -76,7 +91,9 @@ public:
 		for(addr_t j = l + 1; j < r; ++j) detail[j][1] = detail[j-1][1] + processing[sol[j+x]][1];
 		for(addr_t m = 2; m <= nbMac; ++m){
 			detail[l][m] = std::max(detail[l][m-1], detail_r[l-1][m]) + processing[_beg][m];
-			for(addr_t j = l + 1; j < r; ++j){
+		}
+		for(addr_t j = l + 1; j < r; ++j){
+			for(addr_t m = 2; m <= nbMac; ++m){
 				detail[j][m] = std::max(detail[j][m-1], detail[j-1][m]) + processing[sol[j+x]][m];
 			}
 		}
@@ -85,7 +102,9 @@ public:
 		for(addr_t j = r + 1; j <= nbJob; ++j) detail[j][1] = detail[j-1][1] + processing[sol[j]][1];
 		for(addr_t m = 2; m <= nbMac; ++m){
 			detail[r][m] = std::max(detail[r][m-1], detail[r-1][m]) + processing[_end][m];
-			for(addr_t j = r + 1; j <= nbJob; ++j){
+		}
+		for(addr_t j = r + 1; j <= nbJob; ++j){
+			for(addr_t m = 2; m <= nbMac; ++m){
 				detail[j][m] = std::max(detail[j][m-1], detail[j-1][m]) + processing[sol[j]][m];
 			}
 		}

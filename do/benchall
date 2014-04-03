@@ -1,0 +1,6 @@
+#!/bin/sh
+
+T=$(date +"%m%d%H%M")
+
+python3 do/bench.py gen ./run/pfsp-ii data/in/ data/out/$T/ii
+python3 do/bench.py gen ./run/pfsp-vnd data/in/ data/out/$T/vnd
