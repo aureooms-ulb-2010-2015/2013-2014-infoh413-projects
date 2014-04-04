@@ -97,18 +97,26 @@ public:
 		}
 
 		val_t wtd = 0;
-		wt[beg] = (std::max(detail[beg][nbMac] - dueDates[_beg], 0) * priority[_beg]);
+
+		wt[beg] = (std::max(detail[beg][nbMac] - dueDates[_beg], val_t(0)) * priority[_beg]);
+		wtd += wt[beg];
+
 		for(addr_t j = beg + 1; j < end; ++j){
-			wt[j] = (std::max(detail[j][nbMac] - dueDates[sol[j]], 0) * priority[sol[j]]); 
-			wtd += wt[j] - wt_r[j];
-		}
-		wt[end] = (std::max(detail[end][nbMac] - dueDates[_end], 0) * priority[_end]);
-		for(addr_t j = end + 1; j <= nbJob; ++j){
-			wt[j] = (std::max(detail[j][nbMac] - dueDates[sol[j]], 0) * priority[sol[j]]); 
-			wtd += wt[j] - wt_r[j];
+			wt[j] = (std::max(detail[j][nbMac] - dueDates[sol[j]], val_t(0)) * priority[sol[j]]); 
+			wtd += wt[j];
 		}
 
-		return wtd + wt[beg] - wt_r[beg] + wt[end] - wt_r[end];
+		wt[end] = (std::max(detail[end][nbMac] - dueDates[_end], val_t(0)) * priority[_end]);
+		wtd += wt[end];
+
+		for(addr_t j = end + 1; j <= nbJob; ++j){
+			wt[j] = (std::max(detail[j][nbMac] - dueDates[sol[j]], val_t(0)) * priority[sol[j]]); 
+			wtd += wt[j];
+		}
+
+		for(addr_t j = beg; j <= nbJob; ++j) wtd -= wt_r[j];
+
+		return wtd;
 	}
 };
 

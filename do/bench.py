@@ -29,18 +29,20 @@ if __name__ == '__main__':
 		'gen' : gen
 	}
 
+	seed = '0' if len(sys.argv) < 6 else sys.argv[5]
+
 	opt = {
 		'./run/pfsp-ii' : [
 			('--init', ['random', 'slack']),
 			('--pivoting', ['first', 'best']),
 			('--neighborhood', ['transpose', 'exchange', 'insert']),
-			('--seed', ['0'])
+			('--seed', [seed])
 		],
 		'./run/pfsp-vnd' : [
 			('--init', ['random', 'slack']),
 			('--pivoting', ['first', 'best']),
 			('--ordering', ['tie', 'tei']),
-			('--seed', ['0'])
+			('--seed', [seed])
 		]
 	}
 	

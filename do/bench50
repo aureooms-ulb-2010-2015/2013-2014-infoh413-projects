@@ -1,6 +1,7 @@
 #!/bin/sh
 
-T=$(date +"%m%d%H%M")
+T=$(date +"%m%d%H%M")$1
+shift
 
-ls data/in/50x20_* | python3 do/bench.py gen ./run/pfsp-ii -- data/out/$T/ii
-ls data/in/50x20_* | python3 do/bench.py gen ./run/pfsp-vnd -- data/out/$T/vnd
+ls data/in/50x20_* | python3 do/bench.py gen ./run/pfsp-ii -- data/out/$T/ii "$@"
+ls data/in/50x20_* | python3 do/bench.py gen ./run/pfsp-vnd -- data/out/$T/vnd "$@"

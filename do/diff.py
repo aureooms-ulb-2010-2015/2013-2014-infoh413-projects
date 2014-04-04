@@ -2,7 +2,7 @@ import sys, lib
 
 
 
-def do(hi, lo, x):
+def do(hi, lo, x, filt):
 
 	a = {
 		hi : {},
@@ -28,28 +28,37 @@ def do(hi, lo, x):
 
 	e = lib.io.ansy.ENDC
 
+	out = []
+
 	for key in a[hi]:
 		if key in a[lo]:
 			f, s = a[hi][key], a[lo][key]
 			d = s - f;
-			hit += f
-			lot += s
-			print('%s%s : %f <> %f --> %f%s' % (c(f, d), key, f, s, d, e))
+			txt = '%s%s : %f <> %f --> %f%s' % (c(f, d), key, f, s, d, e)
+			if filt in txt:
+				out.append((d, txt))
+				hit += f
+				lot += s
 		else:
-			print('%s : NO lo data' % (key))
+			txt = '%s : NO lo data' % (key)
+			if filt in txt : out.append((float('-inf'), txt))
 
 	for key in a[lo]:
 		if not key in a[hi]:
-			print('%s : NO hi data' % (key))
+			txt = '%s : NO hi data' % (key)
+			if filt in txt : out.append((float('-inf'), txt))
 
+	out.sort()
 
-	print('%s%s : %f <> %f --> %f%s' % (c(hit, lot - hit), 'total', hit, lot, lot - hit, e))
+	for _, txt in out : print(txt)
+	print('%stotal : %f <> %f --> %f%s' % (c(hit, lot - hit), hit, lot, lot - hit, e))
 
 
 if __name__ == '__main__':
 	hi = sys.argv[1]
 	lo = sys.argv[2]
 	x = int(sys.argv[3])
+	filt = '' if len(sys.argv) < 5 else sys.argv[4]
 
-	do(hi, lo, x)
+	do(hi, lo, x, filt)
 
