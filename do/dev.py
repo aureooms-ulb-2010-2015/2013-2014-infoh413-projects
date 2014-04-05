@@ -2,7 +2,7 @@ import sys, os, lib
 
 
 
-def do(data, best, out):
+def do(data, best, out, filt):
 
 	c = {}
 
@@ -17,6 +17,7 @@ def do(data, best, out):
 
 	def callback(f):
 		ins = os.path.basename(f.name)
+		if filt not in ins : return
 		dim, n = ins.split('_')
 		n = int(n)
 		alg = f.name[:-len(ins)]
@@ -30,22 +31,24 @@ def do(data, best, out):
 
 	lib.file.walk(data, callback)
 
+	if not os.path.exists(out) : os.makedirs(out)
+
 	for alg in sorted(dev.keys()):
 		with open(os.path.join(out, alg[len(data):].replace('/', '_')), 'w') as f:
+			print(f.name)
 			for dim in sorted(dev[alg].keys()):
 				for n in sorted(map(int, dev[alg][dim].keys())):
-					# f.write(dim)
-					# f.write(' ')
-					# f.write(str(n))
-					# f.write(' ')
 					f.write(str(dev[alg][dim][n]))
 					f.write('\n')
 
 
 if __name__ == '__main__':
-	data = sys.argv[1]
-	best = sys.argv[2]
-	out = sys.argv[3]
+	name = sys.argv[4]
 
-	do(data, best, out)
+	data = sys.argv[1] + name
+	best = sys.argv[2]
+	filt = '' if len(sys.argv) < 6 else sys.argv[5]
+	out = sys.argv[3] + name + (filt + '/' if filt else '')
+
+	do(data, best, out, filt)
 

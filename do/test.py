@@ -1,8 +1,18 @@
 import sys, os, lib, functools
 
 
+tmpfile = '.DAZIUGZD2038ZA_S'
 
-def do(inp, out, script):
+def rscript(f, a, b):
+	f.write('a.cost <- read.table("%s")$V1\n' % a)
+	f.write('b.cost <- read.table("%s")$V1\n' % b)
+	f.write('t <- t.test (a.cost, b.cost, paired=T)$p.value\n')
+	f.write('w <- wilcox.test (a.cost, b.cost, paired=T)$p.value\n')
+	f.write('print(t)\n')
+	f.write('print(w)\n')
+
+
+def do(inp):
 
 	alg = []
 
@@ -10,29 +20,31 @@ def do(inp, out, script):
 
 	alg = sorted(alg)
 
+	data = []
 
+	for i in range(len(alg)-1) : data.append([None for _ in range(len(alg))])
 
-	data = [[None for _ in range(len(alg))]] * (len(alg) - 1)
+	with open(tmpfile, 'w') as f:
+		for i in range(len(alg) - 1):
+			for j in range(i+1, len(alg)):
+				rscript(f, alg[i], alg[j])
 
-	n = 1
+	r, _ = lib.sys.run(['Rscript', tmpfile])
+	os.remove(tmpfile)
+	r = r.decode().split('\n')
+
+	k = 0
 
 	for i in range(len(alg) - 1):
 		for j in range(i+1, len(alg)):
-			print('%3d/%3d' % (n, (len(alg)**2 - len(alg))//2), alg[i], alg[j])
-			r, _ = lib.sys.run(script + [alg[i], alg[j]])
-			r = r.decode().split('\n')
-			data[i][j] = float(r[0].split(' ')[1]), float(r[1].split(' ')[1])
-			n += 1
+			data[i][j] = float(r[k].split(' ')[1]), float(r[k+1].split(' ')[1])
+			k += 2
 
-
-
-	lib.json.pretty({'alg':alg,'data':data}, sys.stdout)
+	lib.json.pretty([alg, data], sys.stdout)
 
 
 if __name__ == '__main__':
 	inp = sys.argv[1]
-	out = sys.argv[2]
-	script = sys.argv[3:]
 
-	do(inp, out, script)
+	do(inp)
 

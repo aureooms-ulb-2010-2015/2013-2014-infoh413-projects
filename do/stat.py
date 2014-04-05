@@ -1,25 +1,21 @@
-import sys, os, lib, functools
+import sys, os, lib, functools, json
 
 
 
-def do(inp, out, script):
+def do():
 
 	txt = functools.partial(print, end = ' ')
 
+	alg, data = json.load(sys.stdin)
+
 	def abbr(key):
 		a = ''
-		for word in key[len(inp):].split('_'):
+		for word in os.path.basename(key).split('_'):
 			if not word or word.isnumeric(): continue
 			elif len(word) > 3 or word == 'vnd' : a += word[0]
 			else : a += word
 
 		return a.upper()
-
-	alg = []
-
-	lib.dir.walk(inp, f = lambda x : alg.append(x))
-
-	alg = sorted(alg)
 
 
 	print('\\newpage\\cleardoublepage\\phantomsection')
@@ -47,12 +43,10 @@ def do(inp, out, script):
 		for j in range(i):
 			txt('&')
 		for j in range(i+1, len(alg)):
-			r, _ = lib.sys.run(script + [alg[i], alg[j]])
-			r = r.decode().split('\n')
 			txt('\\begin{tabular}{@{}l@{}}')
-			txt('{:.3e}'.format(float(r[0].split(' ')[1])))
+			txt('{:.3e}'.format(data[i][j][0]))
 			txt('\\\\')
-			txt('{:.3e}'.format(float(r[1].split(' ')[1])))
+			txt('{:.3e}'.format(data[i][j][1]))
 			txt('\\end{tabular}')
 			if j < len(alg) - 1 : txt('&')
 
@@ -66,9 +60,6 @@ def do(inp, out, script):
 
 
 if __name__ == '__main__':
-	inp = sys.argv[1]
-	out = sys.argv[2]
-	script = sys.argv[3:]
 
-	do(inp, out, script)
+	do()
 

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+python3 do/report.py data/out/$1 data/best/ 50x20 4
+python3 do/report.py data/out/$1 data/best/ 60x20 4
+python3 do/report.py data/out/$1 data/best/ 70x20 4
+python3 do/report.py data/out/$1 data/best/ 80x20 4
+python3 do/report.py data/out/$1 data/best/ 90x20 4
+python3 do/report.py data/out/$1 data/best/ 100x20 4

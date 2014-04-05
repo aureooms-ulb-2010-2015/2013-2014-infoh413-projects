@@ -2,7 +2,7 @@ import sys, os, lib
 
 
 
-def do(data, best, floatp):
+def do(data, best, filt, floatp):
 
 	c = {}
 
@@ -17,6 +17,7 @@ def do(data, best, floatp):
 
 	def callback(f):
 		ins = os.path.basename(f.name)
+		if filt not in ins : return
 		alg = f.name[:-len(ins)]
 
 		out.setdefault(alg, [0, 0, 0])
@@ -45,7 +46,7 @@ def do(data, best, floatp):
 	format = '%%s & %%.%df & %%d ms\\\\' % floatp
 		 
 	print('\\begin{longtable}{|l|d{%d}|r|}' % floatp)
-	print('\\caption{std dev and running time for 50x20 instances}\\\\')
+	print('\\caption{std dev and running time for %s instances}\\\\' % filt if filt else 'all')
 	print('\\hline')
 	print('\\textbf{alg} & \\textbf{std dev} & \\textbf{avg time}\\\\')
 	print('\\hline')
@@ -61,7 +62,7 @@ def do(data, best, floatp):
 
 
 	print('\\begin{longtable}{|l|d{%d}|r|}' % floatp)
-	print('\\caption{std dev and running time for 50x20 instances (sorted by dev)}\\\\')
+	print('\\caption{std dev and running time for %s instances (sorted by dev)}\\\\' % filt if filt else 'all')
 	print('\\hline')
 	print('\\textbf{alg} & \\textbf{std dev} & \\textbf{avg time}\\\\')
 	print('\\hline')
@@ -73,7 +74,7 @@ def do(data, best, floatp):
 	print('\\end{longtable}')
 
 	print('\\begin{longtable}{|l|d{%d}|r|}' % floatp)
-	print('\\caption{std dev and running time for 50x20 instances (sorted by time)}\\\\')
+	print('\\caption{std dev and running time for %s instances (sorted by time)}\\\\' % filt if filt else 'all')
 	print('\\hline')
 	print('\\textbf{alg} & \\textbf{std dev} & \\textbf{avg time}\\\\')
 	print('\\hline')
@@ -88,7 +89,8 @@ def do(data, best, floatp):
 if __name__ == '__main__':
 	data = sys.argv[1]
 	best = sys.argv[2]
-	floatp = -1 if len(sys.argv) < 4 else int(sys.argv[3])
+	filt = '' if len(sys.argv) < 4 else sys.argv[3]
+	floatp = -1 if len(sys.argv) < 5 else int(sys.argv[4])
 
-	do(data, best, floatp)
+	do(data, best, filt, floatp)
 

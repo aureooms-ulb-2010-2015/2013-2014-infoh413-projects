@@ -4,6 +4,7 @@ import sys, os
 inp = sys.argv[1]
 out = sys.argv[2]
 
+if not os.path.exists(out) : os.makedirs(out)
 
 with open(inp, 'r') as f:
 	for line in f:

@@ -2,14 +2,21 @@ import sys, os, lib
 
 def do(run, options, inp, out):
 
-	def callback(f):
-		o = os.path.join(out, os.path.basename(f))
-		print(o)
-		r,_ = lib.sys.run([run] + options + ['--', f])
-		with open(o, 'wb') as g : g.write(r)
+	if out != '--':
+		def callback(f):
+			o = os.path.join(out, os.path.basename(f))
+			print(o)
+			r,_ = lib.sys.run([run] + options + ['--', f])
+			with open(o, 'wb') as g : g.write(r)
 
+		if not os.path.exists(out) : os.makedirs(out)
 
-	if not os.path.exists(out) : os.mkdir(out)
+	else:
+		def callback(f):
+			print(os.path.basename(f))
+			r,_ = lib.sys.run([run] + options + ['--', f])
+			print(r.decode())
+
 
 	if os.path.isfile(inp) : callback(inp)
 	elif inp != '--' : lib.dir.walk(inp, f = callback)

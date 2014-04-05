@@ -29,25 +29,7 @@ usage :
 
 example:
 
-	python3 do/gen.py ./run/pfsp-ii --neighborhood transpose --init random --pivoting best data/in data/out
-
-
-
-
-tim.py
-==
-
-
-usage :
-
-	python3 do/gen.py <runnable> <**kwargs> <in>
-
-
-example:
-
-	ls data/in/50x20_* | python3 do/tim.py ./run/pfsp-ii --neighborhood exchange --init random --pivoting best --
-
-
+	ls data/in/50x20_* | python3 do/gen.py ./run/pfsp-ii --neighborhood transpose --init random --pivoting best -- data/out
 
 
 bench.py
@@ -88,13 +70,24 @@ report.py
 
 usage :
 
-	python3 do/report.py <out> <best> [<floatp>,]
+	python3 do/report.py <out> <best> [<filt>, <floatp>,]
 
 
 example :
 
-	python3 do/report.py data/out/03302218/ data/best/ 4
+	python3 do/report.py data/out/03302218/ data/best/ 100x20 4
 
+
+reportall
+==
+
+usage :
+
+	do/reportall <name>
+
+example :
+
+	do/reportall 04041753+all\:insert2/
 
 
 
@@ -104,17 +97,30 @@ dev.py
 
 usage :
 
-	python3 do/dev.py <in> <best> <out>
+	python3 do/dev.py <in> <best> <out> <name> <filt>
 
 
 example :
 
-	python3 do/dev.py data/out/03302218/ data/best/ data/dev
+	python3 do/dev.py data/out/ data/best/ data/dev/ 04041753+all\:insert2/ 100x20
+
+
+
+devall
+==
+
+usage :
+
+	do/devall <name>
+
+example :
+
+	do/devall 04041753+all\:insert2/
 
 
 
 
-stat.py // TODO CHANGE SEMANTICS
+stat.py
 ==
 
 

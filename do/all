@@ -1,0 +1,5 @@
+#!/bin/sh
+
+do/devall "$1"
+do/testall "$1"
+do/statall "$1"

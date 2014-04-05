@@ -1,4 +1,4 @@
-import sys, os, lib, gen, tim
+import sys, os, lib, gen
 
 
 
@@ -25,7 +25,6 @@ def do(ben, run, opt, inp, out):
 
 if __name__ == '__main__':
 	scr = {
-		'tim' : tim,
 		'gen' : gen
 	}
 
