@@ -8,7 +8,7 @@
 #include <set>
 
 #include "pfsp/neighborhood/exchange.hpp"
-#include "pfsp/neighborhood/insert.hpp"
+#include "pfsp/neighborhood/insert2.hpp"
 #include "pfsp/neighborhood/transpose.hpp"
 
 #include "pfsp/apply/exchange.hpp"
@@ -64,7 +64,7 @@ namespace pfsp_vnd{
 		};
 
 		N insert = {
-			&pfsp::neighborhood::insert<S, H, M>,
+			&pfsp::neighborhood::insert2<S, H, M>,
 			&pfsp::apply::insert<S, M>,
 			nullptr
 		};

@@ -30,8 +30,8 @@
 
 
 typedef size_t addr_t;
-typedef int32_t val_t;
-typedef int32_t priority_t;
+typedef int_least32_t val_t;
+typedef int_least32_t priority_t;
 
 typedef std::vector<val_t> DD;
 typedef std::vector<priority_t> PR;
