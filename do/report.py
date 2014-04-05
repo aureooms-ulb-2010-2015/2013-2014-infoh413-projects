@@ -46,7 +46,8 @@ def do(data, best, filt, floatp):
 	format = '%%s & %%.%df & %%d ms\\\\' % floatp
 		 
 	print('\\begin{longtable}{|l|d{%d}|r|}' % floatp)
-	print('\\caption{std dev and running time for %s instances}\\\\' % filt if filt else 'all')
+	print('\\caption{std dev and running time for %s instances}' % filt if filt else 'all')
+	print('\\label{app:report/table/%s}\\\\' % filt if filt else 'all')
 	print('\\hline')
 	print('\\textbf{alg} & \\textbf{std dev} & \\textbf{avg time}\\\\')
 	print('\\hline')

@@ -1,6 +1,6 @@
 $(VERBOSE).SILENT:
 
-FILENAME = test
+FILENAME = report
 STYLESHEET = perso
 
 #DONOTTOUCH

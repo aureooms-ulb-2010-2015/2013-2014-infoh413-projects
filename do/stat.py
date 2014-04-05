@@ -2,7 +2,7 @@ import sys, os, lib, functools, json
 
 
 
-def do():
+def do(name):
 
 	txt = functools.partial(print, end = ' ')
 
@@ -23,6 +23,8 @@ def do():
 	print('\\begin{landscape}')
 
 	print('\\begin{table}')
+	print('\\caption{Student t-test and Wilcoxon test results for %s instances}' % name)
+	print('\\label{app:stat/table/%s}' % name)
 	print('\\tiny')
 	print('\\tabcolsep=0.11cm')
 
@@ -60,6 +62,6 @@ def do():
 
 
 if __name__ == '__main__':
-
-	do()
+	name = sys.argv[1]
+	do(name)
 

@@ -1,0 +1,45 @@
+\newpage\cleardoublepage\phantomsection
+\thispagestyle{empty}
+\begin{landscape}
+\begin{table}
+\caption{Student t-test and Wilcoxon test results for 50x20 instances}
+\label{app:stat/table/50x20}
+\tiny
+\tabcolsep=0.11cm
+\begin{longtable}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+& \textbf{IIRBI} & \textbf{IIRBT} & \textbf{IIRFE} & \textbf{IIRFI} & \textbf{IIRFT} & \textbf{IISBE} & \textbf{IISBI} & \textbf{IISBT} & \textbf{IISFE} & \textbf{IISFI} & \textbf{IISFT} & \textbf{VRFTEI} & \textbf{VRFTIE} & \textbf{VSFTEI} & \textbf{VSFTIE}\\
+\hline
+\textbf{IIRBE} & \begin{tabular}{@{}l@{}} 4.237e-01 \\ 3.750e-01 \end{tabular} & \begin{tabular}{@{}l@{}} 2.105e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 1.050e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 2.888e-04 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 2.422e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 4.176e-01 \\ 1.934e-01 \end{tabular} & \begin{tabular}{@{}l@{}} 9.331e-03 \\ 9.766e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 1.136e-04 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 2.273e-02 \\ 1.953e-02 \end{tabular} & \begin{tabular}{@{}l@{}} 4.383e-04 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 1.153e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 3.938e-04 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 8.102e-04 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 5.302e-03 \\ 3.906e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 5.760e-04 \\ 1.953e-03 \end{tabular} \\
+\hline
+\textbf{IIRBI} & & \begin{tabular}{@{}l@{}} 2.042e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 3.310e-02 \\ 9.766e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 9.663e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 2.376e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 9.005e-01 \\ 1.309e-01 \end{tabular} & \begin{tabular}{@{}l@{}} 6.473e-02 \\ 1.953e-02 \end{tabular} & \begin{tabular}{@{}l@{}} 7.896e-05 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 1.473e-01 \\ 1.309e-01 \end{tabular} & \begin{tabular}{@{}l@{}} 2.763e-02 \\ 5.859e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 3.821e-04 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 2.944e-02 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 2.914e-02 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 4.773e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 2.370e-02 \\ 3.906e-03 \end{tabular} \\
+\hline
+\textbf{IIRBT} & & & \begin{tabular}{@{}l@{}} 1.746e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 1.649e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 1.246e-02 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 2.102e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 1.773e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 3.078e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 2.028e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 1.726e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 2.590e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 1.786e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 1.851e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 1.931e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 1.750e-03 \\ 1.953e-03 \end{tabular} \\
+\hline
+\textbf{IIRFE} & & & & \begin{tabular}{@{}l@{}} 2.851e-04 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 2.002e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 1.195e-03 \\ 3.906e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 8.242e-01 \\ 8.457e-01 \end{tabular} & \begin{tabular}{@{}l@{}} 1.939e-05 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 1.346e-01 \\ 4.883e-02 \end{tabular} & \begin{tabular}{@{}l@{}} 3.453e-02 \\ 2.734e-02 \end{tabular} & \begin{tabular}{@{}l@{}} 7.125e-05 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 1.625e-01 \\ 3.223e-01 \end{tabular} & \begin{tabular}{@{}l@{}} 2.223e-01 \\ 3.750e-01 \end{tabular} & \begin{tabular}{@{}l@{}} 6.928e-01 \\ 6.250e-01 \end{tabular} & \begin{tabular}{@{}l@{}} 2.367e-01 \\ 3.223e-01 \end{tabular} \\
+\hline
+\textbf{IIRFI} & & & & & \begin{tabular}{@{}l@{}} 1.887e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 3.689e-04 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 1.055e-01 \\ 6.445e-02 \end{tabular} & \begin{tabular}{@{}l@{}} 1.658e-05 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 4.674e-03 \\ 1.367e-02 \end{tabular} & \begin{tabular}{@{}l@{}} 3.827e-01 \\ 2.754e-01 \end{tabular} & \begin{tabular}{@{}l@{}} 4.462e-05 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 9.588e-02 \\ 1.602e-01 \end{tabular} & \begin{tabular}{@{}l@{}} 2.941e-01 \\ 2.324e-01 \end{tabular} & \begin{tabular}{@{}l@{}} 3.396e-01 \\ 6.445e-02 \end{tabular} & \begin{tabular}{@{}l@{}} 1.458e-02 \\ 3.711e-02 \end{tabular} \\
+\hline
+\textbf{IIRFT} & & & & & & \begin{tabular}{@{}l@{}} 2.414e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 2.026e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 3.614e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 2.338e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 1.973e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 3.046e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 2.040e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 2.115e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 2.231e-03 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 2.007e-03 \\ 1.953e-03 \end{tabular} \\
+\hline
+\textbf{IISBE} & & & & & & & \begin{tabular}{@{}l@{}} 7.956e-06 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 1.524e-04 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 6.041e-02 \\ 8.398e-02 \end{tabular} & \begin{tabular}{@{}l@{}} 4.349e-04 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 6.605e-04 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 5.566e-04 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 2.414e-04 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 2.784e-02 \\ 4.883e-02 \end{tabular} & \begin{tabular}{@{}l@{}} 4.025e-03 \\ 3.906e-03 \end{tabular} \\
+\hline
+\textbf{IISBI} & & & & & & & & \begin{tabular}{@{}l@{}} 4.882e-05 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 2.372e-01 \\ 2.754e-01 \end{tabular} & \begin{tabular}{@{}l@{}} 2.058e-01 \\ 1.934e-01 \end{tabular} & \begin{tabular}{@{}l@{}} 1.324e-04 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 5.017e-01 \\ 7.695e-01 \end{tabular} & \begin{tabular}{@{}l@{}} 3.954e-01 \\ 6.250e-01 \end{tabular} & \begin{tabular}{@{}l@{}} 8.571e-01 \\ 9.219e-01 \end{tabular} & \begin{tabular}{@{}l@{}} 7.035e-01 \\ 8.457e-01 \end{tabular} \\
+\hline
+\textbf{IISBT} & & & & & & & & & \begin{tabular}{@{}l@{}} 1.039e-04 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 3.371e-05 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 7.044e-01 \\ 6.953e-01 \end{tabular} & \begin{tabular}{@{}l@{}} 2.123e-05 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 3.938e-05 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 5.510e-05 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 3.188e-05 \\ 1.953e-03 \end{tabular} \\
+\hline
+\textbf{IISFE} & & & & & & & & & & \begin{tabular}{@{}l@{}} 7.951e-03 \\ 1.953e-02 \end{tabular} & \begin{tabular}{@{}l@{}} 3.996e-04 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 3.635e-02 \\ 6.445e-02 \end{tabular} & \begin{tabular}{@{}l@{}} 3.735e-02 \\ 1.953e-02 \end{tabular} & \begin{tabular}{@{}l@{}} 6.278e-02 \\ 6.445e-02 \end{tabular} & \begin{tabular}{@{}l@{}} 2.921e-02 \\ 1.953e-02 \end{tabular} \\
+\hline
+\textbf{IISFI} & & & & & & & & & & & \begin{tabular}{@{}l@{}} 1.062e-04 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 3.966e-01 \\ 3.223e-01 \end{tabular} & \begin{tabular}{@{}l@{}} 5.673e-01 \\ 6.250e-01 \end{tabular} & \begin{tabular}{@{}l@{}} 5.752e-01 \\ 3.223e-01 \end{tabular} & \begin{tabular}{@{}l@{}} 2.274e-01 \\ 3.750e-01 \end{tabular} \\
+\hline
+\textbf{IISFT} & & & & & & & & & & & & \begin{tabular}{@{}l@{}} 9.295e-05 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 1.760e-04 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 2.172e-04 \\ 1.953e-03 \end{tabular} & \begin{tabular}{@{}l@{}} 8.267e-05 \\ 1.953e-03 \end{tabular} \\
+\hline
+\textbf{VRFTEI} & & & & & & & & & & & & & \begin{tabular}{@{}l@{}} 8.011e-01 \\ 8.457e-01 \end{tabular} & \begin{tabular}{@{}l@{}} 8.144e-01 \\ 9.219e-01 \end{tabular} & \begin{tabular}{@{}l@{}} 7.479e-01 \\ 9.219e-01 \end{tabular} \\
+\hline
+\textbf{VRFTIE} & & & & & & & & & & & & & & \begin{tabular}{@{}l@{}} 7.571e-01 \\ 6.953e-01 \end{tabular} & \begin{tabular}{@{}l@{}} 7.111e-01 \\ 1.000e+00 \end{tabular} \\
+\hline
+\textbf{VSFTEI} & & & & & & & & & & & & & & & \begin{tabular}{@{}l@{}} 9.212e-01 \\ 6.250e-01 \end{tabular} \\
+\hline
+\end{longtable}
+\end{table}
+\end{landscape}

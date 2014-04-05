@@ -1,0 +1,115 @@
+\begin{longtable}{|l|d{4}|r|}
+\caption{std dev and running time for 50x20 instances}
+\label{app:report/table/50x20}\\
+\hline
+\textbf{alg} & \textbf{std dev} & \textbf{avg time}\\
+\hline
+IIRBE & 59.2969 & 3024 ms\\
+\hline
+IIRBI & 49.3596 & 6007 ms\\
+\hline
+IIRBT & 1033.8080 & 46 ms\\
+\hline
+IIRFE & 25.7903 & 10132 ms\\
+\hline
+IIRFI & 15.2501 & 12937 ms\\
+\hline
+IIRFT & 990.2279 & 67 ms\\
+\hline
+IISBE & 50.8140 & 1395 ms\\
+\hline
+IISBI & 24.7393 & 3099 ms\\
+\hline
+IISBT & 144.9350 & 46 ms\\
+\hline
+IISFE & 33.9047 & 2587 ms\\
+\hline
+IISFI & 17.8570 & 6242 ms\\
+\hline
+IISFT & 141.1087 & 63 ms\\
+\hline
+VRFTEI & 20.9437 & 3807 ms\\
+\hline
+VRFTIE & 20.2999 & 5241 ms\\
+\hline
+VSFTEI & 22.7949 & 1738 ms\\
+\hline
+VSFTIE & 22.1499 & 2089 ms\\
+\hline
+\end{longtable}
+\begin{longtable}{|l|d{4}|r|}
+\caption{std dev and running time for 50x20 instances (sorted by dev)}\\
+\hline
+\textbf{alg} & \textbf{std dev} & \textbf{avg time}\\
+\hline
+IIRFI & 15.2501 & 12937 ms\\
+\hline
+IISFI & 17.8570 & 6242 ms\\
+\hline
+VRFTIE & 20.2999 & 5241 ms\\
+\hline
+VRFTEI & 20.9437 & 3807 ms\\
+\hline
+VSFTIE & 22.1499 & 2089 ms\\
+\hline
+VSFTEI & 22.7949 & 1738 ms\\
+\hline
+IISBI & 24.7393 & 3099 ms\\
+\hline
+IIRFE & 25.7903 & 10132 ms\\
+\hline
+IISFE & 33.9047 & 2587 ms\\
+\hline
+IIRBI & 49.3596 & 6007 ms\\
+\hline
+IISBE & 50.8140 & 1395 ms\\
+\hline
+IIRBE & 59.2969 & 3024 ms\\
+\hline
+IISFT & 141.1087 & 63 ms\\
+\hline
+IISBT & 144.9350 & 46 ms\\
+\hline
+IIRFT & 990.2279 & 67 ms\\
+\hline
+IIRBT & 1033.8080 & 46 ms\\
+\hline
+\end{longtable}
+\begin{longtable}{|l|d{4}|r|}
+\caption{std dev and running time for 50x20 instances (sorted by time)}\\
+\hline
+\textbf{alg} & \textbf{std dev} & \textbf{avg time}\\
+\hline
+IISBT & 144.9350 & 46 ms\\
+\hline
+IIRBT & 1033.8080 & 46 ms\\
+\hline
+IISFT & 141.1087 & 63 ms\\
+\hline
+IIRFT & 990.2279 & 67 ms\\
+\hline
+IISBE & 50.8140 & 1395 ms\\
+\hline
+VSFTEI & 22.7949 & 1738 ms\\
+\hline
+VSFTIE & 22.1499 & 2089 ms\\
+\hline
+IISFE & 33.9047 & 2587 ms\\
+\hline
+IIRBE & 59.2969 & 3024 ms\\
+\hline
+IISBI & 24.7393 & 3099 ms\\
+\hline
+VRFTEI & 20.9437 & 3807 ms\\
+\hline
+VRFTIE & 20.2999 & 5241 ms\\
+\hline
+IIRBI & 49.3596 & 6007 ms\\
+\hline
+IISFI & 17.8570 & 6242 ms\\
+\hline
+IIRFE & 25.7903 & 10132 ms\\
+\hline
+IIRFI & 15.2501 & 12937 ms\\
+\hline
+\end{longtable}
