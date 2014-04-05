@@ -1,5 +1,6 @@
-import sys, os, lib, functools, json
+import sys, os, lib, functools, json, math
 
+log = lambda x : math.log(x, 10)
 
 
 def do(name):
@@ -7,6 +8,15 @@ def do(name):
 	txt = functools.partial(print, end = ' ')
 
 	alg, data = json.load(sys.stdin)
+
+	m, M = float("inf"), float("-inf")
+
+	for x in data:
+		for y in x:
+			if y is not None : m, M = min(m, y[1]), max(M, y[1])
+
+	m, M = log(m), log(M)
+	w = m - M
 
 	def abbr(key):
 		a = ''
@@ -45,10 +55,17 @@ def do(name):
 		for j in range(i):
 			txt('&')
 		for j in range(i+1, len(alg)):
+			cellcolor = int(min(max(1 - log(data[i][j][1]) / w, 0), 1) * 100)
+			textcolor = (cellcolor + 50) % 100
+			txt('\\cellcolor{black!%d}' % cellcolor)
 			txt('\\begin{tabular}{@{}l@{}}')
+			txt('\\textcolor{black!%d}{' % textcolor)
 			txt('{:.3e}'.format(data[i][j][0]))
+			txt('}')
 			txt('\\\\')
+			txt('\\textcolor{black!%d}{' % textcolor)
 			txt('{:.3e}'.format(data[i][j][1]))
+			txt('}')
 			txt('\\end{tabular}')
 			if j < len(alg) - 1 : txt('&')
 
