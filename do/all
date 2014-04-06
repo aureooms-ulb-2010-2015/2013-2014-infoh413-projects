@@ -1,9 +1,10 @@
 #!/bin/sh
 
 
-make
+make clean all
 
 T=$(date +"%m%d%H%M")$1
+echo "$T"
 
 do/benchall "$1"
 do/devall "$T"
@@ -14,4 +15,4 @@ do/reportall "$T"
 cp data/stat/"$T"* report/tex/appendix/B\ Statistical\ Tests/001\ Tables/
 cp data/report/"$T"* report/tex/appendix/A\ Average\ Time\ and\ Standard\ Deviation/001\ Tables/
 
-cd report && make && evince report.pdf
+cd report && make clean all && evince report.pdf &

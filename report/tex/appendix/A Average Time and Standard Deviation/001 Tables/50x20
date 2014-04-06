@@ -1,6 +1,8 @@
-\begin{longtable}{|l|d{4}|r|}
-\caption{std dev and running time for 50x20 instances}
-\label{app:report/table/50x20}\\
+\begin{table}[H]
+\begin{center}
+\caption{std dev and computation time for 50x20 instances}
+\label{app:report/table/50x20}
+\begin{tabular}{|l|d{4}|r|}
 \hline
 \textbf{alg} & \textbf{std dev} & \textbf{avg time}\\
 \hline
@@ -36,9 +38,14 @@ VSFTEI & 22.7949 & 1738 ms\\
 \hline
 VSFTIE & 22.1499 & 2089 ms\\
 \hline
-\end{longtable}
-\begin{longtable}{|l|d{4}|r|}
-\caption{std dev and running time for 50x20 instances (sorted by dev)}\\
+\end{tabular}
+\end{center}
+\end{table}
+\begin{table}[H]
+\begin{center}
+\caption{std dev and computation time for 50x20 instances (sorted by dev)}
+\label{app:report/table/50x20_dev}
+\begin{tabular}{|l|d{4}|r|}
 \hline
 \textbf{alg} & \textbf{std dev} & \textbf{avg time}\\
 \hline
@@ -74,9 +81,14 @@ IIRFT & 990.2279 & 67 ms\\
 \hline
 IIRBT & 1033.8080 & 46 ms\\
 \hline
-\end{longtable}
-\begin{longtable}{|l|d{4}|r|}
-\caption{std dev and running time for 50x20 instances (sorted by time)}\\
+\end{tabular}
+\end{center}
+\end{table}
+\begin{table}[H]
+\begin{center}
+\caption{std dev and computation time for 50x20 instances (sorted by time)}
+\label{app:report/table/50x20_time}
+\begin{tabular}{|l|d{4}|r|}
 \hline
 \textbf{alg} & \textbf{std dev} & \textbf{avg time}\\
 \hline
@@ -112,4 +124,6 @@ IIRFE & 25.7903 & 10132 ms\\
 \hline
 IIRFI & 15.2501 & 12937 ms\\
 \hline
-\end{longtable}
+\end{tabular}
+\end{center}
+\end{table}

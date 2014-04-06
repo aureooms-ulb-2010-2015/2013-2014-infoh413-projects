@@ -44,10 +44,13 @@ def do(data, best, filt, floatp):
 	bytime = []
 
 	format = '%%s & %%.%df & %%d ms\\\\' % floatp
+
+	print('\\begin{table}[H]')
+	print('\\begin{center}')
+	print('\\caption{std dev and computation time for %s instances}' % filt if filt else 'all')
+	print('\\label{app:report/table/%s}' % filt if filt else 'all')
 		 
-	print('\\begin{longtable}{|l|d{%d}|r|}' % floatp)
-	print('\\caption{std dev and running time for %s instances}' % filt if filt else 'all')
-	print('\\label{app:report/table/%s}\\\\' % filt if filt else 'all')
+	print('\\begin{tabular}{|l|d{%d}|r|}' % floatp)
 	print('\\hline')
 	print('\\textbf{alg} & \\textbf{std dev} & \\textbf{avg time}\\\\')
 	print('\\hline')
@@ -59,11 +62,17 @@ def do(data, best, filt, floatp):
 		print(format % (abbr(key), out[key][0], out[key][1]))
 		print('\\hline')
 
-	print('\\end{longtable}')
+	print('\\end{tabular}')
+	print('\\end{center}')
+	print('\\end{table}')
+
+	print('\\begin{table}[H]')
+	print('\\begin{center}')
+	print('\\caption{std dev and computation time for %s instances (sorted by dev)}' % filt if filt else 'all')
+	print('\\label{app:report/table/%s_dev}' % filt if filt else 'all')
 
 
-	print('\\begin{longtable}{|l|d{%d}|r|}' % floatp)
-	print('\\caption{std dev and running time for %s instances (sorted by dev)}\\\\' % filt if filt else 'all')
+	print('\\begin{tabular}{|l|d{%d}|r|}' % floatp)
 	print('\\hline')
 	print('\\textbf{alg} & \\textbf{std dev} & \\textbf{avg time}\\\\')
 	print('\\hline')
@@ -72,10 +81,16 @@ def do(data, best, filt, floatp):
 		print(format % (abbr(key), dev, t))
 		print('\\hline')
 
-	print('\\end{longtable}')
+	print('\\end{tabular}')
+	print('\\end{center}')
+	print('\\end{table}')
 
-	print('\\begin{longtable}{|l|d{%d}|r|}' % floatp)
-	print('\\caption{std dev and running time for %s instances (sorted by time)}\\\\' % filt if filt else 'all')
+	print('\\begin{table}[H]')
+	print('\\begin{center}')
+	print('\\caption{std dev and computation time for %s instances (sorted by time)}' % filt if filt else 'all')
+	print('\\label{app:report/table/%s_time}' % filt if filt else 'all')
+
+	print('\\begin{tabular}{|l|d{%d}|r|}' % floatp)
 	print('\\hline')
 	print('\\textbf{alg} & \\textbf{std dev} & \\textbf{avg time}\\\\')
 	print('\\hline')
@@ -84,7 +99,9 @@ def do(data, best, filt, floatp):
 		print(format % (abbr(key), dev, t))
 		print('\\hline')
 
-	print('\\end{longtable}')
+	print('\\end{tabular}')
+	print('\\end{center}')
+	print('\\end{table}')
 
 
 if __name__ == '__main__':

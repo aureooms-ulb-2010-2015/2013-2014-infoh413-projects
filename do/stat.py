@@ -9,14 +9,14 @@ def do(name):
 
 	alg, data = json.load(sys.stdin)
 
-	m, M = float("inf"), float("-inf")
+	# m, M = float("inf"), float("-inf")
 
-	for x in data:
-		for y in x:
-			if y is not None : m, M = min(m, y[1]), max(M, y[1])
+	# for x in data:
+	# 	for y in x:
+	# 		if y is not None : m, M = min(m, y[1]), max(M, y[1])
 
-	m, M = log(m), log(M)
-	w = m - M
+	# m, M = log(m), log(M)
+	# w = m - M
 
 	def abbr(key):
 		a = ''
@@ -28,18 +28,19 @@ def do(name):
 		return a.upper()
 
 
-	print('\\newpage\\cleardoublepage\\phantomsection')
-	print('\\thispagestyle{empty}')
-	print('\\begin{landscape}')
+	# print('\\newpage\\cleardoublepage\\phantomsection')
+	# print('\\thispagestyle{empty}')
+	# print('\\begin{landscape}')
 
-	print('\\begin{table}')
+	print('\\begin{table}[H]')
+	print('\\begin{center}')
 	print('\\caption{Student t-test and Wilcoxon test results for %s instances}' % name)
 	print('\\label{app:stat/table/%s}' % name)
 	print('\\tiny')
 	print('\\tabcolsep=0.11cm')
 
 
-	print('\\begin{longtable}{|%s}' % ('l|' * len(alg)))
+	print('\\begin{tabular}{|%s}' % ('l|' * len(alg)))
 	print('\\hline')
 	txt('&')
 
@@ -55,7 +56,7 @@ def do(name):
 		for j in range(i):
 			txt('&')
 		for j in range(i+1, len(alg)):
-			cellcolor = int(min(max(1 - log(data[i][j][1]) / w, 0), 1) * 100)
+			cellcolor = int(data[i][j][1] * 100)
 			textcolor = (cellcolor + 50) % 100
 			txt('\\cellcolor{black!%d}' % cellcolor)
 			txt('\\begin{tabular}{@{}l@{}}')
@@ -73,9 +74,10 @@ def do(name):
 		print('\\hline')
 
 
-	print('\\end{longtable}')
+	print('\\end{tabular}')
+	print('\\end{center}')
 	print('\\end{table}')
-	print('\\end{landscape}')
+	# print('\\end{landscape}')
 
 
 if __name__ == '__main__':
