@@ -4,38 +4,38 @@
 \subsection{Regular usage}
 
 
-stdin prompt
+Iterative improvement
 
-\shellcmd{java -jar dist/scc.jar}
+\shellcmd{./run/pfsp-ii --init slack --pivoting first --neighborhood insert -- data/in/100x20\_9 -v}
 
-stdin pipe
+\begin{tabular}{rl}
+\verb!--init! & \verb!{slack, random}!\\
+\verb!--pivoting! & \verb!{first, best}!\\
+\verb!--neighborhood! & \verb!{exchange, insert, transpose}!\\
+\verb!--seed! & \verb!long int[]! default \verb![high_res_clock::now()]!\\
+\verb!-v, --verbose! & verbose output\\
+\verb!-h, --help! & show help\\
+\end{tabular}
 
-\shellcmd{cat test/in/1 | java -jar dist/scc.jar}
+Variable neighborhood descent
 
-\subsection{Tests}
+\shellcmd{./run/pfsp-vnd --init random --ordering tie -- data/in/100x20\_9 -v}
 
-make them
 
-\shellcmd{cd test \&\& make}
+\begin{tabular}{rl}
+\verb!--init! & \verb!{slack, random}!\\
+\verb!--pivoting! & \verb!{first, best}! default \verb!first!\\
+\verb!--ordering! & \verb!{tie, tei}!\\
+\verb!--seed! & \verb!long int[]! default \verb![high_res_clock::now()]!\\
+\verb!-v, --verbose! & verbose output\\
+\verb!-h, --help! & show help\\
+\end{tabular}
 
-run them
 
-\shellcmd{lli test/out/gcd}
 
-\shellcmd{lli test/out/lcm}
 
-\shellcmd{lli test/out/fibonnaci}
+\subsection{Generate all data}
 
-\shellcmd{lli test/out/impl}
+Output in data/dev, data/test and data/out.
 
-\shellcmd{lli test/out/binarysearch}
-
-\shellcmd{lli test/out/signed}
-
-\shellcmd{lli test/out/multiply}
-
-\shellcmd{lli test/out/divide}
-
-\shellcmd{lli test/out/literals}
-
-\shellcmd{lli test/out/iotest}
+\shellcmd{do/all +mytestname}

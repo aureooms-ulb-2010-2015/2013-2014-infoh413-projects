@@ -1,128 +1,128 @@
 \begin{table}[H]
 \begin{center}
-\caption{std dev and computation time for 100x20 instances}
+\caption{avg rel \% dev and computation time for 100x20 instances}
 \label{app:report/table/100x20}
 \begin{tabular}{|l|d{4}|r|}
 \hline
-\textbf{alg} & \textbf{std dev} & \textbf{avg time}\\
+\textbf{alg} & \textbf{avg rel \% dev} & \textbf{avg time}\\
 \hline
-IIRBE & 12.8909 & 38897 ms\\
+IIRBE & 12.8909 & 3889 ms\\
 \hline
-IIRBI & 10.7560 & 84735 ms\\
+IIRBI & 10.7560 & 8473 ms\\
 \hline
-IIRBT & 143.5449 & 526 ms\\
+IIRBT & 143.5449 & 52 ms\\
 \hline
-IIRFE & 3.5779 & 206754 ms\\
+IIRFE & 3.5779 & 20675 ms\\
 \hline
-IIRFI & 1.4422 & 227619 ms\\
+IIRFI & 1.4422 & 22761 ms\\
 \hline
-IIRFT & 140.0989 & 720 ms\\
+IIRFT & 140.0989 & 72 ms\\
 \hline
-IISBE & 10.5009 & 29129 ms\\
+IISBE & 10.5009 & 2912 ms\\
 \hline
-IISBI & 5.6719 & 56915 ms\\
+IISBI & 5.6719 & 5691 ms\\
 \hline
-IISBT & 41.6100 & 407 ms\\
+IISBT & 41.6100 & 40 ms\\
 \hline
-IISFE & 5.1229 & 66387 ms\\
+IISFE & 5.1229 & 6638 ms\\
 \hline
-IISFI & 1.8223 & 146201 ms\\
+IISFI & 1.8223 & 14620 ms\\
 \hline
-IISFT & 38.3003 & 495 ms\\
+IISFT & 38.3003 & 49 ms\\
 \hline
-VRFTEI & 4.1919 & 65035 ms\\
+VRFTEI & 4.1919 & 6503 ms\\
 \hline
-VRFTIE & 4.6870 & 104372 ms\\
+VRFTIE & 4.6870 & 10437 ms\\
 \hline
-VSFTEI & 6.9544 & 31686 ms\\
+VSFTEI & 6.9544 & 3168 ms\\
 \hline
-VSFTIE & 4.1647 & 45708 ms\\
+VSFTIE & 4.1647 & 4570 ms\\
 \hline
 \end{tabular}
 \end{center}
 \end{table}
 \begin{table}[H]
 \begin{center}
-\caption{std dev and computation time for 100x20 instances (sorted by dev)}
+\caption{avg rel \% dev and computation time for 100x20 instances (sorted by dev)}
 \label{app:report/table/100x20_dev}
 \begin{tabular}{|l|d{4}|r|}
 \hline
-\textbf{alg} & \textbf{std dev} & \textbf{avg time}\\
+\textbf{alg} & \textbf{avg rel \% dev} & \textbf{avg time}\\
 \hline
-IIRFI & 1.4422 & 227619 ms\\
+IIRFI & 1.4422 & 22761 ms\\
 \hline
-IISFI & 1.8223 & 146201 ms\\
+IISFI & 1.8223 & 14620 ms\\
 \hline
-IIRFE & 3.5779 & 206754 ms\\
+IIRFE & 3.5779 & 20675 ms\\
 \hline
-VSFTIE & 4.1647 & 45708 ms\\
+VSFTIE & 4.1647 & 4570 ms\\
 \hline
-VRFTEI & 4.1919 & 65035 ms\\
+VRFTEI & 4.1919 & 6503 ms\\
 \hline
-VRFTIE & 4.6870 & 104372 ms\\
+VRFTIE & 4.6870 & 10437 ms\\
 \hline
-IISFE & 5.1229 & 66387 ms\\
+IISFE & 5.1229 & 6638 ms\\
 \hline
-IISBI & 5.6719 & 56915 ms\\
+IISBI & 5.6719 & 5691 ms\\
 \hline
-VSFTEI & 6.9544 & 31686 ms\\
+VSFTEI & 6.9544 & 3168 ms\\
 \hline
-IISBE & 10.5009 & 29129 ms\\
+IISBE & 10.5009 & 2912 ms\\
 \hline
-IIRBI & 10.7560 & 84735 ms\\
+IIRBI & 10.7560 & 8473 ms\\
 \hline
-IIRBE & 12.8909 & 38897 ms\\
+IIRBE & 12.8909 & 3889 ms\\
 \hline
-IISFT & 38.3003 & 495 ms\\
+IISFT & 38.3003 & 49 ms\\
 \hline
-IISBT & 41.6100 & 407 ms\\
+IISBT & 41.6100 & 40 ms\\
 \hline
-IIRFT & 140.0989 & 720 ms\\
+IIRFT & 140.0989 & 72 ms\\
 \hline
-IIRBT & 143.5449 & 526 ms\\
+IIRBT & 143.5449 & 52 ms\\
 \hline
 \end{tabular}
 \end{center}
 \end{table}
 \begin{table}[H]
 \begin{center}
-\caption{std dev and computation time for 100x20 instances (sorted by time)}
+\caption{avg rel \% dev and computation time for 100x20 instances (sorted by time)}
 \label{app:report/table/100x20_time}
 \begin{tabular}{|l|d{4}|r|}
 \hline
-\textbf{alg} & \textbf{std dev} & \textbf{avg time}\\
+\textbf{alg} & \textbf{avg rel \% dev} & \textbf{avg time}\\
 \hline
-IISBT & 41.6100 & 407 ms\\
+IISBT & 41.6100 & 40 ms\\
 \hline
-IISFT & 38.3003 & 495 ms\\
+IISFT & 38.3003 & 49 ms\\
 \hline
-IIRBT & 143.5449 & 526 ms\\
+IIRBT & 143.5449 & 52 ms\\
 \hline
-IIRFT & 140.0989 & 720 ms\\
+IIRFT & 140.0989 & 72 ms\\
 \hline
-IISBE & 10.5009 & 29129 ms\\
+IISBE & 10.5009 & 2912 ms\\
 \hline
-VSFTEI & 6.9544 & 31686 ms\\
+VSFTEI & 6.9544 & 3168 ms\\
 \hline
-IIRBE & 12.8909 & 38897 ms\\
+IIRBE & 12.8909 & 3889 ms\\
 \hline
-VSFTIE & 4.1647 & 45708 ms\\
+VSFTIE & 4.1647 & 4570 ms\\
 \hline
-IISBI & 5.6719 & 56915 ms\\
+IISBI & 5.6719 & 5691 ms\\
 \hline
-VRFTEI & 4.1919 & 65035 ms\\
+VRFTEI & 4.1919 & 6503 ms\\
 \hline
-IISFE & 5.1229 & 66387 ms\\
+IISFE & 5.1229 & 6638 ms\\
 \hline
-IIRBI & 10.7560 & 84735 ms\\
+IIRBI & 10.7560 & 8473 ms\\
 \hline
-VRFTIE & 4.6870 & 104372 ms\\
+VRFTIE & 4.6870 & 10437 ms\\
 \hline
-IISFI & 1.8223 & 146201 ms\\
+IISFI & 1.8223 & 14620 ms\\
 \hline
-IIRFE & 3.5779 & 206754 ms\\
+IIRFE & 3.5779 & 20675 ms\\
 \hline
-IIRFI & 1.4422 & 227619 ms\\
+IIRFI & 1.4422 & 22761 ms\\
 \hline
 \end{tabular}
 \end{center}

@@ -47,16 +47,17 @@ def do(data, best, filt, floatp):
 
 	print('\\begin{table}[H]')
 	print('\\begin{center}')
-	print('\\caption{std dev and computation time for %s instances}' % filt if filt else 'all')
+	print('\\caption{avg rel \\%% dev and computation time for %s instances}' % filt if filt else 'all')
 	print('\\label{app:report/table/%s}' % filt if filt else 'all')
 		 
 	print('\\begin{tabular}{|l|d{%d}|r|}' % floatp)
 	print('\\hline')
-	print('\\textbf{alg} & \\textbf{std dev} & \\textbf{avg time}\\\\')
+	print('\\textbf{alg} & \\textbf{avg rel \\% dev} & \\textbf{avg time}\\\\')
 	print('\\hline')
 
 	for key in sorted(out):
 		out[key][0] /= out[key][2]
+		out[key][1] /= out[key][2]
 		bydev.append((out[key][0], out[key][1], key))
 		bytime.append((out[key][1], out[key][0], key))
 		print(format % (abbr(key), out[key][0], out[key][1]))
@@ -68,13 +69,13 @@ def do(data, best, filt, floatp):
 
 	print('\\begin{table}[H]')
 	print('\\begin{center}')
-	print('\\caption{std dev and computation time for %s instances (sorted by dev)}' % filt if filt else 'all')
+	print('\\caption{avg rel \\%% dev and computation time for %s instances (sorted by dev)}' % filt if filt else 'all')
 	print('\\label{app:report/table/%s_dev}' % filt if filt else 'all')
 
 
 	print('\\begin{tabular}{|l|d{%d}|r|}' % floatp)
 	print('\\hline')
-	print('\\textbf{alg} & \\textbf{std dev} & \\textbf{avg time}\\\\')
+	print('\\textbf{alg} & \\textbf{avg rel \\% dev} & \\textbf{avg time}\\\\')
 	print('\\hline')
 
 	for dev, t, key in sorted(bydev):
@@ -87,12 +88,12 @@ def do(data, best, filt, floatp):
 
 	print('\\begin{table}[H]')
 	print('\\begin{center}')
-	print('\\caption{std dev and computation time for %s instances (sorted by time)}' % filt if filt else 'all')
+	print('\\caption{avg rel \\%% dev and computation time for %s instances (sorted by time)}' % filt if filt else 'all')
 	print('\\label{app:report/table/%s_time}' % filt if filt else 'all')
 
 	print('\\begin{tabular}{|l|d{%d}|r|}' % floatp)
 	print('\\hline')
-	print('\\textbf{alg} & \\textbf{std dev} & \\textbf{avg time}\\\\')
+	print('\\textbf{alg} & \\textbf{avg rel \\% dev} & \\textbf{avg time}\\\\')
 	print('\\hline')
 
 	for t, dev, key in sorted(bytime):

@@ -2,7 +2,7 @@
 
 # compile
 
-	make
+	make clean all
 
 
 # run
@@ -12,6 +12,14 @@
 	./run/vnd <filename> --init {random, slack} --ordering {tie, tei} [--pivoting {first, best}, --seed <seed>]
 
 
-# output format
+# flags
 
-	...
+	-v, --verbose
+	-h, --help
+
+
+# output non-verbose format
+
+	twt
+	running time [ms]
+	seed
