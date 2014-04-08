@@ -9,6 +9,8 @@ Only the difference between the neighbour and the current solution is evaluated.
 
 For jobs $\times$ machines matrices, a single array is allocated. Row \verb!i! column \verb!j! is accessed through \verb![i*w+j]! subscripting where \verb!w! is the number of columns. The evaluations functions try to read and write data sequentially.
 
+32 bits sized signed integers have been used where possible, they don't produce any overflow for the studied instances.
+
 \subsection{Remarks on neighborhood ordering}
 
 For the first improvement pivoting approach, the neighborhood ordering seems to have a significant influence. Perturbations close to the end of the schedule have little influence on the solution quality and evaluates rapidly whereas perturbations close to the beginning of the schedule have a high influence on the solution quality and evaluates slowly. For this implementation quality solution has been emphasized and neighborhood walking techniques have been chosen accordingly. The possibility of random neighborhood walks has not been explored.
