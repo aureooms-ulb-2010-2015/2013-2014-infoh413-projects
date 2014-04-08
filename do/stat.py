@@ -3,7 +3,7 @@ import sys, os, lib, functools, json, math
 log = lambda x : math.log(x, 10)
 
 
-def do(name):
+def do(name, title, tl):
 
 	txt = functools.partial(print, end = ' ')
 
@@ -34,8 +34,8 @@ def do(name):
 
 	print('\\begin{table}[H]')
 	print('\\begin{center}')
-	print('\\caption{Student t-test and Wilcoxon test results for %s instances}' % name)
-	print('\\label{app:stat/table/%s}' % name)
+	print('\\caption{%s Student t-test and Wilcoxon test results for %s instances}' % (title, name))
+	print('\\label{app:stat/table/%s/%s}' % (tl, name))
 	print('\\tiny')
 	print('\\tabcolsep=0.11cm')
 
@@ -82,5 +82,7 @@ def do(name):
 
 if __name__ == '__main__':
 	name = sys.argv[1]
-	do(name)
+	title = sys.argv[2]
+	tl = sys.argv[3]
+	do(name, title, tl)
 

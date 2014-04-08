@@ -1,7 +1,7 @@
 \begin{table}[H]
 \begin{center}
-\caption{Student t-test and Wilcoxon test results for 50x20 instances}
-\label{app:stat/table/50x20}
+\caption{Relative percentage deviation Student t-test and Wilcoxon test results for 50x20 instances}
+\label{app:stat/table/dev/50x20}
 \tiny
 \tabcolsep=0.11cm
 \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}

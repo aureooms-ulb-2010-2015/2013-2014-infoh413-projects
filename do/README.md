@@ -118,6 +118,33 @@ example :
 	do/devall 04041753+all\:insert2/
 
 
+tim.py
+==
+
+
+usage :
+
+	python3 do/tim.py <in> <best> <out> <name> <filt>
+
+
+example :
+
+	python3 do/tim.py data/out/ data/best/ data/tim/ 04041753+all\:insert2/ 100x20
+
+
+
+timall
+==
+
+usage :
+
+	do/timall <name>
+
+example :
+
+	do/timall 04041753+all\:insert2/
+
+
 
 
 stat.py
@@ -126,12 +153,12 @@ stat.py
 
 usage :
 
-	python3 do/stat.py <in> <out> <script>
+	<in> | python3 do/stat.py <name> <title> <tl> > <out>
 
 
 example :
 
-	python3 do/stat.py data/dev/ -- Rscript do/stat.r
+	cat data/test/dev/04041753+all\:insert2/100x20 | python3 do/stat.py 100x20 "Relative percentage deviation" dev > data/stat/dev/04041753+all\:insert2/100x20
 
 
 
