@@ -11,6 +11,24 @@
 namespace pfsp{
 namespace eval{
 
+
+/**
+ * Class template for initial evaluation functors.
+ *
+ * @author Ooms Aurélien
+ * 
+ * @param <addr_t> job/machine indices type
+ * @param <val_t> weighted tardiness type
+ * @param <priority_t> priority type
+ * @param <A1> dueDates array type
+ * @param <A2> priority array type
+ * @param <A3> processing array type
+ * @param <A4> detail array type
+ * @param <A5> wt array type
+ * @param <A6> detail array proxy type
+ *
+ */
+
 template<
 	typename addr_t, 
 	typename val_t, 
@@ -52,6 +70,18 @@ public:
 	detail(&detail_src[0], nbJob + 1, nbMac + 1),
 	wt(nbJob + 1, 0){}
 
+
+	/**
+	 * operator() for initial evaluation.
+	 * <p>
+	 * Evaluates a solution.
+	 *
+	 * @param sol The solution to evaluate
+	 * 
+	 * @return the evaluation value (total weighted tardiness)
+	 *
+	 */
+	
 	template<typename S>
 	val_t operator()(S& sol){
 
@@ -77,8 +107,8 @@ public:
 	}
 };
 
-}
-}
+} // eval
+} // pfsp
 
 
 

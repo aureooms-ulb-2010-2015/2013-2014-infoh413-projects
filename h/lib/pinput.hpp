@@ -9,6 +9,27 @@ namespace lib{
 namespace pinput{
 
 
+/**
+ * Function template for command line arguments parsing.
+ * 
+ * @author Ooms Aurélien
+ * 
+ * @param <P> out param array type
+ * @param <O> out option map type
+ * @param <F> out flag set type
+ * @param <T> option set type
+ * @param <U> flag set type
+ * 
+ * @param argc argv size
+ * @param argv argument vector
+ * @param params out param array
+ * @param options out option map
+ * @param flags out flag set
+ * @param option_set option set
+ * @param flag_set flag set
+ *
+ */
+
 template<typename P, typename O, typename F, typename T, typename U>
 void parse(int argc, char* argv[], P& params, O& options, F& flags, const T& option_set, const U& flag_set){
 
@@ -47,7 +68,7 @@ void parse(int argc, char* argv[], P& params, O& options, F& flags, const T& opt
 	}
 }
 	
-}
-}
+} // pinput
+} // lib
 
 #endif // _LIB_PINPUT_HPP

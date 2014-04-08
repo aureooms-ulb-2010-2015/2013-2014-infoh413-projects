@@ -10,8 +10,33 @@
 namespace lib{
 namespace io{
 
+/**
+ * Array of array-style punctuation.
+ */
 const char* list_p[] = {"[", "]", ", "};
+
+
+/**
+ * Array of set/map-style punctuation.
+ */
 const char* map_p[]  = {"{", "}", ", ", " : "};
+
+
+/**
+ * Function template for std::vector formatting.
+ * 
+ * @author Ooms Aurélien
+ * 
+ * @param <S> the outstream type  
+ * @param <T> the value type
+ * 
+ * @param out the outstream to write to
+ * @param vector the vector to format
+ * @param p the punctuation array
+ * 
+ * @return the outstream ref
+ *
+ */
 
 template<typename S, typename T>
 S& format(S& out, const std::vector<T>& vector, const char* p[] = list_p){
@@ -27,6 +52,23 @@ S& format(S& out, const std::vector<T>& vector, const char* p[] = list_p){
 	return out;
 }
 
+
+/**
+ * Function template for std::list formatting.
+ * 
+ * @author Ooms Aurélien
+ * 
+ * @param <S> the outstream type  
+ * @param <T> the value type
+ * 
+ * @param out the outstream to write to
+ * @param list the list to format
+ * @param p the punctuation array
+ * 
+ * @return the outstream ref
+ *
+ */
+
 template<typename S, typename T>
 S& format(S& out, const std::list<T>& list, const char* p[] = list_p){
 	out << p[0];
@@ -41,6 +83,23 @@ S& format(S& out, const std::list<T>& list, const char* p[] = list_p){
 	out << p[1];
 	return out;
 }
+
+
+/**
+ * Function template for std::queue formatting. /!\ The queue is copied.
+ * 
+ * @author Ooms Aurélien
+ * 
+ * @param <S> the outstream type  
+ * @param <T> the value type
+ * 
+ * @param out the outstream to write to
+ * @param queue the queue to format
+ * @param p the punctuation array
+ * 
+ * @return the outstream ref
+ *
+ */
 
 template<typename S, typename T>
 S& format(S& out, std::queue<T> queue, const char* p[] = list_p){
@@ -58,11 +117,29 @@ S& format(S& out, std::queue<T> queue, const char* p[] = list_p){
 	return out;
 }
 
-template<typename S, typename Key, typename T>
-S& format(S& out, const std::map<Key,T>& map, const char* p[] = map_p){
+
+/**
+ * Function template for std::map formatting.
+ * 
+ * @author Ooms Aurélien
+ * 
+ * @param <S> the outstream type
+ * @param <K> the key type
+ * @param <T> the value type
+ * 
+ * @param out the outstream to write to
+ * @param map the map to format
+ * @param p the punctuation array
+ * 
+ * @return the outstream ref
+ *
+ */
+
+template<typename S, typename K, typename T>
+S& format(S& out, const std::map<K,T>& map, const char* p[] = map_p){
 	out << p[0];
 	if (map.size() > 0){
-		typename std::map<Key,T>::const_iterator it, pen = --map.end();
+		typename std::map<K,T>::const_iterator it, pen = --map.end();
 		for(it = map.begin(); it != pen; ++it){
 			out << it->first;
 			out << p[3];
@@ -77,11 +154,29 @@ S& format(S& out, const std::map<Key,T>& map, const char* p[] = map_p){
 	return out;
 }
 
-template<typename S, typename Key, typename T>
-S& format(S& out, const std::multimap<Key,T>& map, const char* p[] = map_p){
+
+/**
+ * Function template for std::multimap formatting.
+ * 
+ * @author Ooms Aurélien
+ * 
+ * @param <S> the outstream type
+ * @param <K> the key type
+ * @param <T> the value type
+ * 
+ * @param out the outstream to write to
+ * @param multimap the multimap to format
+ * @param p the punctuation array
+ * 
+ * @return the outstream ref
+ *
+ */
+
+template<typename S, typename K, typename T>
+S& format(S& out, const std::multimap<K,T>& map, const char* p[] = map_p){
 	out << p[0];
 	if (map.size() > 0){
-		typename std::multimap<Key,T>::const_iterator it, pen = --map.end();
+		typename std::multimap<K,T>::const_iterator it, pen = --map.end();
 		for(it = map.begin(); it != pen; ++it){
 			out << it->first;
 			out << p[3];
@@ -95,6 +190,23 @@ S& format(S& out, const std::multimap<Key,T>& map, const char* p[] = map_p){
 	out << p[1];
 	return out;
 }
+
+
+/**
+ * Function template for std::set formatting.
+ * 
+ * @author Ooms Aurélien
+ * 
+ * @param <S> the outstream type
+ * @param <T> the value type
+ * 
+ * @param out the outstream to write to
+ * @param set the set to format
+ * @param p the punctuation array
+ * 
+ * @return the outstream ref
+ *
+ */
 
 template<typename S, typename T>
 S& format(S& out, const std::set<T>& set, const char* p[] = map_p){
@@ -111,35 +223,63 @@ S& format(S& out, const std::set<T>& set, const char* p[] = map_p){
 	return out;
 }
 
-}
-}
+} // io
+} // lib
 
 
+/**
+ * Alias of lib::io::format<S,T>(S&, std::vector<T>&)
+ */
 
 template<typename S, typename T>
 S& operator<<(S& out, const std::vector<T>& vector){
 	return lib::io::format(out, vector);
 }
 
+
+/**
+ * Alias of lib::io::format<S,T>(S&, std::list<T>&)
+ */
+
 template<typename S, typename T>
 S& operator<<(S& out, const std::list<T>& list){
 	return lib::io::format(out, list);
 }
+
+
+/**
+ * Alias of lib::io::format<S,T>(S&, std::queue<T>&)
+ */
 
 template<typename S, typename T>
 S& operator<<(S& out, std::queue<T> queue){
 	return lib::io::format(out, queue);
 }
 
-template<typename S, typename Key, typename T>
-S& operator<<(S& out, const std::map<Key,T>& map){
+
+/**
+ * Alias of lib::io::format<S,K,T>(S&, std::map<T>&)
+ */
+
+template<typename S, typename K, typename T>
+S& operator<<(S& out, const std::map<K,T>& map){
 	return lib::io::format(out, map);
 }
 
-template<typename S, typename Key, typename T>
-S& operator<<(S& out, const std::multimap<Key,T>& map){
+
+/**
+ * Alias of lib::io::format<S,K,T>(S&, std::multimap<T>&)
+ */
+
+template<typename S, typename K, typename T>
+S& operator<<(S& out, const std::multimap<K,T>& map){
 	return lib::io::format(out, map);
 }
+
+
+/**
+ * Alias of lib::io::format<S,T>(S&, std::set<T>&)
+ */
 
 template<typename S, typename T>
 S& operator<<(S& out, const std::set<T>& set){

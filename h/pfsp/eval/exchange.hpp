@@ -11,8 +11,29 @@
 
 #include "pfsp/eval/functor.hpp"
 
+
 namespace pfsp{
 namespace eval{
+
+
+/**
+ * Class template for partial evaluation functors of the exchange neighborhood.
+ *
+ * @author Ooms Aurélien
+ * 
+ * @param <addr_t> job/machine indices type
+ * @param <val_t> weighted tardiness type
+ * @param <priority_t> priority type
+ * @param <S> solution type
+ * @param <M> mutation type
+ * @param <A1> dueDates array type
+ * @param <A2> priority array type
+ * @param <A3> processing array type
+ * @param <A4> detail array type
+ * @param <A5> wt array type
+ * @param <A6> detail array proxy type
+ *
+ */
 
 template<
 	typename addr_t,
@@ -63,9 +84,21 @@ public:
 	wt_r(wt_r),
 	detail_r(detail_r){}
 
+
+	/**
+	 * Implementation of
+	 * pfsp::eval::functor<val_t, S, M, A6, A5>::operator()(const S&, const M&)
+	 */
+
 	virtual val_t operator()(const S& sol, const M& mutation){
 		return operator()(sol, mutation, detail, wt);
 	}
+
+
+	/**
+	 * Implementation of
+	 * pfsp::eval::functor<val_t, S, M, A6, A5>::operator()(const S&, const M&, A6&, A5&)
+	 */
 
 	virtual val_t operator()(const S& sol, const M& mutation, A6& detail, A5& wt){
 		addr_t beg, end;
@@ -120,8 +153,8 @@ public:
 	}
 };
 
-}
-}
+} // eval
+} // pfsp
 
 
 

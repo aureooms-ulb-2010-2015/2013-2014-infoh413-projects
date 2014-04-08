@@ -1,20 +1,29 @@
 #ifndef _LIB_ERROR_EXCEPTION_HPP
 #define _LIB_ERROR_EXCEPTION_HPP
 
+#include <exception>
+#include <string>
+
 namespace lib{
 namespace error{
 
-	class exception : public std::exception {
-	private:
-		std::string msg;
-	public:
-		exception(const std::string& msg):msg(msg){}
-		virtual ~exception() noexcept {}
-		const char* what() const noexcept {return msg.c_str();}
-	};
+/**
+ * Base class for dynamic message exceptions.
+ * 
+ * @author Ooms Aurélien
+ */
 
-}
-}
+class exception : public std::exception {
+private:
+	std::string msg;
+public:
+	exception(const std::string& msg):msg(msg){}
+	virtual ~exception() noexcept {}
+	const char* what() const noexcept {return msg.c_str();}
+};
+
+} // error
+} // lib
 
 
 #endif // _LIB_ERROR_EXCEPTION_HPP

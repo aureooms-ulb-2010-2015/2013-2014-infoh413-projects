@@ -61,7 +61,7 @@ typedef pfsp::eval::insert<addr_t, val_t, priority_t, S, M, DD, PR, PMP, PM, DD,
 typedef pfsp::eval::exchange<addr_t, val_t, priority_t, S, M, DD, PR, PMP, PM, DD, PMP> EE;
 
 typedef std::pair<val_t, M> R;
-typedef R (*P)(S&, W, ME);
+typedef R (*P)(const S&, W, ME);
 
 
 typedef struct{

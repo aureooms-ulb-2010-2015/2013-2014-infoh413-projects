@@ -1,19 +1,39 @@
 #ifndef _LIB_ARRAY_PROXY_HPP
 #define _LIB_ARRAY_PROXY_HPP
 
-
+#include <stddef.h>
 
 namespace lib{
 namespace array{
+
+/**
+ * Class template for bidimensional array subscripting using a proxy.
+ * 
+ * <p>
+ * Class template for bidimensional array subscripting using a proxy.
+ * Note that no range checking is done.
+ * 
+ * @author Ooms Aurélien
+ * 
+ * @param <T> array value type
+ *
+ */
 	
 template<typename T>
 class proxy{
-public:
+
+private:
 
 	T* pt;
 	T** addr = nullptr;
 	size_t h, w;
 
+	void alloc(){
+		addr = new T*[h];
+		for(size_t i = 0; i < h; ++i) addr[i] = pt + i * w;
+	}
+
+public:
 
 	proxy(){}
 
@@ -27,11 +47,6 @@ public:
 		this->w = w;
 		delete[] addr;
 		alloc();
-	}
-
-	void alloc(){
-		addr = new T*[h];
-		for(size_t i = 0; i < h; ++i) addr[i] = pt + i * w;
 	}
 
 	inline T* operator[](const size_t i){
@@ -52,8 +67,8 @@ public:
 
 
 
-}
-}
+} // array
+} // lib
 
 
 
