@@ -27,7 +27,7 @@
 
 namespace pfsp_ii{
 	namespace global{
-
+		
 
 	// IO
 		const char* list_p[] = {"", "", " "};

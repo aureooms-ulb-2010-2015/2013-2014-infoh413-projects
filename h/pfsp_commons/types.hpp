@@ -28,6 +28,11 @@
 
 #include "pfsp/instance.hpp"
 
+//
+// MEANING OF THOSES TYPES ARE SELF-EVIDENT
+// IF NOT: CHECK PFSP AND LIB DOCUMENTATION
+// 
+
 
 typedef size_t addr_t;
 typedef int_least32_t val_t;

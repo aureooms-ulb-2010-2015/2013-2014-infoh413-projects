@@ -16,7 +16,7 @@ using namespace pfsp_ii;
 
 void run(){
 
-// INPUT
+// PARSE INPUT
 	
 	std::ifstream fileIn;
 	fileIn.open(global::params[0]);
@@ -35,7 +35,9 @@ void run(){
 		std::cout << "Number of machines : " << global::i.nbMac << std::endl;
 	}
 
-	// evaluator functors
+
+// INIT EVAL
+
 	E e(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::proxy);
 	TE te(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::proxy, e.wt, e.detail);
 	IE ie(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::proxy, e.wt, e.detail);
@@ -45,8 +47,10 @@ void run(){
 	global::exchange.eval = &ee;
 
 
-	// based index FTW !¸··}#{}¼CHANGE THIS FUCKSHIT
+// SOLUTION
+
 	S s(e.nbJob + 1);
+
 
 // GEN INITIAL SOLUTION
 
@@ -54,19 +58,25 @@ void run(){
 	(*init)(s);
 	val_t opt = e(s);
 
+	// PRINT IT
 	if(global::verbose){
 		std::cout << "init: ";
 		lib::io::format(std::cout, s, global::list_p) << std::endl;
 		std::cout << opt << std::endl;
 	}
 
+
+// ALIAS
+
 	auto neighborhood = global::neighborhood[global::options["--neighborhood"][0]];
 	auto pivoting = global::pivoting[global::options["--pivoting"][0]];
+
 
 // FIND LOCAL OPTIMUM
 
 	hrclock::time_point beg = hrclock::now();
 
+	// II ALGORITHM
 	R best = pivoting(s, neighborhood->walk, neighborhood->eval);
 	while(best.first){
 		opt += best.first;
@@ -74,8 +84,10 @@ void run(){
 		(*neighborhood->apply)(s, best.second);
 		best = pivoting(s, neighborhood->walk, neighborhood->eval);
 	}
+	// <end>
 
 	hrclock::time_point end  = hrclock::now();
+
 
 // OUTPUT
 

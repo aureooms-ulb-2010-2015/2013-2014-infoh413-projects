@@ -16,7 +16,7 @@ using namespace pfsp_vnd;
 
 void run(){
 
-// INPUT
+// PARSE INPUT
 	
 	std::ifstream fileIn;
 	fileIn.open(global::params[0]);
@@ -35,7 +35,9 @@ void run(){
 		std::cout << "Number of machines : " << global::i.nbMac << std::endl;
 	}
 
-	/* evaluator functor */
+
+// INIT EVAL
+
 	E e(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::proxy);
 	TE te(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::proxy, e.wt, e.detail);
 	IE ie(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::proxy, e.wt, e.detail);
@@ -44,8 +46,11 @@ void run(){
 	global::insert.eval = &ie; 
 	global::exchange.eval = &ee;
 
-	/* 1 based index FTW !¸··}#{}¼CHANGE THIS FUCKSHIT */
+
+// SOLUTION
+
 	S s(e.nbJob + 1);
+
 
 // GEN INITIAL SOLUTION
 
@@ -53,11 +58,15 @@ void run(){
 	(*init)(s);
 	val_t opt = e(s);
 
+	// PRINT IT
 	if(global::verbose){
 		std::cout << "init: ";
 		lib::io::format(std::cout, s, global::list_p) << std::endl;
 		std::cout << opt << std::endl;
 	}
+
+
+// ALIAS
 
 	auto ordering = global::ordering[global::options["--ordering"][0]];
 	auto pivoting = global::pivoting[global::options["--pivoting"][0]];
@@ -66,6 +75,8 @@ void run(){
 
 	hrclock::time_point beg = hrclock::now();
 
+
+	// VND ALGORITHM
 	size_t k = 0;
 
 	while(k < ordering.size()){
@@ -79,8 +90,10 @@ void run(){
 		}
 		++k;
 	}
+	// <end>
 	
 	hrclock::time_point end  = hrclock::now();
+
 
 // OUTPUT
 
