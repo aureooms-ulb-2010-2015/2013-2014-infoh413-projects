@@ -142,27 +142,22 @@ public:
 		}
 
 
-		val_t wtd = 0;
 
 		wt[l] = (std::max(detail[l][nbMac] - dueDates[_beg], val_t(0)) * priority[_beg]);
-		wtd += wt[l];
 
 		for(addr_t j = l + 1; j < r; ++j){
-			wt[j] = (std::max(detail[j][nbMac] - dueDates[sol[j+x]], val_t(0)) * priority[sol[j+x]]); 
-			wtd += wt[j];
+			wt[j] = (std::max(detail[j][nbMac] - dueDates[sol[j+x]], val_t(0)) * priority[sol[j+x]]);
 		}
 
 		wt[r] = (std::max(detail[r][nbMac] - dueDates[_end], val_t(0)) * priority[_end]);
-		wtd += wt[r];
 
 		for(addr_t j = r + 1; j <= nbJob; ++j){
-			wt[j] = (std::max(detail[j][nbMac] - dueDates[sol[j]], val_t(0)) * priority[sol[j]]); 
-			wtd += wt[j];
+			wt[j] = (std::max(detail[j][nbMac] - dueDates[sol[j]], val_t(0)) * priority[sol[j]]);
 		}
 
+		val_t wtd = 0;
+		for(addr_t j = l; j <= nbJob; ++j) wtd += wt[j];
 		for(addr_t j = l; j <= nbJob; ++j) wtd -= wt_r[j];
-
-
 		return wtd;
 	}
 };

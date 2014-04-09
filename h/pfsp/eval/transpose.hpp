@@ -104,7 +104,6 @@ public:
 		addr_t beg, end;
 		std::tie(beg, end) = mutation;
 
-		// SWAP BEG, END
 		addr_t _beg = sol[end], _end = sol[beg];
 
 		detail[beg][1] = detail_r[beg-1][1] + processing[_beg][1];
@@ -123,21 +122,15 @@ public:
 			}
 		}
 
-		val_t wtd = 0;
-
 		wt[beg] = (std::max(detail[beg][nbMac] - dueDates[_beg], val_t(0)) * priority[_beg]);
-		wtd += wt[beg];
-
 		wt[end] = (std::max(detail[end][nbMac] - dueDates[_end], val_t(0)) * priority[_end]);
-		wtd += wt[end];
-
 		for(addr_t j = end + 1; j <= nbJob; ++j){
 			wt[j] = (std::max(detail[j][nbMac] - dueDates[sol[j]], val_t(0)) * priority[sol[j]]);
-			wtd += wt[j];
 		}
 
+		val_t wtd = 0;
+		for(addr_t j = beg; j <= nbJob; ++j) wtd += wt[j];
 		for(addr_t j = beg; j <= nbJob; ++j) wtd -= wt_r[j];
-
 		return wtd;
 	}
 };
