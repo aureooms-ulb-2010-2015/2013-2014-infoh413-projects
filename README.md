@@ -28,7 +28,7 @@
 	* pdf : implementation sheets
 	* src : the main program source code for pfsp-ii and pfsp-vnd
 
-	* report.pdf : pdf report with tables, explanation and notes
+	* report.pdf : pdf report with tables, explanations and notes
 	* Makefile : makefile for the implementation in C++
 	* README.md : this file
 
