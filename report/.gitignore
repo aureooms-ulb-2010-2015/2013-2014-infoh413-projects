@@ -1,6 +1,6 @@
 perso.sty
-test.pdf
-test.tex
+report.pdf
+report.tex
 *.aux
 *.lof
 *.log
@@ -19,4 +19,3 @@ test.tex
 *.lomintedobject
 *.loalgobject
 *.loe
-mysplittest
