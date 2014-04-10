@@ -25,6 +25,8 @@ namespace neighborhood{
  * @param src the solution whose neighborhood is explored
  * @param fn the callback pointer
  * 
+ * /!\ M(i, i+1) <=> M(i+1, i)
+ * 
  */
 
 template<typename S, typename FN, typename M>
@@ -37,7 +39,7 @@ void insert(const S& src, FN fn){
 		for(size_t j = 1; j < i; ++j){
 			if(!(*fn)(M(i, j))) return;
 		}
-		for(size_t j = i + 1; j < n; ++j){
+		for(size_t j = i + 2; j < n; ++j){
 			if(!(*fn)(M(i, j))) return;
 		}
 	}
