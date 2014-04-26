@@ -6,6 +6,7 @@
 #include <queue>
 #include <list>
 #include <set>
+#include <tuple>
 
 namespace lib{
 namespace io{
@@ -20,6 +21,11 @@ const char* list_p[] = {"[", "]", ", "};
  * Array of set/map-style punctuation.
  */
 const char* map_p[]  = {"{", "}", ", ", " : "};
+
+/**
+ * Array of tuple-style punctuation.
+ */
+const char* tuple_p[] = {"(", ")", ", "};
 
 
 /**
@@ -223,6 +229,45 @@ S& format(S& out, const std::set<T>& set, const char* p[] = map_p){
 	return out;
 }
 
+/**
+ * Function template for std::tuple formatting.
+ * 
+ * @author Ooms Aurélien
+ * 
+ * @param <S> the outstream type
+ * @param <T> the value type
+ * 
+ * @param out the outstream to write to
+ * @param set the set to format
+ * @param p the punctuation array
+ * 
+ * @return the outstream ref
+ *
+ */
+
+template<size_t> struct int_{};
+
+template <typename S, typename ... Args, size_t pos>
+S& _format(S& out, const std::tuple<Args...>& t, const char* p[], int_<pos>) {
+	out << std::get< std::tuple_size<std::tuple<Args...>>::value - pos>(t);
+	out << p[2];
+	return _format(out, t, p, int_<pos-1>());
+}
+
+template <typename S, typename ... Args>
+S& _format(S& out, const std::tuple<Args...>& t, const char**, int_<1>) {
+	out << std::get<std::tuple_size<std::tuple<Args...>>::value - 1>(t);
+	return out;
+}
+
+template <typename S, typename ... Args>
+S& format(S& out, const std::tuple<Args...>& t, const char* p[] = tuple_p) {
+	out << p[0];
+	_format(out, t, tuple_p, int_<sizeof...(Args)>());
+	out << p[1];
+	return out;
+}
+
 } // io
 } // lib
 
@@ -284,6 +329,15 @@ S& operator<<(S& out, const std::multimap<K,T>& map){
 template<typename S, typename T>
 S& operator<<(S& out, const std::set<T>& set){
 	return lib::io::format(out, set);
+}
+
+/**
+ * Alias of lib::io::format<S,... Args>(S&, std::tuple<Args...>&)
+ */
+ 
+template <typename S, typename ... Args>
+S& operator<<(S& out, const std::tuple<Args...>& t) {
+	return lib::io::format(out, t);
 }
 
 

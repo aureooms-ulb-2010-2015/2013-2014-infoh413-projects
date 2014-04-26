@@ -122,15 +122,16 @@ public:
 			}
 		}
 
+		val_t wtd = 0;
+		for(addr_t j = beg; j <= nbJob; ++j) wtd -= wt_r[j];
+
 		wt[beg] = (std::max(detail[beg][nbMac] - dueDates[_beg], val_t(0)) * priority[_beg]);
 		wt[end] = (std::max(detail[end][nbMac] - dueDates[_end], val_t(0)) * priority[_end]);
 		for(addr_t j = end + 1; j <= nbJob; ++j){
 			wt[j] = (std::max(detail[j][nbMac] - dueDates[sol[j]], val_t(0)) * priority[sol[j]]);
 		}
 
-		val_t wtd = 0;
 		for(addr_t j = beg; j <= nbJob; ++j) wtd += wt[j];
-		for(addr_t j = beg; j <= nbJob; ++j) wtd -= wt_r[j];
 		return wtd;
 	}
 };
