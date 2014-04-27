@@ -106,6 +106,10 @@ namespace pfsp_vnd{
 			"-h", "--help",
 			"-v", "--verbose"
 		};
+		
+	// STEPS AND TIME
+		size_t steps = 0;
+		delta_t time(0);
 
 	}
 }

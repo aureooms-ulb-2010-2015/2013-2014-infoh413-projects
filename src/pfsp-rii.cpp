@@ -31,8 +31,8 @@ void run(){
 	fileIn.close();
 
 	if(global::verbose){
-		std::cout << "Number of jobs : " << global::i.nbJob << std::endl;
-		std::cout << "Number of machines : " << global::i.nbMac << std::endl;
+		std::cout << "jobs " << global::i.nbJob << std::endl;
+		std::cout << "mach " << global::i.nbMac << std::endl;
 	}
 
 
@@ -62,9 +62,9 @@ void run(){
 
 	// PRINT IT
 	if(global::verbose){
-		std::cout << "init: ";
+		std::cout << "init ";
 		lib::io::format(std::cout, s, global::list_p) << std::endl;
-		std::cout << val << std::endl;
+		std::cout << "best " << val << std::endl;
 	}
 
 
@@ -102,10 +102,12 @@ void run(){
 		if(val < opt){
 			opt = val;
 			argopt = s;
-			std::cout << "best "  << opt ;
-			std::cout << " step " << global::steps;
-			std::cout << " time " << std::chrono::duration_cast<std::chrono::milliseconds>(global::duration).count();
-			std::cout << std::endl;
+			if(global::verbose){
+				std::cout << "best "  << opt ;
+				std::cout << " step " << global::steps;
+				std::cout << " time " << std::chrono::duration_cast<std::chrono::milliseconds>(global::duration).count();
+				std::cout << " ms" << std::endl;
+			}
 		}
 	}
 	// <end>
@@ -118,15 +120,16 @@ void run(){
 	// BEST
 
 	if(global::verbose){
-		std::cout << "best: ";
+		std::cout << "done ";
 		lib::io::format(std::cout, argopt, global::list_p) << std::endl;
 	}
 
+	if(global::verbose) std::cout << "best ";
 	std::cout << opt << std::endl;
 
 	// TIME
 
-	if(global::verbose) std::cout << "time : ";
+	if(global::verbose) std::cout << "time ";
 	global::duration = end - beg;
 	std::chrono::milliseconds elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(global::duration);
 	std::cout << elapsed.count();
@@ -135,7 +138,7 @@ void run(){
 
 	// SEED
 
-	if(global::verbose) std::cout << "seed : ";
+	if(global::verbose) std::cout << "seed ";
 	lib::io::format(std::cout, global::seed_v, global::list_p) << std::endl;
 }
 
@@ -154,7 +157,7 @@ int main(int argc, char *argv[]){
 		run();
 	}
 	catch(const std::exception& e){
-		std::cout << "error -> " << e.what() << std::endl;
+		std::cout << "error " << e.what() << std::endl;
 		return 1;
 	}
 

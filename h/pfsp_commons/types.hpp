@@ -77,5 +77,7 @@ typedef struct{
 
 typedef pfsp::init::functor<S>* IN;
 
+typedef std::chrono::seconds delta_t;
+
 
 #endif // _PFSP_COMMONS_TYPES_HPP

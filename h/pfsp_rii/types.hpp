@@ -22,7 +22,5 @@ typedef struct{
 typedef double real;
 typedef std::uniform_real_distribution<real> uniform_real_distribution;
 
-typedef std::chrono::seconds delta_t;
-
 
 #endif // _PFSP_RII_TYPES_HPP
