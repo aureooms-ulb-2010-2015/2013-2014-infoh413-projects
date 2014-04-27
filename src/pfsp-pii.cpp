@@ -61,11 +61,11 @@ void run(){
 		(!global::max_steps || global::steps < global::max_steps) &&
 		(!global::max_time.count() || global::time < global::max_time)
 	){
-		R neighbour = pivoting(global::g, global::r, global::T, s, neighborhood->walk, neighborhood->eval);
+		R neighbor = pivoting(global::g, global::r, neighborhood->random, global::T, s, global::walk, neighborhood->eval);
 
-		val += neighbour.first;
-		(*neighborhood->eval)(s, neighbour.second, global::e->detail, global::e->wt);
-		(*neighborhood->apply)(s, neighbour.second);
+		val += neighbor.first;
+		(*neighborhood->eval)(s, neighbor.second, global::e->detail, global::e->wt);
+		(*neighborhood->apply)(s, neighbor.second);
 
 		++global::steps;
 		global::duration = hrclock::now() - beg;

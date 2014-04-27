@@ -10,12 +10,13 @@
 #include "pfsp/neighborhood/exchange.hpp"
 #include "pfsp/neighborhood/insert2.hpp"
 #include "pfsp/neighborhood/transpose.hpp"
+#include "pfsp/neighborhood/random.hpp"
 
 #include "pfsp/apply/exchange.hpp"
 #include "pfsp/apply/insert.hpp"
 #include "pfsp/apply/transpose.hpp"
 
-#include "pfsp/pivoting/metropolis_or_best.hpp"
+#include "pfsp/pivoting/metropolis.hpp"
 
 #include "pfsp/init/random.hpp"
 #include "pfsp/init/slack.hpp"
@@ -88,7 +89,8 @@ namespace pfsp_pii{
 			{"transpose" , &transpose}
 		};
 
-		auto pivoting = &pfsp::pivoting::metropolis_or_best<random_engine, uniform_real_distribution, real, R, val_t, S, M, W, ME>;
+		auto walk = &pfsp::neighborhood::random<random_engine, RS, S, H, M>;
+		auto pivoting = &pfsp::pivoting::metropolis<random_engine, uniform_real_distribution, RS, real, R, val_t, S, M, RW, ME>;
 
 
 	// INPUT

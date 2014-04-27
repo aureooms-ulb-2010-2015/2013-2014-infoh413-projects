@@ -22,5 +22,7 @@ typedef struct{
 typedef double real;
 typedef std::uniform_real_distribution<real> uniform_real_distribution;
 
+typedef void (*RW)(random_engine&, RS, const S&, H);
+
 
 #endif // _PFSP_RII_TYPES_HPP
