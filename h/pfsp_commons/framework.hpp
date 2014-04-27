@@ -2,9 +2,16 @@
 #define _PFSP_COMMONS_FRAMEWORK_HPP
 
 #include <string>
-#include <fstream>
 #include <iostream>
+#include <fstream>
 #include <chrono>
+
+#include "lib/io.hpp"
+#include "lib/error/exception.hpp"
+
+#include "pfsp/io/parse/body.hpp"
+#include "pfsp/io/parse/header.hpp"
+#include "pfsp/mem/allocate.hpp"
 
 namespace pfsp{
 namespace framework{
@@ -75,6 +82,30 @@ inline void output(S& out, bool v, const B& s, C& list_p, const D& opt, const E&
 
 	if(v) out << "seed ";
 	lib::io::format(out, seed_v, list_p) << std::endl;
+}
+
+
+
+template<typename S, typename A, typename B, typename C, typename D, typename E, typename F>
+inline int main(S& out, const A& argc, const B& argv, bool help_flag, C fill, D help, E check, F run){
+	
+	fill(argc, argv);
+
+	if(help_flag){
+		help();
+		return 0;
+	}
+
+	try{
+		check();
+		run();
+	}
+	catch(const std::exception& e){
+		out << "error " << e.what() << std::endl;
+		return 1;
+	}
+
+	return 0;
 }
 
 }

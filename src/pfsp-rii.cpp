@@ -1,17 +1,9 @@
-#include <iostream>
-#include <fstream>
 
-#include "lib/io.hpp"
-#include "lib/error/exception.hpp"
-
-#include "pfsp/io/parse/body.hpp"
-#include "pfsp/io/parse/header.hpp"
-#include "pfsp/mem/allocate.hpp"
+#include "pfsp_commons/framework.hpp"
 
 #include "pfsp_rii/global.hpp"
 #include "pfsp_rii/config.hpp"
 
-#include "pfsp_commons/framework.hpp"
 
 using namespace pfsp_rii;
 
@@ -110,22 +102,5 @@ void run(){
 
 
 int main(int argc, char *argv[]){
-	
-	config::fill(argc, argv);
-
-	if(global::help){
-		config::help();
-		return 0;
-	}
-
-	try{
-		config::check();
-		run();
-	}
-	catch(const std::exception& e){
-		std::cout << "error " << e.what() << std::endl;
-		return 1;
-	}
-
-	return 0;
+	return pfsp::framework::main(std::cout, argc, argv, global::help, &config::fill, &config::help, &config::check, &run);
 }
