@@ -160,6 +160,8 @@ public:
 		for(addr_t j = l; j <= nbJob; ++j) wtd += wt[j];
 		return wtd;
 	}
+
+	virtual ~insert(){}
 };
 
 } // eval

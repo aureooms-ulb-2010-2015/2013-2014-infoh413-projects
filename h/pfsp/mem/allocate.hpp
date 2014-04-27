@@ -14,6 +14,7 @@ namespace mem{
  * @param <A1> dueDates array type
  * @param <A2> priority array type
  * @param <A3> processing array type
+ * @param <A6> processing array proxy type
  * @param <T> array index type
  * 
  * @param processing Processing times job x machine matrix
@@ -24,12 +25,15 @@ namespace mem{
  *
  */
 
-template<typename A1, typename A2, typename A3, typename T>
-void allocate(A1& processing, A2& dueDates, A3& priority, const T nbJob, const T nbMac){
+template<typename A1, typename A2, typename A3, typename A6, typename T>
+void allocate(A1& processing, A2& dueDates, A3& priority, A6& proxy, const T nbJob, const T nbMac){
 
 	processing.resize((nbJob + 1) * (nbMac + 1));
+	proxy.resize(&processing[0], nbJob + 1, nbMac + 1);
+
 	dueDates.resize(nbJob + 1);
 	priority.resize(nbJob + 1);
+
 
 }
 

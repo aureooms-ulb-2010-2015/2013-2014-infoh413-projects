@@ -56,7 +56,7 @@ typedef std::chrono::high_resolution_clock hrclock;
 typedef pfsp::pivoting::functor<M>* H;
 typedef void (*W)(const S&, H);
 
-typedef pfsp::instance<addr_t, val_t, priority_t, DD, PR, PM> I;
+typedef pfsp::instance<addr_t, val_t, priority_t, DD, PR, PM, PMP> I;
 
 typedef pfsp::eval::init<addr_t, val_t, priority_t, DD, PR, PMP, PM, DD, PMP> E;
 
@@ -77,7 +77,7 @@ typedef struct{
 
 typedef pfsp::init::functor<S>* IN;
 
-typedef std::chrono::seconds delta_t;
+typedef std::chrono::milliseconds delta_t;
 
 
 #endif // _PFSP_COMMONS_TYPES_HPP

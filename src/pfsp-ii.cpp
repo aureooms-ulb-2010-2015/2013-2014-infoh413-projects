@@ -11,24 +11,16 @@
 #include "pfsp_ii/global.hpp"
 #include "pfsp_ii/config.hpp"
 
+#include "pfsp_commons/framework.hpp"
+
 using namespace pfsp_ii;
 
 
 void run(){
 
 // PARSE INPUT
-	
-	std::ifstream fileIn;
-	fileIn.open(global::params[0]);
 
-	if(!fileIn.is_open()) throw lib::error::exception("Could not open input file");
-
-	pfsp::io::parse::header(fileIn, global::i.nbJob, global::i.nbMac);
-	pfsp::mem::allocate(global::i.processing, global::i.dueDates, global::i.priority, global::i.nbJob, global::i.nbMac);
-	global::proxy.resize(&global::i.processing[0], global::i.nbJob + 1, global::i.nbMac + 1);
-	pfsp::io::parse::body(fileIn, global::i.nbJob, global::i.nbMac, global::proxy, global::i.dueDates, global::i.priority);
-
-	fileIn.close();
+	pfsp::framework::parse(global::params[0], global::i);
 
 	if(global::verbose){
 		std::cout << "jobs " << global::i.nbJob << std::endl;
@@ -38,25 +30,19 @@ void run(){
 
 // INIT EVAL
 
-	E e(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::proxy);
-	TE te(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::proxy, e.wt, e.detail);
-	IE ie(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::proxy, e.wt, e.detail);
-	EE ee(global::i.nbJob, global::i.nbMac, global::i.dueDates, global::i.priority, global::proxy, e.wt, e.detail);
-	global::transpose.eval =  &te;
-	global::insert.eval = &ie; 
-	global::exchange.eval = &ee;
+	pfsp::framework::init_eval<I,E,TE,IE,EE>(global::i, global::e, global::transpose.eval, global::insert.eval, global::exchange.eval);
 
 
 // SOLUTION
 
-	S s(e.nbJob + 1);
+	S s(global::i.nbJob + 1);
 
 
 // GEN INITIAL SOLUTION
 
 	auto init = global::init[global::options["--init"][0]];
 	(*init)(s);
-	val_t opt = e(s);
+	val_t opt = (*global::e)(s);
 
 	// PRINT IT
 	if(global::verbose){
@@ -80,19 +66,14 @@ void run(){
 	R best = pivoting(s, neighborhood->walk, neighborhood->eval);
 	while(best.first){
 		opt += best.first;
-		(*neighborhood->eval)(s, best.second, e.detail, e.wt);
+		(*neighborhood->eval)(s, best.second, global::e->detail, global::e->wt);
 		(*neighborhood->apply)(s, best.second);
 
 		if(global::verbose){
 			++global::steps;
-			global::duration = hrclock::now() - beg;
-			global::time = std::chrono::duration_cast<std::chrono::seconds>(global::duration);
-			std::cout << "best "  << opt ;
-			std::cout << " step " << global::steps;
-			std::cout << " time " << std::chrono::duration_cast<std::chrono::milliseconds>(global::duration).count();
-			std::cout << " ms" << std::endl;
+			pfsp::framework::print_step(std::cout, global::steps, hrclock::now() - beg, opt);
 		}
-		
+
 		best = pivoting(s, neighborhood->walk, neighborhood->eval);
 	}
 	// <end>
@@ -100,30 +81,14 @@ void run(){
 	hrclock::time_point end  = hrclock::now();
 
 
+// CLEAN
+
+	pfsp::framework::clean_eval(global::e, global::transpose.eval, global::insert.eval, global::exchange.eval);
+
+
 // OUTPUT
 
-	// LO
-
-	if(global::verbose){
-		std::cout << "done ";
-		lib::io::format(std::cout, s, global::list_p) << std::endl;
-	}
-
-	if(global::verbose) std::cout << "best ";
-	std::cout << opt << std::endl;
-
-	// TIME
-
-	if(global::verbose) std::cout << "time ";
-	std::chrono::milliseconds duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - beg);
-	std::cout << duration.count();
-	if(global::verbose) std::cout << " ms";
-	std::cout << std::endl;
-
-	// SEED
-
-	if(global::verbose) std::cout << "seed ";
-	lib::io::format(std::cout, global::seed_v, global::list_p) << std::endl;
+	pfsp::framework::output(std::cout, global::verbose, s, global::list_p, opt, end - beg, global::seed_v);
 }
 
 

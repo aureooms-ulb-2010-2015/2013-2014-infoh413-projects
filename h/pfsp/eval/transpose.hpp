@@ -134,6 +134,8 @@ public:
 		for(addr_t j = beg; j <= nbJob; ++j) wtd += wt[j];
 		return wtd;
 	}
+
+	virtual ~transpose(){}
 };
 
 } // eval

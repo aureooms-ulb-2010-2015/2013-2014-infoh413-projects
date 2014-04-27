@@ -46,16 +46,17 @@ namespace pfsp_vnd{
 
 	// DATA
 		I i;
-		PMP proxy;
 
 	// OPTIONS
 		auto init_r = pfsp::init::random<random_engine, uniform_distribution, S>(g);
-		auto init_s = pfsp::init::slack<S, addr_t, val_t, priority_t, DD, PR, PMP>(i.nbJob, i.nbMac, i.dueDates, i.priority, proxy);
+		auto init_s = pfsp::init::slack<S, addr_t, val_t, priority_t, DD, PR, PMP>(i.nbJob, i.nbMac, i.dueDates, i.priority, i.proxy);
 
 		std::unordered_map<std::string, IN> init{
 			{"random", &init_r.f},
 			{"slack", &init_s.f}
 		};
+		
+		E* e = nullptr;
 
 		N transpose = {
 			&pfsp::neighborhood::transpose<S, H, M>,

@@ -54,6 +54,9 @@ struct functor{
 	 */
 	
 	virtual V operator()(const S& sol, const M& mutation, A6& detail, A5& wt) = 0;
+
+
+	virtual ~functor(){}
 };
 
 } // eval

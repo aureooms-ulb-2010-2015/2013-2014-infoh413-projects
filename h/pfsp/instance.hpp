@@ -21,6 +21,7 @@ namespace pfsp{
  * @param <DD> due dates array type
  * @param <PR> priority array type
  * @param <PM> processing matrix type
+ * @param <PMP> processing matrix proxy type
  *
  */
 
@@ -30,7 +31,8 @@ template<
 	typename priority_t,
 	typename DD,
 	typename PR,
-	typename PM
+	typename PM,
+	typename PMP
 >
 class instance{
 public:
@@ -68,6 +70,13 @@ public:
 	 */
 	
 	PM processing;
+
+
+	/**
+	 * Processing matrix proxy (1-based)
+	 */
+
+	PMP proxy;
 };
 
 } // pfsp
