@@ -1,0 +1,26 @@
+#ifndef _PFSP_RII_TYPES_HPP
+#define _PFSP_RII_TYPES_HPP
+
+#include "pfsp_commons/types.hpp"
+
+//
+// MEANING OF THOSES TYPES ARE SELF-EVIDENT
+// IF NOT: CHECK PFSP AND LIB DOCUMENTATION
+// 
+
+typedef M (*RS)(random_engine&, const S&);
+
+
+typedef struct{
+	W walk;
+	X apply;
+	ME eval;
+	RS random;
+} EN;
+
+
+typedef double real;
+typedef std::uniform_real_distribution<real> uniform_real_distribution;
+
+
+#endif // _PFSP_RII_TYPES_HPP

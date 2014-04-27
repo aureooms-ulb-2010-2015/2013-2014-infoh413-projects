@@ -1,6 +1,7 @@
 #ifndef _PFSP_PIVOTING_FIRST_OR_BEST_HPP
 #define _PFSP_PIVOTING_FIRST_OR_BEST_HPP
 
+#include <limits>
 
 #include "pfsp/pivoting/functor.hpp"
 
@@ -38,14 +39,12 @@ R first_or_best(const S& src, W w, ME e){
 		const S& sol;
 		val_t opt;
 		M argopt;
-		bool first;
 		
-		fn(ME e, const S& sol):e(e), sol(sol), opt(), argopt(), first(true){}
+		fn(ME e, const S& sol):e(e), sol(sol), opt(std::numeric_limits<val_t>::max()), argopt(){}
 
 		virtual bool operator()(const M& mutation){
 			val_t delta = (*e)(sol, mutation);
-			if(first || delta < opt){
-				first = false;
+			if(delta <= opt){
 				opt = delta;
 				argopt = mutation;
 				if(opt < 0) return false;

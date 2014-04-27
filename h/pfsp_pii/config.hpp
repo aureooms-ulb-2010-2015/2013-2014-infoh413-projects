@@ -5,11 +5,11 @@
 
 #include "lib/pinput.hpp"
 #include "lib/error/exception.hpp"
-#include "pfsp_rii/global.hpp"
+#include "pfsp_pii/global.hpp"
 
-using namespace pfsp_rii;
+using namespace pfsp_pii;
 
-namespace pfsp_rii{
+namespace pfsp_pii{
 	namespace config{
 
 		inline void fill(int argc, char *argv[]){
@@ -31,10 +31,10 @@ namespace pfsp_rii{
 			std::seed_seq seed(global::seed_v.begin(), global::seed_v.end());
 			global::g.seed(seed);
 
-			if(global::options.count("--wp") && global::options["--wp"].size() > 0){
-				global::wp = std::stod(global::options["--wp"][0]);
+			if(global::options.count("--temperature") && global::options["--temperature"].size() > 0){
+				global::T = std::stod(global::options["--temperature"][0]);
 			}
-
+			
 			if(global::options.count("--max-time") && global::options["--max-time"].size() > 0){
 				global::max_time = delta_t(std::stoul(global::options["--max-time"][0]));
 			}
@@ -42,6 +42,7 @@ namespace pfsp_rii{
 			if(global::options.count("--max-steps") && global::options["--max-steps"].size() > 0){
 				global::max_steps = std::stoul(global::options["--max-steps"][0]);
 			}
+
 		}
 
 		inline void check(){
@@ -57,10 +58,10 @@ namespace pfsp_rii{
 			if(global::init.count(global::options["--init"][0]) == 0)
 				throw lib::error::exception("wrong --init");
 
-			if(global::options.count("--wp") == 0 || global::options["--wp"].size() == 0)
-				throw lib::error::exception("--wp missing");
-			if(global::wp < 0.0 || global::wp > 1.0)
-				throw lib::error::exception("wrong --wp");
+			if(global::options.count("--temperature") == 0 || global::options["--temperature"].size() == 0)
+				throw lib::error::exception("--temperature missing");
+			if(global::T <= 0.0)
+				throw lib::error::exception("wrong --temperature");
 
 			if(
 				(global::options.count("--max-time") == 0 || global::options["--max-time"].size() == 0) &&
