@@ -1,5 +1,5 @@
-#ifndef _PFSP_II_CONFIG_HPP
-#define _PFSP_II_CONFIG_HPP
+#ifndef _PFSP_PII_CONFIG_HPP
+#define _PFSP_PII_CONFIG_HPP
 
 #include <string>
 
@@ -95,4 +95,4 @@ namespace pfsp_pii{
 
 
 
-#endif // _PFSP_II_CONFIG_HPP
+#endif // _PFSP_PII_CONFIG_HPP

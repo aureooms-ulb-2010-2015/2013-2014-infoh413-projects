@@ -1,5 +1,5 @@
-#ifndef _PFSP_PII_GLOBAL_HPP
-#define _PFSP_PII_GLOBAL_HPP
+#ifndef _PFSP_SA_GLOBAL_HPP
+#define _PFSP_SA_GLOBAL_HPP
 
 
 #include <vector>
@@ -27,9 +27,9 @@
 
 #include "pfsp/instance.hpp"
 
-#include "pfsp_pii/types.hpp"
+#include "pfsp_sa/types.hpp"
 
-namespace pfsp_pii{
+namespace pfsp_sa{
 	namespace global{
 		
 
@@ -104,7 +104,9 @@ namespace pfsp_pii{
 			"--neighborhood",
 			"--max-steps",
 			"--max-time",
-			"--temperature"
+			"--temperature",
+			"--alpha",
+			"--cooling-step"
 		};
 
 		std::set<std::string> flag_set = {
@@ -115,6 +117,8 @@ namespace pfsp_pii{
 	// PII
 		uniform_real_distribution r(0.0, 1.0);
 		real T = 0;
+		real alpha = -1;
+		size_t cooling_step = 0;
 		size_t steps = 0;
 		size_t max_steps = 0;
 		delta_t time(0);
@@ -125,4 +129,4 @@ namespace pfsp_pii{
 
 
 
-#endif // _PFSP_PII_GLOBAL_HPP
+#endif // _PFSP_SA_GLOBAL_HPP

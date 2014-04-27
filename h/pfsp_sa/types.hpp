@@ -1,5 +1,5 @@
-#ifndef _PFSP_PII_TYPES_HPP
-#define _PFSP_PII_TYPES_HPP
+#ifndef _PFSP_SA_TYPES_HPP
+#define _PFSP_SA_TYPES_HPP
 
 #include "pfsp_commons/types.hpp"
 
@@ -25,4 +25,4 @@ typedef std::uniform_real_distribution<real> uniform_real_distribution;
 typedef void (*RW)(random_engine&, RS, const S&, H);
 
 
-#endif // _PFSP_PII_TYPES_HPP
+#endif // _PFSP_SA_TYPES_HPP

@@ -1,11 +1,11 @@
 
 #include "pfsp_commons/framework.hpp"
 
-#include "pfsp_pii/global.hpp"
-#include "pfsp_pii/config.hpp"
+#include "pfsp_sa/global.hpp"
+#include "pfsp_sa/config.hpp"
 
 
-using namespace pfsp_pii;
+using namespace pfsp_sa;
 
 
 void run(){
@@ -56,7 +56,7 @@ void run(){
 
 	hrclock::time_point beg = hrclock::now();
 
-	// PII ALGORITHM
+	// SA ALGORITHM
 	while(
 		(!global::max_steps || global::steps < global::max_steps) &&
 		(!global::max_time.count() || global::time < global::max_time)
@@ -77,6 +77,11 @@ void run(){
 			if(global::verbose){
 				pfsp::framework::print_step(std::cout, global::steps, global::duration, opt);
 			}
+		}
+
+		if(global::steps % global::cooling_step == 0){
+			global::T *= global::alpha;
+			if(global::T == 0) break;
 		}
 	}
 	// <end>

@@ -1,5 +1,5 @@
-#ifndef _PFSP_II_GLOBAL_HPP
-#define _PFSP_II_GLOBAL_HPP
+#ifndef _PFSP_RII_GLOBAL_HPP
+#define _PFSP_RII_GLOBAL_HPP
 
 
 #include <vector>
@@ -123,4 +123,4 @@ namespace pfsp_rii{
 
 
 
-#endif // _PFSP_II_GLOBAL_HPP
+#endif // _PFSP_RII_GLOBAL_HPP

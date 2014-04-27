@@ -1,15 +1,15 @@
-#ifndef _PFSP_RII_CONFIG_HPP
-#define _PFSP_RII_CONFIG_HPP
+#ifndef _PFSP_SA_CONFIG_HPP
+#define _PFSP_SA_CONFIG_HPP
 
 #include <string>
 
 #include "lib/pinput.hpp"
 #include "lib/error/exception.hpp"
-#include "pfsp_rii/global.hpp"
+#include "pfsp_sa/global.hpp"
 
-using namespace pfsp_rii;
+using namespace pfsp_sa;
 
-namespace pfsp_rii{
+namespace pfsp_sa{
 	namespace config{
 
 		inline void fill(int argc, char *argv[]){
@@ -31,10 +31,18 @@ namespace pfsp_rii{
 			std::seed_seq seed(global::seed_v.begin(), global::seed_v.end());
 			global::g.seed(seed);
 
-			if(global::options.count("--wp") && global::options["--wp"].size() > 0){
-				global::wp = std::stod(global::options["--wp"][0]);
+			if(global::options.count("--temperature") && global::options["--temperature"].size() > 0){
+				global::T = std::stod(global::options["--temperature"][0]);
 			}
 
+			if(global::options.count("--alpha") && global::options["--alpha"].size() > 0){
+				global::alpha = std::stod(global::options["--alpha"][0]);
+			}
+
+			if(global::options.count("--cooling-step") && global::options["--cooling-step"].size() > 0){
+				global::cooling_step = std::stoul(global::options["--cooling-step"][0]);
+			}
+			
 			if(global::options.count("--max-time") && global::options["--max-time"].size() > 0){
 				global::max_time = delta_t(std::stoul(global::options["--max-time"][0]));
 			}
@@ -42,6 +50,7 @@ namespace pfsp_rii{
 			if(global::options.count("--max-steps") && global::options["--max-steps"].size() > 0){
 				global::max_steps = std::stoul(global::options["--max-steps"][0]);
 			}
+
 		}
 
 		inline void check(){
@@ -57,10 +66,20 @@ namespace pfsp_rii{
 			if(global::init.count(global::options["--init"][0]) == 0)
 				throw lib::error::exception("wrong --init");
 
-			if(global::options.count("--wp") == 0 || global::options["--wp"].size() == 0)
-				throw lib::error::exception("--wp missing");
-			if(global::wp < 0.0 || global::wp > 1.0)
-				throw lib::error::exception("wrong --wp");
+			if(global::options.count("--temperature") == 0 || global::options["--temperature"].size() == 0)
+				throw lib::error::exception("--temperature missing");
+			if(global::T <= 0.0)
+				throw lib::error::exception("wrong --temperature");
+
+			if(global::options.count("--alpha") == 0 || global::options["--alpha"].size() == 0)
+				throw lib::error::exception("--alpha missing");
+			if(global::alpha <= 0.0 || global::alpha > 1.0)
+				throw lib::error::exception("wrong --alpha");
+
+			if(global::options.count("--cooling-step") == 0 || global::options["--cooling-step"].size() == 0)
+				throw lib::error::exception("--cooling-step missing");
+			if(global::cooling_step == 0)
+				throw lib::error::exception("wrong --cooling-step");
 
 			if(
 				(global::options.count("--max-time") == 0 || global::options["--max-time"].size() == 0) &&
@@ -94,4 +113,4 @@ namespace pfsp_rii{
 
 
 
-#endif // _PFSP_RII_CONFIG_HPP
+#endif // _PFSP_SA_CONFIG_HPP
