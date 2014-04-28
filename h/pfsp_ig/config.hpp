@@ -1,20 +1,19 @@
-#ifndef _PFSP_SA_CONFIG_HPP
-#define _PFSP_SA_CONFIG_HPP
+#ifndef _PFSP_IG_CONFIG_HPP
+#define _PFSP_IG_CONFIG_HPP
 
 #include <string>
 
 #include "lib/pinput.hpp"
 #include "lib/error/exception.hpp"
-#include "pfsp_sa/global.hpp"
+#include "pfsp_ig/global.hpp"
 
-using namespace pfsp_sa;
+using namespace pfsp_ig;
 
-namespace pfsp_sa{
+namespace pfsp_ig{
 	namespace config{
 
 		inline void fill(int argc, char *argv[]){
-			lib::pinput::parse(argc, argv, global::params, global::options, global::flags, global::option_set, global::flag_set);
-
+			lib::pinput::parse(argc, argv, global::params, global::options, global::flags, global::option_set, global::flag_set);	
 			global::help = global::flags.count("-h") || global::flags.count("--help");
 			global::verbose = global::flags.count("-v") || global::flags.count("--verbose");
 
@@ -32,11 +31,8 @@ namespace pfsp_sa{
 			std::seed_seq seed(global::seed_v.begin(), global::seed_v.end());
 			global::g.seed(seed);
 
-			if(global::options.count("--temperature-p") && global::options["--temperature-p"].size() > 0
-				&& global::options.count("--temperature-d") && global::options["--temperature-d"].size() > 0){
-				global::Tp = std::stod(global::options["--temperature-p"][0]);
-				global::Td = std::stod(global::options["--temperature-d"][0]);
-				global::T = - global::Td / std::log(global::Tp);
+			if(global::options.count("--temperature") && global::options["--temperature"].size() > 0){
+				global::T = std::stod(global::options["--temperature"][0]);
 			}
 
 			if(global::options.count("--alpha") && global::options["--alpha"].size() > 0){
@@ -55,10 +51,6 @@ namespace pfsp_sa{
 				global::max_steps = std::stoul(global::options["--max-steps"][0]);
 			}
 
-			if(global::options.count("--restart-wait") && global::options["--restart-wait"].size() > 0){
-				global::restart_wait = std::stoul(global::options["--restart-wait"][0]);
-			}
-
 		}
 
 		inline void check(){
@@ -74,16 +66,10 @@ namespace pfsp_sa{
 			if(global::init.count(global::options["--init"][0]) == 0)
 				throw lib::error::exception("wrong --init");
 
-			if(global::options.count("--temperature-d") == 0 || global::options["--temperature-d"].size() == 0)
-				throw lib::error::exception("--temperature-d missing");
-			if(global::options.count("--temperature-p") == 0 || global::options["--temperature-p"].size() == 0)
-				throw lib::error::exception("--temperature-p missing");
-			if(global::Tp <= 0.0 || global::Tp >= 1.0 )
-				throw lib::error::exception("wrong --temperature-p");
-			if(global::Td <= 0.0)
-				throw lib::error::exception("wrong --temperature-d");
+			if(global::options.count("--temperature") == 0 || global::options["--temperature"].size() == 0)
+				throw lib::error::exception("--temperature missing");
 			if(global::T <= 0.0)
-				throw lib::error::exception("wrong pair (--temperature-p, --temperature-d)");
+				throw lib::error::exception("wrong --temperature");
 
 			if(global::options.count("--alpha") == 0 || global::options["--alpha"].size() == 0)
 				throw lib::error::exception("--alpha missing");
@@ -103,8 +89,7 @@ namespace pfsp_sa{
 			if(global::max_time.count() < 0)
 				throw lib::error::exception("--max-time must be a non negative value");
 
-			if(global::options.count("--restart-wait") == 0 || global::options["--restart-wait"].size() == 0)
-				throw lib::error::exception("--restart-wait missing");
+
 
 		}
 
@@ -128,4 +113,4 @@ namespace pfsp_sa{
 
 
 
-#endif // _PFSP_SA_CONFIG_HPP
+#endif // _PFSP_IG_CONFIG_HPP

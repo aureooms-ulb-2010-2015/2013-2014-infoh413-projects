@@ -87,7 +87,7 @@ inline void output(S& out, bool v, const B& s, C& list_p, const D& opt, const E&
 
 
 template<typename S, typename A, typename B, typename C, typename D, typename E, typename F>
-inline int main(S& out, const A& argc, const B& argv, bool help_flag, C fill, D help, E check, F run){
+inline int main(S& out, const A& argc, const B& argv, const bool& help_flag, C fill, D help, E check, F run){
 	
 	fill(argc, argv);
 

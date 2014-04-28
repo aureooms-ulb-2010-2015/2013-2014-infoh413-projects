@@ -1,20 +1,19 @@
-#ifndef _PFSP_SA_CONFIG_HPP
-#define _PFSP_SA_CONFIG_HPP
+#ifndef _PFSP_TABU_CONFIG_HPP
+#define _PFSP_TABU_CONFIG_HPP
 
 #include <string>
 
 #include "lib/pinput.hpp"
 #include "lib/error/exception.hpp"
-#include "pfsp_sa/global.hpp"
+#include "pfsp_tabu/global.hpp"
 
-using namespace pfsp_sa;
+using namespace pfsp_tabu;
 
-namespace pfsp_sa{
+namespace pfsp_tabu{
 	namespace config{
 
 		inline void fill(int argc, char *argv[]){
-			lib::pinput::parse(argc, argv, global::params, global::options, global::flags, global::option_set, global::flag_set);
-
+			lib::pinput::parse(argc, argv, global::params, global::options, global::flags, global::option_set, global::flag_set);	
 			global::help = global::flags.count("-h") || global::flags.count("--help");
 			global::verbose = global::flags.count("-v") || global::flags.count("--verbose");
 
@@ -32,6 +31,7 @@ namespace pfsp_sa{
 			std::seed_seq seed(global::seed_v.begin(), global::seed_v.end());
 			global::g.seed(seed);
 
+
 			if(global::options.count("--temperature-p") && global::options["--temperature-p"].size() > 0
 				&& global::options.count("--temperature-d") && global::options["--temperature-d"].size() > 0){
 				global::Tp = std::stod(global::options["--temperature-p"][0]);
@@ -46,6 +46,10 @@ namespace pfsp_sa{
 			if(global::options.count("--cooling-step") && global::options["--cooling-step"].size() > 0){
 				global::cooling_step = std::stoul(global::options["--cooling-step"][0]);
 			}
+
+			if(global::options.count("--tabu-tenure") && global::options["--tabu-tenure"].size() > 0){
+				global::tt = std::stoul(global::options["--tabu-tenure"][0]);
+			}
 			
 			if(global::options.count("--max-time") && global::options["--max-time"].size() > 0){
 				global::max_time = delta_t(std::stoul(global::options["--max-time"][0]));
@@ -53,10 +57,6 @@ namespace pfsp_sa{
 
 			if(global::options.count("--max-steps") && global::options["--max-steps"].size() > 0){
 				global::max_steps = std::stoul(global::options["--max-steps"][0]);
-			}
-
-			if(global::options.count("--restart-wait") && global::options["--restart-wait"].size() > 0){
-				global::restart_wait = std::stoul(global::options["--restart-wait"][0]);
 			}
 
 		}
@@ -95,6 +95,9 @@ namespace pfsp_sa{
 			if(global::cooling_step == 0)
 				throw lib::error::exception("wrong --cooling-step");
 
+			if(global::options.count("--tabu-tenure") == 0 || global::options["--tabu-tenure"].size() == 0)
+				throw lib::error::exception("--tabu-tenure missing");
+
 			if(
 				(global::options.count("--max-time") == 0 || global::options["--max-time"].size() == 0) &&
 				(global::options.count("--max-steps") == 0 || global::options["--max-steps"].size() == 0)
@@ -103,8 +106,7 @@ namespace pfsp_sa{
 			if(global::max_time.count() < 0)
 				throw lib::error::exception("--max-time must be a non negative value");
 
-			if(global::options.count("--restart-wait") == 0 || global::options["--restart-wait"].size() == 0)
-				throw lib::error::exception("--restart-wait missing");
+
 
 		}
 
@@ -128,4 +130,4 @@ namespace pfsp_sa{
 
 
 
-#endif // _PFSP_SA_CONFIG_HPP
+#endif // _PFSP_TABU_CONFIG_HPP

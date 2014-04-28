@@ -1,11 +1,11 @@
 
 #include "pfsp_commons/framework.hpp"
 
-#include "pfsp_pii/global.hpp"
-#include "pfsp_pii/config.hpp"
+#include "pfsp_tabu/global.hpp"
+#include "pfsp_tabu/config.hpp"
 
 
-using namespace pfsp_pii;
+using namespace pfsp_tabu;
 
 
 void run(){
@@ -24,6 +24,9 @@ void run(){
 
 	pfsp::framework::init_eval<I,E,TE,IE,EE>(global::i, global::e, global::transpose.eval, global::insert.eval, global::exchange.eval);
 
+// INIT TABU
+
+	global::tabu.resize(global::i.nbJob + 1, 0);
 
 // SOLUTION
 
@@ -56,18 +59,21 @@ void run(){
 
 	hrclock::time_point beg = hrclock::now();
 
-	// PII ALGORITHM
+	// TABU ALGORITHM
 	while(
 		(!global::max_steps || global::steps < global::max_steps) &&
 		(!global::max_time.count() || global::time < global::max_time)
 	){
 		M m = (*neighborhood->random)(global::g, s);
-
-		val_t delta = (*neighborhood->eval)(s, m);
-		if(delta <= 0 || accept(delta)){
-			global::val += delta;
-			(*neighborhood->eval)(s, m, global::e->detail, global::e->wt);
-			(*neighborhood->apply)(s, m);
+		
+		if(!(*neighborhood->tabu)(m, global::tabu, global::steps)){
+			val_t delta = (*neighborhood->eval)(s, m);
+			if(delta <= 0 || accept(delta)){
+				global::tabu[std::get<0>(m)] = global::steps + global::tt + 1;
+				global::val += delta;
+				(*neighborhood->eval)(s, m, global::e->detail, global::e->wt);
+				(*neighborhood->apply)(s, m);
+			}
 		}
 
 		++global::steps;
@@ -80,6 +86,11 @@ void run(){
 			if(global::verbose){
 				pfsp::framework::print_step(std::cout, global::steps, global::duration, opt);
 			}
+		}
+
+		if(global::steps % global::cooling_step == 0){
+			global::T *= global::alpha;
+			if(global::T == 0) break;
 		}
 	}
 	// <end>

@@ -33,6 +33,7 @@ namespace pivoting{
  * @param generator
  * @param distribution
  * @param pg perturbation generator
+ * @param T temperature ref
  * @param src The current solution
  * @param w The neighborhood walker pointer
  * @param e The perturbation evaluator pointer

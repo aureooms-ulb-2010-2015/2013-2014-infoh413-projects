@@ -34,22 +34,27 @@ void run(){
 
 	auto init = global::init[global::options["--init"][0]];
 	(*init)(s);
-	val_t val = (*global::e)(s);
-	val_t opt = val;
+	global::val = (*global::e)(s);
+	val_t opt = global::val;
 	S argopt(s);
 
 	// PRINT IT
 	if(global::verbose){
 		std::cout << "init ";
 		lib::io::format(std::cout, s, global::list_p) << std::endl;
-		std::cout << "best " << val << std::endl;
+		std::cout << "best " << global::val << std::endl;
 	}
 
 
 // ALIAS
 
 	auto neighborhood = global::neighborhood[global::options["--neighborhood"][0]];
-	auto pivoting = global::pivoting;
+	auto accept = global::accept;
+
+// INIT RESTART
+
+	size_t last_improvement = 0;
+	const real t = global::T;
 
 
 // FIND LOCAL OPTIMUM
@@ -61,28 +66,40 @@ void run(){
 		(!global::max_steps || global::steps < global::max_steps) &&
 		(!global::max_time.count() || global::time < global::max_time)
 	){
-		R neighbor = pivoting(global::g, global::r, neighborhood->random, global::T, s, global::walk, neighborhood->eval);
+		M m = (*neighborhood->random)(global::g, s);
 
-		val += neighbor.first;
-		(*neighborhood->eval)(s, neighbor.second, global::e->detail, global::e->wt);
-		(*neighborhood->apply)(s, neighbor.second);
+		val_t delta = (*neighborhood->eval)(s, m);
+		if(delta <= 0 || accept(delta)){
+			global::val += delta;
+			(*neighborhood->eval)(s, m, global::e->detail, global::e->wt);
+			(*neighborhood->apply)(s, m);
+		}
 
 		++global::steps;
 		global::duration = hrclock::now() - beg;
 		global::time = std::chrono::duration_cast<delta_t>(global::duration);
 
-		if(val < opt){
-			opt = val;
+		if(global::val < opt){
+			last_improvement = global::steps;
+			opt = global::val;
 			argopt = s;
 			if(global::verbose){
 				pfsp::framework::print_step(std::cout, global::steps, global::duration, opt);
 			}
+		}
+		else if(global::steps - last_improvement > global::restart_wait){
+			global::T = t;
+			s = argopt;
+			global::val = (*global::e)(s);
+			continue;
 		}
 
 		if(global::steps % global::cooling_step == 0){
 			global::T *= global::alpha;
 			if(global::T == 0) break;
 		}
+
+
 	}
 	// <end>
 

@@ -31,8 +31,11 @@ namespace pfsp_pii{
 			std::seed_seq seed(global::seed_v.begin(), global::seed_v.end());
 			global::g.seed(seed);
 
-			if(global::options.count("--temperature") && global::options["--temperature"].size() > 0){
-				global::T = std::stod(global::options["--temperature"][0]);
+			if(global::options.count("--temperature-p") && global::options["--temperature-p"].size() > 0
+				&& global::options.count("--temperature-d") && global::options["--temperature-d"].size() > 0){
+				global::Tp = std::stod(global::options["--temperature-p"][0]);
+				global::Td = std::stod(global::options["--temperature-d"][0]);
+				global::T = - global::Td / std::log(global::Tp);
 			}
 			
 			if(global::options.count("--max-time") && global::options["--max-time"].size() > 0){
@@ -58,10 +61,16 @@ namespace pfsp_pii{
 			if(global::init.count(global::options["--init"][0]) == 0)
 				throw lib::error::exception("wrong --init");
 
-			if(global::options.count("--temperature") == 0 || global::options["--temperature"].size() == 0)
-				throw lib::error::exception("--temperature missing");
+			if(global::options.count("--temperature-d") == 0 || global::options["--temperature-d"].size() == 0)
+				throw lib::error::exception("--temperature-d missing");
+			if(global::options.count("--temperature-p") == 0 || global::options["--temperature-p"].size() == 0)
+				throw lib::error::exception("--temperature-p missing");
+			if(global::Tp <= 0.0 || global::Tp >= 1.0 )
+				throw lib::error::exception("wrong --temperature-p");
+			if(global::Td <= 0.0)
+				throw lib::error::exception("wrong --temperature-d");
 			if(global::T <= 0.0)
-				throw lib::error::exception("wrong --temperature");
+				throw lib::error::exception("wrong pair (--temperature-p, --temperature-d)");
 
 			if(
 				(global::options.count("--max-time") == 0 || global::options["--max-time"].size() == 0) &&

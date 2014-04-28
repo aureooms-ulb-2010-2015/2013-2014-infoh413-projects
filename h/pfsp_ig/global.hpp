@@ -1,5 +1,5 @@
-#ifndef _PFSP_PII_GLOBAL_HPP
-#define _PFSP_PII_GLOBAL_HPP
+#ifndef _PFSP_IG_GLOBAL_HPP
+#define _PFSP_IG_GLOBAL_HPP
 
 
 #include <vector>
@@ -16,7 +16,7 @@
 #include "pfsp/apply/insert.hpp"
 #include "pfsp/apply/transpose.hpp"
 
-#include "pfsp/accept/metropolis.hpp"
+#include "pfsp/pivoting/metropolis.hpp"
 
 #include "pfsp/init/random.hpp"
 #include "pfsp/init/slack.hpp"
@@ -27,9 +27,9 @@
 
 #include "pfsp/instance.hpp"
 
-#include "pfsp_pii/types.hpp"
+#include "pfsp_ig/types.hpp"
 
-namespace pfsp_pii{
+namespace pfsp_ig{
 	namespace global{
 		
 
@@ -90,6 +90,7 @@ namespace pfsp_pii{
 		};
 
 		auto walk = &pfsp::neighborhood::random<random_engine, RS, S, H, M>;
+		auto pivoting = &pfsp::pivoting::metropolis<random_engine, uniform_real_distribution, RS, real, R, val_t, S, M, RW, ME>;
 
 
 	// INPUT
@@ -103,8 +104,9 @@ namespace pfsp_pii{
 			"--neighborhood",
 			"--max-steps",
 			"--max-time",
-			"--temperature-d",
-			"--temperature-p"
+			"--temperature",
+			"--alpha",
+			"--cooling-step"
 		};
 
 		std::set<std::string> flag_set = {
@@ -114,20 +116,17 @@ namespace pfsp_pii{
 
 	// PII
 		uniform_real_distribution r(0.0, 1.0);
-		real Tp = 0;
-		real Td = 0;
 		real T = 0;
+		real alpha = -1;
+		size_t cooling_step = 0;
 		size_t steps = 0;
 		size_t max_steps = 0;
 		delta_t time(0);
 		delta_t max_time(0);
-		val_t val;
-
-		auto accept = pfsp::accept::metropolis<random_engine, uniform_real_distribution, real, val_t, M>(g, r, T, val);
 
 	}
 }
 
 
 
-#endif // _PFSP_PII_GLOBAL_HPP
+#endif // _PFSP_IG_GLOBAL_HPP

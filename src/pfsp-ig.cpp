@@ -1,11 +1,11 @@
 
 #include "pfsp_commons/framework.hpp"
 
-#include "pfsp_pii/global.hpp"
-#include "pfsp_pii/config.hpp"
+#include "pfsp_ig/global.hpp"
+#include "pfsp_ig/config.hpp"
 
 
-using namespace pfsp_pii;
+using namespace pfsp_ig;
 
 
 void run(){
@@ -34,52 +34,54 @@ void run(){
 
 	auto init = global::init[global::options["--init"][0]];
 	(*init)(s);
-	global::val = (*global::e)(s);
-	val_t opt = global::val;
+	val_t val = (*global::e)(s);
+	val_t opt = val;
 	S argopt(s);
 
 	// PRINT IT
 	if(global::verbose){
 		std::cout << "init ";
 		lib::io::format(std::cout, s, global::list_p) << std::endl;
-		std::cout << "best " << global::val << std::endl;
+		std::cout << "best " << val << std::endl;
 	}
 
 
 // ALIAS
 
 	auto neighborhood = global::neighborhood[global::options["--neighborhood"][0]];
-	auto accept = global::accept;
+	auto pivoting = global::pivoting;
 
 
 // FIND LOCAL OPTIMUM
 
 	hrclock::time_point beg = hrclock::now();
 
-	// PII ALGORITHM
+	// TABU ALGORITHM
 	while(
 		(!global::max_steps || global::steps < global::max_steps) &&
 		(!global::max_time.count() || global::time < global::max_time)
 	){
-		M m = (*neighborhood->random)(global::g, s);
+		R neighbor = pivoting(global::g, global::r, neighborhood->random, global::T, s, global::walk, neighborhood->eval);
 
-		val_t delta = (*neighborhood->eval)(s, m);
-		if(delta <= 0 || accept(delta)){
-			global::val += delta;
-			(*neighborhood->eval)(s, m, global::e->detail, global::e->wt);
-			(*neighborhood->apply)(s, m);
-		}
+		val += neighbor.first;
+		(*neighborhood->eval)(s, neighbor.second, global::e->detail, global::e->wt);
+		(*neighborhood->apply)(s, neighbor.second);
 
 		++global::steps;
 		global::duration = hrclock::now() - beg;
 		global::time = std::chrono::duration_cast<delta_t>(global::duration);
 
-		if(global::val < opt){
-			opt = global::val;
+		if(val < opt){
+			opt = val;
 			argopt = s;
 			if(global::verbose){
 				pfsp::framework::print_step(std::cout, global::steps, global::duration, opt);
 			}
+		}
+
+		if(global::steps % global::cooling_step == 0){
+			global::T *= global::alpha;
+			if(global::T == 0) break;
 		}
 	}
 	// <end>

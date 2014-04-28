@@ -1,5 +1,5 @@
-#ifndef _PFSP_PII_GLOBAL_HPP
-#define _PFSP_PII_GLOBAL_HPP
+#ifndef _PFSP_TABU_GLOBAL_HPP
+#define _PFSP_TABU_GLOBAL_HPP
 
 
 #include <vector>
@@ -16,6 +16,10 @@
 #include "pfsp/apply/insert.hpp"
 #include "pfsp/apply/transpose.hpp"
 
+#include "pfsp/tabu/exchange.hpp"
+#include "pfsp/tabu/insert.hpp"
+#include "pfsp/tabu/transpose.hpp"
+
 #include "pfsp/accept/metropolis.hpp"
 
 #include "pfsp/init/random.hpp"
@@ -27,9 +31,9 @@
 
 #include "pfsp/instance.hpp"
 
-#include "pfsp_pii/types.hpp"
+#include "pfsp_tabu/types.hpp"
 
-namespace pfsp_pii{
+namespace pfsp_tabu{
 	namespace global{
 		
 
@@ -66,21 +70,24 @@ namespace pfsp_pii{
 			&pfsp::neighborhood::transpose<S, H, M>,
 			&pfsp::apply::transpose<S, M>,
 			nullptr,
-			&pfsp::random::transpose<random_engine, uniform_distribution, S, M>
+			&pfsp::random::transpose<random_engine, uniform_distribution, S, M>,
+			&pfsp::tabu::transpose<M, A7, K>
 		};
 
 		EN insert = {
 			&pfsp::neighborhood::insert2<S, H, M>,
 			&pfsp::apply::insert<S, M>,
 			nullptr,
-			&pfsp::random::insert<random_engine, uniform_distribution, S, M>
+			&pfsp::random::insert<random_engine, uniform_distribution, S, M>,
+			&pfsp::tabu::insert<M, A7, K>
 		};
 
 		EN exchange = {
 			&pfsp::neighborhood::exchange<S, H, M>,
 			&pfsp::apply::exchange<S, M>,
 			nullptr,
-			&pfsp::random::exchange<random_engine, uniform_distribution, S, M>
+			&pfsp::random::exchange<random_engine, uniform_distribution, S, M>,
+			&pfsp::tabu::exchange<M, A7, K>
 		};
 
 		std::unordered_map<std::string, EN*> neighborhood{
@@ -104,7 +111,10 @@ namespace pfsp_pii{
 			"--max-steps",
 			"--max-time",
 			"--temperature-d",
-			"--temperature-p"
+			"--temperature-p",
+			"--alpha",
+			"--cooling-step",
+			"--tabu-tenure"
 		};
 
 		std::set<std::string> flag_set = {
@@ -112,22 +122,25 @@ namespace pfsp_pii{
 			"-v", "--verbose"
 		};
 
-	// PII
+	// TABU
 		uniform_real_distribution r(0.0, 1.0);
 		real Tp = 0;
 		real Td = 0;
 		real T = 0;
+		real alpha = -1;
+		size_t cooling_step = 0;
 		size_t steps = 0;
 		size_t max_steps = 0;
+		size_t tt = 0;
 		delta_t time(0);
 		delta_t max_time(0);
 		val_t val;
+		A7 tabu;
 
 		auto accept = pfsp::accept::metropolis<random_engine, uniform_real_distribution, real, val_t, M>(g, r, T, val);
-
 	}
 }
 
 
 
-#endif // _PFSP_PII_GLOBAL_HPP
+#endif // _PFSP_TABU_GLOBAL_HPP
