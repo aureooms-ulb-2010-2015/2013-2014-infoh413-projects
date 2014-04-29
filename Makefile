@@ -133,7 +133,7 @@ $(ROOT)$(OUTPUTDIR)/%.o: $(ROOT)$(DEPENDENCYDIR)/%.d $(SRC)/%.cpp
 
 $(ROOT)$(DEPENDENCYDIR)/%.d: $(SRC)/%.cpp
 	echo "$(ACTION_COLOR)"generating $@"$(NO_COLOR)"
-	$(DEP) $@ -MT $(patsubst $(ROOT)$(DEPENDENCYDIR)/%,$(ROOT)$(OUTPUTDIR)/%,$(patsubst %.d,%.o,$@)) -std=c++11 $(INCLUDE_PATH) $(FLAGS) -c $<
+	$(DEP) $@ -MT $(patsubst $(ROOT)$(DEPENDENCYDIR)/%,$(ROOT)$(OUTPUTDIR)/%,$(patsubst %.d,%.o,$@)) $(STD) $(INCLUDE_PATH) $(FLAGS) -c $<
 
 prepare:
 	rm -f temp.errors temp.log
