@@ -43,8 +43,8 @@ namespace pfsp_sa{
 				global::alpha = std::stod(global::options["--alpha"][0]);
 			}
 
-			if(global::options.count("--cooling-step") && global::options["--cooling-step"].size() > 0){
-				global::cooling_step = std::stoul(global::options["--cooling-step"][0]);
+			if(global::options.count("--cooling-step-f") && global::options["--cooling-step-f"].size() > 0){
+				global::cooling_step_f = std::stod(global::options["--cooling-step-f"][0]);
 			}
 			
 			if(global::options.count("--max-time") && global::options["--max-time"].size() > 0){
@@ -57,6 +57,10 @@ namespace pfsp_sa{
 
 			if(global::options.count("--restart-wait") && global::options["--restart-wait"].size() > 0){
 				global::restart_wait = std::stoul(global::options["--restart-wait"][0]);
+			}
+
+			if(global::options.count("--sample-size") && global::options["--sample-size"].size() > 0){
+				global::k = std::stoul(global::options["--sample-size"][0]);
 			}
 
 		}
@@ -90,10 +94,10 @@ namespace pfsp_sa{
 			if(global::alpha <= 0.0 || global::alpha > 1.0)
 				throw lib::error::exception("wrong --alpha");
 
-			if(global::options.count("--cooling-step") == 0 || global::options["--cooling-step"].size() == 0)
-				throw lib::error::exception("--cooling-step missing");
-			if(global::cooling_step == 0)
-				throw lib::error::exception("wrong --cooling-step");
+			if(global::options.count("--cooling-step-f") == 0 || global::options["--cooling-step-f"].size() == 0)
+				throw lib::error::exception("--cooling-step-f missing");
+			if(global::cooling_step_f < 0)
+				throw lib::error::exception("--cooling-step-f < 0");
 
 			if(
 				(global::options.count("--max-time") == 0 || global::options["--max-time"].size() == 0) &&
@@ -105,6 +109,12 @@ namespace pfsp_sa{
 
 			if(global::options.count("--restart-wait") == 0 || global::options["--restart-wait"].size() == 0)
 				throw lib::error::exception("--restart-wait missing");
+
+
+			if(global::options.count("--sample-size") == 0 || global::options["--sample-size"].size() == 0)
+				throw lib::error::exception("--sample-size missing");
+			if(global::k == 0)
+				throw lib::error::exception("--sample-size == 0");
 
 		}
 

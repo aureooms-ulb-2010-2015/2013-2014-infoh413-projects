@@ -31,8 +31,8 @@ namespace random{
  * 
  */
 
-template<typename G, typename V, typename S, typename P, typename PE, typename PG>
-std::pair<P, V> sample(G& g, const S& s, PG pg, PE pe, size_t k){
+template<typename R, typename G, typename V, typename S, typename P, typename PE, typename PG>
+R sample(G& g, const S& s, PG pg, PE pe, size_t k){
 
 	P argopt = (*pg)(g, s);
 	V opt = (*pe)(s, argopt);
@@ -46,7 +46,7 @@ std::pair<P, V> sample(G& g, const S& s, PG pg, PE pe, size_t k){
 		}
 	}
 
-	return std::pair<P, V>(argopt, opt);
+	return R(opt, argopt);
 }
 
 

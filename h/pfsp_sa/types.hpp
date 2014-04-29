@@ -9,6 +9,7 @@
 // 
 
 typedef M (*RS)(random_engine&, const S&);
+typedef addr_t (*SI)(const S&);
 
 
 typedef struct{
@@ -16,6 +17,7 @@ typedef struct{
 	X apply;
 	ME eval;
 	RS random;
+	SI size;
 } EN;
 
 

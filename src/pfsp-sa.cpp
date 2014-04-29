@@ -4,6 +4,8 @@
 #include "pfsp_sa/global.hpp"
 #include "pfsp_sa/config.hpp"
 
+#include <algorithm>
+
 
 using namespace pfsp_sa;
 
@@ -50,6 +52,8 @@ void run(){
 
 	auto neighborhood = global::neighborhood[global::options["--neighborhood"][0]];
 	auto accept = global::accept;
+	auto sample = global::sample;
+	addr_t cooling_step = std::max(1.0, global::cooling_step_f * real((*neighborhood->size)(s)) / real(global::k));
 
 // INIT RESTART
 
@@ -66,13 +70,12 @@ void run(){
 		(!global::max_steps || global::steps < global::max_steps) &&
 		(!global::max_time.count() || global::time < global::max_time)
 	){
-		M m = (*neighborhood->random)(global::g, s);
+		R r = sample(global::g, s, neighborhood->random, neighborhood->eval, global::k);
 
-		val_t delta = (*neighborhood->eval)(s, m);
-		if(delta <= 0 || accept(delta)){
-			global::val += delta;
-			(*neighborhood->eval)(s, m, global::e->detail, global::e->wt);
-			(*neighborhood->apply)(s, m);
+		if(r.first <= 0 || accept(r.first)){
+			global::val += r.first;
+			(*neighborhood->eval)(s, r.second, global::e->detail, global::e->wt);
+			(*neighborhood->apply)(s, r.second);
 		}
 
 		++global::steps;
@@ -94,7 +97,7 @@ void run(){
 			continue;
 		}
 
-		if(global::steps % global::cooling_step == 0){
+		if(global::steps % cooling_step == 0){
 			global::T *= global::alpha;
 			if(global::T == 0) break;
 		}
