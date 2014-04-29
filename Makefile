@@ -66,7 +66,10 @@ AR = ar -rcs
 ifndef COMPILER
 COMPILER = g++
 endif
-CXX = $(COMPILER) -std=c++11 $(INCLUDE_PATH) $(FLAGS)
+ifndef STD
+STD = -std=c++11
+endif
+CXX = $(COMPILER) $(STD) $(INCLUDE_PATH) $(FLAGS)
 TOOL = $(CXX) -o
 TOOL_OPT = $(LIBS)
 ifeq ($(TYPE),lib)
