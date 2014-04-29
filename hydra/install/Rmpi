@@ -1,0 +1,5 @@
+#!/bin/bash
+
+wget http://www.freestatistics.org/cran/src/contrib/Rmpi_0.6-3.tar.gz
+
+./R CMD INSTALL Rmpi_0.6-3.tar.gz --configure-args="--with-Rmpi-include=/u/aureooms/MPICH-install/include/ --with-Rmpi-libpath=/u/aureooms/MPICH-install/lib/ --with-Rmpi-type=MPICH2"

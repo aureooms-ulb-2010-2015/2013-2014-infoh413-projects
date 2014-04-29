@@ -1,0 +1,9 @@
+
+
+cp MPICH-install/lib/libmpich.so.12 R-install/lib64/R/lib/
+cp MPICH-install/lib/libmpl.so.1 R-install/lib64/R/lib/
+cp MPICH-install/lib/libopa.so.1 R-install/lib64/R/lib/
+
+
+
+

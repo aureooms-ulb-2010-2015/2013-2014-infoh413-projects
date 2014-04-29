@@ -1,0 +1,24 @@
+#!/bin/bash
+
+
+wget http://cran.r-project.org/src/base/R-3/R-3.0.2.tar.gz
+
+tar -xf R-3.0.2
+
+mkdir R-install
+
+mv R-3.0.2 R-install
+
+cd R-install
+
+./R-3.0.2/configure --prefix=/u/aureooms/R-install/
+
+make
+
+make check
+
+make install
+
+cd ~
+
+ln -s ~/R-install/bin/R ~/R

@@ -1,0 +1,28 @@
+#!/bin/bash
+
+wget http://www.mpich.org/static/downloads/3.1/mpich-3.1.tar.gz
+
+tar -xf mpich-3.1
+
+mkdir MPICH-install
+
+mv mpich-3.1 MPICH-install/
+
+cd MPICH-install
+
+cd mpich-3.1
+
+mkdir build
+
+cd build
+
+../configure --prefix=/u/aureooms/MPICH-install/
+
+make
+
+make check
+
+make install
+
+
+cd ~

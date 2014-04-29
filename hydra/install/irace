@@ -1,0 +1,14 @@
+
+
+exec ~/R --vanilla --slave --args $* <<EOF
+install.packages("irace")
+EOF
+
+ln -s ~/R-install/lib64/R/library/irace/bin/irace ~/irace
+
+
+echo '#!/bin/bash' > ~/irace
+echo 'exec ~/R --vanilla --slave --args $* <<EOF' >> ~/irace
+echo 'library(irace)' >> ~/irace
+echo 'irace.cmdline()' >> ~/irace
+echo 'EOF' >> ~/irace
