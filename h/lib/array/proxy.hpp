@@ -25,7 +25,7 @@ class proxy{
 private:
 
 	T* pt;
-	T** addr = nullptr;
+	T** addr;
 	size_t h, w;
 
 	void alloc(){
@@ -35,9 +35,9 @@ private:
 
 public:
 
-	proxy(){}
+	proxy() : addr(NULL){}
 
-	proxy(T* pt, const size_t h, const size_t w) : pt(pt), h(h), w(w){
+	proxy(T* pt, const size_t h, const size_t w) : pt(pt), addr(NULL), h(h), w(w){
 		alloc();
 	}
 

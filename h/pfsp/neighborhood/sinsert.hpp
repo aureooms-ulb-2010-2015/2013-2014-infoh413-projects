@@ -2,46 +2,67 @@
 #define _PFSP_NEIGHBORHOOD_SINSERT_HPP
 
 #include <stddef.h>
+#include <vector>
+#include "lib/random/sample.hpp"
+
+#include "pfsp/neighborhood/functor.hpp"
 
 namespace pfsp{
 namespace neighborhood{
 
 
 /**
- * Function template for insert neighborhood random walkthrough.
- * <p>
- * Function template for insert neighborhood random walkthrough.
- * The function applies a callback on each neighbour and
- * returns if the return value of the callback evaluates to false.
- * Neighborhood is explored in a random way.
+ * Functor template for insert neighborhood random walkthrough.
  *
  * @author Ooms Aurélien
  * 
+ * @param <G> generator type
+ * @param <D> distribution type
  * @param <S> Solution type
  * @param <FN> Callback pointer type
  * @param <M> Perturbation type
- *
- * @param src the solution whose neighborhood is explored
- * @param fn the callback pointer
- * 
- * /!\ M(i, i+1) <=> M(i+1, i)
  * 
  */
 
-template<typename S, typename FN, typename M>
-void sinsert(const S& src, FN fn){
-	if(src.size() < 2) return;
+template<typename G, typename D, typename S, typename FN, typename M>
+struct sinsert : functor<S, FN>{
 
-	const size_t s = src.size(), f = s - 1;
+	G& g;
 
-	for(size_t i = 1; i < f; ++i){
-		if(!(*fn)(M(i, i + 1))) return;
-		for(size_t j = i + 2; j < s; ++j){
-			if(!(*fn)(M(i, j))) return;
-			if(!(*fn)(M(j, i))) return;
-		}
+	sinsert(G& g):g(g){
+
 	}
-}
+
+	/**
+	 * Implementation of pfsp::neighborhood::functor<S,FN>::operator(const S&, FN)
+	 * Neighborhood is explored in a random way.
+	 */
+
+
+	virtual void operator()(const S& src, FN fn){
+		if(src.size() < 2) return;
+
+		const size_t s = src.size(), f = s - 1, t = (f-1) * (f-1);
+
+		std::vector<M> v(t);
+
+		size_t k = t;
+		for(size_t i = 1; i < f; ++i){
+			v[--k] = M(i, i + 1);
+			for(size_t j = i + 2; j < s; ++j){
+				v[--k] = M(i, j);
+				v[--k] = M(j, i);
+			}
+		}
+
+		lib::random::sample<G, D, std::vector<M>, M>(g, t, v, 0, t);
+
+		k = t;
+		while(k) if(!(*fn)(v[--k])) return;
+	}
+
+
+};
 
 
 

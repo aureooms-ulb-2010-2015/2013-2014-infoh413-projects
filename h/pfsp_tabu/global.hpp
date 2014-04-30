@@ -64,12 +64,12 @@ namespace pfsp_tabu{
 			{"slack", &init_s.f}
 		};
 
-		E* e = nullptr;
+		E* e = NULL;
 
 		EN transpose = {
 			&pfsp::neighborhood::transpose<S, H, M>,
 			&pfsp::apply::transpose<S, M>,
-			nullptr,
+			NULL,
 			&pfsp::random::transpose<random_engine, uniform_distribution, S, M>,
 			&pfsp::tabu::transpose<M, A7, K>
 		};
@@ -77,7 +77,7 @@ namespace pfsp_tabu{
 		EN insert = {
 			&pfsp::neighborhood::insert2<S, H, M>,
 			&pfsp::apply::insert<S, M>,
-			nullptr,
+			NULL,
 			&pfsp::random::insert<random_engine, uniform_distribution, S, M>,
 			&pfsp::tabu::insert<M, A7, K>
 		};
@@ -85,7 +85,7 @@ namespace pfsp_tabu{
 		EN exchange = {
 			&pfsp::neighborhood::exchange<S, H, M>,
 			&pfsp::apply::exchange<S, M>,
-			nullptr,
+			NULL,
 			&pfsp::random::exchange<random_engine, uniform_distribution, S, M>,
 			&pfsp::tabu::exchange<M, A7, K>
 		};

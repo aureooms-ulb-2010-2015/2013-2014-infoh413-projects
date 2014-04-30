@@ -218,11 +218,11 @@ template<typename S, typename T>
 S& format(S& out, const std::set<T>& set, const char* p[] = map_p){
 	out << p[0];
 	if(set.size() > 0){
-		bool first = true;
-		for(const T& val : set){
-			if(!first) out << p[2];
-			out << val;
-			first = false;
+		typename std::set<T>::const_iterator it = set.cbegin();
+		out << *it;
+		for (++it; it != set.cend(); ++it){
+			out << p[2];
+			out << *it;
 		}
 	}
 	out << p[1];

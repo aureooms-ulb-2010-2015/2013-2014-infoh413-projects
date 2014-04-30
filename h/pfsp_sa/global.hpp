@@ -65,12 +65,12 @@ namespace pfsp_sa{
 			{"slack", &init_s.f}
 		};
 
-		E* e = nullptr;
+		E* e = NULL;
 
 		EN transpose = {
 			&pfsp::neighborhood::transpose<S, H, M>,
 			&pfsp::apply::transpose<S, M>,
-			nullptr,
+			NULL,
 			&pfsp::random::transpose<random_engine, uniform_distribution, S, M>,
 			&pfsp::size::transpose<addr_t, S>
 		};
@@ -78,7 +78,7 @@ namespace pfsp_sa{
 		EN insert = {
 			&pfsp::neighborhood::insert2<S, H, M>,
 			&pfsp::apply::insert<S, M>,
-			nullptr,
+			NULL,
 			&pfsp::random::insert<random_engine, uniform_distribution, S, M>,
 			&pfsp::size::insert<addr_t, S>
 		};
@@ -86,7 +86,7 @@ namespace pfsp_sa{
 		EN exchange = {
 			&pfsp::neighborhood::exchange<S, H, M>,
 			&pfsp::apply::exchange<S, M>,
-			nullptr,
+			NULL,
 			&pfsp::random::exchange<random_engine, uniform_distribution, S, M>,
 			&pfsp::size::exchange<addr_t, S>
 		};

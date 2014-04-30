@@ -56,24 +56,24 @@ namespace pfsp_vnd{
 			{"slack", &init_s.f}
 		};
 		
-		E* e = nullptr;
+		E* e = NULL;
 
 		N transpose = {
 			&pfsp::neighborhood::transpose<S, H, M>,
 			&pfsp::apply::transpose<S, M>,
-			nullptr
+			NULL
 		};
 
 		N insert = {
 			&pfsp::neighborhood::insert2<S, H, M>,
 			&pfsp::apply::insert<S, M>,
-			nullptr
+			NULL
 		};
 
 		N exchange = {
 			&pfsp::neighborhood::exchange<S, H, M>,
 			&pfsp::apply::exchange<S, M>,
-			nullptr
+			NULL
 		};
 
 		std::vector<N*>
