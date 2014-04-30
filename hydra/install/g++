@@ -23,7 +23,7 @@ cd build
 
 make
 
-# make check
+# make check # requires autogen
 
 make install
 
