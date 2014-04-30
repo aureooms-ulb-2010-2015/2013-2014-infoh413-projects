@@ -1,9 +1,29 @@
-
+#!/bin/bash
 
 cp MPICH-install/lib/libmpich.so.12 R-install/lib64/R/lib/
 cp MPICH-install/lib/libmpl.so.1 R-install/lib64/R/lib/
 cp MPICH-install/lib/libopa.so.1 R-install/lib64/R/lib/
 
 
-
-
+# cp /adm/nodes/opt/platform_mpi/lib/linux_amd64/libmpio.so R-install/lib64/R/lib/
+# cp /adm/nodes/opt/platform_mpi/lib/linux_amd64/libmpio.so.1 R-install/lib64/R/lib/
+# cp /adm/nodes/opt/platform_mpi/lib/linux_amd64/libmpi.so R-install/lib64/R/lib/
+# cp /adm/nodes/opt/platform_mpi/lib/linux_amd64/libmpi.so.1 R-install/lib64/R/lib/
+# cp /adm/nodes/opt/platform_mpi/lib/linux_amd64/libpcmpi.so R-install/lib64/R/lib/
+# 
+# cp /adm/nodes/opt/platform_mpi/MPICH2.0/lib/linux_amd64/libmpio.so R-install/lib64/R/lib/
+# cp /adm/nodes/opt/platform_mpi/MPICH2.0/lib/linux_amd64/libmpio.so.1 R-install/lib64/R/lib/
+# cp /adm/nodes/opt/platform_mpi/MPICH2.0/lib/linux_amd64/libmpi.so R-install/lib64/R/lib/
+# cp /adm/nodes/opt/platform_mpi/MPICH2.0/lib/linux_amd64/libmpi.so.1 R-install/lib64/R/lib/
+# cp /adm/nodes/opt/platform_mpi/MPICH2.0/lib/linux_amd64/libmpi.so.2 R-install/lib64/R/lib/
+# cp /adm/nodes/opt/platform_mpi/MPICH2.0/lib/linux_amd64/libpcmpi.so R-install/lib64/R/lib/
+# 
+# rm -f R-install/lib64/R/lib/libmpio.so
+# rm -f R-install/lib64/R/lib/libmpio.so.1
+# rm -f R-install/lib64/R/lib/libmpi.so
+# rm -f R-install/lib64/R/lib/libmpi.so.1
+# rm -f R-install/lib64/R/lib/libmpi.so.2
+# rm -f R-install/lib64/R/lib/libpcmpi.so
+# rm -f R-install/lib64/R/lib/libmpich.so.12
+# rm -f R-install/lib64/R/lib/libmpl.so.1
+# rm -f R-install/lib64/R/lib/libopa.so.1

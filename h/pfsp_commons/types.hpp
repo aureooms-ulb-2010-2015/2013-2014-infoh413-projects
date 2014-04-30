@@ -11,6 +11,7 @@
 #include "pfsp/neighborhood/exchange.hpp"
 #include "pfsp/neighborhood/insert.hpp"
 #include "pfsp/neighborhood/transpose.hpp"
+#include "pfsp/neighborhood/functor.hpp"
 
 #include "pfsp/apply/exchange.hpp"
 #include "pfsp/apply/insert.hpp"
@@ -55,6 +56,7 @@ typedef std::chrono::high_resolution_clock hrclock;
 
 typedef pfsp::pivoting::functor<M>* H;
 typedef void (*W)(const S&, H);
+typedef pfsp::neighborhood::functor<S, H>* _W;
 
 typedef pfsp::instance<addr_t, val_t, priority_t, DD, PR, PM, PMP> I;
 
