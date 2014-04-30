@@ -23,10 +23,10 @@ cd build
 
 make
 
-make check
+# make check
 
 make install
 
 cd ~
 
-# ln -s ~/GCC-install/bin/R ~/R
+ln -s ~/GCC-install/bin/g++ ~/g++
