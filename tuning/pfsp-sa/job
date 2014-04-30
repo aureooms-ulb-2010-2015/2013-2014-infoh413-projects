@@ -7,7 +7,7 @@
 #PBS -o log/tuning-pfsp-sa
 echo "Running job on $HOST - " ‘date‘
 cd ~/infoh413
-make O=3 nocolor=true
+make COMPILER=~/g++ O=3 nocolor=true
 cd tuning/pfsp-sa
 ~/irace
 echo "Done"
