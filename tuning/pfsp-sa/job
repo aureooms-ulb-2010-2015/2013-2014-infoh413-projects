@@ -1,5 +1,5 @@
 #!/bin/bash -l
-#PBS -l nodes=4:ppn=8
+#PBS -l nodes=1:ppn=1
 #PBS -l walltime=48:00:00
 #PBS -l mem=1gb
 #PBS -j oe
@@ -7,7 +7,7 @@
 #PBS -o log/tuning-pfsp-sa
 echo "Running job on $HOST - " ‘date‘
 cd ~/infoh413
-make COMPILER=~/g++ O=3 nocolor=true EMBED=~/GCC-install/lib/
+make STD=-std=c++0x O=3 nocolor=true
 cd tuning/pfsp-sa
 ~/irace
 echo "Done"
