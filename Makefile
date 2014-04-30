@@ -69,7 +69,12 @@ endif
 ifndef STD
 STD = -std=c++11
 endif
-CXX = $(COMPILER) $(STD) $(INCLUDE_PATH) $(FLAGS)
+ifdef EMBED
+_EMBED = EMBED
+EMBED = -Wl,-rpath
+EMBED += _EMBED
+endif
+CXX = $(COMPILER) $(STD) $(INCLUDE_PATH) $(EMBED) $(FLAGS)
 TOOL = $(CXX) -o
 TOOL_OPT = $(LIBS)
 ifeq ($(TYPE),lib)
