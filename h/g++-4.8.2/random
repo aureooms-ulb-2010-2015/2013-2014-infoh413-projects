@@ -31,9 +31,9 @@
 
 #pragma GCC system_header
 
-#if __cplusplus < 201103L
-# include <bits/c++0x_warning.h>
-#else
+// #if __cplusplus < 201103L // attempting to patch c++0x - g++-4.6
+// # include <bits/c++0x_warning.h>
+// #else
 
 #include <cmath>
 #include <cstdio>
@@ -53,6 +53,6 @@
 
 #endif // _GLIBCXX_USE_C99_STDINT_TR1
 
-#endif // C++11
+// #endif // C++11
 
 #endif // _GLIBCXX_RANDOM
