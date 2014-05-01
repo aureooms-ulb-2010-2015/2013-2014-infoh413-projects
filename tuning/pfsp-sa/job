@@ -7,8 +7,12 @@
 #PBS -o log/tuning-pfsp-sa
 echo "Running job on $HOST - " ‘date‘
 cd ~/infoh413
+
 module load openmpi/1.6.5/gcc/4.8.2
 module load R/3.0.2
+module unload gcc/4.6.1/gcc/4.4.7 || true
+module unload gdb/7.7/gcc/4.4.7 || true
+
 make nocolor=true
 cd tuning/pfsp-sa
 ~/irace
