@@ -3,7 +3,7 @@
 
 #include <tuple>
 #include <vector>
-#include "g++-4.8.2/random"
+#include <random>
 #include <chrono>
 
 #include "lib/array/proxy.hpp"
