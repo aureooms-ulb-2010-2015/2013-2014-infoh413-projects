@@ -54,7 +54,7 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
    */
   template<typename _RealType, size_t __bits,
 	   typename _UniformRandomNumberGenerator>
-    _RealType
+    typename _RealType
     generate_canonical(_UniformRandomNumberGenerator& __g);
 
 _GLIBCXX_END_NAMESPACE_VERSION
