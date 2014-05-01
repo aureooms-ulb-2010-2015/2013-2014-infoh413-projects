@@ -7,7 +7,8 @@
 #PBS -o log/tuning-pfsp-sa
 echo "Running job on $HOST - " ‘date‘
 cd ~/infoh413
-make STD=-std=c++0x O=3 nocolor=true
+module load openmpi/1.6.5/gcc/4.8.2
+make nocolor=true
 cd tuning/pfsp-sa
 ~/irace
 echo "Done"
