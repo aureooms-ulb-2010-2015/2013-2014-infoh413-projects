@@ -53,7 +53,11 @@ void run(){
 	auto neighborhood = global::neighborhood[global::options["--neighborhood"][0]];
 	auto accept = global::accept;
 	auto sample = global::sample;
-	addr_t cooling_step = std::max(1.0, global::cooling_step_f * real((*neighborhood->size)(s)) / real(global::k));
+
+// COMPUTING CONSTANTS
+	const addr_t sample_size = std::max(1.0, real((*neighborhood->size)(s)) * global::sample_size_f);
+	const addr_t cooling_step = std::max(1.0, global::cooling_step_f / global::sample_size_f);
+
 
 // INIT RESTART
 
@@ -70,7 +74,7 @@ void run(){
 		(!global::max_steps || global::steps < global::max_steps) &&
 		(!global::max_time.count() || global::time < global::max_time)
 	){
-		R r = sample(global::g, s, neighborhood->random, neighborhood->eval, global::k);
+		R r = sample(global::g, s, neighborhood->random, neighborhood->eval, sample_size);
 
 		if(r.first <= 0 || accept(r.first)){
 			global::val += r.first;

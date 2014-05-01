@@ -59,8 +59,8 @@ namespace pfsp_sa{
 				global::restart_wait = std::stoul(global::options["--restart-wait"][0]);
 			}
 
-			if(global::options.count("--sample-size") && global::options["--sample-size"].size() > 0){
-				global::k = std::stoul(global::options["--sample-size"][0]);
+			if(global::options.count("--sample-size-f") && global::options["--sample-size-f"].size() > 0){
+				global::sample_size_f = std::stod(global::options["--sample-size-f"][0]);
 			}
 
 		}
@@ -111,10 +111,12 @@ namespace pfsp_sa{
 				throw lib::error::exception("--restart-wait missing");
 
 
-			if(global::options.count("--sample-size") == 0 || global::options["--sample-size"].size() == 0)
-				throw lib::error::exception("--sample-size missing");
-			if(global::k == 0)
-				throw lib::error::exception("--sample-size == 0");
+			if(global::options.count("--sample-size-f") == 0 || global::options["--sample-size-f"].size() == 0)
+				throw lib::error::exception("--sample-size-f missing");
+			if(global::sample_size_f <= 0.0)
+				throw lib::error::exception("--sample-size-f <= 0.0");
+			if(global::sample_size_f > 1.0)
+				throw lib::error::exception("--sample-size-f > 1.0");
 
 		}
 

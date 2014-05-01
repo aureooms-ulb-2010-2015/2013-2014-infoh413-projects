@@ -116,7 +116,7 @@ namespace pfsp_sa{
 			"--restart-wait",
 			"--alpha",
 			"--cooling-step-f",
-			"--sample-size"
+			"--sample-size-f"
 		};
 
 		std::set<std::string> flag_set = {
@@ -137,7 +137,7 @@ namespace pfsp_sa{
 		delta_t time(0);
 		delta_t max_time(0);
 		val_t val;
-		size_t k = 0;
+		real sample_size_f = 0;
 
 		auto accept = pfsp::accept::metropolis<random_engine, uniform_real_distribution, real, val_t, M>(g, r, T, val);
 		auto sample = pfsp::random::sample<R, random_engine, val_t, S, M, ME, RS>;

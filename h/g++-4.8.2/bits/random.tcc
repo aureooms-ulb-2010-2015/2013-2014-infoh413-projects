@@ -32,7 +32,7 @@
 
 #include <numeric> // std::accumulate and std::partial_sum
 
-namespace std _GLIBCXX_VISIBILITY(default)
+namespace std /*_GLIBCXX_VISIBILITY(default)*/
 {
   /*
    * (Further) implementation-space details.

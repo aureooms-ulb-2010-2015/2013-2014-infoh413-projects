@@ -33,7 +33,7 @@
 
 #include <vector>
 
-namespace std _GLIBCXX_VISIBILITY(default)
+namespace std /*_GLIBCXX_VISIBILITY(default)*/
 {
 _GLIBCXX_BEGIN_NAMESPACE_VERSION
 
