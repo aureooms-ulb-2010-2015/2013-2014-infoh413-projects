@@ -1,7 +1,0 @@
-#!/bin/bash
-
-./hydra/R
-./hydra/mpich
-./hydra/patch:R-MPICH
-./hydra/Rmpi
-./hydra/irace
