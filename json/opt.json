@@ -1,0 +1,20 @@
+{
+	"./run/pfsp-ii" : [
+		["--init", ["random", "slack"]],
+		["--pivoting", ["first", "best"]],
+		["--neighborhood", ["transpose", "exchange", "insert"]]
+	],
+	"./run/pfsp-vnd" : [
+		["--init", ["random", "slack"]],
+		["--pivoting", ["first"]],
+		["--ordering", ["tie", "tei"]]
+	],
+	"./run/pfsp-rii" : [
+	],
+	"./run/pfsp-pii" : [
+	],
+	"./run/pfsp-sa" : [
+	],
+	"./run/pfsp-tabu" : [
+	]
+}

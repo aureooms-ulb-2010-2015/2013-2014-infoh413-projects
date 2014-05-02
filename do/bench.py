@@ -28,27 +28,17 @@ if __name__ == '__main__':
 		'gen' : gen
 	}
 
-	seed = '0' if len(sys.argv) < 6 else sys.argv[5]
+	seed = '0' if len(sys.argv) < 7 else sys.argv[6]
 
-	opt = {
-		'./run/pfsp-ii' : [
-			('--init', ['random', 'slack']),
-			('--pivoting', ['first', 'best']),
-			('--neighborhood', ['transpose', 'exchange', 'insert']),
-			('--seed', [seed])
-		],
-		'./run/pfsp-vnd' : [
-			('--init', ['random', 'slack']),
-			('--pivoting', ['first']),
-			('--ordering', ['tie', 'tei']),
-			('--seed', [seed])
-		]
-	}
+	with lib.json.proxy(sys.argv[5]) as data:
+		opt = data
 	
 	ben = scr[sys.argv[1]]
 	run = sys.argv[2]
 	inp = sys.argv[3]
 	out = sys.argv[4]
+
+	opt[run].append(['--seed', [seed]])
 
 	if inp != '--' : do(ben, run, opt[run], inp, out)
 	else : lib.stdin.read(f = lambda s : do(ben, run, opt[run], s, out))

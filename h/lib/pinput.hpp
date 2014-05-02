@@ -149,7 +149,7 @@ public:
 			std::string desc;
 			component_t cond;
 			component_t odefault;
-			bool omandatory = false;
+			int omandatory = 0;
 		} components_t;
 
 		typedef std::pair<std::string, components_t> item_t;
@@ -181,12 +181,21 @@ public:
 
 			for(const auto& d : omandatory){
 				if(d.size() == 1 && d[0].size() == 1)
-				otext.at(d[0][0]).omandatory = true;
+					otext.at(d[0][0]).omandatory = 1;
+				else{
+					for(const auto& c : d){
+						for(const auto& v : c){
+							if(!otext.at(v).omandatory)
+								otext.at(v).omandatory = -1;
+						}
+					}
+				}
 			}
 
 			for(const auto& component : otext){
 				std::cout << "  " << component.first;
-				if(component.second.omandatory) std::cout << '*';
+				if(component.second.omandatory == 1) std::cout << '*';
+				else if(component.second.omandatory == -1) std::cout << '^';
 				if(component.second.names.size()){
 					std::cout << ' ';
 					std::cout << component.second.names;
