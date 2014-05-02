@@ -10,22 +10,60 @@ using namespace pfsp_ii;
 namespace pfsp_ii{
 	namespace config{
 
+		lib::pinput::helper optparse;
+
+		typedef std::vector<std::string> V;
+		typedef std::vector<std::vector<std::string>> D;
+
 		inline void fill(int argc, char *argv[]){
-			lib::pinput::parse(argc, argv, global::params, global::options, global::flags, global::option_set, global::flag_set);	
-			global::help = global::flags.count("-h") || global::flags.count("--help");
-			global::verbose = global::flags.count("-v") || global::flags.count("--verbose");
+			optparse.usage("pfsp-ii <filename> [options] [flags]")
 
-			// SEED
+			.flag("--help", "display help")
+			.flag("--verbose", "verbose output")
 
-			if(global::options.count("--seed") && global::options["--seed"].size() > 0){
-				for(const auto& e : global::options["--seed"]){
-					global::seed_v.push_back(std::stoll(e));
-				}
-			}
-			else{
-				global::seed_v.push_back(hrclock::now().time_since_epoch().count());
-			}
+			.alias("--help", "-h")
+			.alias("--verbose", "-v")
 
+			.option("--seed", "seed array for the random engine")
+			.option("--init", "initial solution generator")
+			.option("--neighborhood", "neighborhood type")
+			.option("--pivoting", "pivoting type")
+
+			.alias("--seed", "-s")
+			.alias("--init", "-i")
+			.alias("--neighborhood", "-n")
+			.alias("--pivoting", "-p")
+
+			.mandatory("--init")
+			.mandatory("--neighborhood")
+			.mandatory("--pivoting")
+
+			.odefault("--seed", {std::to_string(hrclock::now().time_since_epoch().count())})
+
+			.condition("--init",
+				[&]{return global::init.count(global::INIT) > 0;},
+				"in {slack, random}")
+			.condition("--neighborhood",
+				[&]{return global::neighborhood.count(global::NEIGHBORHOOD) > 0;},
+				"in {transpose, insert, exchange}")
+			.condition("--pivoting",
+				[&]{return global::pivoting.count(global::PIVOTING) > 0;},
+				"in {best, first}")
+
+			.oassign("--init", [&](const V& v){global::INIT = v[0];})
+			.oassign("--neighborhood", [&](const V& v){global::NEIGHBORHOOD = v[0];})
+			.oassign("--pivoting", [&](const V& v){global::PIVOTING = v[0];})
+			.oassign("--seed", [&](const V& v){
+				for(const auto& e : v) global::seed_v.push_back(std::stoll(e));
+			})
+
+			.fassign("--help", [&](const bool v){global::help = v;})
+			.fassign("--verbose", [&](const bool v){global::verbose = v;})
+
+
+			.parse(argc, argv, global::params, global::options, global::flags);
+
+		
 			std::seed_seq seed(global::seed_v.begin(), global::seed_v.end());
 			global::g.seed(seed);
 		}
@@ -33,33 +71,13 @@ namespace pfsp_ii{
 		inline void check(){
 			if(global::params.size() < 1) throw lib::error::exception("<filename> missing");
 			
-			if(global::options.count("--neighborhood") == 0 || global::options["--neighborhood"].size() == 0)
-				throw lib::error::exception("--neighborhood missing");
-			if(global::neighborhood.count(global::options["--neighborhood"][0]) == 0)
-				throw lib::error::exception("wrong --neighborhood");
+			optparse.validate(global::params, global::options, global::flags);
 
-			if(global::options.count("--init") == 0 || global::options["--init"].size() == 0)
-				throw lib::error::exception("--init missing");
-			if(global::init.count(global::options["--init"][0]) == 0)
-				throw lib::error::exception("wrong --init");
-
-			if(global::options.count("--pivoting") == 0 || global::options["--pivoting"].size() == 0)
-				throw lib::error::exception("--pivoting missing");
-			if(global::pivoting.count(global::options["--pivoting"][0]) == 0)
-				throw lib::error::exception("wrong --pivoting");
 		}
 
 
 		inline void help(){
-			std::cout << "> OPTION" << std::endl;
-			std::cout << std::endl;
-			std::cout << "  --seed" << " " << "long long[]" << std::endl;
-			std::cout << std::endl;
-			std::cout << "> FLAG" << std::endl;
-			std::cout << std::endl;
-			std::cout << "  -h | --help" << std::endl;
-			std::cout << "  -v | --verbose" << std::endl;
-			std::cout << std::endl;
+			optparse.signature();
 		}
 
 

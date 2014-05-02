@@ -32,7 +32,7 @@ void run(){
 
 // GEN INITIAL SOLUTION
 
-	auto init = global::init[global::options["--init"][0]];
+	auto init = global::init[global::INIT];
 	(*init)(s);
 	val_t opt = (*global::e)(s);
 
@@ -46,8 +46,8 @@ void run(){
 
 // ALIAS
 
-	auto ordering = global::ordering[global::options["--ordering"][0]];
-	auto pivoting = global::pivoting[global::options["--pivoting"][0]];
+	auto ordering = global::ordering[global::ORDERING];
+	auto pivoting = global::pivoting[global::PIVOTING];
 
 // FIND LOCAL OPTIMUM
 

@@ -16,7 +16,7 @@
 #include "pfsp/apply/insert.hpp"
 #include "pfsp/apply/transpose.hpp"
 
-#include "pfsp/pivoting/metropolis.hpp"
+#include "pfsp/accept/metropolis.hpp"
 
 #include "pfsp/init/random.hpp"
 #include "pfsp/init/slack.hpp"
@@ -24,6 +24,11 @@
 #include "pfsp/random/exchange.hpp"
 #include "pfsp/random/insert.hpp"
 #include "pfsp/random/transpose.hpp"
+#include "pfsp/random/sample.hpp"
+
+#include "pfsp/size/exchange.hpp"
+#include "pfsp/size/insert.hpp"
+#include "pfsp/size/transpose.hpp"
 
 #include "pfsp/instance.hpp"
 
@@ -66,21 +71,24 @@ namespace pfsp_ig{
 			&pfsp::neighborhood::transpose<S, H, M>,
 			&pfsp::apply::transpose<S, M>,
 			NULL,
-			&pfsp::random::transpose<random_engine, uniform_distribution, S, M>
+			&pfsp::random::transpose<random_engine, uniform_distribution, S, M>,
+			&pfsp::size::transpose<addr_t, S>
 		};
 
 		EN insert = {
 			&pfsp::neighborhood::insert2<S, H, M>,
 			&pfsp::apply::insert<S, M>,
 			NULL,
-			&pfsp::random::insert<random_engine, uniform_distribution, S, M>
+			&pfsp::random::insert<random_engine, uniform_distribution, S, M>,
+			&pfsp::size::insert<addr_t, S>
 		};
 
 		EN exchange = {
 			&pfsp::neighborhood::exchange<S, H, M>,
 			&pfsp::apply::exchange<S, M>,
 			NULL,
-			&pfsp::random::exchange<random_engine, uniform_distribution, S, M>
+			&pfsp::random::exchange<random_engine, uniform_distribution, S, M>,
+			&pfsp::size::exchange<addr_t, S>
 		};
 
 		std::unordered_map<std::string, EN*> neighborhood{
@@ -90,39 +98,32 @@ namespace pfsp_ig{
 		};
 
 		auto walk = &pfsp::neighborhood::random<random_engine, RS, S, H, M>;
-		auto pivoting = &pfsp::pivoting::metropolis<random_engine, uniform_real_distribution, RS, real, R, val_t, S, M, RW, ME>;
 
 
 	// INPUT
 		std::vector<std::string> params;
 		std::map<std::string, std::vector<std::string>> options;
 		std::set<std::string> flags;
-		
-		std::set<std::string> option_set = {
-			"--seed",
-			"--init",
-			"--neighborhood",
-			"--max-steps",
-			"--max-time",
-			"--temperature",
-			"--alpha",
-			"--cooling-step"
-		};
 
-		std::set<std::string> flag_set = {
-			"-h", "--help",
-			"-v", "--verbose"
-		};
-
-	// PII
+	// IG
 		uniform_real_distribution r(0.0, 1.0);
+		real Tp = 0;
+		real Td = 0;
 		real T = 0;
 		real alpha = -1;
-		size_t cooling_step = 0;
+		real cooling_step_f = 0;
 		size_t steps = 0;
 		size_t max_steps = 0;
+		size_t restart_wait = 0;
 		delta_t time(0);
 		delta_t max_time(0);
+		val_t val;
+		real sample_size_f = 0;
+
+		std::string NEIGHBORHOOD, INIT;
+
+		auto accept = pfsp::accept::metropolis<random_engine, uniform_real_distribution, real, val_t, M>(g, r, T, val);
+		auto sample = pfsp::random::sample<R, random_engine, val_t, S, M, ME, RS>;
 
 	}
 }

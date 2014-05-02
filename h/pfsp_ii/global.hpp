@@ -92,22 +92,12 @@ namespace pfsp_ii{
 		std::vector<std::string> params;
 		std::map<std::string, std::vector<std::string>> options;
 		std::set<std::string> flags;
-		
-		std::set<std::string> option_set = {
-			"--seed",
-			"--init",
-			"--pivoting",
-			"--neighborhood",
-		};
 
-		std::set<std::string> flag_set = {
-			"-h", "--help",
-			"-v", "--verbose"
-		};
-
-	// STEPS AND TIME
+	// II
 		size_t steps = 0;
 		delta_t time(0);
+
+		std::string NEIGHBORHOOD, INIT, PIVOTING;
 
 	}
 }

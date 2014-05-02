@@ -391,8 +391,14 @@ public:
 		// ASSIGN
 
 		for(const auto& k : oassigns){
-			if(options.count(k.key) && options.at(k.key).size())
-				(*k.fn)(options.at(k.key));
+			if(options.count(k.key) && options.at(k.key).size()){
+				try{
+					(*k.fn)(options.at(k.key));
+				}
+				catch(const std::exception& e){
+					throw lib::error::exception("parse : failed to parse '" + k.key +"' (" + e.what() + ")." );
+				}
+			}
 		}
 
 

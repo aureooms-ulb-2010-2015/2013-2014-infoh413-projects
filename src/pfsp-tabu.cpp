@@ -4,6 +4,8 @@
 #include "pfsp_tabu/global.hpp"
 #include "pfsp_tabu/config.hpp"
 
+#include <algorithm>
+
 
 using namespace pfsp_tabu;
 
@@ -24,9 +26,6 @@ void run(){
 
 	pfsp::framework::init_eval<I,E,TE,IE,EE>(global::i, global::e, global::transpose.eval, global::insert.eval, global::exchange.eval);
 
-// INIT TABU
-
-	global::tabu.resize(global::i.nbJob + 1, 0);
 
 // SOLUTION
 
@@ -35,7 +34,7 @@ void run(){
 
 // GEN INITIAL SOLUTION
 
-	auto init = global::init[global::options["--init"][0]];
+	auto init = global::init[global::INIT];
 	(*init)(s);
 	global::val = (*global::e)(s);
 	val_t opt = global::val;
@@ -51,8 +50,25 @@ void run(){
 
 // ALIAS
 
-	auto neighborhood = global::neighborhood[global::options["--neighborhood"][0]];
+	auto neighborhood = global::neighborhood[global::NEIGHBORHOOD];
 	auto accept = global::accept;
+	auto sample = global::sample;
+
+// COMPUTING CONSTANTS
+	const addr_t sample_size = std::max(1.0, real((*neighborhood->size)(s)) * global::sample_size_f);
+	const addr_t cooling_step = std::max(1.0, global::cooling_step_f / global::sample_size_f);
+
+
+// INIT RESTART
+
+	size_t last_improvement = 0;
+	const real t = global::T;
+
+
+// INIT TABU
+
+	global::tabu.resize(global::i.nbJob + 1, 0);
+	const addr_t tt = 1 + global::ttf * real((*neighborhood->size)(s));
 
 
 // FIND LOCAL OPTIMUM
@@ -64,15 +80,14 @@ void run(){
 		(!global::max_steps || global::steps < global::max_steps) &&
 		(!global::max_time.count() || global::time < global::max_time)
 	){
-		M m = (*neighborhood->random)(global::g, s);
+		R r = sample(global::g, s, neighborhood->random, neighborhood->eval, sample_size);
 		
-		if(!(*neighborhood->tabu)(m, global::tabu, global::steps)){
-			val_t delta = (*neighborhood->eval)(s, m);
-			if(delta <= 0 || accept(delta)){
-				global::tabu[std::get<0>(m)] = global::steps + global::tt + 1;
-				global::val += delta;
-				(*neighborhood->eval)(s, m, global::e->detail, global::e->wt);
-				(*neighborhood->apply)(s, m);
+		if(!(*neighborhood->tabu)(r.second, global::tabu, global::steps)){
+			if(r.first <= 0 || (global::T > 0.0 && accept(r.first))){
+				global::tabu[std::get<0>(r.second)] = global::steps + tt;
+				global::val += r.first;
+				(*neighborhood->eval)(s, r.second, global::e->detail, global::e->wt);
+				(*neighborhood->apply)(s, r.second);
 			}
 		}
 
@@ -81,16 +96,22 @@ void run(){
 		global::time = std::chrono::duration_cast<delta_t>(global::duration);
 
 		if(global::val < opt){
+			last_improvement = global::steps;
 			opt = global::val;
 			argopt = s;
 			if(global::verbose){
 				pfsp::framework::print_step(std::cout, global::steps, global::duration, opt);
 			}
 		}
+		else if(global::restart_wait && global::steps - last_improvement > global::restart_wait){
+			global::T = t;
+			s = argopt;
+			global::val = (*global::e)(s);
+			continue;
+		}
 
-		if(global::steps % global::cooling_step == 0){
+		if(global::steps % cooling_step == 0){
 			global::T *= global::alpha;
-			if(global::T == 0) break;
 		}
 	}
 	// <end>

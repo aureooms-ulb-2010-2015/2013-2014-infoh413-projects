@@ -89,14 +89,14 @@ inline void output(S& out, bool v, const B& s, C& list_p, const D& opt, const E&
 template<typename S, typename A, typename B, typename C, typename D, typename E, typename F>
 inline int main(S& out, const A& argc, const B& argv, const bool& help_flag, C fill, D help, E check, F run){
 	
-	fill(argc, argv);
-
-	if(help_flag){
-		help();
-		return 0;
-	}
-
 	try{
+		fill(argc, argv);
+
+		if(help_flag){
+			help();
+			return 0;
+		}
+
 		check();
 		run();
 	}

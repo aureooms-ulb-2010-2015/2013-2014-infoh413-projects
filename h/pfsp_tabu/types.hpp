@@ -9,6 +9,7 @@
 // 
 
 typedef M (*RS)(random_engine&, const S&);
+typedef addr_t (*SI)(const S&);
 
 typedef size_t K;
 typedef std::vector<K> A7;
@@ -21,6 +22,7 @@ typedef struct{
 	X apply;
 	ME eval;
 	RS random;
+	SI size;
 	TABU tabu;
 } EN;
 

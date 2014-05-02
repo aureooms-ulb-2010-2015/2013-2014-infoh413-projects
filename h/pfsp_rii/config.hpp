@@ -12,79 +12,81 @@ using namespace pfsp_rii;
 namespace pfsp_rii{
 	namespace config{
 
+		lib::pinput::helper optparse;
+
+		typedef std::vector<std::string> V;
+		typedef std::vector<std::vector<std::string>> D;
+
 		inline void fill(int argc, char *argv[]){
-			lib::pinput::parse(argc, argv, global::params, global::options, global::flags, global::option_set, global::flag_set);	
-			global::help = global::flags.count("-h") || global::flags.count("--help");
-			global::verbose = global::flags.count("-v") || global::flags.count("--verbose");
+			optparse.usage("pfsp-rii <filename> [options] [flags]")
 
-			// SEED
+			.flag("--help", "display help")
+			.flag("--verbose", "verbose output")
 
-			if(global::options.count("--seed") && global::options["--seed"].size() > 0){
-				for(const auto& e : global::options["--seed"]){
-					global::seed_v.push_back(std::stoll(e));
-				}
-			}
-			else{
-				global::seed_v.push_back(hrclock::now().time_since_epoch().count());
-			}
+			.alias("--help", "-h")
+			.alias("--verbose", "-v")
 
+			.option("--seed", "seed array for the random engine")
+			.option("--init", "initial solution generator")
+			.option("--neighborhood", "neighborhood type")
+			.option("--max-steps", "step based termination criterion")
+			.option("--max-time", "time (ms) based termination criterion")
+			.option("--wp", "random solution pivoting probability")
+
+			.alias("--seed", "-s")
+			.alias("--init", "-i")
+			.alias("--neighborhood", "-n")
+			.alias("--max-steps", "-#")
+			.alias("--max-time", "-t")
+			.alias("--wp", "-w")
+
+			.mandatory("--init")
+			.mandatory("--neighborhood")
+			.mandatory(D({{"--max-steps"}, {"--max-time"}}))
+			.mandatory("--wp")
+
+			.odefault("--seed", {std::to_string(hrclock::now().time_since_epoch().count())})
+
+			.condition("--init",
+				[&]{return global::init.count(global::INIT) > 0;},
+				"in {slack, random}")
+			.condition("--neighborhood",
+				[&]{return global::neighborhood.count(global::NEIGHBORHOOD) > 0;},
+				"in {transpose, insert, exchange}")
+			.condition("--wp", [&]{return global::wp >= 0.0;}, ">= 0")
+			.condition("--wp", [&]{return global::wp <= 1.0;}, "<= 1")
+			.condition("--max-time", [&]{return global::max_time.count() >= 0;}, ">= 0")
+
+			.oassign("--init", [&](const V& v){global::INIT = v[0];})
+			.oassign("--neighborhood", [&](const V& v){global::NEIGHBORHOOD = v[0];})
+			.oassign("--wp", [&](const V& v){global::wp = std::stod(v[0]);})
+			.oassign("--max-time", [&](const V& v){global::max_time = delta_t(std::stoul(v[0]));})
+			.oassign("--max-steps", [&](const V& v){global::max_steps = std::stoul(v[0]);})
+			.oassign("--seed", [&](const V& v){
+				for(const auto& e : v) global::seed_v.push_back(std::stoll(e));
+			})
+
+			.fassign("--help", [&](const bool v){global::help = v;})
+			.fassign("--verbose", [&](const bool v){global::verbose = v;})
+
+
+			.parse(argc, argv, global::params, global::options, global::flags);
+
+		
 			std::seed_seq seed(global::seed_v.begin(), global::seed_v.end());
 			global::g.seed(seed);
-
-			if(global::options.count("--wp") && global::options["--wp"].size() > 0){
-				global::wp = std::stod(global::options["--wp"][0]);
-			}
-
-			if(global::options.count("--max-time") && global::options["--max-time"].size() > 0){
-				global::max_time = delta_t(std::stoul(global::options["--max-time"][0]));
-			}
-
-			if(global::options.count("--max-steps") && global::options["--max-steps"].size() > 0){
-				global::max_steps = std::stoul(global::options["--max-steps"][0]);
-			}
 		}
 
 		inline void check(){
 			if(global::params.size() < 1) throw lib::error::exception("<filename> missing");
 			
-			if(global::options.count("--neighborhood") == 0 || global::options["--neighborhood"].size() == 0)
-				throw lib::error::exception("--neighborhood missing");
-			if(global::neighborhood.count(global::options["--neighborhood"][0]) == 0)
-				throw lib::error::exception("wrong --neighborhood");
-
-			if(global::options.count("--init") == 0 || global::options["--init"].size() == 0)
-				throw lib::error::exception("--init missing");
-			if(global::init.count(global::options["--init"][0]) == 0)
-				throw lib::error::exception("wrong --init");
-
-			if(global::options.count("--wp") == 0 || global::options["--wp"].size() == 0)
-				throw lib::error::exception("--wp missing");
-			if(global::wp < 0.0 || global::wp > 1.0)
-				throw lib::error::exception("wrong --wp");
-
-			if(
-				(global::options.count("--max-time") == 0 || global::options["--max-time"].size() == 0) &&
-				(global::options.count("--max-steps") == 0 || global::options["--max-steps"].size() == 0)
-			) throw lib::error::exception("please specify at least one termination criterion (--max-time or --max-steps)");
-
-			if(global::max_time.count() < 0)
-				throw lib::error::exception("--max-time must be a non negative value");
-
-
+			optparse.validate(global::params, global::options, global::flags);
 
 		}
 
 
 		inline void help(){
-			std::cout << "> OPTION" << std::endl;
-			std::cout << std::endl;
-			std::cout << "  --seed" << " " << "long long[]" << std::endl;
-			std::cout << std::endl;
-			std::cout << "> FLAG" << std::endl;
-			std::cout << std::endl;
-			std::cout << "  -h | --help" << std::endl;
-			std::cout << "  -v | --verbose" << std::endl;
-			std::cout << std::endl;
+			optparse.signature();
 		}
 
 

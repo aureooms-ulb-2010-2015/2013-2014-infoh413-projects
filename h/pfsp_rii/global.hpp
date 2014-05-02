@@ -95,20 +95,7 @@ namespace pfsp_rii{
 		std::vector<std::string> params;
 		std::map<std::string, std::vector<std::string>> options;
 		std::set<std::string> flags;
-		
-		std::set<std::string> option_set = {
-			"--seed",
-			"--init",
-			"--neighborhood",
-			"--wp",
-			"--max-steps",
-			"--max-time"
-		};
-
-		std::set<std::string> flag_set = {
-			"-h", "--help",
-			"-v", "--verbose"
-		};
+	
 
 	// RII
 		uniform_real_distribution r(0.0, 1.0);
@@ -117,6 +104,8 @@ namespace pfsp_rii{
 		size_t max_steps = 0;
 		delta_t time(0);
 		delta_t max_time(0);
+
+		std::string NEIGHBORHOOD, INIT;
 
 	}
 }

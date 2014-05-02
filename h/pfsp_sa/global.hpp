@@ -120,7 +120,7 @@ namespace pfsp_sa{
 		val_t val;
 		real sample_size_f = 0;
 
-		std::string NEIGHBORHOOD, INIT, PIVOTING;
+		std::string NEIGHBORHOOD, INIT;
 
 		auto accept = pfsp::accept::metropolis<random_engine, uniform_real_distribution, real, val_t, M>(g, r, T, val);
 		auto sample = pfsp::random::sample<R, random_engine, val_t, S, M, ME, RS>;

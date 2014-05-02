@@ -4,6 +4,8 @@
 #include "pfsp_ig/global.hpp"
 #include "pfsp_ig/config.hpp"
 
+#include <algorithm>
+
 
 using namespace pfsp_ig;
 
@@ -32,57 +34,78 @@ void run(){
 
 // GEN INITIAL SOLUTION
 
-	auto init = global::init[global::options["--init"][0]];
+	auto init = global::init[global::INIT];
 	(*init)(s);
-	val_t val = (*global::e)(s);
-	val_t opt = val;
+	global::val = (*global::e)(s);
+	val_t opt = global::val;
 	S argopt(s);
 
 	// PRINT IT
 	if(global::verbose){
 		std::cout << "init ";
 		lib::io::format(std::cout, s, global::list_p) << std::endl;
-		std::cout << "best " << val << std::endl;
+		std::cout << "best " << global::val << std::endl;
 	}
 
 
 // ALIAS
 
-	auto neighborhood = global::neighborhood[global::options["--neighborhood"][0]];
-	auto pivoting = global::pivoting;
+	auto neighborhood = global::neighborhood[global::NEIGHBORHOOD];
+	auto accept = global::accept;
+	auto sample = global::sample;
+
+// COMPUTING CONSTANTS
+	const addr_t sample_size = std::max(1.0, real((*neighborhood->size)(s)) * global::sample_size_f);
+	const addr_t cooling_step = std::max(1.0, global::cooling_step_f / global::sample_size_f);
+
+
+// INIT RESTART
+
+	size_t last_improvement = 0;
+	const real t = global::T;
 
 
 // FIND LOCAL OPTIMUM
 
 	hrclock::time_point beg = hrclock::now();
 
-	// TABU ALGORITHM
+	// IG ALGORITHM
 	while(
 		(!global::max_steps || global::steps < global::max_steps) &&
 		(!global::max_time.count() || global::time < global::max_time)
 	){
-		R neighbor = pivoting(global::g, global::r, neighborhood->random, global::T, s, global::walk, neighborhood->eval);
+		R r = sample(global::g, s, neighborhood->random, neighborhood->eval, sample_size);
 
-		val += neighbor.first;
-		(*neighborhood->eval)(s, neighbor.second, global::e->detail, global::e->wt);
-		(*neighborhood->apply)(s, neighbor.second);
+		if(r.first <= 0 || (global::T > 0.0 && accept(r.first))){
+			global::val += r.first;
+			(*neighborhood->eval)(s, r.second, global::e->detail, global::e->wt);
+			(*neighborhood->apply)(s, r.second);
+		}
 
 		++global::steps;
 		global::duration = hrclock::now() - beg;
 		global::time = std::chrono::duration_cast<delta_t>(global::duration);
 
-		if(val < opt){
-			opt = val;
+		if(global::val < opt){
+			last_improvement = global::steps;
+			opt = global::val;
 			argopt = s;
 			if(global::verbose){
 				pfsp::framework::print_step(std::cout, global::steps, global::duration, opt);
 			}
 		}
-
-		if(global::steps % global::cooling_step == 0){
-			global::T *= global::alpha;
-			if(global::T == 0) break;
+		else if(global::restart_wait && global::steps - last_improvement > global::restart_wait){
+			global::T = t;
+			s = argopt;
+			global::val = (*global::e)(s);
+			continue;
 		}
+
+		if(global::steps % cooling_step == 0){
+			global::T *= global::alpha;
+		}
+
+
 	}
 	// <end>
 

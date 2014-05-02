@@ -36,4 +36,5 @@ restart_wait		"--restart-wait "	i (0, 1000000)
 alpha				"--alpha "			r (0.001, 1.0)
 cooling_step_f		"--cooling-step-f "	r (0.1, 100)
 sample_size_f		"--sample-size-f "	r (0.0005, 0.2)
+tabu_tenure_f		"--tabu-tenure-f "	r (0.0, 1.0)
 

@@ -32,7 +32,7 @@ void run(){
 
 // GEN INITIAL SOLUTION
 
-	auto init = global::init[global::options["--init"][0]];
+	auto init = global::init[global::INIT];
 	(*init)(s);
 	val_t val = (*global::e)(s);
 	val_t opt = val;
@@ -48,7 +48,7 @@ void run(){
 
 // ALIAS
 
-	auto neighborhood = global::neighborhood[global::options["--neighborhood"][0]];
+	auto neighborhood = global::neighborhood[global::NEIGHBORHOOD];
 	auto pivoting = global::pivoting;
 
 

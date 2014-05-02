@@ -38,11 +38,11 @@ namespace pfsp_sa{
 			.option("--cooling-step-f", "cooling step (neighborhood size %)")
 			.option("--sample-size-f", "sample size (neighborhood size %)")
 
-			.alias("--seed", "--sv")
+			.alias("--seed", "-s")
 			.alias("--init", "-i")
 			.alias("--neighborhood", "-n")
-			.alias("--max-steps", "--ms")
-			.alias("--max-time", "--mt")
+			.alias("--max-steps", "-#")
+			.alias("--max-time", "-t")
 			.alias("--temperature-d", "--td")
 			.alias("--temperature-p", "--tp")
 			.alias("--restart-wait", "-r")
@@ -65,9 +65,6 @@ namespace pfsp_sa{
 			.condition("--init",
 				[&]{return global::init.count(global::INIT) > 0;},
 				"in {slack, random}")
-			// .condition("--pivoting",
-			// 	[&]{return global::pivoting.count(global::PIVOTING) > 0;},
-			// 	"in {best, first}")
 			.condition("--neighborhood",
 				[&]{return global::neighborhood.count(global::NEIGHBORHOOD) > 0;},
 				"in {transpose, insert, exchange}")
@@ -82,13 +79,13 @@ namespace pfsp_sa{
 			.condition("--sample-size-f", [&]{return global::sample_size_f <= 1.0;}, "<= 1")
 
 			.oassign("--init", [&](const V& v){global::INIT = v[0];})
-			// .oassign("--pivoting", [&](const V& v){global::PIVOTING = v[0];})
 			.oassign("--neighborhood", [&](const V& v){global::NEIGHBORHOOD = v[0];})
 			.oassign("--temperature-p", [&](const V& v){global::Tp = std::stod(v[0]);})
 			.oassign("--temperature-d", [&](const V& v){global::Td = std::stod(v[0]);})
 			.oassign("--alpha", [&](const V& v){global::alpha  = std::stod(v[0]);})
 			.oassign("--cooling-step-f", [&](const V& v){global::cooling_step_f = std::stod(v[0]);})
 			.oassign("--max-time", [&](const V& v){global::max_time = delta_t(std::stoul(v[0]));})
+			.oassign("--max-steps", [&](const V& v){global::max_steps = std::stoul(v[0]);})
 			.oassign("--sample-size-f", [&](const V& v){global::sample_size_f = std::stod(v[0]);})
 			.oassign("--seed", [&](const V& v){
 				for(const auto& e : v) global::seed_v.push_back(std::stoll(e));

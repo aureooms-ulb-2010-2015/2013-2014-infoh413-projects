@@ -96,21 +96,6 @@ namespace pfsp_pii{
 		std::vector<std::string> params;
 		std::map<std::string, std::vector<std::string>> options;
 		std::set<std::string> flags;
-		
-		std::set<std::string> option_set = {
-			"--seed",
-			"--init",
-			"--neighborhood",
-			"--max-steps",
-			"--max-time",
-			"--temperature-d",
-			"--temperature-p"
-		};
-
-		std::set<std::string> flag_set = {
-			"-h", "--help",
-			"-v", "--verbose"
-		};
 
 	// PII
 		uniform_real_distribution r(0.0, 1.0);
@@ -122,6 +107,10 @@ namespace pfsp_pii{
 		delta_t time(0);
 		delta_t max_time(0);
 		val_t val;
+		
+		real sample_size_f = 0;
+
+		std::string NEIGHBORHOOD, INIT;
 
 		auto accept = pfsp::accept::metropolis<random_engine, uniform_real_distribution, real, val_t, M>(g, r, T, val);
 
