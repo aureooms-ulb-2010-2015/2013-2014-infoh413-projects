@@ -34,7 +34,7 @@ void run(){
 
 // GEN INITIAL SOLUTION
 
-	auto init = global::init[global::options["--init"][0]];
+	auto init = global::init[global::INIT];
 	(*init)(s);
 	global::val = (*global::e)(s);
 	val_t opt = global::val;
@@ -50,7 +50,7 @@ void run(){
 
 // ALIAS
 
-	auto neighborhood = global::neighborhood[global::options["--neighborhood"][0]];
+	auto neighborhood = global::neighborhood[global::NEIGHBORHOOD];
 	auto accept = global::accept;
 	auto sample = global::sample;
 
@@ -76,7 +76,7 @@ void run(){
 	){
 		R r = sample(global::g, s, neighborhood->random, neighborhood->eval, sample_size);
 
-		if(r.first <= 0 || accept(r.first)){
+		if(r.first <= 0 || (global::T > 0.0 && accept(r.first))){
 			global::val += r.first;
 			(*neighborhood->eval)(s, r.second, global::e->detail, global::e->wt);
 			(*neighborhood->apply)(s, r.second);
@@ -94,7 +94,7 @@ void run(){
 				pfsp::framework::print_step(std::cout, global::steps, global::duration, opt);
 			}
 		}
-		else if(global::steps - last_improvement > global::restart_wait){
+		else if(global::restart_wait && global::steps - last_improvement > global::restart_wait){
 			global::T = t;
 			s = argopt;
 			global::val = (*global::e)(s);
@@ -103,7 +103,6 @@ void run(){
 
 		if(global::steps % cooling_step == 0){
 			global::T *= global::alpha;
-			if(global::T == 0) break;
 		}
 
 

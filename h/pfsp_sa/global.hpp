@@ -104,25 +104,6 @@ namespace pfsp_sa{
 		std::vector<std::string> params;
 		std::map<std::string, std::vector<std::string>> options;
 		std::set<std::string> flags;
-		
-		std::set<std::string> option_set = {
-			"--seed",
-			"--init",
-			"--neighborhood",
-			"--max-steps",
-			"--max-time",
-			"--temperature-d",
-			"--temperature-p",
-			"--restart-wait",
-			"--alpha",
-			"--cooling-step-f",
-			"--sample-size-f"
-		};
-
-		std::set<std::string> flag_set = {
-			"-h", "--help",
-			"-v", "--verbose"
-		};
 
 	// SA
 		uniform_real_distribution r(0.0, 1.0);
@@ -138,6 +119,8 @@ namespace pfsp_sa{
 		delta_t max_time(0);
 		val_t val;
 		real sample_size_f = 0;
+
+		std::string NEIGHBORHOOD, INIT, PIVOTING;
 
 		auto accept = pfsp::accept::metropolis<random_engine, uniform_real_distribution, real, val_t, M>(g, r, T, val);
 		auto sample = pfsp::random::sample<R, random_engine, val_t, S, M, ME, RS>;

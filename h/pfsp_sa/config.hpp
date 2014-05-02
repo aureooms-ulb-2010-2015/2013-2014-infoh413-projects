@@ -12,125 +12,111 @@ using namespace pfsp_sa;
 namespace pfsp_sa{
 	namespace config{
 
+		lib::pinput::helper optparse;
+
+		typedef std::vector<std::string> V;
+		typedef std::vector<std::vector<std::string>> D;
+
 		inline void fill(int argc, char *argv[]){
-			lib::pinput::parse(argc, argv, global::params, global::options, global::flags, global::option_set, global::flag_set);
+			optparse.usage("pfsp-sa <filename> [options] [flags]")
 
-			global::help = global::flags.count("-h") || global::flags.count("--help");
-			global::verbose = global::flags.count("-v") || global::flags.count("--verbose");
+			.flag("--help", "display help")
+			.flag("--verbose", "verbose output")
 
-			// SEED
+			.alias("--help", "-h")
+			.alias("--verbose", "-v")
 
-			if(global::options.count("--seed") && global::options["--seed"].size() > 0){
-				for(const auto& e : global::options["--seed"]){
-					global::seed_v.push_back(std::stoll(e));
-				}
-			}
-			else{
-				global::seed_v.push_back(hrclock::now().time_since_epoch().count());
-			}
+			.option("--seed", "seed array for the random engine")
+			.option("--init", "initial solution generator")
+			.option("--neighborhood", "neighborhood type")
+			.option("--max-steps", "step based termination criterion")
+			.option("--max-time", "time (ms) based termination criterion")
+			.option("--temperature-d", "delta used for the temperature")
+			.option("--temperature-p", "probability used for the temperature")
+			.option("--restart-wait", "number of neighborhood walk steps before restart")
+			.option("--alpha", "cooling factor")
+			.option("--cooling-step-f", "cooling step (neighborhood size %)")
+			.option("--sample-size-f", "sample size (neighborhood size %)")
 
+			.alias("--seed", "--sv")
+			.alias("--init", "-i")
+			.alias("--neighborhood", "-n")
+			.alias("--max-steps", "--ms")
+			.alias("--max-time", "--mt")
+			.alias("--temperature-d", "--td")
+			.alias("--temperature-p", "--tp")
+			.alias("--restart-wait", "-r")
+			.alias("--alpha", "-a")
+			.alias("--cooling-step-f", "-c")
+			.alias("--sample-size-f", "--ss")
+
+			.mandatory("--init")
+			.mandatory("--neighborhood")
+			.mandatory(D({{"--max-steps"}, {"--max-time"}}))
+			.mandatory("--temperature-d")
+			.mandatory("--temperature-p")
+			.mandatory("--restart-wait")
+			.mandatory("--alpha")
+			.mandatory("--cooling-step-f")
+			.mandatory("--sample-size-f")
+
+			.odefault("--seed", {std::to_string(hrclock::now().time_since_epoch().count())})
+
+			.condition("--init",
+				[&]{return global::init.count(global::INIT) > 0;},
+				"in {slack, random}")
+			// .condition("--pivoting",
+			// 	[&]{return global::pivoting.count(global::PIVOTING) > 0;},
+			// 	"in {best, first}")
+			.condition("--neighborhood",
+				[&]{return global::neighborhood.count(global::NEIGHBORHOOD) > 0;},
+				"in {transpose, insert, exchange}")
+			.condition("--temperature-p", [&]{return global::Tp > 0.0;}, "> 0")
+			.condition("--temperature-p", [&]{return global::Tp < 1.0;}, "< 1")
+			.condition("--temperature-d", [&]{return global::Td > 0.0;}, "> 0")
+			.condition("--alpha", [&]{return global::alpha > 0.0;}, "> 0")
+			.condition("--alpha", [&]{return global::alpha <= 1.0;}, "<= 1")
+			.condition("--cooling-step-f", [&]{return global::cooling_step_f > 0.0;}, ">= 0")
+			.condition("--max-time", [&]{return global::max_time.count() >= 0;}, ">= 0")
+			.condition("--sample-size-f", [&]{return global::sample_size_f > 0.0;}, "> 0")
+			.condition("--sample-size-f", [&]{return global::sample_size_f <= 1.0;}, "<= 1")
+
+			.oassign("--init", [&](const V& v){global::INIT = v[0];})
+			// .oassign("--pivoting", [&](const V& v){global::PIVOTING = v[0];})
+			.oassign("--neighborhood", [&](const V& v){global::NEIGHBORHOOD = v[0];})
+			.oassign("--temperature-p", [&](const V& v){global::Tp = std::stod(v[0]);})
+			.oassign("--temperature-d", [&](const V& v){global::Td = std::stod(v[0]);})
+			.oassign("--alpha", [&](const V& v){global::alpha  = std::stod(v[0]);})
+			.oassign("--cooling-step-f", [&](const V& v){global::cooling_step_f = std::stod(v[0]);})
+			.oassign("--max-time", [&](const V& v){global::max_time = delta_t(std::stoul(v[0]));})
+			.oassign("--sample-size-f", [&](const V& v){global::sample_size_f = std::stod(v[0]);})
+			.oassign("--seed", [&](const V& v){
+				for(const auto& e : v) global::seed_v.push_back(std::stoll(e));
+			})
+
+			.fassign("--help", [&](const bool v){global::help = v;})
+			.fassign("--verbose", [&](const bool v){global::verbose = v;})
+
+
+			.parse(argc, argv, global::params, global::options, global::flags);
+
+		
 			std::seed_seq seed(global::seed_v.begin(), global::seed_v.end());
 			global::g.seed(seed);
 
-			if(global::options.count("--temperature-p") && global::options["--temperature-p"].size() > 0
-				&& global::options.count("--temperature-d") && global::options["--temperature-d"].size() > 0){
-				global::Tp = std::stod(global::options["--temperature-p"][0]);
-				global::Td = std::stod(global::options["--temperature-d"][0]);
-				global::T = - global::Td / std::log(global::Tp);
-			}
-
-			if(global::options.count("--alpha") && global::options["--alpha"].size() > 0){
-				global::alpha = std::stod(global::options["--alpha"][0]);
-			}
-
-			if(global::options.count("--cooling-step-f") && global::options["--cooling-step-f"].size() > 0){
-				global::cooling_step_f = std::stod(global::options["--cooling-step-f"][0]);
-			}
-			
-			if(global::options.count("--max-time") && global::options["--max-time"].size() > 0){
-				global::max_time = delta_t(std::stoul(global::options["--max-time"][0]));
-			}
-
-			if(global::options.count("--max-steps") && global::options["--max-steps"].size() > 0){
-				global::max_steps = std::stoul(global::options["--max-steps"][0]);
-			}
-
-			if(global::options.count("--restart-wait") && global::options["--restart-wait"].size() > 0){
-				global::restart_wait = std::stoul(global::options["--restart-wait"][0]);
-			}
-
-			if(global::options.count("--sample-size-f") && global::options["--sample-size-f"].size() > 0){
-				global::sample_size_f = std::stod(global::options["--sample-size-f"][0]);
-			}
-
+			global::T = - global::Td / std::log(global::Tp);
 		}
 
 		inline void check(){
 			if(global::params.size() < 1) throw lib::error::exception("<filename> missing");
 			
-			if(global::options.count("--neighborhood") == 0 || global::options["--neighborhood"].size() == 0)
-				throw lib::error::exception("--neighborhood missing");
-			if(global::neighborhood.count(global::options["--neighborhood"][0]) == 0)
-				throw lib::error::exception("wrong --neighborhood");
-
-			if(global::options.count("--init") == 0 || global::options["--init"].size() == 0)
-				throw lib::error::exception("--init missing");
-			if(global::init.count(global::options["--init"][0]) == 0)
-				throw lib::error::exception("wrong --init");
-
-			if(global::options.count("--temperature-d") == 0 || global::options["--temperature-d"].size() == 0)
-				throw lib::error::exception("--temperature-d missing");
-			if(global::options.count("--temperature-p") == 0 || global::options["--temperature-p"].size() == 0)
-				throw lib::error::exception("--temperature-p missing");
-			if(global::Tp <= 0.0 || global::Tp >= 1.0 )
-				throw lib::error::exception("wrong --temperature-p");
-			if(global::Td <= 0.0)
-				throw lib::error::exception("wrong --temperature-d");
-			if(global::T <= 0.0)
-				throw lib::error::exception("wrong pair (--temperature-p, --temperature-d)");
-
-			if(global::options.count("--alpha") == 0 || global::options["--alpha"].size() == 0)
-				throw lib::error::exception("--alpha missing");
-			if(global::alpha <= 0.0 || global::alpha > 1.0)
-				throw lib::error::exception("wrong --alpha");
-
-			if(global::options.count("--cooling-step-f") == 0 || global::options["--cooling-step-f"].size() == 0)
-				throw lib::error::exception("--cooling-step-f missing");
-			if(global::cooling_step_f < 0)
-				throw lib::error::exception("--cooling-step-f < 0");
-
-			if(
-				(global::options.count("--max-time") == 0 || global::options["--max-time"].size() == 0) &&
-				(global::options.count("--max-steps") == 0 || global::options["--max-steps"].size() == 0)
-			) throw lib::error::exception("please specify at least one termination criterion (--max-time or --max-steps)");
-
-			if(global::max_time.count() < 0)
-				throw lib::error::exception("--max-time must be a non negative value");
-
-			if(global::options.count("--restart-wait") == 0 || global::options["--restart-wait"].size() == 0)
-				throw lib::error::exception("--restart-wait missing");
-
-
-			if(global::options.count("--sample-size-f") == 0 || global::options["--sample-size-f"].size() == 0)
-				throw lib::error::exception("--sample-size-f missing");
-			if(global::sample_size_f <= 0.0)
-				throw lib::error::exception("--sample-size-f <= 0.0");
-			if(global::sample_size_f > 1.0)
-				throw lib::error::exception("--sample-size-f > 1.0");
+			optparse.validate(global::params, global::options, global::flags);
 
 		}
 
 
 		inline void help(){
-			std::cout << "> OPTION" << std::endl;
-			std::cout << std::endl;
-			std::cout << "  --seed" << " " << "long long[]" << std::endl;
-			std::cout << std::endl;
-			std::cout << "> FLAG" << std::endl;
-			std::cout << std::endl;
-			std::cout << "  -h | --help" << std::endl;
-			std::cout << "  -v | --verbose" << std::endl;
-			std::cout << std::endl;
+			optparse.signature();
 		}
 
 

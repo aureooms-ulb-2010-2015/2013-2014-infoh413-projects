@@ -13,7 +13,7 @@ namespace pfsp_tabu{
 	namespace config{
 
 		inline void fill(int argc, char *argv[]){
-			lib::pinput::parse(argc, argv, global::params, global::options, global::flags, global::option_set, global::flag_set);	
+			lib::pinput::parse(argc, argv, global::params, global::options, global::flags, global::option_set, global::flag_set);
 			global::help = global::flags.count("-h") || global::flags.count("--help");
 			global::verbose = global::flags.count("-v") || global::flags.count("--verbose");
 
