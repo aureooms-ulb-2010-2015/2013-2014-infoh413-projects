@@ -83,9 +83,9 @@ void run(){
 	){
 		R r = sample(global::g, s, neighborhood->random, neighborhood->eval, sample_size);
 		
-		if(!(*neighborhood->tabu)(r.second, global::tabu, global::steps)){
+		if(!(*neighborhood->tabu)(s, r.second, global::tabu, global::steps)){
 			if(r.first <= 0 || (global::T > 0.0 && accept(r.first))){
-				global::tabu[std::get<0>(r.second)] = global::steps + tt;
+				global::tabu[s[std::get<0>(r.second)]] = global::steps + tt;
 				global::val += r.first;
 				(*neighborhood->eval)(s, r.second, global::e->detail, global::e->wt);
 				(*neighborhood->apply)(s, r.second);
@@ -97,6 +97,7 @@ void run(){
 		global::time = std::chrono::duration_cast<delta_t>(global::duration);
 
 		if(global::val < opt){
+			std::fill_n(&global::tabu[1], global::i.nbJob, 0);
 			last_improvement = global::steps;
 			opt = global::val;
 			argopt = s;

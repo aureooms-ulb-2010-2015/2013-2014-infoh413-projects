@@ -16,19 +16,21 @@ namespace tabu{
  *
  * @author Ooms Aurélien
  * 
+ * @param <S> Solution type
  * @param <M> Perturbation type
  * @param <T> Tabu array type
  * @param <K> Step type
  *
+ * @param s current solution
  * @param m perturbation to check
  * @param tabu tabu array
  * @param k release step
  * 
  */
 
-template<typename M, typename T, typename K>
-bool transpose(const M& m, const T& tabu, const K k){
-	return tabu[std::get<0>(m)] > k || tabu[std::get<1>(m)] > k;
+template<typename S, typename M, typename T, typename K>
+bool transpose(const S& s, const M& m, const T& tabu, const K k){
+	return tabu[s[std::get<0>(m)]] > k || tabu[s[std::get<1>(m)]] > k;
 }
 
 

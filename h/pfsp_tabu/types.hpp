@@ -14,7 +14,7 @@ typedef addr_t (*SI)(const S&);
 typedef size_t K;
 typedef std::vector<K> A7;
 
-typedef bool (*TABU)(const M& m, const A7& tabu, const K k);
+typedef bool (*TABU)(const S& s, const M& m, const A7& tabu, const K k);
 
 
 typedef struct{

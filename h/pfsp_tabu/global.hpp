@@ -81,7 +81,7 @@ namespace pfsp_tabu{
 			NULL,
 			&pfsp::random::transpose<random_engine, uniform_distribution, S, M>,
 			&pfsp::size::transpose<addr_t, S>,
-			&pfsp::tabu::transpose<M, A7, K>
+			&pfsp::tabu::transpose<S, M, A7, K>
 		};
 
 		EN insert = {
@@ -90,7 +90,7 @@ namespace pfsp_tabu{
 			NULL,
 			&pfsp::random::insert<random_engine, uniform_distribution, S, M>,
 			&pfsp::size::insert<addr_t, S>,
-			&pfsp::tabu::insert<M, A7, K>
+			&pfsp::tabu::insert<S, M, A7, K>
 		};
 
 		EN exchange = {
@@ -99,7 +99,7 @@ namespace pfsp_tabu{
 			NULL,
 			&pfsp::random::exchange<random_engine, uniform_distribution, S, M>,
 			&pfsp::size::exchange<addr_t, S>,
-			&pfsp::tabu::exchange<M, A7, K>
+			&pfsp::tabu::exchange<S, M, A7, K>
 		};
 
 		std::unordered_map<std::string, EN*> neighborhood{
