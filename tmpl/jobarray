@@ -10,7 +10,7 @@
 
 # Execute the line matching the array index from file {6}:
 # 
-cmd=`head -${{PBS_ARRAYID}} {6} | tail -1`
+cmd=`head -${{PBS_ARRAYID}} ~/infoh413/{6} | tail -1`
 
 # Execute the command extracted from the file:
 cd ~/infoh413
