@@ -73,7 +73,7 @@ R metropolis_or_best(G& generator, D& distribution, const real T, const S& src, 
 		}
 	} f(generator, distribution, T, e, src);
 
-	w(src, &f);
+	(*w)(src, &f);
 	return R(f.opt, f.argopt);
 }
 

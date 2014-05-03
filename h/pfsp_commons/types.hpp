@@ -55,8 +55,7 @@ typedef std::chrono::system_clock sysclock;
 typedef std::chrono::high_resolution_clock hrclock;
 
 typedef pfsp::pivoting::functor<M>* H;
-typedef void (*W)(const S&, H);
-typedef pfsp::neighborhood::functor<S, H>* _W;
+typedef pfsp::neighborhood::functor<S, H>* W;
 
 typedef pfsp::instance<addr_t, val_t, priority_t, DD, PR, PM, PMP> I;
 

@@ -75,7 +75,7 @@ R metropolis(G& generator, D& distribution, PG pg, const real T, const S& src, W
 		}
 	} f(generator, distribution, T, e, src);
 
-	w(generator, pg, src, &f);
+	(*w)(generator, pg, src, &f);
 	return R(f.opt, f.argopt);
 }
 

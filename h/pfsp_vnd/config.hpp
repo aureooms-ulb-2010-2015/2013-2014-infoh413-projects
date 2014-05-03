@@ -46,7 +46,7 @@ namespace pfsp_vnd{
 				"in {slack, random}")
 			.condition("--ordering",
 				[&]{return global::ordering.count(global::ORDERING) > 0;},
-				"in {transpose, insert, exchange}")
+				"in {(s)tie, (s)tei}")
 			.condition("--pivoting",
 				[&]{return global::pivoting.count(global::PIVOTING) > 0;},
 				"in {best, first}")

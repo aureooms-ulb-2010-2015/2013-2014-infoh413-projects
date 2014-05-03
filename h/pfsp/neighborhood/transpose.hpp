@@ -2,6 +2,7 @@
 #define _PFSP_NEIGHBORHOOD_TRANSPOSE_HPP
 
 #include <stddef.h>
+#include "pfsp/neighborhood/functor.hpp"
 
 namespace pfsp{
 namespace neighborhood{
@@ -28,15 +29,17 @@ namespace neighborhood{
  */
 
 template<typename S, typename FN, typename M>
-void transpose(const S& src, FN fn){
-	if(src.size() < 2) return;
+struct transpose : functor<S, FN>{
+	void operator()(const S& src, FN fn){
+		if(src.size() < 2) return;
 
-	const size_t n = src.size() - 1;
+		const size_t n = src.size() - 1;
 
-	for(size_t i = 1; i < n; ++i){
-		if(!(*fn)(M(i, i+1))) return;
+		for(size_t i = 1; i < n; ++i){
+			if(!(*fn)(M(i, i+1))) return;
+		}
 	}
-}
+};
 
 
 

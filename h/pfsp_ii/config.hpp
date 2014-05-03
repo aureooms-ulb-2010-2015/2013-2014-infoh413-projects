@@ -45,7 +45,7 @@ namespace pfsp_ii{
 				"in {slack, random}")
 			.condition("--neighborhood",
 				[&]{return global::neighborhood.count(global::NEIGHBORHOOD) > 0;},
-				"in {transpose, insert, exchange}")
+				"in {(s)transpose, (s)insert, (s)exchange}")
 			.condition("--pivoting",
 				[&]{return global::pivoting.count(global::PIVOTING) > 0;},
 				"in {best, first}")

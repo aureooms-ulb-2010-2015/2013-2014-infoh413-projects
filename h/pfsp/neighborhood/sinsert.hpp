@@ -55,7 +55,7 @@ struct sinsert : functor<S, FN>{
 			}
 		}
 
-		lib::random::sample<G, D, std::vector<M>, M>(g, t, v, 0, t);
+		lib::random::sample<G, D, std::vector<M>, size_t>(g, t, v, 0, t);
 
 		k = t;
 		while(k) if(!(*fn)(v[--k])) return;

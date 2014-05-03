@@ -2,6 +2,7 @@
 #define _PFSP_NEIGHBORHOOD_RANDOM_HPP
 
 #include <stddef.h>
+#include "pfsp/neighborhood/functor.hpp"
 
 namespace pfsp{
 namespace neighborhood{
@@ -31,9 +32,11 @@ namespace neighborhood{
  */
 
 template<typename G, typename PG, typename S, typename FN, typename M>
-inline void random(G& generator, PG pg, const S& src, FN fn){
-	while((*fn)((*pg)(generator, src)));
-}
+struct random : functor<S, FN>{
+	void operator()(G& generator, PG pg, const S& src, FN fn){
+		while((*fn)((*pg)(generator, src)));
+	}
+};
 
 
 

@@ -55,7 +55,7 @@ R first(const S& src, W w, ME e){
 		}
 	} f(e, src);
 
-	w(src, &f);
+	(*w)(src, &f);
 	return R(f.opt, f.argopt);
 }
 

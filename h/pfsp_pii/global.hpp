@@ -62,22 +62,23 @@ namespace pfsp_pii{
 
 		E* e = NULL;
 
+
 		EN transpose = {
-			&pfsp::neighborhood::transpose<S, H, M>,
+			NULL,
 			&pfsp::apply::transpose<S, M>,
 			NULL,
 			&pfsp::random::transpose<random_engine, uniform_distribution, S, M>
 		};
 
 		EN insert = {
-			&pfsp::neighborhood::insert2<S, H, M>,
+			NULL,
 			&pfsp::apply::insert<S, M>,
 			NULL,
 			&pfsp::random::insert<random_engine, uniform_distribution, S, M>
 		};
 
 		EN exchange = {
-			&pfsp::neighborhood::exchange<S, H, M>,
+			NULL,
 			&pfsp::apply::exchange<S, M>,
 			NULL,
 			&pfsp::random::exchange<random_engine, uniform_distribution, S, M>
@@ -88,8 +89,6 @@ namespace pfsp_pii{
 			{"insert" , &insert},
 			{"transpose" , &transpose}
 		};
-
-		auto walk = &pfsp::neighborhood::random<random_engine, RS, S, H, M>;
 
 
 	// INPUT

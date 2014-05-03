@@ -11,6 +11,10 @@
 #include "pfsp/neighborhood/insert2.hpp"
 #include "pfsp/neighborhood/transpose.hpp"
 
+#include "pfsp/neighborhood/sexchange.hpp"
+#include "pfsp/neighborhood/sinsert.hpp"
+#include "pfsp/neighborhood/stranspose.hpp"
+
 #include "pfsp/apply/exchange.hpp"
 #include "pfsp/apply/insert.hpp"
 #include "pfsp/apply/transpose.hpp"
@@ -58,20 +62,46 @@ namespace pfsp_ii{
 		
 		E* e = NULL;
 
+		auto __t = pfsp::neighborhood::transpose<S, H, M>();
+		auto __i = pfsp::neighborhood::insert2<S, H, M>();
+		auto __e = pfsp::neighborhood::exchange<S, H, M>();
+
 		N transpose = {
-			&pfsp::neighborhood::transpose<S, H, M>,
+			&__t,
 			&pfsp::apply::transpose<S, M>,
 			NULL
 		};
 
 		N insert = {
-			&pfsp::neighborhood::insert2<S, H, M>,
+			&__i,
 			&pfsp::apply::insert<S, M>,
 			NULL
 		};
 
 		N exchange = {
-			&pfsp::neighborhood::exchange<S, H, M>,
+			&__e,
+			&pfsp::apply::exchange<S, M>,
+			NULL
+		};
+
+		auto __st = pfsp::neighborhood::stranspose<random_engine, uniform_distribution, S, H, M>(g);
+		auto __si = pfsp::neighborhood::sinsert<random_engine, uniform_distribution, S, H, M>(g);
+		auto __se = pfsp::neighborhood::sexchange<random_engine, uniform_distribution, S, H, M>(g);
+
+		N stranspose = {
+			&__st,
+			&pfsp::apply::transpose<S, M>,
+			NULL
+		};
+
+		N sinsert = {
+			&__si,
+			&pfsp::apply::insert<S, M>,
+			NULL
+		};
+
+		N sexchange = {
+			&__se,
 			&pfsp::apply::exchange<S, M>,
 			NULL
 		};
@@ -79,7 +109,10 @@ namespace pfsp_ii{
 		std::unordered_map<std::string, N*> neighborhood{
 			{"exchange" , &exchange},
 			{"insert" , &insert},
-			{"transpose" , &transpose}
+			{"transpose" , &transpose},
+			{"sexchange" , &sexchange},
+			{"sinsert" , &sinsert},
+			{"stranspose" , &stranspose}
 		};
 
 		std::unordered_map<std::string, P> pivoting{
