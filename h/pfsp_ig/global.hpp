@@ -114,7 +114,7 @@ namespace pfsp_ig{
 		real cooling_step_f = 0;
 		size_t steps = 0;
 		size_t max_steps = 0;
-		size_t restart_wait = 0;
+		real restart_wait_f = -1.0;
 		delta_t time(0);
 		delta_t max_time(0);
 		val_t val;

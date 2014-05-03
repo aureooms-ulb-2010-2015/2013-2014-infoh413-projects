@@ -28,17 +28,25 @@ if __name__ == '__main__':
 		'gen' : gen
 	}
 
-	seed = '0' if len(sys.argv) < 7 else sys.argv[6]
-
-	with lib.json.proxy(sys.argv[5]) as data:
-		opt = data
-	
 	ben = scr[sys.argv[1]]
 	run = sys.argv[2]
 	inp = sys.argv[3]
 	out = sys.argv[4]
 
-	opt[run].append(['--seed', [seed]])
+	if(sys.argv[5][:2] == '--'):
+		opt = []
+		cmd = sys.argv[5].split(' ')
+		for k, v in zip(cmd[::2], cmd[1::2]):
+			opt.append([k, [v]])
 
-	if inp != '--' : do(ben, run, opt[run], inp, out)
-	else : lib.stdin.read(f = lambda s : do(ben, run, opt[run], s, out))
+	else:
+
+		with lib.json.proxy(sys.argv[5]) as data:
+			opt = data
+	
+		seed = '0' if len(sys.argv) < 7 else sys.argv[6]
+		opt[run].append(['--seed', [seed]])
+		opt = opt[run]
+
+	if inp != '--' : do(ben, run, opt, inp, out)
+	else : lib.stdin.read(f = lambda s : do(ben, run, opt, s, out))

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+T=$(date +"%m%d%H%M")$1
+
+python3 do/pbench.py gen ./run/pfsp-sa data/in/ data/out/ .tmp/ $T json/opt.json tmpl/jobarray json/job.json 0 1 2 3 4

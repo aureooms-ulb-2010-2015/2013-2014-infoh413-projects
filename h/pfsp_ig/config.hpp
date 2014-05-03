@@ -33,7 +33,7 @@ namespace pfsp_ig{
 			.option("--max-time", "time (ms) based termination criterion")
 			.option("--temperature-d", "delta used for the temperature")
 			.option("--temperature-p", "probability used for the temperature")
-			.option("--restart-wait", "number of neighborhood walk steps before restart")
+			.option("--restart-wait-f", "number of unsuccessful neighborhood walk steps before restart (neighborhood size %)")
 			.option("--alpha", "cooling factor")
 			.option("--cooling-step-f", "cooling step (neighborhood size %)")
 			.option("--sample-size-f", "sample size (neighborhood size %)")
@@ -45,7 +45,7 @@ namespace pfsp_ig{
 			.alias("--max-time", "-t")
 			.alias("--temperature-d", "--td")
 			.alias("--temperature-p", "--tp")
-			.alias("--restart-wait", "-r")
+			.alias("--restart-wait-f", "-r")
 			.alias("--alpha", "-a")
 			.alias("--cooling-step-f", "-c")
 			.alias("--sample-size-f", "--ss")
@@ -55,7 +55,7 @@ namespace pfsp_ig{
 			.mandatory(D({{"--max-steps"}, {"--max-time"}}))
 			.mandatory("--temperature-d")
 			.mandatory("--temperature-p")
-			.mandatory("--restart-wait")
+			.mandatory("--restart-wait-f")
 			.mandatory("--alpha")
 			.mandatory("--cooling-step-f")
 			.mandatory("--sample-size-f")
@@ -77,6 +77,7 @@ namespace pfsp_ig{
 			.condition("--max-time", [&]{return global::max_time.count() >= 0;}, ">= 0")
 			.condition("--sample-size-f", [&]{return global::sample_size_f > 0.0;}, "> 0")
 			.condition("--sample-size-f", [&]{return global::sample_size_f <= 1.0;}, "<= 1")
+			.condition("--restart-wait-f", [&]{return global::restart_wait_f >= 0.0;}, ">= 0")
 
 			.oassign("--init", [&](const V& v){global::INIT = v[0];})
 			.oassign("--neighborhood", [&](const V& v){global::NEIGHBORHOOD = v[0];})
@@ -87,6 +88,7 @@ namespace pfsp_ig{
 			.oassign("--max-time", [&](const V& v){global::max_time = delta_t(std::stoul(v[0]));})
 			.oassign("--max-steps", [&](const V& v){global::max_steps = std::stoul(v[0]);})
 			.oassign("--sample-size-f", [&](const V& v){global::sample_size_f = std::stod(v[0]);})
+			.oassign("--restart-wait-f", [&](const V& v){global::restart_wait_f = std::stod(v[0]);})
 			.oassign("--seed", [&](const V& v){
 				for(const auto& e : v) global::seed_v.push_back(std::stoll(e));
 			})

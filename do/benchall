@@ -3,5 +3,5 @@
 T=$(date +"%m%d%H%M")$1
 shift
 
-python3 do/bench.py gen ./run/pfsp-ii data/in/ data/out/$T/ii "$@" json/opt.json
-python3 do/bench.py gen ./run/pfsp-vnd data/in/ data/out/$T/vnd "$@" json/opt.json
+python3 do/bench.py gen ./run/pfsp-ii data/in/ data/out/$T/ii json/opt.json "$@"
+python3 do/bench.py gen ./run/pfsp-vnd data/in/ data/out/$T/vnd json/opt.json "$@"

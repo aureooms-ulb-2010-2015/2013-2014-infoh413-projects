@@ -57,6 +57,7 @@ void run(){
 // COMPUTING CONSTANTS
 	const addr_t sample_size = std::max(1.0, real((*neighborhood->size)(s)) * global::sample_size_f);
 	const addr_t cooling_step = std::max(1.0, global::cooling_step_f / global::sample_size_f);
+	const addr_t restart_wait = global::restart_wait_f * real((*neighborhood->size)(s));
 
 
 // INIT RESTART
@@ -94,7 +95,7 @@ void run(){
 				pfsp::framework::print_step(std::cout, global::steps, global::duration, opt);
 			}
 		}
-		else if(global::restart_wait && global::steps - last_improvement > global::restart_wait){
+		else if(restart_wait && global::steps - last_improvement > restart_wait){
 			global::T = t;
 			s = argopt;
 			global::val = (*global::e)(s);

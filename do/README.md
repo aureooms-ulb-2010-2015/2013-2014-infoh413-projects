@@ -174,3 +174,22 @@ usage :
 example :
 
 	python3 do/test.py data/dev/ -- Rscript do/test.r
+
+
+
+
+
+
+
+pbench.py
+==
+
+
+
+usage :
+
+	python3 do/pbench.py <prog> <run> <inp> <out> <tmpdir> <name> <run params file> <jobarray_tmpl> <job_params> <seed[]>
+
+example :
+
+	python3 do/pbench.py gen ./run/pfsp-ii data/in/ data/out/ .tmp/ xxx json/opt.json tmpl/jobarray json/job.json 0 1 2 3 4
