@@ -30,6 +30,8 @@
 #include "pfsp/size/insert.hpp"
 #include "pfsp/size/transpose.hpp"
 
+#include "pfsp/eval/pinsert.hpp"
+
 #include "pfsp/instance.hpp"
 
 #include "pfsp_ig/types.hpp"
@@ -66,6 +68,7 @@ namespace pfsp_ig{
 		};
 
 		E* e = NULL;
+		PIE* peval = NULL;
 
 		auto __t = pfsp::neighborhood::transpose<S, H, M>();
 		auto __i = pfsp::neighborhood::insert2<S, H, M>();
@@ -113,20 +116,17 @@ namespace pfsp_ig{
 		real Tp = 0;
 		real Td = 0;
 		real T = 0;
-		real alpha = -1;
-		real cooling_step_f = 0;
 		size_t steps = 0;
 		size_t max_steps = 0;
-		real restart_wait_f = -1.0;
 		delta_t time(0);
 		delta_t max_time(0);
 		val_t val;
 		real sample_size_f = 0;
+		bool local_search_on;
 
-		std::string NEIGHBORHOOD, INIT;
+		std::string NEIGHBORHOOD = "insert", INIT;
 
 		auto accept = pfsp::accept::metropolis<random_engine, uniform_real_distribution, real, val_t, M>(g, r, T, val);
-		auto sample = pfsp::random::sample<R, random_engine, val_t, S, M, ME, RS>;
 
 	}
 }

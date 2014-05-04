@@ -44,6 +44,17 @@ inline void init_eval(const I& i, E*& e, F*& te, F*& ie, F*& ee){
 
 }
 
+template<typename I, typename E, typename PE, typename F>
+inline void init_eval(const I& i, E* e, F*& fn){
+	fn = new PE(i.nbJob, i.nbMac, i.dueDates, i.priority, i.proxy, e->wt, e->detail);
+}
+
+template<typename I, typename E>
+inline void init_eval(const I& i, E*& e){
+	e = new E(i.nbJob, i.nbMac, i.dueDates, i.priority, i.proxy);
+}
+
+
 template<typename E, typename F>
 inline void clean_eval(E*& e, F*& te, F*& ie, F*& ee){
 	delete e;
@@ -52,6 +63,10 @@ inline void clean_eval(E*& e, F*& te, F*& ie, F*& ee){
 	delete ee;
 }
 
+template<typename F>
+inline void clean_eval(F*& e){
+	delete e;
+}
 
 template<typename S, typename A, typename B, typename C>
 inline void print_step(S& out, const A& steps, const B& duration, const C& opt){

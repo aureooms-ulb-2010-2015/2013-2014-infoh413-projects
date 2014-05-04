@@ -94,7 +94,7 @@ void run(){
 
 // OUTPUT
 
-	pfsp::framework::output(std::cout, global::verbose, s, global::list_p, opt, end - beg, global::seed_v);
+	pfsp::framework::output(std::cout, global::verbose, argopt, global::list_p, opt, end - beg, global::seed_v);
 }
 
 

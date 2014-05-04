@@ -25,6 +25,7 @@ void run(){
 // INIT EVAL
 
 	pfsp::framework::init_eval<I,E,TE,IE,EE>(global::i, global::e, global::transpose.eval, global::insert.eval, global::exchange.eval);
+	pfsp::framework::init_eval<I, E, PIE>(global::i, global::e, global::peval);
 
 
 // SOLUTION
@@ -52,19 +53,9 @@ void run(){
 
 	auto neighborhood = global::neighborhood[global::NEIGHBORHOOD];
 	auto accept = global::accept;
-	auto sample = global::sample;
 
 // COMPUTING CONSTANTS
-	const addr_t sample_size = std::max(1.0, real((*neighborhood->size)(s)) * global::sample_size_f);
-	const addr_t cooling_step = std::max(1.0, global::cooling_step_f / global::sample_size_f);
-	const addr_t restart_wait = global::restart_wait_f * real((*neighborhood->size)(s));
-
-
-// INIT RESTART
-
-	size_t last_improvement = 0;
-	const real t = global::T;
-
+	const addr_t sample_size = std::max(1.0, real(s.size() - 1) * global::sample_size_f);
 
 // FIND LOCAL OPTIMUM
 
@@ -75,12 +66,42 @@ void run(){
 		(!global::max_steps || global::steps < global::max_steps) &&
 		(!global::max_time.count() || global::time < global::max_time)
 	){
-		R r = sample(global::g, s, neighborhood->random, neighborhood->eval, sample_size);
 
-		if(r.first <= 0 || (global::T > 0.0 && accept(r.first))){
-			global::val += r.first;
-			(*neighborhood->eval)(s, r.second, global::e->detail, global::e->wt);
-			(*neighborhood->apply)(s, r.second);
+		S _s = s;
+		val_t _val;
+		size_t i = 0;
+
+		for(; i < sample_size; ++i){
+			uniform_distribution u(1, global::i.nbJob - i);
+			M m(u(global::g), global::i.nbJob - i);
+			(*neighborhood->apply)(_s, m);
+		}
+
+		_val = (*global::e)(_s);
+
+		while(i--){
+			val_t v = 0;
+			M m;
+			for(size_t j = 1; j < global::i.nbJob - i; ++j){
+				M x(global::i.nbJob - i, j);
+				val_t t = (*global::peval)(_s, x);
+				if(t < v){
+					v = t;
+					m = x;
+				}
+			}
+			if(v < 0){
+				_val += (*neighborhood->eval)(_s, m, global::e->detail, global::e->wt);
+				(*neighborhood->apply)(_s, m);
+			}
+		}
+
+		if(_val <= global::val || (global::T > 0.0 && accept(_val - global::val))){
+			global::val = _val;
+			std::swap(s, _s);
+		}
+		else{
+			(*global::e)(s);
 		}
 
 		++global::steps;
@@ -88,22 +109,11 @@ void run(){
 		global::time = std::chrono::duration_cast<delta_t>(global::duration);
 
 		if(global::val < opt){
-			last_improvement = global::steps;
 			opt = global::val;
 			argopt = s;
 			if(global::verbose){
 				pfsp::framework::print_step(std::cout, global::steps, global::duration, opt);
 			}
-		}
-		else if(restart_wait && global::steps - last_improvement > restart_wait){
-			global::T = t;
-			s = argopt;
-			global::val = (*global::e)(s);
-			continue;
-		}
-
-		if(global::steps % cooling_step == 0){
-			global::T *= global::alpha;
 		}
 
 
@@ -116,11 +126,12 @@ void run(){
 // CLEAN
 
 	pfsp::framework::clean_eval(global::e, global::transpose.eval, global::insert.eval, global::exchange.eval);
+	pfsp::framework::clean_eval(global::peval);
 
 
 // OUTPUT
 
-	pfsp::framework::output(std::cout, global::verbose, s, global::list_p, opt, end - beg, global::seed_v);
+	pfsp::framework::output(std::cout, global::verbose, argopt, global::list_p, opt, end - beg, global::seed_v);
 }
 
 

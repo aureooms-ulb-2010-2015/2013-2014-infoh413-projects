@@ -26,5 +26,7 @@ typedef std::uniform_real_distribution<real> uniform_real_distribution;
 
 typedef void (*RW)(random_engine&, RS, const S&, H);
 
+typedef pfsp::eval::insert<addr_t, val_t, priority_t, S, M, DD, PR, PMP, PM, DD, PMP> PIE;
+
 
 #endif // _PFSP_IG_TYPES_HPP

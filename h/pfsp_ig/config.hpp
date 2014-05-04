@@ -22,42 +22,32 @@ namespace pfsp_ig{
 
 			.flag("--help", "display help")
 			.flag("--verbose", "verbose output")
+			.flag("--local-search-on", "enable local search")
 
 			.alias("--help", "-h")
 			.alias("--verbose", "-v")
+			.alias("--local-search-on", "--ls")
 
 			.option("--seed", "seed array for the random engine")
 			.option("--init", "initial solution generator")
-			.option("--neighborhood", "neighborhood type")
 			.option("--max-steps", "step based termination criterion")
 			.option("--max-time", "time (ms) based termination criterion")
 			.option("--temperature-d", "delta used for the temperature")
 			.option("--temperature-p", "probability used for the temperature")
-			.option("--restart-wait-f", "number of unsuccessful neighborhood walk steps before restart (neighborhood size %)")
-			.option("--alpha", "cooling factor")
-			.option("--cooling-step-f", "cooling step (neighborhood size %)")
 			.option("--sample-size-f", "sample size (neighborhood size %)")
 
 			.alias("--seed", "-s")
 			.alias("--init", "-i")
-			.alias("--neighborhood", "-n")
 			.alias("--max-steps", "-#")
 			.alias("--max-time", "-t")
 			.alias("--temperature-d", "--td")
 			.alias("--temperature-p", "--tp")
-			.alias("--restart-wait-f", "-r")
-			.alias("--alpha", "-a")
-			.alias("--cooling-step-f", "-c")
 			.alias("--sample-size-f", "--ss")
 
 			.mandatory("--init")
-			.mandatory("--neighborhood")
 			.mandatory(D({{"--max-steps"}, {"--max-time"}}))
 			.mandatory("--temperature-d")
 			.mandatory("--temperature-p")
-			.mandatory("--restart-wait-f")
-			.mandatory("--alpha")
-			.mandatory("--cooling-step-f")
 			.mandatory("--sample-size-f")
 
 			.odefault("--seed", {std::to_string(hrclock::now().time_since_epoch().count())})
@@ -65,36 +55,26 @@ namespace pfsp_ig{
 			.condition("--init",
 				[&]{return global::init.count(global::INIT) > 0;},
 				"in {slack, random}")
-			.condition("--neighborhood",
-				[&]{return global::neighborhood.count(global::NEIGHBORHOOD) > 0;},
-				"in {transpose, insert, exchange}")
 			.condition("--temperature-p", [&]{return global::Tp > 0.0;}, "> 0")
 			.condition("--temperature-p", [&]{return global::Tp < 1.0;}, "< 1")
 			.condition("--temperature-d", [&]{return global::Td > 0.0;}, "> 0")
-			.condition("--alpha", [&]{return global::alpha > 0.0;}, "> 0")
-			.condition("--alpha", [&]{return global::alpha <= 1.0;}, "<= 1")
-			.condition("--cooling-step-f", [&]{return global::cooling_step_f > 0.0;}, ">= 0")
 			.condition("--max-time", [&]{return global::max_time.count() >= 0;}, ">= 0")
 			.condition("--sample-size-f", [&]{return global::sample_size_f > 0.0;}, "> 0")
 			.condition("--sample-size-f", [&]{return global::sample_size_f <= 1.0;}, "<= 1")
-			.condition("--restart-wait-f", [&]{return global::restart_wait_f >= 0.0;}, ">= 0")
 
 			.oassign("--init", [&](const V& v){global::INIT = v[0];})
-			.oassign("--neighborhood", [&](const V& v){global::NEIGHBORHOOD = v[0];})
 			.oassign("--temperature-p", [&](const V& v){global::Tp = std::stod(v[0]);})
 			.oassign("--temperature-d", [&](const V& v){global::Td = std::stod(v[0]);})
-			.oassign("--alpha", [&](const V& v){global::alpha  = std::stod(v[0]);})
-			.oassign("--cooling-step-f", [&](const V& v){global::cooling_step_f = std::stod(v[0]);})
 			.oassign("--max-time", [&](const V& v){global::max_time = delta_t(std::stoul(v[0]));})
 			.oassign("--max-steps", [&](const V& v){global::max_steps = std::stoul(v[0]);})
 			.oassign("--sample-size-f", [&](const V& v){global::sample_size_f = std::stod(v[0]);})
-			.oassign("--restart-wait-f", [&](const V& v){global::restart_wait_f = std::stod(v[0]);})
 			.oassign("--seed", [&](const V& v){
 				for(const auto& e : v) global::seed_v.push_back(std::stoll(e));
 			})
 
 			.fassign("--help", [&](const bool v){global::help = v;})
 			.fassign("--verbose", [&](const bool v){global::verbose = v;})
+			.fassign("--local-search-on", [&](const bool v){global::local_search_on = v;})
 
 
 			.parse(argc, argv, global::params, global::options, global::flags);
