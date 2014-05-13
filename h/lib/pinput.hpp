@@ -3,6 +3,7 @@
 
 #include <string>
 #include <utility>
+#include <locale>
 
 
 // HELPER
@@ -50,7 +51,7 @@ void parse(int argc, char* argv[], P& params, O& options, F& flags, const T& opt
 
 	for(int n = 1; n < argc; ++n){
 		std::string p = argv[n];
-		if (p[0] == '-'){
+		if (p[0] == '-' && !std::isdigit(p[1])){
 			isOptionalParameter = false;
 			if(p.size() > 1){
 				if(p[1] == '-' || p.size() == 2){

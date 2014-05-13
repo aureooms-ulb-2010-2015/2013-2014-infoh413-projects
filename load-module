@@ -1,0 +1,10 @@
+#!/bin/sh
+
+
+module load openmpi/1.6.5/gcc/4.8.2
+module load R/3.0.2
+module load python/3.4.0a1
+module unload gcc/4.6.1/gcc/4.4.7 || true
+module unload gdb/7.7/gcc/4.4.7 || true
+
+echo $PATH

@@ -22,7 +22,7 @@ instanceDir <- "../../data/in"
 
 ## File with a list of instances and (optionally) parameters.
 ## If empty or NULL, does not use a file.
-instanceFile <- "../../data/training/all"
+instanceFile <- "../../data/training/50"
 
 ## A file containing a list of initial candidates. 
 ## If empty or NULL, do not use a file.
@@ -39,7 +39,7 @@ instanceFile <- "../../data/training/all"
 ## The maximum number of runs (invocations of hookRun) that will performed. It
 ## determines the (maximum) budget of experiments for the tuning, unless
 ## timeBudget is positive.
-maxExperiments <- 3000
+# maxExperiments <- 1000
 
 ## The maximum computation time that should be used for tuning in
 ## seconds. This only works when tuning for time. 0 means no time

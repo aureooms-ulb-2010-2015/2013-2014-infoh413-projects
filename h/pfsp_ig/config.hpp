@@ -22,11 +22,9 @@ namespace pfsp_ig{
 
 			.flag("--help", "display help")
 			.flag("--verbose", "verbose output")
-			.flag("--local-search-on", "enable local search")
 
 			.alias("--help", "-h")
 			.alias("--verbose", "-v")
-			.alias("--local-search-on", "--ls")
 
 			.option("--seed", "seed array for the random engine")
 			.option("--init", "initial solution generator")
@@ -74,7 +72,6 @@ namespace pfsp_ig{
 
 			.fassign("--help", [&](const bool v){global::help = v;})
 			.fassign("--verbose", [&](const bool v){global::verbose = v;})
-			.fassign("--local-search-on", [&](const bool v){global::local_search_on = v;})
 
 
 			.parse(argc, argv, global::params, global::options, global::flags);

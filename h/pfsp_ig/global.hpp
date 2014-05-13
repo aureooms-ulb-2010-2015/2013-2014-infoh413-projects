@@ -10,7 +10,10 @@
 #include "pfsp/neighborhood/exchange.hpp"
 #include "pfsp/neighborhood/insert2.hpp"
 #include "pfsp/neighborhood/transpose.hpp"
-#include "pfsp/neighborhood/random.hpp"
+
+#include "pfsp/neighborhood/sexchange.hpp"
+#include "pfsp/neighborhood/sinsert.hpp"
+#include "pfsp/neighborhood/stranspose.hpp"
 
 #include "pfsp/apply/exchange.hpp"
 #include "pfsp/apply/insert.hpp"
@@ -20,6 +23,9 @@
 
 #include "pfsp/init/random.hpp"
 #include "pfsp/init/slack.hpp"
+
+#include "pfsp/pivoting/best.hpp"
+#include "pfsp/pivoting/first.hpp"
 
 #include "pfsp/random/exchange.hpp"
 #include "pfsp/random/insert.hpp"
@@ -98,10 +104,46 @@ namespace pfsp_ig{
 			&pfsp::size::exchange<addr_t, S>
 		};
 
+		auto __st = pfsp::neighborhood::stranspose<random_engine, uniform_distribution, S, H, M>(g);
+		auto __si = pfsp::neighborhood::sinsert<random_engine, uniform_distribution, S, H, M>(g);
+		auto __se = pfsp::neighborhood::sexchange<random_engine, uniform_distribution, S, H, M>(g);
+
+		EN stranspose = {
+			&__st,
+			&pfsp::apply::transpose<S, M>,
+			NULL,
+			&pfsp::random::transpose<random_engine, uniform_distribution, S, M>,
+			&pfsp::size::transpose<addr_t, S>
+		};
+
+		EN sinsert = {
+			&__si,
+			&pfsp::apply::insert<S, M>,
+			NULL,
+			&pfsp::random::insert<random_engine, uniform_distribution, S, M>,
+			&pfsp::size::insert<addr_t, S>
+		};
+
+		EN sexchange = {
+			&__se,
+			&pfsp::apply::exchange<S, M>,
+			NULL,
+			&pfsp::random::exchange<random_engine, uniform_distribution, S, M>,
+			&pfsp::size::exchange<addr_t, S>
+		};
+
 		std::unordered_map<std::string, EN*> neighborhood{
 			{"exchange" , &exchange},
 			{"insert" , &insert},
-			{"transpose" , &transpose}
+			{"transpose" , &transpose},
+			{"sexchange" , &sexchange},
+			{"sinsert" , &sinsert},
+			{"stranspose" , &stranspose}
+		};
+
+		std::unordered_map<std::string, P> pivoting{
+			{"best", &pfsp::pivoting::best<R, val_t, S, M, W, ME>},
+			{"first", &pfsp::pivoting::first<R, val_t, S, M, W, ME>}
 		};
 		
 
@@ -122,9 +164,8 @@ namespace pfsp_ig{
 		delta_t max_time(0);
 		val_t val;
 		real sample_size_f = 0;
-		bool local_search_on;
 
-		std::string NEIGHBORHOOD = "insert", INIT;
+		std::string NEIGHBORHOOD = "sinsert", INIT, PIVOTING = "first";
 
 		auto accept = pfsp::accept::metropolis<random_engine, uniform_real_distribution, real, val_t, M>(g, r, T, val);
 

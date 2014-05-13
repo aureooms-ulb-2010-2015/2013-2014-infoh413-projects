@@ -27,6 +27,17 @@ void run(){
 	pfsp::framework::init_eval<I,E,TE,IE,EE>(global::i, global::e, global::transpose.eval, global::insert.eval, global::exchange.eval);
 	pfsp::framework::init_eval<I, E, PIE>(global::i, global::e, global::peval);
 
+	global::stranspose.eval = global::transpose.eval;
+	global::sinsert.eval = global::insert.eval;
+	global::sexchange.eval = global::exchange.eval;
+
+
+// ALIAS
+
+	auto pivoting = global::pivoting[global::PIVOTING];
+	auto neighborhood = global::neighborhood[global::NEIGHBORHOOD];
+	auto accept = global::accept;
+
 
 // SOLUTION
 
@@ -38,21 +49,29 @@ void run(){
 	auto init = global::init[global::INIT];
 	(*init)(s);
 	global::val = (*global::e)(s);
+
+// LS ON INITIAL SOLUTION
+
+	R best = pivoting(s, neighborhood->walk, neighborhood->eval);
+
+	while(best.first){
+		global::val += best.first;
+		(*neighborhood->eval)(s, best.second, global::e->detail, global::e->wt);
+		(*neighborhood->apply)(s, best.second);
+
+		best = pivoting(s, neighborhood->walk, neighborhood->eval);
+	}
+
+// BEST BACKUP
 	val_t opt = global::val;
 	S argopt(s);
 
-	// PRINT IT
+// PRINT INITIAL SOL
 	if(global::verbose){
 		std::cout << "init ";
 		lib::io::format(std::cout, s, global::list_p) << std::endl;
 		std::cout << "best " << global::val << std::endl;
 	}
-
-
-// ALIAS
-
-	auto neighborhood = global::neighborhood[global::NEIGHBORHOOD];
-	auto accept = global::accept;
 
 // COMPUTING CONSTANTS
 	const addr_t sample_size = std::max(1.0, real(s.size() - 1) * global::sample_size_f);
@@ -71,6 +90,7 @@ void run(){
 		val_t _val;
 		size_t i = 0;
 
+	// DESTRUCTION
 		for(; i < sample_size; ++i){
 			uniform_distribution u(1, global::i.nbJob - i);
 			M m(u(global::g), global::i.nbJob - i);
@@ -79,9 +99,11 @@ void run(){
 
 		_val = (*global::e)(_s);
 
+	// CONSTRUCTION
 		while(i--){
 			val_t v = 0;
 			M m;
+		// FIND BEST MOVE (default none)
 			for(size_t j = 1; j < global::i.nbJob - i; ++j){
 				M x(global::i.nbJob - i, j);
 				val_t t = (*global::peval)(_s, x);
@@ -91,23 +113,40 @@ void run(){
 				}
 			}
 			if(v < 0){
+				// MAKE MOVE m
 				_val += (*neighborhood->eval)(_s, m, global::e->detail, global::e->wt);
 				(*neighborhood->apply)(_s, m);
 			}
 		}
 
+	// LS ON RECONSTRUCTED SOLUTION
+		best = pivoting(_s, neighborhood->walk, neighborhood->eval);
+
+		while(best.first){
+			_val += best.first;
+			(*neighborhood->eval)(_s, best.second, global::e->detail, global::e->wt);
+			(*neighborhood->apply)(_s, best.second);
+
+			best = pivoting(_s, neighborhood->walk, neighborhood->eval);
+		}
+
+	// TEST ACCEPTANCE CRITERION
 		if(_val <= global::val || (global::T > 0.0 && accept(_val - global::val))){
+			// ACCEPT
 			global::val = _val;
 			std::swap(s, _s);
 		}
 		else{
+			// REJECT
 			(*global::e)(s);
 		}
 
+	// STEP
 		++global::steps;
 		global::duration = hrclock::now() - beg;
 		global::time = std::chrono::duration_cast<delta_t>(global::duration);
 
+	// CHECK BETTER
 		if(global::val < opt){
 			opt = global::val;
 			argopt = s;
