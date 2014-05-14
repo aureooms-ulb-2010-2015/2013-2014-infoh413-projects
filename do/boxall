@@ -1,0 +1,16 @@
+#!/bin/sh
+
+mkdir -p data/box/"$1"
+
+echo data/box/"$1"50x20
+python3 do/box.py data/dev/"$1"50x20/ data/box/"$1"50x20.pdf
+echo data/box/"$1"60x20
+python3 do/box.py data/dev/"$1"60x20/ data/box/"$1"60x20.pdf
+echo data/box/"$1"70x20
+python3 do/box.py data/dev/"$1"70x20/ data/box/"$1"70x20.pdf
+echo data/box/"$1"80x20
+python3 do/box.py data/dev/"$1"80x20/ data/box/"$1"80x20.pdf
+echo data/box/"$1"90x20
+python3 do/box.py data/dev/"$1"90x20/ data/box/"$1"90x20.pdf
+echo data/box/"$1"100x20
+python3 do/box.py data/dev/"$1"100x20/ data/box/"$1"100x20.pdf

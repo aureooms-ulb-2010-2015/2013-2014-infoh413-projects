@@ -1,0 +1,20 @@
+#!/bin/sh
+
+do/devall "$1"
+
+python3 do/merge.py data/dev/ merged/ "$1" 50x20 3
+
+do/testdev merged/"$1"
+
+do/report2all merged/"$1"
+do/boxall merged/"$1"
+do/corrall merged/"$1"
+do/statdev merged/"$1"
+
+
+mkdir -p report/2/fig/box/ report/2/fig/corr/
+
+cp data/report/merged/"$1"* report/2/tex/appendix/A\ Relative\ percentage\ deviation/table/
+cp data/box/merged/"$1"* report/2/fig/box/
+cp data/corr/merged/"$1"* report/2/fig/corr/
+cp data/stat/dev/merged/"$1"* report/2/tex/appendix/C\ Wilcoxon\ test/table/

@@ -2,9 +2,9 @@
 
 T=$(date +"%m%d%H%M")$1
 
-python3 do/pbench.py gen ./run/pfsp-ig data/in/ data/out/ .tmp/ ig-$T-corr json/opt_corr.json tmpl/jobarray json/job.json 0 1 2 3 4
-python3 do/pbench.py gen ./run/pfsp-tabu data/in/ data/out/ .tmp/ tabu-$T-corr json/opt_corr.json tmpl/jobarray json/job.json 0 1 2 3 4
+python3 do/pbench.py gen ./run/pfsp-ig data/in/ data/out/ .tmp/ $T-corr json/opt_corr.json tmpl/jobarray json/job.json 0 1 2 3 4
+python3 do/pbench.py gen ./run/pfsp-tabu data/in/ data/out/ .tmp/ $T-corr json/opt_corr.json tmpl/jobarray json/job.json 0 1 2 3 4
 
 
-python3 do/pbench.py gen ./run/pfsp-ig data/in/ data/out/ .tmp/ ig-$T-qrd json/opt_qrd.json tmpl/jobarray json/job.json 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
-python3 do/pbench.py gen ./run/pfsp-tabu data/in/ data/out/ .tmp/ tabu-$T-qrd json/opt_qrd.json tmpl/jobarray json/job.json 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
+python3 do/pbench.py gen ./run/pfsp-ig data/in/ data/out/ .tmp/ $T-qrd json/opt_qrd.json tmpl/jobarray json/job.json 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
+python3 do/pbench.py gen ./run/pfsp-tabu data/in/ data/out/ .tmp/ $T-qrd json/opt_qrd.json tmpl/jobarray json/job.json 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24

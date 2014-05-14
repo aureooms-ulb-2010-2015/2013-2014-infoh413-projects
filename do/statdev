@@ -1,0 +1,16 @@
+#!/bin/sh
+
+mkdir -p data/stat/dev/"$1"
+
+echo data/stat/dev/"$1"50x20
+cat data/test/dev/"$1"50x20 | python3 do/stat.py 50x20 "Relative percentage deviation" dev > data/stat/dev/"$1"50x20
+echo data/stat/dev/"$1"60x20
+cat data/test/dev/"$1"60x20 | python3 do/stat.py 60x20 "Relative percentage deviation" dev > data/stat/dev/"$1"60x20
+echo data/stat/dev/"$1"70x20
+cat data/test/dev/"$1"70x20 | python3 do/stat.py 70x20 "Relative percentage deviation" dev > data/stat/dev/"$1"70x20
+echo data/stat/dev/"$1"80x20
+cat data/test/dev/"$1"80x20 | python3 do/stat.py 80x20 "Relative percentage deviation" dev > data/stat/dev/"$1"80x20
+echo data/stat/dev/"$1"90x20
+cat data/test/dev/"$1"90x20 | python3 do/stat.py 90x20 "Relative percentage deviation" dev > data/stat/dev/"$1"90x20
+echo data/stat/dev/"$1"100x20
+cat data/test/dev/"$1"100x20 | python3 do/stat.py 100x20 "Relative percentage deviation" dev > data/stat/dev/"$1"100x20

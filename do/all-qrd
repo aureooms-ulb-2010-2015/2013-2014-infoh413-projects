@@ -1,0 +1,24 @@
+#!/bin/sh
+
+
+do/qrdall "$1"
+
+mkdir -p data/qrdplot/"$1"
+
+do/gnuplot/qrd 50x20 data/qrd/"$1"50x20 data/qrdplot/"$1"50x20.svg
+$ i x2e data/qrdplot/"$1"50x20.svg data/qrdplot/"$1"50x20.eps
+do/gnuplot/qrd 60x20 data/qrd/"$1"60x20 data/qrdplot/"$1"60x20.svg
+$ i x2e data/qrdplot/"$1"60x20.svg data/qrdplot/"$1"60x20.eps
+do/gnuplot/qrd 70x20 data/qrd/"$1"70x20 data/qrdplot/"$1"70x20.svg
+$ i x2e data/qrdplot/"$1"70x20.svg data/qrdplot/"$1"70x20.eps
+do/gnuplot/qrd 80x20 data/qrd/"$1"80x20 data/qrdplot/"$1"80x20.svg
+$ i x2e data/qrdplot/"$1"80x20.svg data/qrdplot/"$1"80x20.eps
+do/gnuplot/qrd 90x20 data/qrd/"$1"90x20 data/qrdplot/"$1"90x20.svg
+$ i x2e data/qrdplot/"$1"90x20.svg data/qrdplot/"$1"90x20.eps
+do/gnuplot/qrd 100x20 data/qrd/"$1"100x20 data/qrdplot/"$1"100x20.svg
+$ i x2e data/qrdplot/"$1"100x20.svg data/qrdplot/"$1"100x20.eps
+
+
+mkdir -p report/2/fig/qrd/
+
+cp data/qrdplot/"$T"*.eps report/2/fig/qrd/

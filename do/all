@@ -13,8 +13,8 @@ do/testall "$T"
 # do/reportall "$T"
 # do/statall "$T"
 
-# cp data/report/"$T"* report/tex/appendix/A\ Average\ Time\ and\ Standard\ Deviation/001\ Tables/
-# cp data/stat/dev/"$T"* report/tex/appendix/B\ Statistical\ Tests/001\ Tables/001\ dev/
-# cp data/stat/tim/"$T"* report/tex/appendix/B\ Statistical\ Tests/001\ Tables/002\ tim/
+# cp data/report/"$T"* report/1/tex/appendix/A\ Average\ Time\ and\ Standard\ Deviation/001\ Tables/
+# cp data/stat/dev/"$T"* report/1/tex/appendix/B\ Statistical\ Tests/001\ Tables/001\ dev/
+# cp data/stat/tim/"$T"* report/1/tex/appendix/B\ Statistical\ Tests/001\ Tables/002\ tim/
 
 # cd report && make clean all && evince report.pdf &

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+mkdir -p data/qrd/"$1"
+
+echo data/qrd/"$1"50x20
+python3 do/qrd.py data/out/"$1" data/best/ 50x20 data/qrd/"$1"50x20
+echo data/qrd/"$1"60x20
+python3 do/qrd.py data/out/"$1" data/best/ 60x20 data/qrd/"$1"60x20
+echo data/qrd/"$1"70x20
+python3 do/qrd.py data/out/"$1" data/best/ 70x20 data/qrd/"$1"70x20
+echo data/qrd/"$1"80x20
+python3 do/qrd.py data/out/"$1" data/best/ 80x20 data/qrd/"$1"80x20
+echo data/qrd/"$1"90x20
+python3 do/qrd.py data/out/"$1" data/best/ 90x20 data/qrd/"$1"90x20
+echo data/qrd/"$1"100x20
+python3 do/qrd.py data/out/"$1" data/best/ 100x20 data/qrd/"$1"100x20

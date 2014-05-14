@@ -31,10 +31,17 @@ def do(data, best, filt, floatp):
 
 	lib.file.walk(data, callback)
 
+	def will_it_float(s):
+		try:
+			float(s)
+			return True
+		except ValueError:
+			return False
+
 	def abbr(key):
 		a = ''
 		for word in key[len(data):].split('/'):
-			if not word or word.isnumeric(): continue
+			if not word or word.isnumeric() or will_it_float(word): continue
 			elif len(word) > 3  or word == 'vnd' : a += word[0]
 			else : a += word
 
