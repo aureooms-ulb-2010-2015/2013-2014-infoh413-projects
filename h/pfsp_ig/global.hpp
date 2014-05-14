@@ -7,17 +7,10 @@
 #include <unordered_map>
 #include <set>
 
-#include "pfsp/neighborhood/exchange.hpp"
-#include "pfsp/neighborhood/insert2.hpp"
-#include "pfsp/neighborhood/transpose.hpp"
 
-#include "pfsp/neighborhood/sexchange.hpp"
 #include "pfsp/neighborhood/sinsert.hpp"
-#include "pfsp/neighborhood/stranspose.hpp"
 
-#include "pfsp/apply/exchange.hpp"
 #include "pfsp/apply/insert.hpp"
-#include "pfsp/apply/transpose.hpp"
 
 #include "pfsp/accept/metropolis.hpp"
 
@@ -26,15 +19,6 @@
 
 #include "pfsp/pivoting/best.hpp"
 #include "pfsp/pivoting/first.hpp"
-
-#include "pfsp/random/exchange.hpp"
-#include "pfsp/random/insert.hpp"
-#include "pfsp/random/transpose.hpp"
-#include "pfsp/random/sample.hpp"
-
-#include "pfsp/size/exchange.hpp"
-#include "pfsp/size/insert.hpp"
-#include "pfsp/size/transpose.hpp"
 
 #include "pfsp/eval/pinsert.hpp"
 
@@ -76,69 +60,12 @@ namespace pfsp_ig{
 		E* e = NULL;
 		PIE* peval = NULL;
 
-		auto __t = pfsp::neighborhood::transpose<S, H, M>();
-		auto __i = pfsp::neighborhood::insert2<S, H, M>();
-		auto __e = pfsp::neighborhood::exchange<S, H, M>();
-
-		EN transpose = {
-			&__t,
-			&pfsp::apply::transpose<S, M>,
-			NULL,
-			&pfsp::random::transpose<random_engine, uniform_distribution, S, M>,
-			&pfsp::size::transpose<addr_t, S>
-		};
-
-		EN insert = {
-			&__i,
-			&pfsp::apply::insert<S, M>,
-			NULL,
-			&pfsp::random::insert<random_engine, uniform_distribution, S, M>,
-			&pfsp::size::insert<addr_t, S>
-		};
-
-		EN exchange = {
-			&__e,
-			&pfsp::apply::exchange<S, M>,
-			NULL,
-			&pfsp::random::exchange<random_engine, uniform_distribution, S, M>,
-			&pfsp::size::exchange<addr_t, S>
-		};
-
-		auto __st = pfsp::neighborhood::stranspose<random_engine, uniform_distribution, S, H, M>(g);
 		auto __si = pfsp::neighborhood::sinsert<random_engine, uniform_distribution, S, H, M>(g);
-		auto __se = pfsp::neighborhood::sexchange<random_engine, uniform_distribution, S, H, M>(g);
 
-		EN stranspose = {
-			&__st,
-			&pfsp::apply::transpose<S, M>,
-			NULL,
-			&pfsp::random::transpose<random_engine, uniform_distribution, S, M>,
-			&pfsp::size::transpose<addr_t, S>
-		};
-
-		EN sinsert = {
+		N sinsert = {
 			&__si,
 			&pfsp::apply::insert<S, M>,
-			NULL,
-			&pfsp::random::insert<random_engine, uniform_distribution, S, M>,
-			&pfsp::size::insert<addr_t, S>
-		};
-
-		EN sexchange = {
-			&__se,
-			&pfsp::apply::exchange<S, M>,
-			NULL,
-			&pfsp::random::exchange<random_engine, uniform_distribution, S, M>,
-			&pfsp::size::exchange<addr_t, S>
-		};
-
-		std::unordered_map<std::string, EN*> neighborhood{
-			{"exchange" , &exchange},
-			{"insert" , &insert},
-			{"transpose" , &transpose},
-			{"sexchange" , &sexchange},
-			{"sinsert" , &sinsert},
-			{"stranspose" , &stranspose}
+			NULL
 		};
 
 		std::unordered_map<std::string, P> pivoting{
@@ -165,7 +92,7 @@ namespace pfsp_ig{
 		val_t val;
 		real sample_size_f = 0;
 
-		std::string NEIGHBORHOOD = "sinsert", INIT, PIVOTING = "first";
+		std::string INIT, PIVOTING = "first";
 
 		auto accept = pfsp::accept::metropolis<random_engine, uniform_real_distribution, real, val_t, M>(g, r, T, val);
 

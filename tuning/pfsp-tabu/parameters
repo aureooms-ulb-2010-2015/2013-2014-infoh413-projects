@@ -27,7 +27,7 @@
 
 seed				"--seed "			i (0, 0)
 init				"--init "			c ("slack", "random")
-neighborhood		"--neighborhood "	c ("sinsert", "sexchange", "stranspose")
+neighborhood		"--neighborhood "	c ("insert", "exchange", "transpose")
 max_time			"--max-time "		i (45000, 45000)
 restart_wait_f		"--restart-wait-f "	r (0.0, 500.0)
 sample_size_f_min	"--sample-size-f-min "	r (0.0004, 1.0)

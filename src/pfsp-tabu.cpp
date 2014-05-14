@@ -26,10 +26,6 @@ void run(){
 
 	pfsp::framework::init_eval<I,E,TE,IE,EE>(global::i, global::e, global::transpose.eval, global::insert.eval, global::exchange.eval);
 
-	global::stranspose.eval = global::transpose.eval;
-	global::sinsert.eval = global::insert.eval;
-	global::sexchange.eval = global::exchange.eval;
-
 
 // SOLUTION
 

@@ -24,18 +24,15 @@ void run(){
 
 // INIT EVAL
 
-	pfsp::framework::init_eval<I,E,TE,IE,EE>(global::i, global::e, global::transpose.eval, global::insert.eval, global::exchange.eval);
+	pfsp::framework::init_eval<I, E>(global::i, global::e);
+	pfsp::framework::init_eval<I, E, IE>(global::i, global::e, global::sinsert.eval);
 	pfsp::framework::init_eval<I, E, PIE>(global::i, global::e, global::peval);
-
-	global::stranspose.eval = global::transpose.eval;
-	global::sinsert.eval = global::insert.eval;
-	global::sexchange.eval = global::exchange.eval;
 
 
 // ALIAS
 
 	auto pivoting = global::pivoting[global::PIVOTING];
-	auto neighborhood = global::neighborhood[global::NEIGHBORHOOD];
+	auto neighborhood = &global::sinsert;
 	auto accept = global::accept;
 
 
@@ -167,7 +164,8 @@ void run(){
 
 // CLEAN
 
-	pfsp::framework::clean_eval(global::e, global::transpose.eval, global::insert.eval, global::exchange.eval);
+	pfsp::framework::clean_eval(global::e);
+	pfsp::framework::clean_eval(global::sinsert.eval);
 	pfsp::framework::clean_eval(global::peval);
 
 

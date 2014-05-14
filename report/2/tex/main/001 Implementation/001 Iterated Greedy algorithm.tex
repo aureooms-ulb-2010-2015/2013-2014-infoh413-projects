@@ -8,7 +8,7 @@ This algorithm is an hybrid SLS method adpated from the \emph{IG} algorithm foun
 The outline of the algorithm can be seen in \ref{app:alg:ig}.
 
 The idea is to randomly destroy and then greedily reconstruct the solution.
-After the reconstruction, a Local Search is applied and finally the obtained \emph{LO} is eiter accepted or rejected following a \emph{SA} \emph{look-alike} acceptance criterion (the metropolis condition that can be found in \ref{impl:tabu:metropolis}).
+After the reconstruction, a Local Search is applied and finally the obtained \emph{LO} is eiter accepted or rejected following a \emph{SA} \emph{look-alike} acceptance criterion (see the metropolis condition detailed in \ref{impl:ig:metropolis}).
 
 
 \subsubsection{Initial solution}
@@ -28,3 +28,15 @@ The termination criterion can be specified eiter by a maximum number of steps or
 \subsubsection{Destruction sample size}
 
 The sample size $d$ is left as a parameter for the user of the program.
+
+
+\subsubsection{Metropolis condition}
+\label{impl:ig:metropolis}
+
+In this version, the metropolis condition is computed based on the relative difference between the two solutions $\pi'$ and $\pi$, i.e. $\frac{\operatorname{O}(\pi') - \operatorname{O}(\pi)}{\operatorname{O}(\pi)}$ in order to allow a better scaling of the parameter set with the current \emph{TWT} of a specific instance. The parameter $T$ is not computed as in \cite{DBLP:journals/eor/RuizS08}, a more \emph{SA}-like approach is chosen here, i.e. $T$ is determined by parameters $T_d$ and $T_p$. The parameters $T_d$ and $T_p$ must be interpreted as follows : the relative deviation $T_d$ has probability $T_p$ to be accepted by the metropolis condition. And from
+
+$$ T_p = \exp{-\frac{T_d}{T}} $$
+
+follows
+
+$$ T = - \frac{T_d}{\log{T_p}} $$

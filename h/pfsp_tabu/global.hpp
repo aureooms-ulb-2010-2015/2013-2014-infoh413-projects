@@ -7,11 +7,6 @@
 #include <unordered_map>
 #include <set>
 
-#include "pfsp/neighborhood/exchange.hpp"
-#include "pfsp/neighborhood/insert2.hpp"
-#include "pfsp/neighborhood/transpose.hpp"
-#include "pfsp/neighborhood/random.hpp"
-
 #include "pfsp/neighborhood/sexchange.hpp"
 #include "pfsp/neighborhood/sinsert.hpp"
 #include "pfsp/neighborhood/stranspose.hpp"
@@ -26,10 +21,6 @@
 
 #include "pfsp/init/random.hpp"
 #include "pfsp/init/slack.hpp"
-
-#include "pfsp/random/exchange.hpp"
-#include "pfsp/random/insert.hpp"
-#include "pfsp/random/transpose.hpp"
 
 #include "pfsp/size/exchange.hpp"
 #include "pfsp/size/insert.hpp"
@@ -72,73 +63,29 @@ namespace pfsp_tabu{
 
 		E* e = NULL;
 
-		auto __t = pfsp::neighborhood::transpose<S, H, M>();
-		auto __i = pfsp::neighborhood::insert2<S, H, M>();
-		auto __e = pfsp::neighborhood::exchange<S, H, M>();
-
-		auto __st = pfsp::neighborhood::stranspose<random_engine, uniform_distribution, S, H, M>(g);
-		auto __si = pfsp::neighborhood::sinsert<random_engine, uniform_distribution, S, H, M>(g);
-		auto __se = pfsp::neighborhood::sexchange<random_engine, uniform_distribution, S, H, M>(g);
-
 		auto __sst = pfsp::neighborhood::stranspose<random_engine, uniform_distribution, S, HPT, M>(g);
 		auto __ssi = pfsp::neighborhood::sinsert<random_engine, uniform_distribution, S, HPT, M>(g);
 		auto __sse = pfsp::neighborhood::sexchange<random_engine, uniform_distribution, S, HPT, M>(g);
 
 		EN transpose = {
-			&__t,
 			&pfsp::apply::transpose<S, M>,
 			NULL,
-			&pfsp::random::transpose<random_engine, uniform_distribution, S, M>,
 			&pfsp::size::transpose<addr_t, S>,
 			&pfsp::tabu::transpose<S, M, A7, K>,
 			&__sst
 		};
 
 		EN insert = {
-			&__i,
 			&pfsp::apply::insert<S, M>,
 			NULL,
-			&pfsp::random::insert<random_engine, uniform_distribution, S, M>,
 			&pfsp::size::insert<addr_t, S>,
 			&pfsp::tabu::insert<S, M, A7, K>,
 			&__ssi
 		};
 
 		EN exchange = {
-			&__e,
 			&pfsp::apply::exchange<S, M>,
 			NULL,
-			&pfsp::random::exchange<random_engine, uniform_distribution, S, M>,
-			&pfsp::size::exchange<addr_t, S>,
-			&pfsp::tabu::exchange<S, M, A7, K>,
-			&__sse
-		};
-
-		EN stranspose = {
-			&__st,
-			&pfsp::apply::transpose<S, M>,
-			NULL,
-			&pfsp::random::transpose<random_engine, uniform_distribution, S, M>,
-			&pfsp::size::transpose<addr_t, S>,
-			&pfsp::tabu::exchange<S, M, A7, K>,
-			&__sst
-		};
-
-		EN sinsert = {
-			&__si,
-			&pfsp::apply::insert<S, M>,
-			NULL,
-			&pfsp::random::insert<random_engine, uniform_distribution, S, M>,
-			&pfsp::size::insert<addr_t, S>,
-			&pfsp::tabu::exchange<S, M, A7, K>,
-			&__ssi
-		};
-
-		EN sexchange = {
-			&__se,
-			&pfsp::apply::exchange<S, M>,
-			NULL,
-			&pfsp::random::exchange<random_engine, uniform_distribution, S, M>,
 			&pfsp::size::exchange<addr_t, S>,
 			&pfsp::tabu::exchange<S, M, A7, K>,
 			&__sse
@@ -147,10 +94,7 @@ namespace pfsp_tabu{
 		std::unordered_map<std::string, EN*> neighborhood{
 			{"exchange" , &exchange},
 			{"insert" , &insert},
-			{"transpose" , &transpose},
-			{"sexchange" , &sexchange},
-			{"sinsert" , &sinsert},
-			{"stranspose" , &stranspose}
+			{"transpose" , &transpose}
 		};
 
 

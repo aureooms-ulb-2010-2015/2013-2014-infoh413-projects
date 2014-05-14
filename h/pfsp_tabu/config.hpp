@@ -70,7 +70,7 @@ namespace pfsp_tabu{
 				"in {slack, random}")
 			.condition("--neighborhood",
 				[&]{return global::neighborhood.count(global::NEIGHBORHOOD) > 0;},
-				"in {(s)transpose, (s)insert, (s)exchange}")
+				"in {transpose, insert, exchange}")
 			.condition("--max-time", [&]{return global::max_time.count() >= 0;}, ">= 0")
 			.condition("--sample-size-f-min", [&]{return global::sample_size_f_min > 0.0;}, "> 0")
 			.condition("--sample-size-f-min", [&]{return global::sample_size_f_min <= 1.0;}, "<= 1")
