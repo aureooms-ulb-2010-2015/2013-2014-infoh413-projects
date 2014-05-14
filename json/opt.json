@@ -8,31 +8,5 @@
 		["--init", ["random", "slack"]],
 		["--pivoting", ["first"]],
 		["--ordering", ["tie", "tei"]]
-	],
-	"./run/pfsp-rii" : [
-	],
-	"./run/pfsp-pii" : [
-	],
-	"./run/pfsp-sa" : [
-		["--init", ["random"]],
-		["--neighborhood", ["insert"]],
-		["--max-steps", ["0"]],
-		["--max-time", ["600000"]],
-		["--temperature-d", ["4.9879"]],
-		["--temperature-p", ["0.6068"]],
-		["--restart-wait-f", ["350"]],
-		["--alpha", ["0.8329"]],
-		["--cooling-step-f", ["25.7083"]],
-		["--sample-size-f", ["0.0245"]]
-	],
-	"./run/pfsp-ig" : [
-		["--init", ["random"]],
-		["--max-steps", ["0"]],
-		["--max-time", ["600000"]],
-		["--temperature-d", ["4.9879"]],
-		["--temperature-p", ["0.6068"]],
-		["--sample-size-f", ["0.0245"]]
-	],
-	"./run/pfsp-tabu" : [
 	]
 }
