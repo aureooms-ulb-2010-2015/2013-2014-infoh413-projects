@@ -96,7 +96,8 @@ void run(){
 			std::forward_as_tuple()
 		);
 
-		addr_t i = ssd(global::g);
+		const addr_t i = ssd(global::g);
+		addr_t j = i;
 
 		HFN fn = [&](const M& m) -> bool{
 			if((*neighborhood->tabu)(s, m, global::tabu, global::steps)) return true;
@@ -107,16 +108,17 @@ void run(){
 				r.second = m;
 			}
 
-			return --i;
+			return --j;
 		};
 
 		(*neighborhood->sample)(s, &fn);
 
-		
-		global::tabu[s[std::get<0>(r.second)]] = global::steps + tt; // UPDATE TABU COUNTER
-		global::val += r.first;
-		(*neighborhood->eval)(s, r.second, global::e->detail, global::e->wt);
-		(*neighborhood->apply)(s, r.second);
+		if(j < i){
+			global::tabu[s[std::get<0>(r.second)]] = global::steps + tt; // UPDATE TABU COUNTER
+			global::val += r.first;
+			(*neighborhood->eval)(s, r.second, global::e->detail, global::e->wt);
+			(*neighborhood->apply)(s, r.second);
+		}
 
 		++global::steps;
 		global::duration = hrclock::now() - beg;
