@@ -1,0 +1,52 @@
+
+\begin{table}[H]
+\begin{center}
+\caption{TABU parameters obtained with the irace package for $50 \times 20$ instances (45 s computation time).}
+\label{app:tuning:table/pfsp-tabu}
+\begin{tabular}{|r|c|c|c|c|c|}
+\hline
+\textbf{parameter} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} \\
+\hline
+\verb!--init! & random & random & random & random & random\\
+\hline
+\verb!--neighborhood! & insert & insert & insert & insert & insert\\
+\hline
+\hline
+\verb!--sample-size-f-min! & 0.0087 & 0.7123 & 0.8531 & 0.3802 & 0.6980\\
+\hline
+\verb!--sample-size-f-max! & 0.7691 & 0.3853 & 0.2875 & 0.5981 & 0.4431\\
+\hline
+\hline
+\verb!--tabu-tenure-f-min! & 0.0883 & 0.3678 & 0.4044 & 0.3507 & 0.1444\\
+\hline
+\verb!--tabu-tenure-f-max! & 0.6288 & 0.7129 & 0.5930 & 0.6428 & 0.8854\\
+\hline
+\verb!--tabu-tenure-f-2nd! & 0.7409 & 0.4439 & 0.4979 & 0.6676 & 0.4268\\
+\hline
+\hline
+\verb!--restart-wait-f! & 246.8985 & 479.8141 & 426.5579 &  97.0115 & 468.7300\\
+\hline
+\verb!--phase-repartition! & 0.7223 & 0.8430 & 0.7899 & 0.8178 & 0.7255\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+
+\noindent\textbf{As command lines}
+
+\shellcmd{./run/pfsp-tabu -i random -n insert -r 246.8985 -{}-ssmin 0.0087 -{}-ssmax 0.7691 -{}-ttmin 0.0883 -{}-ttmax 0.6288 -{}-tt2nd 0.7409 -{}-ph 0.7223 -t <max-time> -v -{}- <filename>}
+
+
+\shellcmd{./run/pfsp-tabu -i random -n insert -r 479.8141 -{}-ssmin 0.7123 -{}-ssmax 0.3853 -{}-ttmin 0.3678 -{}-ttmax 0.7129 -{}-tt2nd 0.4439 -{}-ph 0.8430 -t <max-time> -v -{}- <filename>}
+
+
+\shellcmd{./run/pfsp-tabu -i random -n insert -r 426.5579 -{}-ssmin 0.8531 -{}-ssmax 0.2875 -{}-ttmin 0.4044 -{}-ttmax 0.5930 -{}-tt2nd 0.4979 -{}-ph 0.7899 -t <max-time> -v -{}- <filename>}
+
+
+\shellcmd{./run/pfsp-tabu -i random -n insert -r  97.0115 -{}-ssmin 0.3802 -{}-ssmax 0.5981 -{}-ttmin 0.3507 -{}-ttmax 0.6428 -{}-tt2nd 0.6676 -{}-ph 0.8178 -t <max-time> -v -{}- <filename>}
+
+
+\shellcmd{./run/pfsp-tabu -i random -n insert -r 468.7300 -{}-ssmin 0.6980 -{}-ssmax 0.4431 -{}-ttmin 0.1444 -{}-ttmax 0.8854 -{}-tt2nd 0.4268 -{}-ph 0.7255 -t <max-time> -v -{}- <filename>}
+

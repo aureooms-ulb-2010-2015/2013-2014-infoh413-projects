@@ -8,14 +8,14 @@
 	],
 	"./run/pfsp-tabu" : [
 		["--max-time", ["95000"]],
-		["--init", ["slack"]],
+		["--init", ["random"]],
 		["--neighborhood", ["insert"]],
-		["--sample-size-f-min", ["0.82"]],
-		["--sample-size-f-max", ["0.2"]],
-		["--tabu-tenure-f-min", ["0.000001"]],
-		["--tabu-tenure-f-max", ["1.0"]],
-		["--tabu-tenure-f-2nd", ["0.07"]],
-		["--restart-wait-f", ["0.2"]],
-		["--phase-repartition", ["0.5"]]
+		["--sample-size-f-min", ["0.698"]],
+		["--sample-size-f-max", ["0.698"]],
+		["--tabu-tenure-f-min", ["0.1444"]],
+		["--tabu-tenure-f-max", ["0.8854"]],
+		["--tabu-tenure-f-2nd", ["0.4268"]],
+		["--restart-wait-f", ["468.73"]],
+		["--phase-repartition", ["0.7255"]]
 	]
 }

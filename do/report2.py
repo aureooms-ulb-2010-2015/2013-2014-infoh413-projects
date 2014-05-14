@@ -50,27 +50,22 @@ def do(data, best, filt, floatp, rgobble):
 
 		return a.upper()
 
-	format = '%%s & %%.%df & %%.%df\\\\' % floatp
-
-	print('\\begin{table}[H]')
-	print('\\begin{center}')
-	print('\\caption{avg rel \\%% dev for %s instances}' % filt if filt else 'all')
-	print('\\label{app:report/table/%s}' % filt if filt else 'all')
+	format = '%%s & %%.%df & %%.%df\\\\' % (floatp, floatp)
 		 
-	print('\\begin{tabular}{|l|d{%d}|d{%d}|}' % floatp)
-	print('\\hline')
+	print('\\begin{longtable}{|l|d{%d}|d{%d}|}' % (floatp, floatp))
+	print('\\caption{avg rel \\%% dev for %s instances}' % (filt if filt else 'all'))
+	print('\\label{app:report/table/%s}' % (filt if filt else 'all'))
+	print('\\\\ \\hline')
 	print('\\textbf{instance} & \\textbf{%s} & \\textbf{%s}\\\\' % (abbr(algos[0]), abbr(algos[1])))
 	print('\\hline')
 
 	for ins in sorted(out):
 		out[ins][algos[0]][0] /= out[ins][algos[0]][2]
 		out[ins][algos[1]][0] /= out[ins][algos[1]][2]
-		print(format % (ins, out[ins][algos[0]][0], out[ins][algos[1]][0]))
+		print(format % (ins.replace('_', '\\_'), out[ins][algos[0]][0], out[ins][algos[1]][0]))
 		print('\\hline')
 
-	print('\\end{tabular}')
-	print('\\end{center}')
-	print('\\end{table}')
+	print('\\end{longtable}')
 
 if __name__ == '__main__':
 	data = sys.argv[1]

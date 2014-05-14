@@ -21,4 +21,4 @@ $ i x2e data/qrdplot/"$1"100x20.svg data/qrdplot/"$1"100x20.eps
 
 mkdir -p report/2/fig/qrd/
 
-cp data/qrdplot/"$T"*.eps report/2/fig/qrd/
+cp data/qrdplot/"$1"*.eps report/2/fig/qrd/

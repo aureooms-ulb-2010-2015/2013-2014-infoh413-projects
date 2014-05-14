@@ -18,10 +18,17 @@ def do(name, title, tl):
 	# m, M = log(m), log(M)
 	# w = m - M
 
+	def will_it_float(s):
+		try:
+			float(s)
+			return True
+		except ValueError:
+			return False
+
 	def abbr(key):
 		a = ''
 		for word in os.path.basename(key).split('_'):
-			if not word or word.isnumeric(): continue
+			if not word or word.isnumeric() or will_it_float(word): continue
 			elif len(word) > 3 or word == 'vnd' : a += word[0]
 			else : a += word
 

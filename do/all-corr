@@ -2,11 +2,11 @@
 
 do/devall "$1"
 
-python3 do/merge.py data/dev/ merged/ "$1" 50x20 3
+do/mergeall "$1"
 
 do/testdev merged/"$1"
 
-do/report2all merged/"$1"
+do/report2all "$1"
 do/boxall merged/"$1"
 do/corrall merged/"$1"
 do/statdev merged/"$1"
@@ -14,7 +14,20 @@ do/statdev merged/"$1"
 
 mkdir -p report/2/fig/box/ report/2/fig/corr/
 
-cp data/report/merged/"$1"* report/2/tex/appendix/A\ Relative\ percentage\ deviation/table/
-cp data/box/merged/"$1"* report/2/fig/box/
-cp data/corr/merged/"$1"* report/2/fig/corr/
+$ i x2e data/box/merged/"$1"50x20.svg data/box/merged/"$1"50x20.eps
+$ i x2e data/corr/merged/"$1"50x20.svg data/corr/merged/"$1"50x20.eps
+$ i x2e data/box/merged/"$1"60x20.svg data/box/merged/"$1"60x20.eps
+$ i x2e data/corr/merged/"$1"60x20.svg data/corr/merged/"$1"60x20.eps
+$ i x2e data/box/merged/"$1"70x20.svg data/box/merged/"$1"70x20.eps
+$ i x2e data/corr/merged/"$1"70x20.svg data/corr/merged/"$1"70x20.eps
+$ i x2e data/box/merged/"$1"80x20.svg data/box/merged/"$1"80x20.eps
+$ i x2e data/corr/merged/"$1"80x20.svg data/corr/merged/"$1"80x20.eps
+$ i x2e data/box/merged/"$1"90x20.svg data/box/merged/"$1"90x20.eps
+$ i x2e data/corr/merged/"$1"90x20.svg data/corr/merged/"$1"90x20.eps
+$ i x2e data/box/merged/"$1"100x20.svg data/box/merged/"$1"100x20.eps
+$ i x2e data/corr/merged/"$1"100x20.svg data/corr/merged/"$1"100x20.eps
+
+cp data/report/"$1"* report/2/tex/appendix/A\ Relative\ percentage\ deviation/table/
+cp data/box/merged/"$1"*.eps report/2/fig/box/
+cp data/corr/merged/"$1"*.eps report/2/fig/corr/
 cp data/stat/dev/merged/"$1"* report/2/tex/appendix/C\ Wilcoxon\ test/table/

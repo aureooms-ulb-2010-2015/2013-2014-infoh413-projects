@@ -1,0 +1,15 @@
+\begin{table}[H]
+\begin{center}
+\caption{Relative percentage deviation Student t-test and Wilcoxon test results for 100x20 instances}
+\label{app:stat/table/dev/100x20}
+\tiny
+\tabcolsep=0.11cm
+\begin{tabular}{|l|l|}
+\hline
+& \textbf{TSI}\\
+\hline
+\textbf{IGS} & \cellcolor{black!52} \begin{tabular}{@{}l@{}} \textcolor{black!2}{ 5.580e-01 } \\ \textcolor{black!2}{ 5.240e-01 } \end{tabular} \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}

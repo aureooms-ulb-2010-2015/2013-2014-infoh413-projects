@@ -1,0 +1,8 @@
+#!/bin/sh
+
+python3 do/merge.py data/dev/ merged/"$1" "$1" 50x20 3
+python3 do/merge.py data/dev/ merged/"$1" "$1" 60x20 3
+python3 do/merge.py data/dev/ merged/"$1" "$1" 70x20 3
+python3 do/merge.py data/dev/ merged/"$1" "$1" 80x20 3
+python3 do/merge.py data/dev/ merged/"$1" "$1" 90x20 3
+python3 do/merge.py data/dev/ merged/"$1" "$1" 100x20 3

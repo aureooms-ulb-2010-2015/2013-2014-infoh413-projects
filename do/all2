@@ -1,0 +1,4 @@
+#!/bin/sh
+
+do/all-corr "$1-corr/"
+do/all-qrd "$1-qrd/"
