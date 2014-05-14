@@ -193,3 +193,22 @@ usage :
 example :
 
 	python3 do/pbench.py gen ./run/pfsp-ii data/in/ data/out/ .tmp/ xxx json/opt.json tmpl/jobarray json/job.json 0 1 2 3 4
+
+
+
+merge.py
+==
+
+
+usage :
+
+	python3 do/merge.py <root> <out> <data[]> <filt> <rgobble>
+
+
+example :
+
+	python3 do/merge.py data/tim/ merged/ 04041753+all:insert2/ 04041753+all:insert2/ 50x20 0
+
+
+
+

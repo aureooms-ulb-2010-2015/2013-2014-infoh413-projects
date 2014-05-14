@@ -2,13 +2,14 @@ import sys, os, lib
 
 
 
-def do(data, out, filt):
+def do(data, out, filt, rgobble):
 
 	merged = {}
 
 	for d in data:
 		def callback(f):
 			path, alg = os.path.split(f.name)
+			alg = alg[:-rgobble]
 			dim = path[len(d):]
 			if filt not in dim and filt not in alg : return
 
@@ -33,10 +34,11 @@ def do(data, out, filt):
 
 if __name__ == '__main__':
 	root = sys.argv[1]
-	data = [root + x for x in sys.argv[3:-1]]
+	data = [root + x for x in sys.argv[3:-2]]
 
-	filt = sys.argv[-1]
+	filt = sys.argv[-2]
 	out = root + sys.argv[2] + (filt + '/' if filt else '')
+	rgobble = int(sys.argv[-1])
 
-	do(data, out, filt)
+	do(data, out, filt, rgobble)
 
