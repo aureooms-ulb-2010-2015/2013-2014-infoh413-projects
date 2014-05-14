@@ -7,7 +7,7 @@ This algorithm is a simple SLS method adpated from the \emph{TABU} algorithm fou
 
 The outline of the algorithm can be seen in \ref{app:alg:tabu}.
 
-The \emph{TABU} vector keeps track of recently moved job so that the relative order of jobs can preserved for some time $t$.
+The \emph{TABU} vector keeps track of recently moved jobs so that the relative order of jobs can be preserved for some time $t_{min} \leq t \leq t_{max}$. The algorithm works in two phases. In the first phase recently moved jobs are tabu for a long time allowing to make wider walks in the search space while in the second phase this tabu tenure is shortened in order to intensify the search. Instead of evaluating the whole neighborhood at each step, only a sample of size $r_{min} \leq r \leq r_{max}$ of non-tabu jobs is looked up.
 
 \subsubsection{Initial solution}
 
@@ -18,7 +18,14 @@ The \emph{NEH} construction heuristic used in \cite{santostabu} has not been use
 
 The termination criterion can be specified eiter by a maximum number of steps or a maximum amount of computation time.
 
+\subsubsection{Tabu tenure}
+
+In \cite{santostabu} they choose $t_{min} = 1$ and $t_{max} = n$ for the first phase and then $t_{max} = 10$ in the second phase. In this implementation $t_{min}$ and $t_{max}$ are left as parameters ($t_{min} \leq t_{max}$) and in the second phase $t_{min} = t_{max} = t_{2nd}$ which is also a parameter of the algorithm.
+
+\subsubsection{Computation time repartition between phases}
+
+In \cite{santostabu} the computation time is evenly divided between the first and the second phase. In this implementation a parameter \verb!--phase-repartition! defines the repartition.
 
 \subsubsection{Other parameters}
 
-The sample size factors $r_{min}, r_{max}$, the tabu tenure factors $t_{min}, t_{max}, t_{2nd}$, the restart threshold $\mathcal{R}$ and the neighborhood are left as parameters for the user of the program (\emph{insert} is the one used in \cite{santostabu}).
+The sample size factors $r_{min}, r_{max}$, the restart threshold $\mathcal{R}$ and the neighborhood are left as parameters for the user of the program (\emph{insert} is the one used in \cite{santostabu}).
