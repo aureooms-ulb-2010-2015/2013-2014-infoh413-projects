@@ -35,5 +35,5 @@ sample_size_f_max	"--sample-size-f-max "	r (0.0004, 1.0)
 tabu_tenure_f_min	"--tabu-tenure-f-min "	r (0.0, 1.0)
 tabu_tenure_f_max	"--tabu-tenure-f-max "	r (0.0, 1.0)
 tabu_tenure_f_2nd	"--tabu-tenure-f-2nd "	r (0.0, 1.0)
-phase_repartition	"--phase-repartion "	r (0.0, 1.0)
+phase_repartition	"--phase-repartition "	r (0.0, 1.0)
 
