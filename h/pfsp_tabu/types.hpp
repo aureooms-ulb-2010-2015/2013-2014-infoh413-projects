@@ -16,6 +16,11 @@ typedef std::vector<K> A7;
 
 typedef bool (*TABU)(const S& s, const M& m, const A7& tabu, const K k);
 
+typedef std::function<bool (const M& m)> HFN;
+typedef HFN* HPT;
+// typedef bool (*HPT)(const M& m);
+typedef pfsp::neighborhood::functor<S, HPT>* SAMPLE;
+
 
 typedef struct{
 	W walk;
@@ -24,6 +29,7 @@ typedef struct{
 	RS random;
 	SI size;
 	TABU tabu;
+	SAMPLE sample;
 } EN;
 
 

@@ -12,6 +12,10 @@
 #include "pfsp/neighborhood/transpose.hpp"
 #include "pfsp/neighborhood/random.hpp"
 
+#include "pfsp/neighborhood/sexchange.hpp"
+#include "pfsp/neighborhood/sinsert.hpp"
+#include "pfsp/neighborhood/stranspose.hpp"
+
 #include "pfsp/apply/exchange.hpp"
 #include "pfsp/apply/insert.hpp"
 #include "pfsp/apply/transpose.hpp"
@@ -20,15 +24,12 @@
 #include "pfsp/tabu/insert.hpp"
 #include "pfsp/tabu/transpose.hpp"
 
-#include "pfsp/accept/metropolis.hpp"
-
 #include "pfsp/init/random.hpp"
 #include "pfsp/init/slack.hpp"
 
 #include "pfsp/random/exchange.hpp"
 #include "pfsp/random/insert.hpp"
 #include "pfsp/random/transpose.hpp"
-#include "pfsp/random/sample.hpp"
 
 #include "pfsp/size/exchange.hpp"
 #include "pfsp/size/insert.hpp"
@@ -75,13 +76,22 @@ namespace pfsp_tabu{
 		auto __i = pfsp::neighborhood::insert2<S, H, M>();
 		auto __e = pfsp::neighborhood::exchange<S, H, M>();
 
+		auto __st = pfsp::neighborhood::stranspose<random_engine, uniform_distribution, S, H, M>(g);
+		auto __si = pfsp::neighborhood::sinsert<random_engine, uniform_distribution, S, H, M>(g);
+		auto __se = pfsp::neighborhood::sexchange<random_engine, uniform_distribution, S, H, M>(g);
+
+		auto __sst = pfsp::neighborhood::stranspose<random_engine, uniform_distribution, S, HPT, M>(g);
+		auto __ssi = pfsp::neighborhood::sinsert<random_engine, uniform_distribution, S, HPT, M>(g);
+		auto __sse = pfsp::neighborhood::sexchange<random_engine, uniform_distribution, S, HPT, M>(g);
+
 		EN transpose = {
 			&__t,
 			&pfsp::apply::transpose<S, M>,
 			NULL,
 			&pfsp::random::transpose<random_engine, uniform_distribution, S, M>,
 			&pfsp::size::transpose<addr_t, S>,
-			&pfsp::tabu::transpose<S, M, A7, K>
+			&pfsp::tabu::transpose<S, M, A7, K>,
+			&__sst
 		};
 
 		EN insert = {
@@ -90,7 +100,8 @@ namespace pfsp_tabu{
 			NULL,
 			&pfsp::random::insert<random_engine, uniform_distribution, S, M>,
 			&pfsp::size::insert<addr_t, S>,
-			&pfsp::tabu::insert<S, M, A7, K>
+			&pfsp::tabu::insert<S, M, A7, K>,
+			&__ssi
 		};
 
 		EN exchange = {
@@ -99,13 +110,47 @@ namespace pfsp_tabu{
 			NULL,
 			&pfsp::random::exchange<random_engine, uniform_distribution, S, M>,
 			&pfsp::size::exchange<addr_t, S>,
-			&pfsp::tabu::exchange<S, M, A7, K>
+			&pfsp::tabu::exchange<S, M, A7, K>,
+			&__sse
+		};
+
+		EN stranspose = {
+			&__st,
+			&pfsp::apply::transpose<S, M>,
+			NULL,
+			&pfsp::random::transpose<random_engine, uniform_distribution, S, M>,
+			&pfsp::size::transpose<addr_t, S>,
+			&pfsp::tabu::exchange<S, M, A7, K>,
+			&__sst
+		};
+
+		EN sinsert = {
+			&__si,
+			&pfsp::apply::insert<S, M>,
+			NULL,
+			&pfsp::random::insert<random_engine, uniform_distribution, S, M>,
+			&pfsp::size::insert<addr_t, S>,
+			&pfsp::tabu::exchange<S, M, A7, K>,
+			&__ssi
+		};
+
+		EN sexchange = {
+			&__se,
+			&pfsp::apply::exchange<S, M>,
+			NULL,
+			&pfsp::random::exchange<random_engine, uniform_distribution, S, M>,
+			&pfsp::size::exchange<addr_t, S>,
+			&pfsp::tabu::exchange<S, M, A7, K>,
+			&__sse
 		};
 
 		std::unordered_map<std::string, EN*> neighborhood{
 			{"exchange" , &exchange},
 			{"insert" , &insert},
-			{"transpose" , &transpose}
+			{"transpose" , &transpose},
+			{"sexchange" , &sexchange},
+			{"sinsert" , &sinsert},
+			{"stranspose" , &stranspose}
 		};
 
 
@@ -117,25 +162,21 @@ namespace pfsp_tabu{
 
 	// TABU
 		uniform_real_distribution r(0.0, 1.0);
-		real Tp = 0;
-		real Td = 0;
-		real T = 0;
-		real alpha = -1;
-		real cooling_step_f = 0;
 		size_t steps = 0;
 		size_t max_steps = 0;
 		real restart_wait_f = -1.0;
-		real ttf = 0;
+		real ttfmin = 0;
+		real ttfmax = 0;
+		real ttf2nd = 0;
 		delta_t time(0);
 		delta_t max_time(0);
 		val_t val;
-		real sample_size_f = 0;
+		real sample_size_f_min = 0;
+		real sample_size_f_max = 0;
+		real phase_repartition = 0;
 		A7 tabu;
 		
 		std::string NEIGHBORHOOD, INIT;
-
-		auto accept = pfsp::accept::metropolis<random_engine, uniform_real_distribution, real, val_t, M>(g, r, T, val);
-		auto sample = pfsp::random::sample<R, random_engine, val_t, S, M, ME, RS>;
 	}
 }
 

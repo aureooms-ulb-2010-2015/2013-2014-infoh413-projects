@@ -446,16 +446,16 @@ public:
 				std::stringstream tmp;
 				if(d.size() == 1){
 					if(d[0].size() == 1){
-						tmp << d[0][0];
+						tmp << d[0][0] << " missing";
 					}
 					else{
-						tmp << d[0];
+						tmp << d[0] << " not satisfied";
 					}
 				}
 				else{
-					tmp << d;
+					tmp << d << " not satisfied";
 				}
-				throw lib::error::exception(tmp.str() + " not satisfied");
+				throw lib::error::exception(tmp.str());
 			}
 		}
 

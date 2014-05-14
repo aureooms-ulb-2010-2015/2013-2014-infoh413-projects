@@ -1,0 +1,43 @@
+
+
+\begin{algorithm}
+\caption{Pseudo-code for the Iterated Greedy algorithm}
+\label{app:alg:ig}
+\begin{algorithmic}
+\Procedure{PFSP-IG}{}
+	\State $\pi \gets \operatorname{SLACK}() ~\text{or}~ \operatorname{RANDOM}()$\Comment{Initialization}
+	\State $\pi \gets \operatorname{LS}(\pi)$\Comment{Local search}
+	\State $\pi_b \gets \pi$
+	\While{termination criterion not satisfied}
+
+		\State $\pi' \gets \pi$
+
+		\For{$i\gets 1, d$}\Comment{Destruction phase}
+			\State $\pi' \gets ~\text{remove one job at random from}~ \pi' ~\text{and insert it in}~ \pi_R'$
+		\EndFor
+
+		\For{$i\gets 1, d$}\Comment{Construction phase}
+			\State $\pi' \gets ~\text{best permutation obtained by inserting job}~ \pi_{R_{(i)}}' ~\text{in}~ \pi'$
+		\EndFor
+
+		\State $\pi' \gets \operatorname{LS}(\pi')$\Comment{Local search}
+
+		\If{$\operatorname{O}(\pi') < \operatorname{O}(\pi)$}\Comment{Check improving}
+
+			\State $\pi \gets \pi'$
+
+			\If{$\operatorname{O}(\pi) < \operatorname{O}(\pi_b)$}\Comment{Check new best}
+				\State $\pi_b \gets \pi$
+			\EndIf
+
+		\ElsIf{$\text{random}~\leq \exp{- (\operatorname{O}(\pi') - \operatorname{O}(\pi)) / T)}$}\Comment{Metropolis}
+
+			\State $\pi \gets \pi'$
+
+		\EndIf
+
+	\EndWhile
+	\State \textbf{return} $\pi_b$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}

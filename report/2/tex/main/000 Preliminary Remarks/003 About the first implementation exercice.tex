@@ -1,0 +1,18 @@
+\subsection{About the first implementation exercice}
+
+
+In the first implementation exercice I did not consider random walks for neighborhoods. After some testing it appears random walks generates relatively good results ($\approx 3 \%$ worse) compared to sequential walks (begin first) while only using $\approx 39 \%$ of time ressources.
+
+The new random walks are available trough option \verb!--neighborhood! with values
+\{\verb!sexchange!, \verb!stranspose!, \verb!sinsert!\}
+for \verb!./run/pfsp-ii!
+and trough option \verb!--ordering! with values
+\{\verb!stie!, \verb!stei!\}
+for \verb!./run/pfsp-vnd!.
+
+The reference time for the termination criterions used in the experiments of this implementation exercice will be based on the computation times obtained using those new walks.
+
+
+Runnables have now a working \verb!-h! flag for displaying help (was not complete in first exercice) and the \verb!-v! flag allows to print verbose output (initialization, improvement steps and final permutation).
+
+Additionally all options / flags have now shortcuts, try them all!

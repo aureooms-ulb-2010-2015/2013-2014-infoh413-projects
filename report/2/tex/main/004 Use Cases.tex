@@ -1,0 +1,25 @@
+\newpage\cleardoublepage\phantomsection
+\section{Use cases}
+
+\subsection{Regular usage}
+
+
+\noindent\textbf{Iterated Greedy example}
+
+\shellcmd{./run/pfsp-ig -i slack -t 60000 -{}-td 0.16 -{}-tp 0.13 -{}-ss 0.10 -v -{}- data/in/100x20\_3}
+
+(see description of all options / flags : \shellcmd{./run/pfsp-ig -h})
+
+\noindent\textbf{Tabu Search example}
+
+\shellcmd{./run/pfsp-tabu -i random -n insert -t 3000 -{}-td 1.2873 -{}-tp 0.0383 -r 123.7499 -a 0.6617 -c 40.0840 -{}-ss 0.001 -{}-tt 0 -v -{}- data/in/60x20\_7}
+
+(see description of all options / flags : \shellcmd{./run/pfsp-tabu -h})
+
+
+
+\subsection{Generate all data}
+
+Output in data/dev, data/tim, data/test and data/out.
+
+\shellcmd{do/all2 +mytestname}

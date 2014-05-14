@@ -14,7 +14,7 @@ namespace random{
  * Function template for neighborhood sampling.
  * The function returns the best mutation for a solution s,
  * from a sample of size k,
- * using perturbation genarator pg and petrubation evaluator pe.
+ * using perturbation genarator pg and peturbation evaluator pe.
  *
  * @author Ooms Aurélien
  * 

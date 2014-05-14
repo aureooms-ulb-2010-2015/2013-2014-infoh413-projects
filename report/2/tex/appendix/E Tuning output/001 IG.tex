@@ -1,0 +1,34 @@
+
+
+\begin{table}[H]
+\begin{center}
+\caption{IG parameters obtained with the irace package for $50 \times 20$ instances (45 s computation time).}
+\label{app:tuning:table/pfsp-ig}
+\begin{tabular}{|r|c|c|c|c|}
+\hline
+\textbf{parameter} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} \\
+\hline
+\verb!--init! & slack & slack & slack & random\\
+\hline
+\verb!--temperature-d! & 0.7907 & 1.5841 & 1.2499 & 0.8128\\
+\hline
+\verb!--temperature-p! & 0.8634 & 0.7714 & 0.8492 & 0.7621\\
+\hline
+\verb!--sample-size-f! & 0.1388 & 0.1138 & 0.1206 & 0.1264\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\noindent\textbf{As command lines}
+
+\shellcmd{./run/pfsp-ig -i slack -{}-td 0.7907 -{}-tp 0.8634 -{}-ss 0.1388 -t <max-time> -v -{}- <filename>}
+
+
+\shellcmd{./run/pfsp-ig -i slack -{}-td 1.5841 -{}-tp 0.7714 -{}-ss 0.1138 -t <max-time> -v -{}- <filename>}
+
+
+\shellcmd{./run/pfsp-ig -i slack -{}-td 1.2499 -{}-tp 0.8492 -{}-ss 0.1206 -t <max-time> -v -{}- <filename>}
+
+
+\shellcmd{./run/pfsp-ig -i random -{}-td 0.8128 -{}-tp 0.7621 -{}-ss 0.1264 -t <max-time> -v -{}- <filename>}

@@ -1,0 +1,30 @@
+\subsection{Iterated Greedy algorithm}
+\label{impl:ig}
+
+\subsubsection{Outline}
+
+This algorithm is an hybrid SLS method adpated from the \emph{IG} algorithm found in \cite{DBLP:journals/eor/RuizS08}.
+
+The outline of the algorithm can be seen in \ref{app:alg:ig}.
+
+The idea is to randomly destroy and then greedily reconstruct the solution.
+After the reconstruction, a Local Search is applied and finally the obtained \emph{LO} is eiter accepted or rejected following a \emph{SA} \emph{look-alike} acceptance criterion (the metropolis condition that can be found in \ref{impl:tabu:metropolis}).
+
+
+\subsubsection{Initial solution}
+
+The \emph{NEH} construction heuristics used in \cite{DBLP:journals/eor/RuizS08} have not been used. Instead the two options of implementation exercise 1 are available : slack heuristic or random permutation.
+
+
+\subsubsection{Local search}
+
+The local search steps are achieved through the simple \emph{II} algorithm implemented in exercise 1 (using a random walk on the insert neighborhood and the \emph{first improvement} pivoting method).
+
+
+\subsubsection{Termination criterion}
+
+The termination criterion can be specified eiter by a maximum number of steps or a maximum amount of computation time.
+
+\subsubsection{Destruction sample size}
+
+The sample size $d$ is left as a parameter for the user of the program.

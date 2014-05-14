@@ -1,0 +1,50 @@
+
+
+\begin{algorithm}
+\caption{Pseudo-code for the Tabu Search algorithm}
+\label{app:alg:tabu}
+\begin{algorithmic}
+\Procedure{PFSP-TABU}{}
+	\State $\pi \gets \operatorname{SLACK}() ~\text{or}~ \operatorname{RANDOM}()$\Comment{Initialization}
+	\State $\pi_b \gets \pi$
+	\State $\tau_j \gets 0, \forall j$\Comment{Tabu vector}
+	\State $k \gets 0$\Comment{Step counter}
+	\While{termination criterion not satisfied}
+
+		\State $\pi' \gets ~\text{best of}~ \operatorname{SAMPLE}(\pi, n)$ \Comment{Sample phase}
+
+		\If{$\tau_{j(\pi, \pi')} \leq k$}\Comment{Check TABU}
+
+			\If{$\operatorname{O}(\pi') < \operatorname{O}(\pi)$}\Comment{Check improving}
+
+				\State $\tau_{j(\pi, \pi')} \gets k + t$ \Comment{Update TABU counter for $j$}
+				\State $\pi \gets \pi'$
+
+				\If{$\operatorname{O}(\pi) < \operatorname{O}(\pi_b)$}\Comment{Check new best}
+					\State $\tau_j \gets 0, \forall j$ \Comment{Reset TABU vector}
+					\State $\pi_b \gets \pi$
+				\EndIf
+
+			\ElsIf{$\text{random}~\leq \exp{- (\operatorname{O}(\pi') - \operatorname{O}(\pi)) / T)}$}\Comment{Metropolis}
+
+				\State $\tau_{j(\pi, \pi')} \gets k + t$ \Comment{Update TABU counter for $j$}
+				\State $\pi \gets \pi'$
+
+			\EndIf
+
+		\EndIf
+
+		\If{No improvement since $r$ steps}
+			\State $\tau_j \gets 0, \forall j$ \Comment{Reset TABU vector}
+			\State $\pi \gets \pi_b$
+		\ElsIf{$c \mid k$}\Comment{Cooling step check}
+			\State $T \gets \alpha T$\Comment{Cool temperature}
+		\EndIf
+
+		\State $k \gets k + 1$ \Comment{Increment step counter}
+
+	\EndWhile
+	\State \textbf{return} $\pi_b$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}

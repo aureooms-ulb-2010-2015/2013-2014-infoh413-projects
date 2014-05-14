@@ -39,10 +39,10 @@ void run(){
 	auto accept = global::accept;
 
 
+
 // SOLUTION
 
 	S s(global::i.nbJob + 1);
-
 
 // GEN INITIAL SOLUTION
 
@@ -50,16 +50,22 @@ void run(){
 	(*init)(s);
 	global::val = (*global::e)(s);
 
+// COMPUTE CONSTANTS
+
+	const addr_t sample_size = std::max(1.0, real(s.size() - 1) * global::sample_size_f);
+
+	
+	hrclock::time_point beg = hrclock::now();
+
 // LS ON INITIAL SOLUTION
+	R candidate = pivoting(s, neighborhood->walk, neighborhood->eval);
 
-	R best = pivoting(s, neighborhood->walk, neighborhood->eval);
+	while(candidate.first){
+		global::val += candidate.first;
+		(*neighborhood->eval)(s, candidate.second, global::e->detail, global::e->wt);
+		(*neighborhood->apply)(s, candidate.second);
 
-	while(best.first){
-		global::val += best.first;
-		(*neighborhood->eval)(s, best.second, global::e->detail, global::e->wt);
-		(*neighborhood->apply)(s, best.second);
-
-		best = pivoting(s, neighborhood->walk, neighborhood->eval);
+		candidate = pivoting(s, neighborhood->walk, neighborhood->eval);
 	}
 
 // BEST BACKUP
@@ -73,12 +79,9 @@ void run(){
 		std::cout << "best " << global::val << std::endl;
 	}
 
-// COMPUTING CONSTANTS
-	const addr_t sample_size = std::max(1.0, real(s.size() - 1) * global::sample_size_f);
 
 // FIND LOCAL OPTIMUM
 
-	hrclock::time_point beg = hrclock::now();
 
 	// IG ALGORITHM
 	while(
@@ -120,14 +123,14 @@ void run(){
 		}
 
 	// LS ON RECONSTRUCTED SOLUTION
-		best = pivoting(_s, neighborhood->walk, neighborhood->eval);
+		candidate = pivoting(_s, neighborhood->walk, neighborhood->eval);
 
-		while(best.first){
-			_val += best.first;
-			(*neighborhood->eval)(_s, best.second, global::e->detail, global::e->wt);
-			(*neighborhood->apply)(_s, best.second);
+		while(candidate.first){
+			_val += candidate.first;
+			(*neighborhood->eval)(_s, candidate.second, global::e->detail, global::e->wt);
+			(*neighborhood->apply)(_s, candidate.second);
 
-			best = pivoting(_s, neighborhood->walk, neighborhood->eval);
+			candidate = pivoting(_s, neighborhood->walk, neighborhood->eval);
 		}
 
 	// TEST ACCEPTANCE CRITERION

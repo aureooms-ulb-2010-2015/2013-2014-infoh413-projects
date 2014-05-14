@@ -1,0 +1,35 @@
+\subsection{Tabu Search algorithm}
+\label{impl:tabu}
+
+\subsubsection{Outline}
+
+This algorithm is a simple SLS method adpated from the \emph{TABU} algorithm found in \cite{santostabu}.
+
+The outline of the algorithm can be seen in \ref{app:alg:tabu}.
+
+The algorithm is build on top of a canonical \emph{SA} algorithm. The difference is that a record of recent moved jobs is made, allowing to forbid making moves that involve recently moved jobs.
+
+\subsubsection{Initial solution}
+
+The \emph{NEH} construction heuristic used in \cite{santostabu} has not been used. Instead the two options of implementation exercise 1 are available : slack heuristic or random permutation.
+
+
+\subsubsection{Termination criterion}
+
+The termination criterion can be specified eiter by a maximum number of steps or a maximum amount of computation time.
+
+
+\subsubsection{Other parameters}
+
+The sample size $n$, the tabu tenure $t$, the cooling step $c$, the cooling factor $\alpha$, the restart threshold $r$ and the neighborhood are left as parameters for the user of the program.
+
+\subsubsection{Metropolis condition}
+\label{impl:tabu:metropolis}
+
+In this version, the metropolis condition is computed based on the relative difference between the two solutions $\pi'$ and $\pi$, i.e. $\frac{\operatorname{O}(\pi') - \operatorname{O}(\pi)}{\operatorname{O}(\pi)}$ in order to allow a better scaling of the parameter set with the current \emph{TWT} of a specific instance. The parameter $T$ is not computed as in \cite{DBLP:journals/eor/RuizS08}, a more \emph{SA}-like approach is chosen here, i.e. $T$ is determined by parameters $T_d$ and $T_p$. The parameters $T_d$ and $T_p$ must be interpreted as follows : the relative deviation $T_d$ has probability $T_p$ to be accepted by the metropolis condition. And from
+
+$$ T_p = \exp{-\frac{T_d}{T}} $$
+
+follows
+
+$$ T = - \frac{T_d}{\log{T_p}} $$
