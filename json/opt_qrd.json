@@ -1,15 +1,15 @@
 {
 	"./run/pfsp-ig" : [
-		["--max-time", ["95000"]],
-		["", ["-v"]],
+		["--max-time", ["950000"]],
+		["-v", ["-v"]],
 		["--init", ["slack"]],
 		["--temperature-d", ["0.8"]],
 		["--temperature-p", ["0.8"]],
 		["--sample-size-f", ["0.13"]]
 	],
 	"./run/pfsp-tabu" : [
-		["--max-time", ["95000"]],
-		["", ["-v"]],
+		["--max-time", ["950000"]],
+		["-v", ["-v"]],
 		["--init", ["random"]],
 		["--neighborhood", ["insert"]],
 		["--sample-size-f-min", ["0.698"]],
