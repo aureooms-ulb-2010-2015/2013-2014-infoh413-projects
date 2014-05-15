@@ -18,7 +18,7 @@ def do(data, best, filt, outdir):
 
 	def callback(f):
 		ins = os.path.basename(f.name)
-		if filt not in ins : return
+		if ins != filt : return
 		alg = f.name[len(data):].split('/')[0]
 
 		out.setdefault(ins, {})

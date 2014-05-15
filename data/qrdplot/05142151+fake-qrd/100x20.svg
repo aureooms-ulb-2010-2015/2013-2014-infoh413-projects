@@ -38,571 +38,454 @@
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,422.4 L575.0,422.4  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,422.4 L575.0,422.4  h0.01'/></g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,422.4 L89.2,422.4 M575.0,422.4 L566.0,422.4  h0.01'/>	<g transform="translate(71.9,426.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+	<path stroke='black'  d='M71.9,422.4 L80.9,422.4 M575.0,422.4 L566.0,422.4  h0.01'/>	<g transform="translate(63.6,426.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text> 0.3</text>
+	</g>
+</g>
+<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
+</g>
+<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,410.1 L575.0,410.1  h0.01'/></g>
+<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
+</g>
+<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
+	<path stroke='black'  d='M71.9,410.1 L76.4,410.1 M575.0,410.1 L570.5,410.1  h0.01'/></g>
+<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
+</g>
+<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,397.8 L575.0,397.8  h0.01'/></g>
+<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
+</g>
+<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
+	<path stroke='black'  d='M71.9,397.8 L76.4,397.8 M575.0,397.8 L570.5,397.8  h0.01'/></g>
+<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
+</g>
+<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,385.6 L575.0,385.6  h0.01'/></g>
+<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
+</g>
+<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
+	<path stroke='black'  d='M71.9,385.6 L76.4,385.6 M575.0,385.6 L570.5,385.6  h0.01'/></g>
+<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
+</g>
+<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,373.3 L575.0,373.3  h0.01'/></g>
+<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
+</g>
+<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
+	<path stroke='black'  d='M71.9,373.3 L76.4,373.3 M575.0,373.3 L570.5,373.3  h0.01'/></g>
+<g style="fill:none; color:red; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,361.0 L575.0,361.0  h0.01'/></g>
+<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
+	<path stroke='black'  d='M71.9,361.0 L80.9,361.0 M575.0,361.0 L566.0,361.0  h0.01'/>	<g transform="translate(63.6,365.5)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+		<text> 0.4</text>
+	</g>
+</g>
+<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
+</g>
+<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,348.7 L575.0,348.7  h0.01'/></g>
+<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
+</g>
+<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
+	<path stroke='black'  d='M71.9,348.7 L76.4,348.7 M575.0,348.7 L570.5,348.7  h0.01'/></g>
+<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
+</g>
+<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,336.5 L575.0,336.5  h0.01'/></g>
+<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
+</g>
+<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
+	<path stroke='black'  d='M71.9,336.5 L76.4,336.5 M575.0,336.5 L570.5,336.5  h0.01'/></g>
+<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
+</g>
+<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,324.2 L575.0,324.2  h0.01'/></g>
+<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
+</g>
+<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
+	<path stroke='black'  d='M71.9,324.2 L76.4,324.2 M575.0,324.2 L570.5,324.2  h0.01'/></g>
+<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
+</g>
+<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,311.9 L575.0,311.9  h0.01'/></g>
+<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
+</g>
+<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
+	<path stroke='black'  d='M71.9,311.9 L76.4,311.9 M575.0,311.9 L570.5,311.9  h0.01'/></g>
+<g style="fill:none; color:red; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,299.6 L575.0,299.6  h0.01'/></g>
+<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
+	<path stroke='black'  d='M71.9,299.6 L80.9,299.6 M575.0,299.6 L566.0,299.6  h0.01'/>	<g transform="translate(63.6,304.1)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
 		<text> 0.5</text>
 	</g>
 </g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,414.2 L575.0,414.2  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,287.4 L575.0,287.4  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,414.2 L84.7,414.2 M575.0,414.2 L570.5,414.2  h0.01'/></g>
+	<path stroke='black'  d='M71.9,287.4 L76.4,287.4 M575.0,287.4 L570.5,287.4  h0.01'/></g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,406.0 L575.0,406.0  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,275.1 L575.0,275.1  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,406.0 L84.7,406.0 M575.0,406.0 L570.5,406.0  h0.01'/></g>
+	<path stroke='black'  d='M71.9,275.1 L76.4,275.1 M575.0,275.1 L570.5,275.1  h0.01'/></g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,397.8 L575.0,397.8  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,262.8 L575.0,262.8  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,397.8 L84.7,397.8 M575.0,397.8 L570.5,397.8  h0.01'/></g>
+	<path stroke='black'  d='M71.9,262.8 L76.4,262.8 M575.0,262.8 L570.5,262.8  h0.01'/></g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,389.7 L575.0,389.7  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,250.5 L575.0,250.5  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,389.7 L84.7,389.7 M575.0,389.7 L570.5,389.7  h0.01'/></g>
+	<path stroke='black'  d='M71.9,250.5 L76.4,250.5 M575.0,250.5 L570.5,250.5  h0.01'/></g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,381.5 L575.0,381.5  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,238.2 L575.0,238.2  h0.01'/></g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,381.5 L89.2,381.5 M575.0,381.5 L566.0,381.5  h0.01'/>	<g transform="translate(71.9,386.0)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.55</text>
-	</g>
-</g>
-<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,373.3 L575.0,373.3  h0.01'/></g>
-<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,373.3 L84.7,373.3 M575.0,373.3 L570.5,373.3  h0.01'/></g>
-<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,365.1 L575.0,365.1  h0.01'/></g>
-<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,365.1 L84.7,365.1 M575.0,365.1 L570.5,365.1  h0.01'/></g>
-<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,356.9 L575.0,356.9  h0.01'/></g>
-<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,356.9 L84.7,356.9 M575.0,356.9 L570.5,356.9  h0.01'/></g>
-<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,348.7 L575.0,348.7  h0.01'/></g>
-<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,348.7 L84.7,348.7 M575.0,348.7 L570.5,348.7  h0.01'/></g>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,340.6 L575.0,340.6  h0.01'/></g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,340.6 L89.2,340.6 M575.0,340.6 L566.0,340.6  h0.01'/>	<g transform="translate(71.9,345.1)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+	<path stroke='black'  d='M71.9,238.2 L80.9,238.2 M575.0,238.2 L566.0,238.2  h0.01'/>	<g transform="translate(63.6,242.7)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
 		<text> 0.6</text>
 	</g>
 </g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,332.4 L575.0,332.4  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,226.0 L575.0,226.0  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,332.4 L84.7,332.4 M575.0,332.4 L570.5,332.4  h0.01'/></g>
+	<path stroke='black'  d='M71.9,226.0 L76.4,226.0 M575.0,226.0 L570.5,226.0  h0.01'/></g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,324.2 L575.0,324.2  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,213.7 L575.0,213.7  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,324.2 L84.7,324.2 M575.0,324.2 L570.5,324.2  h0.01'/></g>
+	<path stroke='black'  d='M71.9,213.7 L76.4,213.7 M575.0,213.7 L570.5,213.7  h0.01'/></g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,316.0 L575.0,316.0  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,201.4 L575.0,201.4  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,316.0 L84.7,316.0 M575.0,316.0 L570.5,316.0  h0.01'/></g>
+	<path stroke='black'  d='M71.9,201.4 L76.4,201.4 M575.0,201.4 L570.5,201.4  h0.01'/></g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,307.8 L575.0,307.8  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,189.1 L575.0,189.1  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,307.8 L84.7,307.8 M575.0,307.8 L570.5,307.8  h0.01'/></g>
+	<path stroke='black'  d='M71.9,189.1 L76.4,189.1 M575.0,189.1 L570.5,189.1  h0.01'/></g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,299.6 L575.0,299.6  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,176.9 L575.0,176.9  h0.01'/></g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,299.6 L89.2,299.6 M575.0,299.6 L566.0,299.6  h0.01'/>	<g transform="translate(71.9,304.1)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.65</text>
-	</g>
-</g>
-<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,291.4 L575.0,291.4  h0.01'/></g>
-<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,291.4 L84.7,291.4 M575.0,291.4 L570.5,291.4  h0.01'/></g>
-<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,283.3 L575.0,283.3  h0.01'/></g>
-<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,283.3 L84.7,283.3 M575.0,283.3 L570.5,283.3  h0.01'/></g>
-<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,275.1 L575.0,275.1  h0.01'/></g>
-<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,275.1 L84.7,275.1 M575.0,275.1 L570.5,275.1  h0.01'/></g>
-<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,266.9 L575.0,266.9  h0.01'/></g>
-<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,266.9 L84.7,266.9 M575.0,266.9 L570.5,266.9  h0.01'/></g>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,258.7 L575.0,258.7  h0.01'/></g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,258.7 L89.2,258.7 M575.0,258.7 L566.0,258.7  h0.01'/>	<g transform="translate(71.9,263.2)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+	<path stroke='black'  d='M71.9,176.9 L80.9,176.9 M575.0,176.9 L566.0,176.9  h0.01'/>	<g transform="translate(63.6,181.4)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
 		<text> 0.7</text>
 	</g>
 </g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,250.5 L575.0,250.5  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,164.6 L575.0,164.6  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,250.5 L84.7,250.5 M575.0,250.5 L570.5,250.5  h0.01'/></g>
+	<path stroke='black'  d='M71.9,164.6 L76.4,164.6 M575.0,164.6 L570.5,164.6  h0.01'/></g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,242.3 L575.0,242.3  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,152.3 L575.0,152.3  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,242.3 L84.7,242.3 M575.0,242.3 L570.5,242.3  h0.01'/></g>
+	<path stroke='black'  d='M71.9,152.3 L76.4,152.3 M575.0,152.3 L570.5,152.3  h0.01'/></g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,234.2 L575.0,234.2  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,140.0 L575.0,140.0  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,234.2 L84.7,234.2 M575.0,234.2 L570.5,234.2  h0.01'/></g>
+	<path stroke='black'  d='M71.9,140.0 L76.4,140.0 M575.0,140.0 L570.5,140.0  h0.01'/></g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,226.0 L575.0,226.0  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,127.8 L575.0,127.8  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,226.0 L84.7,226.0 M575.0,226.0 L570.5,226.0  h0.01'/></g>
+	<path stroke='black'  d='M71.9,127.8 L76.4,127.8 M575.0,127.8 L570.5,127.8  h0.01'/></g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,217.8 L575.0,217.8  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,115.5 L575.0,115.5  h0.01'/></g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,217.8 L89.2,217.8 M575.0,217.8 L566.0,217.8  h0.01'/>	<g transform="translate(71.9,222.3)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.75</text>
-	</g>
-</g>
-<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,209.6 L575.0,209.6  h0.01'/></g>
-<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,209.6 L84.7,209.6 M575.0,209.6 L570.5,209.6  h0.01'/></g>
-<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,201.4 L575.0,201.4  h0.01'/></g>
-<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,201.4 L84.7,201.4 M575.0,201.4 L570.5,201.4  h0.01'/></g>
-<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,193.2 L575.0,193.2  h0.01'/></g>
-<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,193.2 L84.7,193.2 M575.0,193.2 L570.5,193.2  h0.01'/></g>
-<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,185.1 L575.0,185.1  h0.01'/></g>
-<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,185.1 L84.7,185.1 M575.0,185.1 L570.5,185.1  h0.01'/></g>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,176.9 L575.0,176.9  h0.01'/></g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,176.9 L89.2,176.9 M575.0,176.9 L566.0,176.9  h0.01'/>	<g transform="translate(71.9,181.4)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+	<path stroke='black'  d='M71.9,115.5 L80.9,115.5 M575.0,115.5 L566.0,115.5  h0.01'/>	<g transform="translate(63.6,120.0)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
 		<text> 0.8</text>
 	</g>
 </g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,168.7 L575.0,168.7  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,103.2 L575.0,103.2  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,168.7 L84.7,168.7 M575.0,168.7 L570.5,168.7  h0.01'/></g>
+	<path stroke='black'  d='M71.9,103.2 L76.4,103.2 M575.0,103.2 L570.5,103.2  h0.01'/></g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,160.5 L575.0,160.5  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,90.9 L433.2,90.9 M566.7,90.9 L575.0,90.9  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,160.5 L84.7,160.5 M575.0,160.5 L570.5,160.5  h0.01'/></g>
+	<path stroke='black'  d='M71.9,90.9 L76.4,90.9 M575.0,90.9 L570.5,90.9  h0.01'/></g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,152.3 L575.0,152.3  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,78.7 L433.2,78.7 M566.7,78.7 L575.0,78.7  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,152.3 L84.7,152.3 M575.0,152.3 L570.5,152.3  h0.01'/></g>
+	<path stroke='black'  d='M71.9,78.7 L76.4,78.7 M575.0,78.7 L570.5,78.7  h0.01'/></g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,144.1 L575.0,144.1  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,66.4 L433.2,66.4 M566.7,66.4 L575.0,66.4  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,144.1 L84.7,144.1 M575.0,144.1 L570.5,144.1  h0.01'/></g>
+	<path stroke='black'  d='M71.9,66.4 L76.4,66.4 M575.0,66.4 L570.5,66.4  h0.01'/></g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,135.9 L575.0,135.9  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,54.1 L575.0,54.1  h0.01'/></g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,135.9 L89.2,135.9 M575.0,135.9 L566.0,135.9  h0.01'/>	<g transform="translate(71.9,140.4)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.85</text>
-	</g>
-</g>
-<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,127.8 L575.0,127.8  h0.01'/></g>
-<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,127.8 L84.7,127.8 M575.0,127.8 L570.5,127.8  h0.01'/></g>
-<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,119.6 L575.0,119.6  h0.01'/></g>
-<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,119.6 L84.7,119.6 M575.0,119.6 L570.5,119.6  h0.01'/></g>
-<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,111.4 L575.0,111.4  h0.01'/></g>
-<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,111.4 L84.7,111.4 M575.0,111.4 L570.5,111.4  h0.01'/></g>
-<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,103.2 L575.0,103.2  h0.01'/></g>
-<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,103.2 L84.7,103.2 M575.0,103.2 L570.5,103.2  h0.01'/></g>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,95.0 L433.2,95.0 M566.7,95.0 L575.0,95.0  h0.01'/></g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,95.0 L89.2,95.0 M575.0,95.0 L566.0,95.0  h0.01'/>	<g transform="translate(71.9,99.5)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
+	<path stroke='black'  d='M71.9,54.1 L80.9,54.1 M575.0,54.1 L566.0,54.1  h0.01'/>	<g transform="translate(63.6,58.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
 		<text> 0.9</text>
 	</g>
 </g>
-<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,86.8 L433.2,86.8 M566.7,86.8 L575.0,86.8  h0.01'/></g>
-<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,86.8 L84.7,86.8 M575.0,86.8 L570.5,86.8  h0.01'/></g>
-<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,78.7 L433.2,78.7 M566.7,78.7 L575.0,78.7  h0.01'/></g>
-<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,78.7 L84.7,78.7 M575.0,78.7 L570.5,78.7  h0.01'/></g>
-<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,70.5 L433.2,70.5 M566.7,70.5 L575.0,70.5  h0.01'/></g>
-<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,70.5 L84.7,70.5 M575.0,70.5 L570.5,70.5  h0.01'/></g>
-<g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,62.3 L575.0,62.3  h0.01'/></g>
-<g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,62.3 L84.7,62.3 M575.0,62.3 L570.5,62.3  h0.01'/></g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,54.1 L575.0,54.1  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M71.9,422.4 L71.9,54.1  h0.01'/></g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,54.1 L89.2,54.1 M575.0,54.1 L566.0,54.1  h0.01'/>	<g transform="translate(71.9,58.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.95</text>
-	</g>
-</g>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M80.2,422.4 L80.2,54.1  h0.01'/></g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,422.4 L80.2,413.4 M80.2,54.1 L80.2,63.1  h0.01'/>	<g transform="translate(80.2,444.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
+	<path stroke='black'  d='M71.9,422.4 L71.9,413.4 M71.9,54.1 L71.9,63.1  h0.01'/>	<g transform="translate(71.9,444.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
 		<text> 0</text>
 	</g>
 </g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M100.0,422.4 L100.0,54.1  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M92.0,422.4 L92.0,54.1  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M100.0,422.4 L100.0,417.9 M100.0,54.1 L100.0,58.6  h0.01'/></g>
+	<path stroke='black'  d='M92.0,422.4 L92.0,417.9 M92.0,54.1 L92.0,58.6  h0.01'/></g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M119.8,422.4 L119.8,54.1  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M112.1,422.4 L112.1,54.1  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M119.8,422.4 L119.8,417.9 M119.8,54.1 L119.8,58.6  h0.01'/></g>
+	<path stroke='black'  d='M112.1,422.4 L112.1,417.9 M112.1,54.1 L112.1,58.6  h0.01'/></g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M139.6,422.4 L139.6,54.1  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M132.3,422.4 L132.3,54.1  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M139.6,422.4 L139.6,417.9 M139.6,54.1 L139.6,58.6  h0.01'/></g>
+	<path stroke='black'  d='M132.3,422.4 L132.3,417.9 M132.3,54.1 L132.3,58.6  h0.01'/></g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M159.4,422.4 L159.4,54.1  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M152.4,422.4 L152.4,54.1  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M159.4,422.4 L159.4,417.9 M159.4,54.1 L159.4,58.6  h0.01'/></g>
+	<path stroke='black'  d='M152.4,422.4 L152.4,417.9 M152.4,54.1 L152.4,58.6  h0.01'/></g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M179.2,422.4 L179.2,54.1  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M172.5,422.4 L172.5,54.1  h0.01'/></g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M179.2,422.4 L179.2,413.4 M179.2,54.1 L179.2,63.1  h0.01'/>	<g transform="translate(179.2,444.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
+	<path stroke='black'  d='M172.5,422.4 L172.5,413.4 M172.5,54.1 L172.5,63.1  h0.01'/>	<g transform="translate(172.5,444.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
 		<text> 500</text>
 	</g>
 </g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M199.0,422.4 L199.0,54.1  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M192.6,422.4 L192.6,54.1  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M199.0,422.4 L199.0,417.9 M199.0,54.1 L199.0,58.6  h0.01'/></g>
+	<path stroke='black'  d='M192.6,422.4 L192.6,417.9 M192.6,54.1 L192.6,58.6  h0.01'/></g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M218.7,422.4 L218.7,54.1  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M212.8,422.4 L212.8,54.1  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M218.7,422.4 L218.7,417.9 M218.7,54.1 L218.7,58.6  h0.01'/></g>
+	<path stroke='black'  d='M212.8,422.4 L212.8,417.9 M212.8,54.1 L212.8,58.6  h0.01'/></g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M238.5,422.4 L238.5,54.1  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M232.9,422.4 L232.9,54.1  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M238.5,422.4 L238.5,417.9 M238.5,54.1 L238.5,58.6  h0.01'/></g>
+	<path stroke='black'  d='M232.9,422.4 L232.9,417.9 M232.9,54.1 L232.9,58.6  h0.01'/></g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M258.3,422.4 L258.3,54.1  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M253.0,422.4 L253.0,54.1  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M258.3,422.4 L258.3,417.9 M258.3,54.1 L258.3,58.6  h0.01'/></g>
+	<path stroke='black'  d='M253.0,422.4 L253.0,417.9 M253.0,54.1 L253.0,58.6  h0.01'/></g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M278.1,422.4 L278.1,54.1  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M273.1,422.4 L273.1,54.1  h0.01'/></g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M278.1,422.4 L278.1,413.4 M278.1,54.1 L278.1,63.1  h0.01'/>	<g transform="translate(278.1,444.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
+	<path stroke='black'  d='M273.1,422.4 L273.1,413.4 M273.1,54.1 L273.1,63.1  h0.01'/>	<g transform="translate(273.1,444.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
 		<text> 1000</text>
 	</g>
 </g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M297.9,422.4 L297.9,54.1  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M293.3,422.4 L293.3,54.1  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M297.9,422.4 L297.9,417.9 M297.9,54.1 L297.9,58.6  h0.01'/></g>
+	<path stroke='black'  d='M293.3,422.4 L293.3,417.9 M293.3,54.1 L293.3,58.6  h0.01'/></g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M317.7,422.4 L317.7,54.1  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M313.4,422.4 L313.4,54.1  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M317.7,422.4 L317.7,417.9 M317.7,54.1 L317.7,58.6  h0.01'/></g>
+	<path stroke='black'  d='M313.4,422.4 L313.4,417.9 M313.4,54.1 L313.4,58.6  h0.01'/></g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M337.5,422.4 L337.5,54.1  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M333.5,422.4 L333.5,54.1  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M337.5,422.4 L337.5,417.9 M337.5,54.1 L337.5,58.6  h0.01'/></g>
+	<path stroke='black'  d='M333.5,422.4 L333.5,417.9 M333.5,54.1 L333.5,58.6  h0.01'/></g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M357.3,422.4 L357.3,54.1  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M353.6,422.4 L353.6,54.1  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M357.3,422.4 L357.3,417.9 M357.3,54.1 L357.3,58.6  h0.01'/></g>
+	<path stroke='black'  d='M353.6,422.4 L353.6,417.9 M353.6,54.1 L353.6,58.6  h0.01'/></g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M377.1,422.4 L377.1,54.1  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M373.8,422.4 L373.8,54.1  h0.01'/></g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M377.1,422.4 L377.1,413.4 M377.1,54.1 L377.1,63.1  h0.01'/>	<g transform="translate(377.1,444.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
+	<path stroke='black'  d='M373.8,422.4 L373.8,413.4 M373.8,54.1 L373.8,63.1  h0.01'/>	<g transform="translate(373.8,444.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
 		<text> 1500</text>
 	</g>
 </g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M396.9,422.4 L396.9,54.1  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M393.9,422.4 L393.9,54.1  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M396.9,422.4 L396.9,417.9 M396.9,54.1 L396.9,58.6  h0.01'/></g>
+	<path stroke='black'  d='M393.9,422.4 L393.9,417.9 M393.9,54.1 L393.9,58.6  h0.01'/></g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M416.7,422.4 L416.7,54.1  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M414.0,422.4 L414.0,54.1  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M416.7,422.4 L416.7,417.9 M416.7,54.1 L416.7,58.6  h0.01'/></g>
+	<path stroke='black'  d='M414.0,422.4 L414.0,417.9 M414.0,54.1 L414.0,58.6  h0.01'/></g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M436.5,422.4 L436.5,99.1 M436.5,63.1 L436.5,54.1  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M434.1,422.4 L434.1,99.1 M434.1,63.1 L434.1,54.1  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M436.5,422.4 L436.5,417.9 M436.5,54.1 L436.5,58.6  h0.01'/></g>
+	<path stroke='black'  d='M434.1,422.4 L434.1,417.9 M434.1,54.1 L434.1,58.6  h0.01'/></g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M456.2,422.4 L456.2,99.1 M456.2,63.1 L456.2,54.1  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M454.3,422.4 L454.3,99.1 M454.3,63.1 L454.3,54.1  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M456.2,422.4 L456.2,417.9 M456.2,54.1 L456.2,58.6  h0.01'/></g>
+	<path stroke='black'  d='M454.3,422.4 L454.3,417.9 M454.3,54.1 L454.3,58.6  h0.01'/></g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M476.0,422.4 L476.0,99.1 M476.0,63.1 L476.0,54.1  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M474.4,422.4 L474.4,99.1 M474.4,63.1 L474.4,54.1  h0.01'/></g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M476.0,422.4 L476.0,413.4 M476.0,54.1 L476.0,63.1  h0.01'/>	<g transform="translate(476.0,444.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
+	<path stroke='black'  d='M474.4,422.4 L474.4,413.4 M474.4,54.1 L474.4,63.1  h0.01'/>	<g transform="translate(474.4,444.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
 		<text> 2000</text>
 	</g>
 </g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M495.8,422.4 L495.8,99.1 M495.8,63.1 L495.8,54.1  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M494.5,422.4 L494.5,99.1 M494.5,63.1 L494.5,54.1  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M495.8,422.4 L495.8,417.9 M495.8,54.1 L495.8,58.6  h0.01'/></g>
+	<path stroke='black'  d='M494.5,422.4 L494.5,417.9 M494.5,54.1 L494.5,58.6  h0.01'/></g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M515.6,422.4 L515.6,99.1 M515.6,63.1 L515.6,54.1  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M514.6,422.4 L514.6,99.1 M514.6,63.1 L514.6,54.1  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M515.6,422.4 L515.6,417.9 M515.6,54.1 L515.6,58.6  h0.01'/></g>
+	<path stroke='black'  d='M514.6,422.4 L514.6,417.9 M514.6,54.1 L514.6,58.6  h0.01'/></g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M535.4,422.4 L535.4,99.1 M535.4,63.1 L535.4,54.1  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M534.8,422.4 L534.8,99.1 M534.8,63.1 L534.8,54.1  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M535.4,422.4 L535.4,417.9 M535.4,54.1 L535.4,58.6  h0.01'/></g>
+	<path stroke='black'  d='M534.8,422.4 L534.8,417.9 M534.8,54.1 L534.8,58.6  h0.01'/></g>
 <g style="fill:none; color:black; stroke:black; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M555.2,422.4 L555.2,99.1 M555.2,63.1 L555.2,54.1  h0.01'/></g>
+	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M554.9,422.4 L554.9,99.1 M554.9,63.1 L554.9,54.1  h0.01'/></g>
 <g style="fill:none; color:red; stroke:rgb(221, 204, 221); stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 </g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M555.2,422.4 L555.2,417.9 M555.2,54.1 L555.2,58.6  h0.01'/></g>
+	<path stroke='black'  d='M554.9,422.4 L554.9,417.9 M554.9,54.1 L554.9,58.6  h0.01'/></g>
 <g style="fill:none; color:red; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 	<path stroke='rgb(221, 204, 221)' class="gridline"  d='M575.0,422.4 L575.0,54.1  h0.01'/></g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
 	<path stroke='black'  d='M575.0,422.4 L575.0,413.4 M575.0,54.1 L575.0,63.1  h0.01'/>	<g transform="translate(575.0,444.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
 		<text> 2500</text>
 	</g>
-	<path stroke='black'  d='M80.2,54.1 L80.2,422.4 L575.0,422.4 L575.0,54.1 L80.2,54.1 Z  h0.01'/>	<g transform="translate(17.6,238.3) rotate(270)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
+	<path stroke='black'  d='M71.9,54.1 L71.9,422.4 L575.0,422.4 L575.0,54.1 L71.9,54.1 Z  h0.01'/>	<g transform="translate(17.6,238.3) rotate(270)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
 		<text>P(solve)</text>
 	</g>
-	<g transform="translate(327.6,471.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
+	<g transform="translate(323.4,471.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
 		<text>time (s)</text>
 	</g>
-	<g transform="translate(327.6,31.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
+	<g transform="translate(323.4,31.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
 		<text>RTD for instance # 100x20</text>
 	</g>
 </g>
@@ -611,26 +494,35 @@
 	<g transform="translate(507.9,76.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
 		<text>pfsp-ig</text>
 	</g>
-	<path stroke='rgb(  0,  96, 173)'  d='M516.2,72.1 L558.4,72.1 M80.2,406.0 L88.1,406.0 L92.3,373.3 L95.6,373.3 L98.4,340.6 L110.5,340.6 
-		L114.4,307.8 L181.7,275.1 L214.6,275.1 L226.1,242.3 L262.7,242.3 L271.8,209.6 L291.2,209.6 L315.7,209.6 
-		L322.3,209.6 L351.7,176.9 L433.5,176.9 L490.9,144.1  h0.01'/>	<use xlink:href='#gpPt0' transform='translate(80.2,406.0) scale(4.50)' color='rgb(  0,  96, 173)'/>
-	<use xlink:href='#gpPt0' transform='translate(88.1,406.0) scale(4.50)' color='rgb(  0,  96, 173)'/>
-	<use xlink:href='#gpPt0' transform='translate(92.3,373.3) scale(4.50)' color='rgb(  0,  96, 173)'/>
-	<use xlink:href='#gpPt0' transform='translate(95.6,373.3) scale(4.50)' color='rgb(  0,  96, 173)'/>
-	<use xlink:href='#gpPt0' transform='translate(98.4,340.6) scale(4.50)' color='rgb(  0,  96, 173)'/>
-	<use xlink:href='#gpPt0' transform='translate(110.5,340.6) scale(4.50)' color='rgb(  0,  96, 173)'/>
-	<use xlink:href='#gpPt0' transform='translate(114.4,307.8) scale(4.50)' color='rgb(  0,  96, 173)'/>
-	<use xlink:href='#gpPt0' transform='translate(181.7,275.1) scale(4.50)' color='rgb(  0,  96, 173)'/>
-	<use xlink:href='#gpPt0' transform='translate(214.6,275.1) scale(4.50)' color='rgb(  0,  96, 173)'/>
-	<use xlink:href='#gpPt0' transform='translate(226.1,242.3) scale(4.50)' color='rgb(  0,  96, 173)'/>
-	<use xlink:href='#gpPt0' transform='translate(262.7,242.3) scale(4.50)' color='rgb(  0,  96, 173)'/>
-	<use xlink:href='#gpPt0' transform='translate(271.8,209.6) scale(4.50)' color='rgb(  0,  96, 173)'/>
-	<use xlink:href='#gpPt0' transform='translate(291.2,209.6) scale(4.50)' color='rgb(  0,  96, 173)'/>
-	<use xlink:href='#gpPt0' transform='translate(315.7,209.6) scale(4.50)' color='rgb(  0,  96, 173)'/>
-	<use xlink:href='#gpPt0' transform='translate(322.3,209.6) scale(4.50)' color='rgb(  0,  96, 173)'/>
-	<use xlink:href='#gpPt0' transform='translate(351.7,176.9) scale(4.50)' color='rgb(  0,  96, 173)'/>
-	<use xlink:href='#gpPt0' transform='translate(433.5,176.9) scale(4.50)' color='rgb(  0,  96, 173)'/>
-	<use xlink:href='#gpPt0' transform='translate(490.9,144.1) scale(4.50)' color='rgb(  0,  96, 173)'/>
+	<path stroke='rgb(  0,  96, 173)'  d='M516.2,72.1 L558.4,72.1 M71.9,410.1 L75.7,385.6 L76.9,361.0 L82.6,336.5 L85.8,336.5 L86.2,336.5 
+		L91.4,311.9 L95.6,287.4 L96.3,262.8 L100.5,238.2 L114.6,238.2 L116.4,213.7 L120.2,213.7 L126.0,189.1 
+		L170.3,189.1 L185.2,189.1 L225.8,164.6 L303.7,164.6 L336.9,164.6 L352.8,164.6 L359.3,164.6 L384.8,140.0 
+		L403.5,115.5 L436.5,90.9 L451.8,90.9 L494.3,66.4  h0.01'/>	<use xlink:href='#gpPt0' transform='translate(71.9,410.1) scale(4.50)' color='rgb(  0,  96, 173)'/>
+	<use xlink:href='#gpPt0' transform='translate(75.7,385.6) scale(4.50)' color='rgb(  0,  96, 173)'/>
+	<use xlink:href='#gpPt0' transform='translate(76.9,361.0) scale(4.50)' color='rgb(  0,  96, 173)'/>
+	<use xlink:href='#gpPt0' transform='translate(82.6,336.5) scale(4.50)' color='rgb(  0,  96, 173)'/>
+	<use xlink:href='#gpPt0' transform='translate(85.8,336.5) scale(4.50)' color='rgb(  0,  96, 173)'/>
+	<use xlink:href='#gpPt0' transform='translate(86.2,336.5) scale(4.50)' color='rgb(  0,  96, 173)'/>
+	<use xlink:href='#gpPt0' transform='translate(91.4,311.9) scale(4.50)' color='rgb(  0,  96, 173)'/>
+	<use xlink:href='#gpPt0' transform='translate(95.6,287.4) scale(4.50)' color='rgb(  0,  96, 173)'/>
+	<use xlink:href='#gpPt0' transform='translate(96.3,262.8) scale(4.50)' color='rgb(  0,  96, 173)'/>
+	<use xlink:href='#gpPt0' transform='translate(100.5,238.2) scale(4.50)' color='rgb(  0,  96, 173)'/>
+	<use xlink:href='#gpPt0' transform='translate(114.6,238.2) scale(4.50)' color='rgb(  0,  96, 173)'/>
+	<use xlink:href='#gpPt0' transform='translate(116.4,213.7) scale(4.50)' color='rgb(  0,  96, 173)'/>
+	<use xlink:href='#gpPt0' transform='translate(120.2,213.7) scale(4.50)' color='rgb(  0,  96, 173)'/>
+	<use xlink:href='#gpPt0' transform='translate(126.0,189.1) scale(4.50)' color='rgb(  0,  96, 173)'/>
+	<use xlink:href='#gpPt0' transform='translate(170.3,189.1) scale(4.50)' color='rgb(  0,  96, 173)'/>
+	<use xlink:href='#gpPt0' transform='translate(185.2,189.1) scale(4.50)' color='rgb(  0,  96, 173)'/>
+	<use xlink:href='#gpPt0' transform='translate(225.8,164.6) scale(4.50)' color='rgb(  0,  96, 173)'/>
+	<use xlink:href='#gpPt0' transform='translate(303.7,164.6) scale(4.50)' color='rgb(  0,  96, 173)'/>
+	<use xlink:href='#gpPt0' transform='translate(336.9,164.6) scale(4.50)' color='rgb(  0,  96, 173)'/>
+	<use xlink:href='#gpPt0' transform='translate(352.8,164.6) scale(4.50)' color='rgb(  0,  96, 173)'/>
+	<use xlink:href='#gpPt0' transform='translate(359.3,164.6) scale(4.50)' color='rgb(  0,  96, 173)'/>
+	<use xlink:href='#gpPt0' transform='translate(384.8,140.0) scale(4.50)' color='rgb(  0,  96, 173)'/>
+	<use xlink:href='#gpPt0' transform='translate(403.5,115.5) scale(4.50)' color='rgb(  0,  96, 173)'/>
+	<use xlink:href='#gpPt0' transform='translate(436.5,90.9) scale(4.50)' color='rgb(  0,  96, 173)'/>
+	<use xlink:href='#gpPt0' transform='translate(451.8,90.9) scale(4.50)' color='rgb(  0,  96, 173)'/>
+	<use xlink:href='#gpPt0' transform='translate(494.3,66.4) scale(4.50)' color='rgb(  0,  96, 173)'/>
 	<use xlink:href='#gpPt0' transform='translate(537.3,72.1) scale(4.50)' color='rgb(  0,  96, 173)'/>
 </g>
 	</g>
@@ -639,31 +531,40 @@
 	<g transform="translate(507.9,94.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
 		<text>pfsp-tabu</text>
 	</g>
-	<path stroke='rgb(  0, 173,   6)'  d='M516.2,90.1 L558.4,90.1 M80.2,373.3 L88.1,340.6 L92.3,340.6 L95.6,307.8 L98.4,307.8 L110.5,275.1 
-		L114.4,275.1 L181.7,275.1 L214.6,242.3 L226.1,242.3 L262.7,209.6 L271.8,209.6 L291.2,176.9 L315.7,144.1 
-		L322.3,111.4 L351.7,111.4 L433.5,78.7 L490.9,78.7  h0.01'/>	<use xlink:href='#gpPt0' transform='translate(80.2,373.3) scale(4.50)' color='rgb(  0, 173,   6)'/>
-	<use xlink:href='#gpPt0' transform='translate(88.1,340.6) scale(4.50)' color='rgb(  0, 173,   6)'/>
-	<use xlink:href='#gpPt0' transform='translate(92.3,340.6) scale(4.50)' color='rgb(  0, 173,   6)'/>
-	<use xlink:href='#gpPt0' transform='translate(95.6,307.8) scale(4.50)' color='rgb(  0, 173,   6)'/>
-	<use xlink:href='#gpPt0' transform='translate(98.4,307.8) scale(4.50)' color='rgb(  0, 173,   6)'/>
-	<use xlink:href='#gpPt0' transform='translate(110.5,275.1) scale(4.50)' color='rgb(  0, 173,   6)'/>
-	<use xlink:href='#gpPt0' transform='translate(114.4,275.1) scale(4.50)' color='rgb(  0, 173,   6)'/>
-	<use xlink:href='#gpPt0' transform='translate(181.7,275.1) scale(4.50)' color='rgb(  0, 173,   6)'/>
-	<use xlink:href='#gpPt0' transform='translate(214.6,242.3) scale(4.50)' color='rgb(  0, 173,   6)'/>
-	<use xlink:href='#gpPt0' transform='translate(226.1,242.3) scale(4.50)' color='rgb(  0, 173,   6)'/>
-	<use xlink:href='#gpPt0' transform='translate(262.7,209.6) scale(4.50)' color='rgb(  0, 173,   6)'/>
-	<use xlink:href='#gpPt0' transform='translate(271.8,209.6) scale(4.50)' color='rgb(  0, 173,   6)'/>
-	<use xlink:href='#gpPt0' transform='translate(291.2,176.9) scale(4.50)' color='rgb(  0, 173,   6)'/>
-	<use xlink:href='#gpPt0' transform='translate(315.7,144.1) scale(4.50)' color='rgb(  0, 173,   6)'/>
-	<use xlink:href='#gpPt0' transform='translate(322.3,111.4) scale(4.50)' color='rgb(  0, 173,   6)'/>
-	<use xlink:href='#gpPt0' transform='translate(351.7,111.4) scale(4.50)' color='rgb(  0, 173,   6)'/>
-	<use xlink:href='#gpPt0' transform='translate(433.5,78.7) scale(4.50)' color='rgb(  0, 173,   6)'/>
-	<use xlink:href='#gpPt0' transform='translate(490.9,78.7) scale(4.50)' color='rgb(  0, 173,   6)'/>
+	<path stroke='rgb(  0, 173,   6)'  d='M516.2,90.1 L558.4,90.1 M71.9,361.0 L75.7,361.0 L76.9,361.0 L82.6,361.0 L85.8,336.5 L86.2,311.9 
+		L91.4,311.9 L95.6,311.9 L96.3,311.9 L100.5,311.9 L114.6,287.4 L116.4,287.4 L120.2,262.8 L126.0,262.8 
+		L170.3,238.2 L185.2,213.7 L225.8,213.7 L303.7,189.1 L336.9,164.6 L352.8,140.0 L359.3,115.5 L384.8,115.5 
+		L403.5,115.5 L436.5,115.5 L451.8,90.9 L494.3,90.9  h0.01'/>	<use xlink:href='#gpPt0' transform='translate(71.9,361.0) scale(4.50)' color='rgb(  0, 173,   6)'/>
+	<use xlink:href='#gpPt0' transform='translate(75.7,361.0) scale(4.50)' color='rgb(  0, 173,   6)'/>
+	<use xlink:href='#gpPt0' transform='translate(76.9,361.0) scale(4.50)' color='rgb(  0, 173,   6)'/>
+	<use xlink:href='#gpPt0' transform='translate(82.6,361.0) scale(4.50)' color='rgb(  0, 173,   6)'/>
+	<use xlink:href='#gpPt0' transform='translate(85.8,336.5) scale(4.50)' color='rgb(  0, 173,   6)'/>
+	<use xlink:href='#gpPt0' transform='translate(86.2,311.9) scale(4.50)' color='rgb(  0, 173,   6)'/>
+	<use xlink:href='#gpPt0' transform='translate(91.4,311.9) scale(4.50)' color='rgb(  0, 173,   6)'/>
+	<use xlink:href='#gpPt0' transform='translate(95.6,311.9) scale(4.50)' color='rgb(  0, 173,   6)'/>
+	<use xlink:href='#gpPt0' transform='translate(96.3,311.9) scale(4.50)' color='rgb(  0, 173,   6)'/>
+	<use xlink:href='#gpPt0' transform='translate(100.5,311.9) scale(4.50)' color='rgb(  0, 173,   6)'/>
+	<use xlink:href='#gpPt0' transform='translate(114.6,287.4) scale(4.50)' color='rgb(  0, 173,   6)'/>
+	<use xlink:href='#gpPt0' transform='translate(116.4,287.4) scale(4.50)' color='rgb(  0, 173,   6)'/>
+	<use xlink:href='#gpPt0' transform='translate(120.2,262.8) scale(4.50)' color='rgb(  0, 173,   6)'/>
+	<use xlink:href='#gpPt0' transform='translate(126.0,262.8) scale(4.50)' color='rgb(  0, 173,   6)'/>
+	<use xlink:href='#gpPt0' transform='translate(170.3,238.2) scale(4.50)' color='rgb(  0, 173,   6)'/>
+	<use xlink:href='#gpPt0' transform='translate(185.2,213.7) scale(4.50)' color='rgb(  0, 173,   6)'/>
+	<use xlink:href='#gpPt0' transform='translate(225.8,213.7) scale(4.50)' color='rgb(  0, 173,   6)'/>
+	<use xlink:href='#gpPt0' transform='translate(303.7,189.1) scale(4.50)' color='rgb(  0, 173,   6)'/>
+	<use xlink:href='#gpPt0' transform='translate(336.9,164.6) scale(4.50)' color='rgb(  0, 173,   6)'/>
+	<use xlink:href='#gpPt0' transform='translate(352.8,140.0) scale(4.50)' color='rgb(  0, 173,   6)'/>
+	<use xlink:href='#gpPt0' transform='translate(359.3,115.5) scale(4.50)' color='rgb(  0, 173,   6)'/>
+	<use xlink:href='#gpPt0' transform='translate(384.8,115.5) scale(4.50)' color='rgb(  0, 173,   6)'/>
+	<use xlink:href='#gpPt0' transform='translate(403.5,115.5) scale(4.50)' color='rgb(  0, 173,   6)'/>
+	<use xlink:href='#gpPt0' transform='translate(436.5,115.5) scale(4.50)' color='rgb(  0, 173,   6)'/>
+	<use xlink:href='#gpPt0' transform='translate(451.8,90.9) scale(4.50)' color='rgb(  0, 173,   6)'/>
+	<use xlink:href='#gpPt0' transform='translate(494.3,90.9) scale(4.50)' color='rgb(  0, 173,   6)'/>
 	<use xlink:href='#gpPt0' transform='translate(537.3,90.1) scale(4.50)' color='rgb(  0, 173,   6)'/>
 </g>
 	</g>
 <g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:round; stroke-linejoin:round">
-	<path stroke='black'  d='M80.2,54.1 L80.2,422.4 L575.0,422.4 L575.0,54.1 L80.2,54.1 Z  h0.01'/></g>
+	<path stroke='black'  d='M71.9,54.1 L71.9,422.4 L575.0,422.4 L575.0,54.1 L71.9,54.1 Z  h0.01'/></g>
 </g>
 </svg>
 
