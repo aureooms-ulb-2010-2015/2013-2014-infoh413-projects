@@ -1,7 +1,9 @@
-import os, sys, lib, gen
+import os, sys, lib, gen, uuid
 
 
 def do(ben, run, opt, inp, out, tmpdir, name, tmpl, p):
+
+	jobname = name + '-' + uuid.uuid4().hex
 
 	runs = [([], [])]
 
@@ -47,7 +49,7 @@ def do(ben, run, opt, inp, out, tmpdir, name, tmpl, p):
 
 
 	with open(jobfile, 'w') as f:
-		f.write(tmpl.format(nruns[0], p['time'], p['np'], p['ppn'], p['mem'], name, cmdfile))
+		f.write(tmpl.format(nruns[0], p['time'], p['np'], p['ppn'], p['mem'], jobname, cmdfile))
 
 
 
