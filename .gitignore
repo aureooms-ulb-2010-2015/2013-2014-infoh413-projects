@@ -2,3 +2,5 @@ run
 d
 gmon.out
 .tmp
+.pyc
+.o
