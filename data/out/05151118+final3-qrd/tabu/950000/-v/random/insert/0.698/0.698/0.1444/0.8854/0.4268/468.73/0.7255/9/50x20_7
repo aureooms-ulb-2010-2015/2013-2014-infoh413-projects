@@ -1,0 +1,91 @@
+jobs 50
+mach 20
+init 0 40 39 16 30 42 19 6 12 3 41 11 37 7 17 29 13 43 22 2 23 38 45 47 10 32 46 44 26 5 24 20 14 27 9 25 48 35 1 4 18 15 36 31 28 50 34 33 8 21 49
+best 220915
+best 204171 step 1 time 4 ms
+best 190818 step 2 time 9 ms
+best 178777 step 3 time 13 ms
+best 167269 step 4 time 18 ms
+best 155537 step 5 time 22 ms
+best 143891 step 6 time 27 ms
+best 137172 step 7 time 32 ms
+best 130829 step 8 time 36 ms
+best 125188 step 9 time 40 ms
+best 120108 step 10 time 45 ms
+best 113081 step 11 time 49 ms
+best 107659 step 12 time 54 ms
+best 100073 step 13 time 59 ms
+best 93828 step 14 time 64 ms
+best 89764 step 15 time 68 ms
+best 83933 step 16 time 73 ms
+best 78639 step 17 time 77 ms
+best 74601 step 18 time 82 ms
+best 71188 step 19 time 86 ms
+best 67942 step 20 time 90 ms
+best 64806 step 21 time 95 ms
+best 60973 step 22 time 105 ms
+best 58306 step 23 time 109 ms
+best 56729 step 24 time 114 ms
+best 52807 step 25 time 118 ms
+best 51485 step 26 time 123 ms
+best 49465 step 27 time 127 ms
+best 48124 step 28 time 131 ms
+best 46740 step 29 time 136 ms
+best 45781 step 30 time 140 ms
+best 44646 step 31 time 145 ms
+best 43225 step 32 time 150 ms
+best 42558 step 33 time 155 ms
+best 42024 step 34 time 159 ms
+best 40706 step 35 time 164 ms
+best 39415 step 36 time 168 ms
+best 35588 step 37 time 173 ms
+best 34816 step 38 time 177 ms
+best 33855 step 39 time 182 ms
+best 32955 step 40 time 186 ms
+best 32330 step 41 time 192 ms
+best 31821 step 42 time 197 ms
+best 31192 step 43 time 202 ms
+best 30797 step 44 time 207 ms
+best 30400 step 45 time 211 ms
+best 29872 step 46 time 216 ms
+best 29406 step 47 time 220 ms
+best 29016 step 48 time 225 ms
+best 28166 step 49 time 229 ms
+best 27309 step 50 time 234 ms
+best 26558 step 51 time 238 ms
+best 25715 step 52 time 243 ms
+best 25174 step 53 time 248 ms
+best 24802 step 54 time 252 ms
+best 24639 step 55 time 256 ms
+best 24469 step 56 time 261 ms
+best 24317 step 57 time 265 ms
+best 24166 step 58 time 272 ms
+best 23999 step 59 time 277 ms
+best 23949 step 60 time 281 ms
+best 23877 step 62 time 290 ms
+best 23872 step 63 time 294 ms
+best 23810 step 73 time 340 ms
+best 23522 step 74 time 344 ms
+best 22488 step 75 time 349 ms
+best 21869 step 76 time 353 ms
+best 21746 step 77 time 357 ms
+best 21540 step 78 time 362 ms
+best 21398 step 79 time 366 ms
+best 21047 step 81 time 375 ms
+best 21000 step 82 time 379 ms
+best 20950 step 93 time 429 ms
+best 20901 step 94 time 434 ms
+best 20583 step 6054 time 21199 ms
+best 20291 step 6055 time 21203 ms
+best 20071 step 6056 time 21208 ms
+best 19895 step 6057 time 21212 ms
+best 19771 step 6058 time 21217 ms
+best 19447 step 6059 time 21221 ms
+best 19388 step 6060 time 21225 ms
+best 19348 step 6061 time 21230 ms
+best 19341 step 6062 time 21234 ms
+best 19306 step 6063 time 21239 ms
+done 0 2 44 42 22 45 25 6 18 36 14 21 29 30 37 32 23 3 34 10 41 1 7 33 5 48 4 35 38 16 15 9 12 19 20 40 49 31 28 13 47 17 39 46 11 27 26 24 50 8 43
+best 19306
+time 950003 ms
+seed 9

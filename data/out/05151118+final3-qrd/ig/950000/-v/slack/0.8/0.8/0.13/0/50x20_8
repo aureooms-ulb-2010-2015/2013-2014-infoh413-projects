@@ -1,0 +1,20 @@
+jobs 50
+mach 20
+init 0 6 17 23 31 1 34 24 26 29 45 39 47 42 2 32 30 41 37 11 4 20 12 27 33 8 36 43 16 14 15 13 5 44 19 22 38 25 18 10 48 9 21 50 35 49 28 46 40 3 7
+best 73034
+best 72339 step 3 time 106 ms
+best 71182 step 4 time 122 ms
+best 70106 step 10 time 220 ms
+best 67606 step 13 time 284 ms
+best 65724 step 14 time 319 ms
+best 65166 step 17 time 403 ms
+best 64638 step 18 time 433 ms
+best 63788 step 57 time 1186 ms
+best 63632 step 1339 time 26280 ms
+best 63569 step 1341 time 26321 ms
+best 63549 step 1346 time 26425 ms
+best 63522 step 5123 time 101776 ms
+done 0 6 47 17 31 1 24 27 29 34 8 30 43 20 2 45 39 41 42 37 11 4 32 44 26 23 33 5 12 22 13 36 14 15 16 19 25 50 48 10 18 9 35 49 38 21 28 46 40 7 3
+best 63522
+time 950011 ms
+seed 0

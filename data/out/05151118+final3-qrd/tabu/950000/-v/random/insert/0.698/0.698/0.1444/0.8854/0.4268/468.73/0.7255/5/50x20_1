@@ -1,0 +1,95 @@
+jobs 50
+mach 20
+init 0 15 32 14 28 4 43 12 41 34 27 23 48 1 40 36 45 24 19 25 44 22 17 46 5 42 6 39 30 38 47 26 37 10 20 11 18 9 50 2 3 35 13 8 21 31 29 7 33 49 16
+best 247726
+best 217867 step 1 time 4 ms
+best 199161 step 2 time 8 ms
+best 183095 step 3 time 13 ms
+best 171451 step 4 time 17 ms
+best 162161 step 5 time 22 ms
+best 152563 step 6 time 26 ms
+best 143768 step 7 time 31 ms
+best 134596 step 8 time 35 ms
+best 126708 step 9 time 39 ms
+best 119966 step 10 time 44 ms
+best 112318 step 11 time 48 ms
+best 104534 step 12 time 53 ms
+best 99280 step 13 time 57 ms
+best 93287 step 14 time 62 ms
+best 89262 step 15 time 66 ms
+best 84623 step 16 time 70 ms
+best 81469 step 17 time 75 ms
+best 79233 step 18 time 79 ms
+best 75918 step 19 time 84 ms
+best 73721 step 20 time 88 ms
+best 71404 step 21 time 92 ms
+best 68723 step 22 time 97 ms
+best 66697 step 23 time 102 ms
+best 64883 step 24 time 106 ms
+best 62617 step 25 time 110 ms
+best 60786 step 26 time 115 ms
+best 59380 step 27 time 119 ms
+best 58320 step 28 time 124 ms
+best 56338 step 29 time 128 ms
+best 55445 step 30 time 132 ms
+best 54520 step 31 time 137 ms
+best 53788 step 32 time 141 ms
+best 52192 step 33 time 146 ms
+best 51298 step 34 time 150 ms
+best 50767 step 35 time 155 ms
+best 50407 step 36 time 159 ms
+best 50067 step 37 time 164 ms
+best 49452 step 38 time 168 ms
+best 48874 step 39 time 172 ms
+best 48548 step 40 time 177 ms
+best 48358 step 41 time 181 ms
+best 48090 step 42 time 186 ms
+best 47877 step 43 time 190 ms
+best 47700 step 44 time 194 ms
+best 47672 step 46 time 203 ms
+best 47365 step 47 time 208 ms
+best 47278 step 48 time 212 ms
+best 47224 step 49 time 216 ms
+best 47210 step 58 time 257 ms
+best 46629 step 59 time 261 ms
+best 46347 step 60 time 266 ms
+best 45969 step 61 time 270 ms
+best 45800 step 62 time 275 ms
+best 45763 step 66 time 292 ms
+best 45359 step 68 time 301 ms
+best 44871 step 69 time 305 ms
+best 44102 step 70 time 310 ms
+best 44068 step 72 time 319 ms
+best 43980 step 73 time 323 ms
+best 43941 step 74 time 327 ms
+best 43903 step 80 time 354 ms
+best 43883 step 81 time 358 ms
+best 43793 step 140 time 603 ms
+best 43553 step 141 time 607 ms
+best 43306 step 142 time 612 ms
+best 43261 step 144 time 620 ms
+best 43194 step 145 time 625 ms
+best 42989 step 157 time 684 ms
+best 42847 step 158 time 689 ms
+best 42717 step 159 time 693 ms
+best 42642 step 160 time 697 ms
+best 42579 step 164 time 715 ms
+best 42035 step 305 time 1211 ms
+best 41651 step 306 time 1215 ms
+best 41382 step 307 time 1220 ms
+best 41199 step 308 time 1224 ms
+best 41108 step 309 time 1229 ms
+best 41011 step 310 time 1233 ms
+best 40651 step 1290 time 4655 ms
+best 39811 step 1291 time 4659 ms
+best 38962 step 1292 time 4664 ms
+best 38706 step 1293 time 4668 ms
+best 38518 step 1294 time 4673 ms
+best 38077 step 1295 time 4677 ms
+best 38076 step 1296 time 4681 ms
+best 37944 step 1298 time 4691 ms
+best 37906 step 1299 time 4695 ms
+done 0 34 16 44 20 17 46 1 13 24 3 38 19 21 28 22 2 48 25 40 42 29 36 33 12 23 7 14 41 5 4 50 15 32 49 37 27 30 6 43 26 10 8 18 31 11 9 39 45 35 47
+best 37906
+time 950000 ms
+seed 5

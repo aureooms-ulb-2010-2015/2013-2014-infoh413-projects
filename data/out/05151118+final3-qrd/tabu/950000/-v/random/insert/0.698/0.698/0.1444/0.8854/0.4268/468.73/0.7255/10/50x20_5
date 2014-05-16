@@ -1,0 +1,92 @@
+jobs 50
+mach 20
+init 0 21 12 15 49 23 50 8 17 47 46 13 9 25 7 29 22 4 41 36 27 38 34 35 19 37 45 32 1 6 48 33 39 43 11 24 18 40 30 3 10 16 44 26 20 31 5 28 42 2 14
+best 207305
+best 187316 step 1 time 4 ms
+best 172779 step 2 time 9 ms
+best 158862 step 3 time 13 ms
+best 145427 step 4 time 17 ms
+best 135368 step 5 time 22 ms
+best 127177 step 6 time 26 ms
+best 118270 step 7 time 31 ms
+best 112580 step 8 time 35 ms
+best 104868 step 9 time 40 ms
+best 100186 step 10 time 44 ms
+best 95294 step 11 time 49 ms
+best 91472 step 12 time 53 ms
+best 87655 step 13 time 58 ms
+best 83298 step 14 time 62 ms
+best 78437 step 15 time 66 ms
+best 73374 step 16 time 71 ms
+best 70335 step 17 time 75 ms
+best 66574 step 18 time 80 ms
+best 63020 step 19 time 84 ms
+best 59992 step 20 time 89 ms
+best 56332 step 21 time 93 ms
+best 53258 step 22 time 97 ms
+best 50292 step 23 time 102 ms
+best 48379 step 24 time 106 ms
+best 44078 step 25 time 111 ms
+best 42561 step 26 time 115 ms
+best 40801 step 27 time 119 ms
+best 39573 step 28 time 124 ms
+best 37395 step 29 time 128 ms
+best 35134 step 30 time 133 ms
+best 34212 step 31 time 137 ms
+best 33481 step 32 time 141 ms
+best 31722 step 33 time 146 ms
+best 30735 step 34 time 150 ms
+best 29858 step 35 time 155 ms
+best 29237 step 36 time 159 ms
+best 28780 step 37 time 164 ms
+best 28186 step 38 time 168 ms
+best 27818 step 39 time 172 ms
+best 27546 step 40 time 177 ms
+best 27393 step 41 time 181 ms
+best 26850 step 42 time 186 ms
+best 26354 step 43 time 190 ms
+best 26093 step 44 time 195 ms
+best 25889 step 45 time 199 ms
+best 25727 step 46 time 203 ms
+best 25667 step 47 time 208 ms
+best 25666 step 48 time 212 ms
+best 25657 step 50 time 221 ms
+best 25636 step 51 time 225 ms
+best 25617 step 80 time 352 ms
+best 25523 step 81 time 356 ms
+best 25365 step 82 time 361 ms
+best 25335 step 83 time 365 ms
+best 25058 step 110 time 485 ms
+best 24351 step 111 time 489 ms
+best 23399 step 112 time 494 ms
+best 23243 step 113 time 498 ms
+best 23207 step 115 time 507 ms
+best 23181 step 120 time 529 ms
+best 23110 step 121 time 533 ms
+best 23063 step 122 time 538 ms
+best 23062 step 125 time 551 ms
+best 21864 step 178 time 762 ms
+best 21191 step 179 time 767 ms
+best 20172 step 180 time 771 ms
+best 19349 step 181 time 776 ms
+best 19323 step 182 time 780 ms
+best 19322 step 183 time 784 ms
+best 18973 step 316 time 1292 ms
+best 18758 step 317 time 1296 ms
+best 18604 step 318 time 1301 ms
+best 18596 step 319 time 1305 ms
+best 18349 step 320 time 1309 ms
+best 18289 step 321 time 1314 ms
+best 18269 step 325 time 1331 ms
+best 18243 step 327 time 1340 ms
+best 18197 step 338 time 1389 ms
+best 18178 step 339 time 1394 ms
+best 17866 step 20109 time 69180 ms
+best 17678 step 20110 time 69185 ms
+best 17428 step 20111 time 69189 ms
+best 17276 step 20112 time 69194 ms
+best 17238 step 20113 time 69198 ms
+done 0 33 16 40 26 17 42 10 12 4 2 18 24 27 30 21 5 22 36 1 37 45 41 46 29 7 13 39 38 34 6 15 43 47 28 23 20 11 35 3 19 25 44 50 9 49 8 32 31 14 48
+best 17238
+time 950000 ms
+seed 10
