@@ -16,7 +16,7 @@ namespace eval{
 
 
 /**
- * Class template for partial evaluation functors of the insert neighborhood.
+ * Class template for partial evaluation functors of the insert neighborhood (the jobs placed after the mutation are not counted).
  *
  * @author Ooms Aurélien
  * 

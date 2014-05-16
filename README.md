@@ -33,6 +33,10 @@
 * pdf : implementation sheets + literature
 * src : the main program source code for all algorithms
 
+* tuning : contains configuration files for algorithm automatic tuning with irace
+* tmpl : contains a template for parrallel benching on hydra
+* json : contains option files for python scripts
+
 * report1.pdf : 1st implementation exercice pdf report with tables, explanations and notes
 * report2.pdf : 2nd implementation exercice pdf report with tables, explanations and notes
 * Makefile : makefile for the implementation in C++
