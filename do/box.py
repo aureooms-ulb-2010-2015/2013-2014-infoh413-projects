@@ -13,7 +13,7 @@ def rscript(f, a, b, out, nbJob, nbMac):
 	f.write('main="Relative percentage deviation boxplot for both algorithms (%s x %s) .",' % (nbJob, nbMac))
 	f.write('ylab="Relative percentage deviation",')
 	f.write('names=c("%s","%s"),' % (abbr(a.split('/')[-1].replace('_', '/')), abbr(b.split('/')[-1].replace('_', '/'))))
-	f.write('notch=TRUE, col=c("red","blue"),')
+	f.write('notch=FALSE, col=c("red","blue"),')
 	f.write('xlab="Algorithm"')
 	f.write(')\n')
 	f.write('dev.off()\n')

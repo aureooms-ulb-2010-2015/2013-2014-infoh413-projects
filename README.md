@@ -21,14 +21,20 @@
 	* lib : library header files for useful things (array shuffling, io)
 	* pfsp: library header files for PFSP
 
-	* pfsp_commons : header file for data types used for PFSP
+	* pfsp_commons : common data types + framework used for PFSP algorithms
 	* pfsp_ii : configuration and global variables for pfsp-ii
 	* pfsp_vnd : configuration and global variables for pfsp-vnd
+	* pfsp_rii : configuration and global variables for pfsp-rii
+	* pfsp_pii : configuration and global variables for pfsp-pii
+	* pfsp_sa : configuration and global variables for pfsp-sa
+	* pfsp_ig : configuration and global variables for pfsp-ig
+	* pfsp_tabu : configuration and global variables for pfsp-tabu
 
-* pdf : implementation sheets
-* src : the main program source code for pfsp-ii and pfsp-vnd
+* pdf : implementation sheets + literature
+* src : the main program source code for all algorithms
 
-* report.pdf : pdf report with tables, explanations and notes
+* report1.pdf : 1st implementation exercice pdf report with tables, explanations and notes
+* report2.pdf : 2nd implementation exercice pdf report with tables, explanations and notes
 * Makefile : makefile for the implementation in C++
 * README.md : this file
 
@@ -44,9 +50,15 @@
 
 # run it
 
-	./run/ii <filename> --init {random, slack} --neighborhood {transpose, exchange, insert} --pivoting {first, best} [--seed <seed>]
+	./run/ii <filename> -i {random, slack} -n {(s)transpose, (s)exchange, (s)insert} -p {first, best} [--seed <seed>] [-v]
 
-	./run/vnd <filename> --init {random, slack} --ordering {tie, tei} [--pivoting {first, best}, --seed <seed>]
+	./run/vnd <filename> -i {random, slack} -o {(s)tie, (s)tei} [-p {first, best}] [--seed <seed>] [-v]
+
+	./run/pfsp-ig <filename> -i {random, slack} --td <T_d> --tp <T_p> --ss <sample size> -t <max time (ms)> [-v]
+
+	./run/pfsp-tabu <filename> -i {random, slack} -n {stranspose, sexchange, sinsert} -r <restart wait> --ssmin <sample size min> --ssmax <sample size max> --ttmin <1st phase tabu tenure min> --ttmax <1st phase tabu tenure max> --tt2nd <2nd phase tabu tenure> --ph <phase repartition> -t <max time (ms)> [-v]
+
+	(explanation about options : ./run/pfsp-<alg> -h)
 
 
 # flags

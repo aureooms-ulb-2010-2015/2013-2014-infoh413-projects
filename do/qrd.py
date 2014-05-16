@@ -25,7 +25,7 @@ def do(data, best, filt, outdir):
 		out[ins].setdefault(alg, [{0:0}, 0])
 
 		for event in parserun.parse(f):
-			if event[1] < c[ins]:
+			if event[1] <= c[ins]:
 				out[ins][alg][0].setdefault(event[0], 0)
 				out[ins][alg][0][event[0]] += 1
 				break

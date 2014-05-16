@@ -6,9 +6,9 @@
 \tabcolsep=0.11cm
 \begin{tabular}{|l|l|}
 \hline
-& \textbf{TSI}\\
+& \textbf{TRI}\\
 \hline
-\textbf{IGS} & \cellcolor{black!32} \begin{tabular}{@{}l@{}} \textcolor{black!82}{ 7.809e-02 } \\ \textcolor{black!82}{ 3.201e-01 } \end{tabular} \\
+\textbf{IGS} & \cellcolor{black!0} \begin{tabular}{@{}l@{}} \textcolor{black!50}{ 1.132e-03 } \\ \textcolor{black!50}{ 7.855e-07 } \end{tabular} \\
 \hline
 \end{tabular}
 \end{center}

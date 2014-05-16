@@ -57,19 +57,10 @@ The set of parameters used for the Tabu Search algorithm is reported in \ref{obs
 \end{table}
 
 
+\emph{For data see \ref{app:rel},  \ref{app:corr}, \ref{app:stat}, \ref{app:qrd}.}
 
-\subsection{Relative percentage deviation from best known solutions}
 
-\emph{For data see \ref{app:rel}.}
+According to \cite{santostabu} \emph{TS} should be better than \emph{IG}.
+However all the data and tests tends to point \emph{IG} as the best of the two candidates. This is probably due to the fact that the automatic tuning of \emph{TS} gave parameters that were divergent from the ones given in \cite{santostabu}. Next time I will first test what is proposed in papers before applying any automated parameter finding method or even try to guess them myself.
 
-\subsection{Correlation plots}
-
-\emph{For data see \ref{app:corr}.}
-
-\subsection{Wilcoxon test}
-
-\emph{For data see \ref{app:stat}.}
-
-\subsection{Qualified run-time distributions}
-
-\emph{For data see \ref{app:qrd}.}
+That being said, \emph{IG} is performant and robust whereas \emph{TS} is still better than the local search methods implemented in the first implementation exercice.
