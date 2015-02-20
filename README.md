@@ -1,3 +1,6 @@
+# ULB 2013-2014 infoh413
+First and second part of the project for the course _Heuristic Optimization_.
+
 # /!\ WARNING
 
 * compiles with g++ 4.8.1
