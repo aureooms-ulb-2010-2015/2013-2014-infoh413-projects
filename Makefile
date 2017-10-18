@@ -67,7 +67,7 @@ ifndef COMPILER
 COMPILER = g++
 endif
 ifndef STD
-STD = -std=c++11
+STD = -std=c++14
 endif
 CXX = $(COMPILER) $(STD) $(INCLUDE_PATH) $(EMBED) $(FLAGS)
 TOOL = $(CXX) -o
