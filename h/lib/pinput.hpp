@@ -8,6 +8,7 @@
 
 // HELPER
 
+#include <functional>
 #include <vector>
 #include <tuple>
 #include <set>
@@ -24,15 +25,15 @@ namespace pinput{
 
 /**
  * Function template for command line arguments parsing.
- * 
+ *
  * @author Ooms Aurélien
- * 
+ *
  * @param <P> out param array type
  * @param <O> out option map type
  * @param <F> out flag set type
  * @param <T> option set type
  * @param <U> flag set type
- * 
+ *
  * @param argc argv size
  * @param argv argument vector
  * @param params out param array
@@ -91,7 +92,7 @@ public:
 
 	// CONDITIONS
 
-	typedef bool(*C)();
+	typedef std::function<bool()> C;
 
 	typedef struct{
 		std::string key;
@@ -102,8 +103,8 @@ public:
 	std::vector<condition_t> oconditions, fconditions;
 
 	helper& condition(const std::string& key, C pred, const std::string& msg){
-		if(voptions.count(key)) oconditions.push_back(condition_t({key, pred, msg}));
-		else if(vflags.count(key)) fconditions.push_back(condition_t({key, pred, msg}));
+		if(voptions.count(key)) oconditions.push_back({.key=key, .pred=pred, .msg=msg});
+		else if(vflags.count(key)) fconditions.push_back({.key=key, .pred=pred, .msg=msg});
 		else throw lib::error::exception("condition : '" + key + "' is neither option nor flag");
 		return *this;
 	}
@@ -133,7 +134,7 @@ public:
 	}
 
 	// SIGNATURE
-	
+
 	typedef std::pair<std::string, std::string> signature_t;
 	std::vector<signature_t> osignatures, fsignatures;
 
@@ -155,7 +156,7 @@ public:
 
 		typedef std::pair<std::string, components_t> item_t;
 		std::map<std::string, components_t> otext, ftext;
-	
+
 		if(options.size()){
 
 			std::cout << "Options:" << std::endl;
@@ -327,8 +328,8 @@ public:
 
 
 	// ASSIGN
-	typedef void(*A)(const std::vector<std::string>&);
-	typedef void(*B)(const bool);
+	typedef std::function<void(const std::vector<std::string>&)> A;
+	typedef std::function<void(const bool)> B;
 
 	typedef struct{
 		std::string key;
@@ -403,7 +404,7 @@ public:
 		for(const auto& k : oassigns){
 			if(options.count(k.key) && options.at(k.key).size()){
 				try{
-					(*k.fn)(options.at(k.key));
+					k.fn(options.at(k.key));
 				}
 				catch(const std::exception& e){
 					throw lib::error::exception("parse : failed to parse '" + k.key +"' (" + e.what() + ")." );
@@ -413,7 +414,7 @@ public:
 
 
 		for(const auto& k : fassigns){
-			(*k.fn)(flags.count(k.key));
+			k.fn(flags.count(k.key));
 		}
 
 		return *this;
@@ -462,7 +463,7 @@ public:
 		// CHECK CONDITIONS
 
 		for(const auto& k : oconditions){
-			if(!(*k.pred)())
+			if(!k.pred())
 				throw lib::error::exception("'" + k.key + "' condition " + k.msg);
 		}
 
@@ -484,7 +485,7 @@ public:
 };
 
 
-	
+
 } // pinput
 } // lib
 

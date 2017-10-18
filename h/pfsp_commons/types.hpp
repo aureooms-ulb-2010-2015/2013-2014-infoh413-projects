@@ -1,6 +1,7 @@
 #ifndef _PFSP_COMMONS_TYPES_HPP
 #define _PFSP_COMMONS_TYPES_HPP
 
+#include <functional>
 #include <tuple>
 #include <vector>
 #include <random>
@@ -32,7 +33,7 @@
 //
 // MEANING OF THOSES TYPES ARE SELF-EVIDENT
 // IF NOT: CHECK PFSP AND LIB DOCUMENTATION
-// 
+//
 
 
 typedef size_t addr_t;

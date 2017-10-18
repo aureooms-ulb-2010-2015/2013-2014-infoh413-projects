@@ -57,9 +57,9 @@ First and second part of the project for the course _Heuristic Optimization_.
 
 # run it
 
-	./run/ii <filename> -i {random, slack} -n {(s)transpose, (s)exchange, (s)insert} -p {first, best} [--seed <seed>] [-v]
+	./run/pfsp-ii <filename> -i {random, slack} -n {(s)transpose, (s)exchange, (s)insert} -p {first, best} [--seed <seed>] [-v]
 
-	./run/vnd <filename> -i {random, slack} -o {(s)tie, (s)tei} [-p {first, best}] [--seed <seed>] [-v]
+	./run/pfsp-vnd <filename> -i {random, slack} -o {(s)tie, (s)tei} [-p {first, best}] [--seed <seed>] [-v]
 
 	./run/pfsp-ig <filename> -i {random, slack} --td <T_d> --tp <T_p> --ss <sample size> -t <max time (ms)> [-v]
 

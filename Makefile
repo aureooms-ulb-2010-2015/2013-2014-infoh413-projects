@@ -122,24 +122,24 @@ PRINT_PROGRESS = echo -n ["`expr "  \`expr $N '*' 100 / $T\`" : '.*\(...\)$$'`%]
 endif
 
 $(ROOT)$(TYPE)/%: $(ROOT)$(OUTPUTDIR)/%.o
-	@echo "$(ACTION_COLOR)"linking $@"$(NO_COLOR)"
+	@echo -e "$(ACTION_COLOR)"linking $@"$(NO_COLOR)"
 	$(TOOL) $@ $^ $(TOOL_OPT)
 
 $(ROOT)$(OUTPUTDIR)/%.o: $(ROOT)$(DEPENDENCYDIR)/%.d $(SRC)/%.cpp
 	$(PRINT_PROGRESS) $(CXX) -c $(word 2,$^) -o $@" "
 	$(CXX) -c $(word 2,$^) -o $@ 2> temp.log || touch temp.errors
-	if [ -e temp.errors ]; then echo "$(ERROR_STRING)" && cat temp.log && echo -n "$(NO_COLOR)"; elif [ -s temp.log ]; then echo "$(WARN_STRING)" && cat temp.log && echo -n "$(NO_COLOR)"; else echo "$(OK_STRING)$(NO_COLOR)"; fi;
+	if [ -e temp.errors ]; then echo -e "$(ERROR_STRING)" && cat temp.log && echo -e -n "$(NO_COLOR)"; elif [ -s temp.log ]; then echo -e "$(WARN_STRING)" && cat temp.log && echo -e -n "$(NO_COLOR)"; else echo -e "$(OK_STRING)$(NO_COLOR)"; fi;
 	if [ -e temp.errors ]; then rm -f temp.errors temp.log && false; else rm -f temp.errors temp.log; fi;
 
 $(ROOT)$(DEPENDENCYDIR)/%.d: $(SRC)/%.cpp
-	echo "$(ACTION_COLOR)"generating $@"$(NO_COLOR)"
+	echo -e "$(ACTION_COLOR)"generating $@"$(NO_COLOR)"
 	$(DEP) $@ -MT $(patsubst $(ROOT)$(DEPENDENCYDIR)/%,$(ROOT)$(OUTPUTDIR)/%,$(patsubst %.d,%.o,$@)) $(STD) $(INCLUDE_PATH) $(FLAGS) -c $<
 
 prepare:
 	rm -f temp.errors temp.log
 		
 clean:
-	@echo "$(ACTION_COLOR)"rm -rf $(DEPFILES) $(OBJFILES) temp.errors temp.log $(REQUIRED_DIRS)"$(NO_COLOR)"
+	@echo -e "$(ACTION_COLOR)"rm -rf $(DEPFILES) $(OBJFILES) temp.errors temp.log $(REQUIRED_DIRS)"$(NO_COLOR)"
 	rm -rf $(DEPFILES) $(OBJFILES) temp.errors temp.log $(REQUIRED_DIRS)
 
 

@@ -83,7 +83,7 @@ namespace pfsp_pii{
 
 			.parse(argc, argv, global::params, global::options, global::flags);
 
-		
+
 			std::seed_seq seed(global::seed_v.begin(), global::seed_v.end());
 			global::g.seed(seed);
 
@@ -92,7 +92,7 @@ namespace pfsp_pii{
 
 		inline void check(){
 			if(global::params.size() < 1) throw lib::error::exception("<filename> missing");
-			
+
 			optparse.validate(global::params, global::options, global::flags);
 
 		}
